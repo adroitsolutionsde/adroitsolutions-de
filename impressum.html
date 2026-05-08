@@ -1,216 +1,398 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="robots" content="noindex, follow" />
-  <title>Impressum | Adroit Solutions GmbH</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, follow">
+  <meta name="description" content="Impressum – Adroit Solutions GmbH, Düsseldorf. Angaben gemäß § 5 TMG.">
+  <title>Imprint / Impressum – Adroit Solutions GmbH</title>
   <style>
+    :root {
+      --ink:     #0A1628;
+      --gold:    #C9A84C;
+      --gold-d:  #a8872e;
+      --mid:     #1A3A5C;
+      --surface: #F5F7FA;
+      --border:  #DDE3EC;
+      --muted:   #6B7280;
+      --white:   #FFFFFF;
+      --max:     860px;
+      --r:       5px;
+    }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
+    html { scroll-behavior: smooth; }
     body {
-      font-family: 'Segoe UI', Arial, sans-serif;
-      background: #0a0f1e;
-      color: #e0e6f0;
-      min-height: 100vh;
+      background: #e8ecf2;
+      color: #2D2D2D;
+      font-family: "Georgia", "Times New Roman", serif;
+      font-size: 16px;
+      line-height: 1.75;
     }
 
-    /* ── Navigation (matches site style) ── */
-    nav {
+    /* ── TOPBAR ── */
+    .topbar {
+      background: var(--ink);
+      border-bottom: 1px solid rgba(201,168,76,.18);
+      padding: 0 40px;
+      height: 58px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 20px 60px;
-      background: rgba(10,15,30,0.95);
-      border-bottom: 1px solid rgba(255,255,255,0.06);
       position: sticky;
       top: 0;
-      z-index: 100;
+      z-index: 200;
     }
-    .logo {
-      font-size: 1.4rem;
+    .topbar-logo {
+      font-family: "Trebuchet MS", sans-serif;
+      font-size: .95rem;
       font-weight: 700;
-      color: #fff;
+      color: var(--white);
       text-decoration: none;
-      letter-spacing: 0.5px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
     }
-    .logo span { color: #3b82f6; }
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 32px;
-    }
-    nav ul a {
-      color: #94a3b8;
+    .topbar-logo span { color: var(--gold); }
+    .topbar-back {
+      font-family: "Trebuchet MS", sans-serif;
+      font-size: .75rem;
+      color: rgba(255,255,255,.55);
       text-decoration: none;
-      font-size: 0.9rem;
-      transition: color 0.2s;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      border: 1px solid rgba(255,255,255,.15);
+      padding: 6px 16px;
+      border-radius: var(--r);
+      transition: border-color .2s, color .2s;
     }
-    nav ul a:hover { color: #fff; }
+    .topbar-back:hover { border-color: var(--gold); color: var(--gold); }
 
-    /* ── Hero ── */
+    /* ── HERO ── */
     .hero {
-      padding: 80px 60px 48px;
-      max-width: 900px;
-      margin: 0 auto;
+      background: var(--ink);
+      border-bottom: 3px solid var(--gold);
+      padding: 56px 40px 44px;
+      text-align: center;
+    }
+    .hero-eyebrow {
+      font-family: "Trebuchet MS", sans-serif;
+      font-size: .68rem;
+      letter-spacing: .26em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 14px;
     }
     .hero h1 {
-      font-size: 2.8rem;
-      font-weight: 800;
-      color: #fff;
-      margin-bottom: 12px;
-    }
-    .hero p {
-      color: #64748b;
-      font-size: 0.95rem;
-    }
-
-    /* ── Content ── */
-    .content {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 0 60px 100px;
-    }
-
-    .section {
-      background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(255,255,255,0.07);
-      border-radius: 12px;
-      padding: 32px 36px;
-      margin-bottom: 24px;
-    }
-
-    .section h2 {
-      font-size: 0.75rem;
+      font-family: "Trebuchet MS", sans-serif;
+      font-size: clamp(1.7rem, 3.5vw, 2.4rem);
       font-weight: 700;
+      color: var(--white);
+      letter-spacing: .05em;
       text-transform: uppercase;
-      letter-spacing: 1.5px;
-      color: #3b82f6;
-      margin-bottom: 16px;
+    }
+    .hero-sub {
+      margin-top: 8px;
+      font-family: "Trebuchet MS", sans-serif;
+      font-size: .82rem;
+      color: rgba(255,255,255,.4);
+      letter-spacing: .04em;
+    }
+    .hero-bar {
+      width: 48px; height: 3px;
+      background: var(--gold);
+      margin: 18px auto 0;
+      border-radius: 2px;
     }
 
-    .section p, .section a {
-      font-size: 0.95rem;
-      color: #cbd5e1;
-      line-height: 1.8;
+    /* ── CARD WRAPPER ── */
+    .card {
+      background: var(--white);
+      max-width: var(--max);
+      margin: 0 auto;
+      padding-bottom: 72px;
+      box-shadow: 0 2px 24px rgba(10,22,40,.08);
     }
 
-    .section a {
-      color: #3b82f6;
-      text-decoration: none;
+    /* ── SECTION ── */
+    .sec {
+      padding: 40px 52px 0;
+      animation: up .45s ease both;
     }
-    .section a:hover { text-decoration: underline; }
+    .sec:nth-child(1){animation-delay:.04s}
+    .sec:nth-child(2){animation-delay:.09s}
+    .sec:nth-child(3){animation-delay:.14s}
+    .sec:nth-child(4){animation-delay:.19s}
+    .sec:nth-child(5){animation-delay:.24s}
+    .sec:nth-child(6){animation-delay:.29s}
+    .sec:nth-child(7){animation-delay:.34s}
+    .sec:nth-child(8){animation-delay:.39s}
+    @keyframes up { from{opacity:0;transform:translateY(14px)} to{opacity:1;transform:none} }
 
+    .sec-label {
+      font-family: "Trebuchet MS", sans-serif;
+      font-size: .66rem;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--mid);
+      font-weight: 700;
+      margin-bottom: 9px;
+    }
+    .sec-rule {
+      border: none;
+      border-top: 2px solid var(--gold);
+      opacity: .55;
+      margin-bottom: 20px;
+    }
+
+    /* ── INFO TABLE ── */
+    .itbl { width: 100%; border-collapse: collapse; font-size: .9rem; }
+    .itbl tr { border-bottom: 1px solid var(--border); }
+    .itbl tr:last-child { border-bottom: none; }
+    .itbl td { padding: 10px 14px; vertical-align: top; }
+    .itbl td:first-child {
+      width: 36%;
+      font-family: "Trebuchet MS", sans-serif;
+      font-size: .76rem;
+      font-weight: 700;
+      color: var(--ink);
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      background: var(--surface);
+    }
+    .itbl a { color: var(--mid); }
+    .itbl a:hover { color: var(--gold-d); }
+
+    /* ── PENDING BADGE ── */
     .badge {
       display: inline-block;
-      background: rgba(59,130,246,0.12);
-      border: 1px solid rgba(59,130,246,0.25);
-      color: #93c5fd;
-      font-size: 0.78rem;
-      padding: 4px 12px;
-      border-radius: 20px;
-      margin-top: 8px;
+      background: #fff8e1;
+      color: #7d5700;
+      border: 1px solid #f0c840;
+      font-family: "Trebuchet MS", sans-serif;
+      font-size: .66rem;
+      font-weight: 700;
+      letter-spacing: .07em;
+      text-transform: uppercase;
+      padding: 2px 8px;
+      border-radius: 3px;
+      margin-left: 8px;
+      vertical-align: middle;
     }
 
-    /* ── Footer ── */
-    footer {
-      border-top: 1px solid rgba(255,255,255,0.06);
-      padding: 32px 60px;
-      text-align: center;
-      color: #334155;
-      font-size: 0.82rem;
-    }
+    /* ── PROSE ── */
+    .prose { font-size: .9rem; color: #3a3a3a; line-height: 1.82; margin-bottom: 10px; }
+    .prose a { color: var(--mid); word-break: break-word; }
+    .prose a:hover { color: var(--gold-d); }
 
-    @media (max-width: 640px) {
-      nav { padding: 16px 20px; }
-      nav ul { display: none; }
-      .hero, .content { padding-left: 20px; padding-right: 20px; }
-      .hero h1 { font-size: 2rem; }
-      .section { padding: 24px 20px; }
+    /* ══════════════════════════════════
+       ENTERPRISE FOOTER  (Randstad-style)
+       ══════════════════════════════════ */
+    .site-footer { background: var(--ink); color: rgba(255,255,255,.65); width: 100%; }
+
+    .footer-nav-strip { border-bottom: 1px solid rgba(255,255,255,.09); padding: 26px 0; }
+    .footer-nav-inner {
+      max-width: 1160px; margin: 0 auto; padding: 0 40px;
+      display: flex; gap: 40px; flex-wrap: wrap; justify-content: center;
+    }
+    .footer-nav-inner a {
+      color: rgba(255,255,255,.55); text-decoration: none;
+      font-family: "Trebuchet MS", sans-serif;
+      font-size: .84rem; letter-spacing: .03em;
+      transition: color .15s;
+    }
+    .footer-nav-inner a:hover { color: var(--gold); }
+
+    .footer-rule { border: none; border-top: 1px solid rgba(255,255,255,.1); max-width: 1160px; margin: 0 auto; }
+
+    .footer-social {
+      max-width: 1160px; margin: 0 auto;
+      padding: 26px 40px 22px;
+      display: flex; gap: 10px; align-items: center;
+    }
+    .s-btn {
+      display: flex; align-items: center; justify-content: center;
+      width: 36px; height: 36px; border-radius: 50%;
+      border: 1px solid rgba(255,255,255,.18);
+      color: rgba(255,255,255,.5);
+      text-decoration: none;
+      transition: border-color .15s, color .15s, background .15s;
+      flex-shrink: 0;
+    }
+    .s-btn:hover { border-color: var(--gold); color: var(--gold); background: rgba(201,168,76,.07); }
+    .s-btn svg { width: 15px; height: 15px; fill: currentColor; display: block; }
+
+    .footer-legal {
+      max-width: 1160px; margin: 0 auto;
+      padding: 0 40px 32px;
+      display: flex; align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap; gap: 14px;
+    }
+    .f-copy {
+      font-family: "Trebuchet MS", sans-serif;
+      font-size: .76rem; color: rgba(255,255,255,.35); letter-spacing: .03em;
+    }
+    .f-links { display: flex; flex-wrap: wrap; align-items: center; }
+    .f-links a {
+      font-family: "Trebuchet MS", sans-serif;
+      font-size: .76rem; color: rgba(255,255,255,.5);
+      text-decoration: none; letter-spacing: .03em;
+      padding: 3px 16px;
+      border-right: 1px solid rgba(255,255,255,.13);
+      transition: color .15s; white-space: nowrap;
+    }
+    .f-links a:first-child { padding-left: 0; }
+    .f-links a:last-child  { padding-right: 0; border-right: none; }
+    .f-links a:hover { color: var(--gold); }
+
+    @media(max-width:620px){
+      .sec { padding: 32px 22px 0; }
+      .topbar { padding: 0 20px; }
+      .hero { padding: 44px 20px 36px; }
+      .footer-nav-inner,.footer-social,.footer-legal { padding-left: 22px; padding-right: 22px; }
+      .footer-legal { flex-direction: column; align-items: flex-start; }
+      .f-links a { padding: 3px 12px; }
     }
   </style>
 </head>
 <body>
 
-  <!-- Navigation -->
-  <nav>
-    <a class="logo" href="/index.html">Adroit<span>.</span></a>
-    <ul>
-      <li><a href="/index.html">Home</a></li>
-      <li><a href="/services.html">Services</a></li>
-      <li><a href="/about.html">About</a></li>
-      <li><a href="/contact.html">Contact</a></li>
-    </ul>
-  </nav>
+<!-- TOPBAR -->
+<nav class="topbar">
+  <a href="/" class="topbar-logo"><span>Adroit</span> Solutions GmbH</a>
+  <a href="/" class="topbar-back">← Back</a>
+</nav>
 
-  <!-- Hero -->
-  <div class="hero">
-    <h1>Impressum</h1>
-    <p>Legal disclosure pursuant to § 5 TMG (German Telemedia Act)</p>
+<!-- HERO -->
+<div class="hero">
+  <p class="hero-eyebrow">Legal Notice &nbsp;/&nbsp; Rechtliche Informationen</p>
+  <h1>Imprint &nbsp;/&nbsp; Impressum</h1>
+  <p class="hero-sub">Adroit Solutions GmbH &nbsp;·&nbsp; Düsseldorf, Germany</p>
+  <div class="hero-bar"></div>
+</div>
+
+<!-- CONTENT -->
+<main class="card">
+
+  <div class="sec">
+    <p class="sec-label">Information According to § 5 TMG &nbsp;/&nbsp; Angaben gemäß § 5 TMG</p>
+    <hr class="sec-rule">
+    <table class="itbl">
+      <tr><td>Company</td><td>Adroit Solutions GmbH</td></tr>
+      <tr><td>Address</td><td>Königsallee 27<br>40212 Düsseldorf<br>Germany</td></tr>
+      <tr><td>Legal form</td><td>Gesellschaft mit beschränkter Haftung (GmbH)</td></tr>
+    </table>
   </div>
 
-  <!-- Content -->
-  <div class="content">
-
-    <div class="section">
-      <h2>Company Information</h2>
-      <p><strong>Adroit Solutions GmbH</strong></p>
-      <p>Königsallee 27</p>
-      <p>40212 Düsseldorf</p>
-      <p>Deutschland / Germany</p>
-    </div>
-
-    <div class="section">
-      <h2>Contact</h2>
-      <p>Email: <a href="mailto:samdani.gulam@adroitsolutions.de">samdani.gulam@adroitsolutions.de</a></p>
-      <p>Web: <a href="https://www.adroitsolutions.de">www.adroitsolutions.de</a></p>
-    </div>
-
-    <div class="section">
-      <h2>Managing Director (Geschäftsführerin)</h2>
-      <p>Ayesha Jabeen</p>
-    </div>
-
-    <div class="section">
-      <h2>Commercial Register (Handelsregister)</h2>
-      <p>Registergericht: Amtsgericht Köln</p>
-      <p>Registernummer: Registration in progress — HRB number will be added upon publication</p>
-      <p>Notarial deed: UVZ-Nr. 291/2025 H, Notar Dr. Stefan Heinze, Köln</p>
-      <p>Date of incorporation: 11 February 2025</p>
-      <span class="badge">⏳ HRB pending — Amtsgericht Köln</span>
-    </div>
-
-    <div class="section">
-      <h2>VAT Identification Number (Umsatzsteuer-ID)</h2>
-      <p>Pursuant to § 27a UStG: To be added upon assignment by Finanzamt</p>
-    </div>
-
-    <div class="section">
-      <h2>Responsible for Content (§ 55 Abs. 2 RStV)</h2>
-      <p>Ayesha Jabeen</p>
-      <p>Königsallee 27, 40212 Düsseldorf</p>
-    </div>
-
-    <div class="section">
-      <h2>EU Online Dispute Resolution</h2>
-      <p>The European Commission provides a platform for online dispute resolution (ODR):</p>
-      <p><a href="https://ec.europa.eu/consumers/odr" target="_blank" rel="noopener">https://ec.europa.eu/consumers/odr</a></p>
-      <p>We are neither willing nor obliged to participate in dispute resolution proceedings before a consumer arbitration board.</p>
-    </div>
-
-    <div class="section">
-      <h2>Liability Notice</h2>
-      <p>Despite careful content review, we assume no liability for the content of external links. The operators of linked pages are solely responsible for their content.</p>
-    </div>
-
+  <div class="sec">
+    <p class="sec-label">Represented By &nbsp;/&nbsp; Vertreten durch</p>
+    <hr class="sec-rule">
+    <table class="itbl">
+      <tr><td>Managing Director</td><td>Ayesha Jabeen <em>(Geschäftsführerin)</em></td></tr>
+    </table>
   </div>
 
-  <!-- Footer -->
-  <footer>
-    <p>© 2025 Adroit Solutions GmbH · Düsseldorf, Germany ·
-      <a href="/impressum.html" style="color:#3b82f6;">Impressum</a>
+  <div class="sec">
+    <p class="sec-label">Contact &nbsp;/&nbsp; Kontakt</p>
+    <hr class="sec-rule">
+    <table class="itbl">
+      <tr><td>Telephone</td><td><a href="tel:+491726545228">+49 172 654 5228</a></td></tr>
+      <tr><td>Email</td><td><a href="mailto:samdani.gulam@adroitsolutions.de">samdani.gulam@adroitsolutions.de</a></td></tr>
+      <tr><td>Website</td><td><a href="https://www.adroitsolutions.de">www.adroitsolutions.de</a></td></tr>
+    </table>
+  </div>
+
+  <div class="sec">
+    <p class="sec-label">Register Entry &nbsp;/&nbsp; Registereintrag</p>
+    <hr class="sec-rule">
+    <table class="itbl">
+      <tr><td>Registering court</td><td>Cologne District Court (Amtsgericht Köln)</td></tr>
+      <tr><td>Registration number</td><td>HRB entry pending — will be supplemented after publication<span class="badge">Pending</span></td></tr>
+      <tr><td>Deed number</td><td>UVZ No. 291/2025 H</td></tr>
+      <tr><td>Notary</td><td>Dr. Stefan Heinze, Cologne</td></tr>
+      <tr><td>Date of incorporation</td><td>February 11, 2025</td></tr>
+    </table>
+  </div>
+
+  <div class="sec">
+    <p class="sec-label">VAT ID &nbsp;/&nbsp; Umsatzsteuer</p>
+    <hr class="sec-rule">
+    <table class="itbl">
+      <tr>
+        <td>VAT ID (§ 27a UStG)</td>
+        <td>Will be supplemented after allocation by the tax office<span class="badge">Pending</span></td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="sec">
+    <p class="sec-label">Responsible for Content (§ 55 Para. 2 RStV)</p>
+    <hr class="sec-rule">
+    <table class="itbl">
+      <tr><td>Name</td><td>Ayesha Jabeen</td></tr>
+      <tr><td>Address</td><td>Königsallee 27, 40212 Düsseldorf</td></tr>
+    </table>
+  </div>
+
+  <div class="sec">
+    <p class="sec-label">EU Dispute Resolution &nbsp;/&nbsp; EU-Streitbeilegung</p>
+    <hr class="sec-rule">
+    <p class="prose">The European Commission provides a platform for online dispute resolution (ODR):
+      <a href="https://ec.europa.eu/consumers/odr/" target="_blank" rel="noopener">https://ec.europa.eu/consumers/odr/</a>
     </p>
-  </footer>
+    <p class="prose">As Adroit Solutions GmbH operates exclusively in the B2B sector, we are neither willing nor obliged to participate in consumer dispute resolution proceedings before a consumer arbitration board.</p>
+  </div>
 
+  <div class="sec">
+    <p class="sec-label">Liability Notice &nbsp;/&nbsp; Haftungshinweise</p>
+    <hr class="sec-rule">
+    <p class="prose"><strong>Liability for content:</strong> As a service provider, we are responsible for our own content on this website in accordance with § 7 para. 1 TMG and general laws. However, pursuant to §§ 8–10 TMG, we are not obligated to monitor transmitted or stored third-party information or to investigate circumstances that indicate illegal activity.</p>
+    <p class="prose"><strong>Liability for links:</strong> Our website may contain links to external third-party websites over whose content we have no influence. We therefore accept no liability for such external content. The respective provider or operator of linked pages is always responsible for their content.</p>
+    <p class="prose"><strong>Copyright:</strong> The content and works created by the site operators on these pages are subject to German copyright law. Duplication, processing, distribution, or any form of commercialisation beyond the scope of copyright law requires the written consent of the respective author.</p>
+  </div>
+
+</main>
+
+<!-- ════════════════════════════ ENTERPRISE FOOTER ════════════════════════════ -->
+<footer class="site-footer">
+
+  <div class="footer-nav-strip">
+    <div class="footer-nav-inner">
+      <a href="/leistungen.html">IT Consulting</a>
+      <a href="/leistungen.html#iot">IoT &amp; Embedded</a>
+      <a href="/leistungen.html#sap">SAP BTP</a>
+      <a href="/ueber-uns.html">About Us</a>
+      <a href="mailto:samdani.gulam@adroitsolutions.de">Contact</a>
+    </div>
+  </div>
+
+  <hr class="footer-rule">
+
+  <div class="footer-social">
+    <a href="https://www.linkedin.com/company/adroit-solutions-gmbh" target="_blank" rel="noopener" class="s-btn" aria-label="LinkedIn">
+      <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+    </a>
+    <a href="https://x.com/adroitsolutions" target="_blank" rel="noopener" class="s-btn" aria-label="X (Twitter)">
+      <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.748l7.73-8.835L1.254 2.25H8.08l4.253 5.622 5.911-5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+    </a>
+    <a href="https://github.com/adroit-solutions-gmbh" target="_blank" rel="noopener" class="s-btn" aria-label="GitHub">
+      <svg viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+    </a>
+    <a href="mailto:samdani.gulam@adroitsolutions.de" class="s-btn" aria-label="Email">
+      <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
+    </a>
+  </div>
+
+  <div class="footer-legal">
+    <p class="f-copy">&copy; Adroit Solutions GmbH <span id="yr"></span></p>
+    <nav class="f-links" aria-label="Legal">
+      <a href="/agb.html">Terms &amp; Conditions</a>
+      <a href="/impressum.html">Imprint</a>
+      <a href="/datenschutz.html">Data Protection</a>
+      <a href="mailto:samdani.gulam@adroitsolutions.de">Contact</a>
+    </nav>
+  </div>
+
+</footer>
+<script>document.getElementById('yr').textContent = new Date().getFullYear();</script>
 </body>
 </html>
