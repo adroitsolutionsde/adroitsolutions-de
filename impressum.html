@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, follow" />
+  <title>Impressum | Adroit Solutions GmbH</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: #0a0f1e;
+      color: #e0e6f0;
+      min-height: 100vh;
+    }
+
+    /* ── Navigation (matches site style) ── */
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 60px;
+      background: rgba(10,15,30,0.95);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .logo {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: #fff;
+      text-decoration: none;
+      letter-spacing: 0.5px;
+    }
+    .logo span { color: #3b82f6; }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 32px;
+    }
+    nav ul a {
+      color: #94a3b8;
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: color 0.2s;
+    }
+    nav ul a:hover { color: #fff; }
+
+    /* ── Hero ── */
+    .hero {
+      padding: 80px 60px 48px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .hero h1 {
+      font-size: 2.8rem;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 12px;
+    }
+    .hero p {
+      color: #64748b;
+      font-size: 0.95rem;
+    }
+
+    /* ── Content ── */
+    .content {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 60px 100px;
+    }
+
+    .section {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 12px;
+      padding: 32px 36px;
+      margin-bottom: 24px;
+    }
+
+    .section h2 {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: #3b82f6;
+      margin-bottom: 16px;
+    }
+
+    .section p, .section a {
+      font-size: 0.95rem;
+      color: #cbd5e1;
+      line-height: 1.8;
+    }
+
+    .section a {
+      color: #3b82f6;
+      text-decoration: none;
+    }
+    .section a:hover { text-decoration: underline; }
+
+    .badge {
+      display: inline-block;
+      background: rgba(59,130,246,0.12);
+      border: 1px solid rgba(59,130,246,0.25);
+      color: #93c5fd;
+      font-size: 0.78rem;
+      padding: 4px 12px;
+      border-radius: 20px;
+      margin-top: 8px;
+    }
+
+    /* ── Footer ── */
+    footer {
+      border-top: 1px solid rgba(255,255,255,0.06);
+      padding: 32px 60px;
+      text-align: center;
+      color: #334155;
+      font-size: 0.82rem;
+    }
+
+    @media (max-width: 640px) {
+      nav { padding: 16px 20px; }
+      nav ul { display: none; }
+      .hero, .content { padding-left: 20px; padding-right: 20px; }
+      .hero h1 { font-size: 2rem; }
+      .section { padding: 24px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav>
+    <a class="logo" href="/index.html">Adroit<span>.</span></a>
+    <ul>
+      <li><a href="/index.html">Home</a></li>
+      <li><a href="/services.html">Services</a></li>
+      <li><a href="/about.html">About</a></li>
+      <li><a href="/contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero -->
+  <div class="hero">
+    <h1>Impressum</h1>
+    <p>Legal disclosure pursuant to § 5 TMG (German Telemedia Act)</p>
+  </div>
+
+  <!-- Content -->
+  <div class="content">
+
+    <div class="section">
+      <h2>Company Information</h2>
+      <p><strong>Adroit Solutions GmbH</strong></p>
+      <p>Königsallee 27</p>
+      <p>40212 Düsseldorf</p>
+      <p>Deutschland / Germany</p>
+    </div>
+
+    <div class="section">
+      <h2>Contact</h2>
+      <p>Email: <a href="mailto:samdani.gulam@adroitsolutions.de">samdani.gulam@adroitsolutions.de</a></p>
+      <p>Web: <a href="https://www.adroitsolutions.de">www.adroitsolutions.de</a></p>
+    </div>
+
+    <div class="section">
+      <h2>Managing Director (Geschäftsführerin)</h2>
+      <p>Ayesha Jabeen</p>
+    </div>
+
+    <div class="section">
+      <h2>Commercial Register (Handelsregister)</h2>
+      <p>Registergericht: Amtsgericht Köln</p>
+      <p>Registernummer: Registration in progress — HRB number will be added upon publication</p>
+      <p>Notarial deed: UVZ-Nr. 291/2025 H, Notar Dr. Stefan Heinze, Köln</p>
+      <p>Date of incorporation: 11 February 2025</p>
+      <span class="badge">⏳ HRB pending — Amtsgericht Köln</span>
+    </div>
+
+    <div class="section">
+      <h2>VAT Identification Number (Umsatzsteuer-ID)</h2>
+      <p>Pursuant to § 27a UStG: To be added upon assignment by Finanzamt</p>
+    </div>
+
+    <div class="section">
+      <h2>Responsible for Content (§ 55 Abs. 2 RStV)</h2>
+      <p>Ayesha Jabeen</p>
+      <p>Königsallee 27, 40212 Düsseldorf</p>
+    </div>
+
+    <div class="section">
+      <h2>EU Online Dispute Resolution</h2>
+      <p>The European Commission provides a platform for online dispute resolution (ODR):</p>
+      <p><a href="https://ec.europa.eu/consumers/odr" target="_blank" rel="noopener">https://ec.europa.eu/consumers/odr</a></p>
+      <p>We are neither willing nor obliged to participate in dispute resolution proceedings before a consumer arbitration board.</p>
+    </div>
+
+    <div class="section">
+      <h2>Liability Notice</h2>
+      <p>Despite careful content review, we assume no liability for the content of external links. The operators of linked pages are solely responsible for their content.</p>
+    </div>
+
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 Adroit Solutions GmbH · Düsseldorf, Germany ·
+      <a href="/impressum.html" style="color:#3b82f6;">Impressum</a>
+    </p>
+  </footer>
+
+</body>
+</html>
