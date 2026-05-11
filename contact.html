@@ -6,6 +6,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Kontakt – Adroit Solutions GmbH Düsseldorf</title>
 <meta name="description" content="Kontaktieren Sie Adroit Solutions GmbH in Düsseldorf. SAP BTP Subcontracting, IT-Architektur, IoT und Embedded Systems. Antwort innerhalb von 24 Stunden."/>
+<link rel="canonical" href="https://adroitsolutions.de/contact.html"/>
+<link rel="alternate" hreflang="de" href="https://adroitsolutions.de/contact.html"/>
+<link rel="alternate" hreflang="en" href="https://adroitsolutions.de/contact.html"/>
+<link rel="alternate" hreflang="x-default" href="https://adroitsolutions.de/contact.html"/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://adroitsolutions.de/contact.html"/>
+<meta property="og:site_name" content="Adroit Solutions GmbH"/>
+<meta property="og:title" content="Kontakt – Adroit Solutions GmbH Düsseldorf"/>
+<meta property="og:description" content="Contact Adroit Solutions GmbH in Düsseldorf. SAP BTP subcontracting, IT architecture, IoT and embedded systems. Response within 24 hours."/>
+<meta property="og:image" content="https://adroitsolutions.de/adroit-logo.png"/>
+<meta property="og:locale" content="de_DE"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
 <style>
@@ -347,7 +358,7 @@ html[data-mode="light"] .form-note { color: rgba(10,10,10,0.4) !important; }
       <li><a href="services.html"><span data-lang="de">Leistungen</span><span data-lang="en">Services</span></a></li>
       <li><a href="cases.html"><span data-lang="de">Referenzen</span><span data-lang="en">Case Studies</span></a></li>
       <li><a href="careers.html"><span data-lang="de">Karriere</span><span data-lang="en">Careers</span></a></li>
-      <li><a href="contact.html"><span data-lang="de">Kontakt</span><span data-lang="en">Contact</span></a></li>
+      <li><a href="contact.html" class="active"><span data-lang="de">Kontakt</span><span data-lang="en">Contact</span></a></li>
     </ul>
     <div class="lang-switcher">
       <button class="lang-btn active" id="btn-de" onclick="setLang('de')">DE</button>
@@ -449,34 +460,34 @@ html[data-mode="light"] .form-note { color: rgba(10,10,10,0.4) !important; }
     <div class="contact-form reveal-right" id="contactForm">
       <div class="form-row">
         <div class="form-field">
-          <label><span data-lang="de">Vorname</span><span data-lang="en">First Name</span></label>
-          <input type="text" id="firstName" placeholder="Max"/>
+          <label for="firstName"><span data-lang="de">Vorname</span><span data-lang="en">First Name</span></label>
+          <input type="text" id="firstName" placeholder="Max" required maxlength="100"/>
         </div>
         <div class="form-field">
-          <label><span data-lang="de">Nachname</span><span data-lang="en">Last Name</span></label>
-          <input type="text" id="lastName" placeholder="Mustermann"/>
+          <label for="lastName"><span data-lang="de">Nachname</span><span data-lang="en">Last Name</span></label>
+          <input type="text" id="lastName" placeholder="Mustermann" maxlength="100"/>
         </div>
       </div>
       <div class="form-row">
         <div class="form-field">
-          <label><span data-lang="de">Unternehmen</span><span data-lang="en">Company</span></label>
-          <input type="text" id="company" placeholder="Accenture GmbH"/>
+          <label for="company"><span data-lang="de">Unternehmen</span><span data-lang="en">Company</span></label>
+          <input type="text" id="company" placeholder="Accenture GmbH" maxlength="200"/>
         </div>
         <div class="form-field">
-          <label><span data-lang="de">Position</span><span data-lang="en">Job Title</span></label>
-          <input type="text" id="jobTitle" placeholder="Resource Manager"/>
+          <label for="jobTitle"><span data-lang="de">Position</span><span data-lang="en">Job Title</span></label>
+          <input type="text" id="jobTitle" placeholder="Resource Manager" maxlength="100"/>
         </div>
       </div>
       <div class="form-field">
-        <label>E-Mail</label>
-        <input type="email" id="email" placeholder="max@unternehmen.de"/>
+        <label for="email">E-Mail</label>
+        <input type="email" id="email" placeholder="max@unternehmen.de" required maxlength="254"/>
       </div>
       <div class="form-field">
-        <label><span data-lang="de">Telefon (optional)</span><span data-lang="en">Phone (optional)</span></label>
-        <input type="tel" id="phone" placeholder="+49 ..."/>
+        <label for="phone"><span data-lang="de">Telefon (optional)</span><span data-lang="en">Phone (optional)</span></label>
+        <input type="tel" id="phone" placeholder="+49 ..." maxlength="30"/>
       </div>
       <div class="form-field">
-        <label><span data-lang="de">Art der Anfrage</span><span data-lang="en">Enquiry Type</span></label>
+        <label for="enquiryType"><span data-lang="de">Art der Anfrage</span><span data-lang="en">Enquiry Type</span></label>
         <select id="enquiryType">
           <option value=""><span data-lang="de">Bitte wählen...</span><span data-lang="en">Please select...</span></option>
           <option value="sap">SAP BTP Subcontracting</option>
@@ -487,8 +498,8 @@ html[data-mode="light"] .form-note { color: rgba(10,10,10,0.4) !important; }
         </select>
       </div>
       <div class="form-field">
-        <label><span data-lang="de">Ihre Nachricht</span><span data-lang="en">Your Message</span></label>
-        <textarea id="message" placeholder="Kurze Beschreibung Ihres Bedarfs, gewünschter Starttermin, Projektlaufzeit und Standort..."></textarea>
+        <label for="message"><span data-lang="de">Ihre Nachricht</span><span data-lang="en">Your Message</span></label>
+        <textarea id="message" placeholder="Kurze Beschreibung Ihres Bedarfs, gewünschter Starttermin, Projektlaufzeit und Standort..." required maxlength="2000"></textarea>
       </div>
       <div class="form-submit">
         <p class="form-note"><span data-lang="de">Ihre Daten werden vertraulich behandelt und nicht weitergegeben.</span><span data-lang="en">Your data is treated confidentially and not shared with third parties.</span></p>
