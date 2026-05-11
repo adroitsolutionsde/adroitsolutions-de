@@ -295,7 +295,7 @@ body.lang-en [data-lang="en"] { display:inline; }
     <p class="sec-eyebrow">9. Data Security &amp; Policy Currency &nbsp;/&nbsp; Datensicherheit</p>
     <hr class="sec-rule"/>
     <p class="legal-prose">This website uses <strong>HTTPS encryption (TLS)</strong>. We employ technical and organisational security measures to protect your data against accidental or intentional manipulation, loss, destruction, or unauthorised access.</p>
-    <p class="legal-prose"><strong>Policy currency:</strong> This privacy policy is currently valid. Last updated: <strong id="ds"></strong>. The latest version is always available at <a href="/datenschutz.html">www.adroitsolutions.de/datenschutz.html</a>.</p>
+    <p class="legal-prose"><strong>Policy currency:</strong> This privacy policy is currently valid. Last updated: <strong>11 May 2026</strong>. The latest version is always available at <a href="/datenschutz.html">www.adroitsolutions.de/datenschutz.html</a>.</p>
   </div>
 
 </div>
@@ -332,7 +332,7 @@ function applyTimeMode() {
 }
 applyTimeMode();
 setInterval(applyTimeMode, 3600000);
-document.getElementById('ds').textContent = new Date().toLocaleDateString('en-GB', {day:'numeric',month:'long',year:'numeric'});
+
 window.addEventListener('scroll', () => {
   const p = document.getElementById('scrollProgress');
   if (p) p.style.width = (window.scrollY / (document.body.scrollHeight - window.innerHeight) * 100) + '%';
