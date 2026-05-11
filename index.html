@@ -206,6 +206,8 @@ section.alt { background: #1c1c1c !important; }
 .form-field input:focus, .form-field textarea:focus { border-color: var(--gold); }
 .form-field textarea { resize: vertical; min-height: 110px; }
 .form-field select option { background: #1c1c1c; }
+.form-submit { display: flex; flex-direction: column; gap: 0.75rem; }
+.form-note { font-size: 0.75rem; opacity: 0.45; margin: 0; }
 
 /* LEGAL */
 .legal-section { background: #1c1c1c; border-top: 1px solid var(--border); padding: 4rem; }
@@ -463,6 +465,11 @@ html[data-mode="light"] .service-card:nth-child(6) {
   background-image: none !important;
 }
 
+.form-field.error input, .form-field.error select, .form-field.error textarea {
+  border-color: #e04444 !important;
+  box-shadow: 0 0 0 2px rgba(224,68,68,0.15) !important;
+}
+.form-field label .req { color: #c9a84c; margin-left: 2px; }
 </style>
 </head>
 <body>
@@ -685,28 +692,46 @@ html[data-mode="light"] .service-card:nth-child(6) {
         <p><span data-lang="de">Offen für Subcontracting-Anfragen von System Integratoren und Enterprise-Kunden in Deutschland und DACH. Mobilisierung: 2 Wochen ab Vertragsschluss.</span><span data-lang="en">Open to subcontracting enquiries from System Integrators and enterprise clients across Germany and DACH. Mobilisation: 2 weeks from agreement.</span></p>
       </div>
     </div>
-    <div class="contact-form reveal-right">
+    <div class="contact-form reveal-right" id="contactForm">
       <div class="form-row">
-        <div class="form-field"><label><span data-lang="de">Vorname</span><span data-lang="en">First Name</span></label><input type="text" placeholder="Max"/></div>
-        <div class="form-field"><label><span data-lang="de">Nachname</span><span data-lang="en">Last Name</span></label><input type="text" placeholder="Mustermann"/></div>
+        <div class="form-field">
+          <label><span data-lang="de">Vorname</span><span data-lang="en">First Name</span> <span class="req">*</span></label>
+          <input type="text" id="idx-firstName" placeholder="Max"/>
+        </div>
+        <div class="form-field">
+          <label><span data-lang="de">Nachname</span><span data-lang="en">Last Name</span></label>
+          <input type="text" id="idx-lastName" placeholder="Mustermann"/>
+        </div>
       </div>
-      <div class="form-field"><label><span data-lang="de">Unternehmen</span><span data-lang="en">Company</span></label><input type="text" placeholder="Accenture GmbH"/></div>
-      <div class="form-field"><label>E-Mail</label><input type="email" placeholder="max@unternehmen.de"/></div>
+      <div class="form-field">
+        <label><span data-lang="de">Unternehmen</span><span data-lang="en">Company</span></label>
+        <input type="text" id="idx-company" placeholder="Accenture GmbH"/>
+      </div>
+      <div class="form-field">
+        <label>E-Mail <span class="req">*</span></label>
+        <input type="email" id="idx-email" placeholder="max@unternehmen.de"/>
+      </div>
       <div class="form-field">
         <label><span data-lang="de">Anfragetyp</span><span data-lang="en">Enquiry Type</span></label>
-        <select>
-          <option value=""><span data-lang="de">Bitte wählen...</span><span data-lang="en">Select...</span></option>
-          <option>SAP BTP Subcontracting</option>
-          <option>IT Architecture Consulting</option>
-          <option>Embedded Systems / IoT</option>
-          <option>PCB &amp; Component Sourcing</option>
-          <option><span data-lang="de">Sonstiges</span><span data-lang="en">Other</span></option>
+        <select id="idx-type">
+          <option value=""><span data-lang="de">Bitte wählen...</span><span data-lang="en">Please select...</span></option>
+          <option value="sap">SAP BTP Subcontracting</option>
+          <option value="it"><span data-lang="de">IT-Architektur Beratung</span><span data-lang="en">IT Architecture Consulting</span></option>
+          <option value="iot">IoT / Embedded Systems</option>
+          <option value="pcb">PCB &amp; Component Sourcing</option>
+          <option value="other"><span data-lang="de">Sonstiges</span><span data-lang="en">Other</span></option>
         </select>
       </div>
-      <div class="form-field"><label><span data-lang="de">Nachricht</span><span data-lang="en">Message</span></label><textarea placeholder="Kurze Beschreibung Ihres Bedarfs, Zeitplan und Standort..."></textarea></div>
-      <a href="mailto:samdani.gulam@adroitsolutions.de" class="btn-primary" style="text-align:center;">
-        <span data-lang="de">Anfrage senden</span><span data-lang="en">Send Enquiry</span>
-      </a>
+      <div class="form-field">
+        <label><span data-lang="de">Nachricht</span><span data-lang="en">Message</span> <span class="req">*</span></label>
+        <textarea id="idx-message" placeholder="Kurze Beschreibung Ihres Bedarfs, Zeitplan und Standort..."></textarea>
+      </div>
+      <div class="form-submit">
+        <p class="form-note"><span data-lang="de">Ihre Daten werden vertraulich behandelt und nicht weitergegeben.</span><span data-lang="en">Your data is treated confidentially and not shared with third parties.</span></p>
+        <a href="#" class="btn-primary" onclick="submitIndexForm(event)" style="text-align:center;">
+          <span data-lang="de">Anfrage senden</span><span data-lang="en">Send Enquiry</span>
+        </a>
+      </div>
     </div>
   </div>
 </section>
@@ -916,6 +941,56 @@ setInterval(applyTimeMode, 60 * 60 * 1000);
     });
   });
 })();
+function submitIndexForm(e) {
+  e.preventDefault();
+  var isEn = document.body.classList.contains('lang-en');
+  var first = document.getElementById('idx-firstName').value.trim();
+  var last = document.getElementById('idx-lastName').value.trim();
+  var email = document.getElementById('idx-email').value.trim();
+  var company = document.getElementById('idx-company').value.trim();
+  var type = document.getElementById('idx-type').value;
+  var msg = document.getElementById('idx-message').value.trim();
+
+  document.querySelectorAll('#contactForm .form-field').forEach(function(f){ f.classList.remove('error'); });
+  var errEl = document.getElementById('idxFormError');
+  if (errEl) errEl.remove();
+
+  var hasErr = false;
+  if (!first) { document.getElementById('idx-firstName').closest('.form-field').classList.add('error'); hasErr = true; }
+  if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { document.getElementById('idx-email').closest('.form-field').classList.add('error'); hasErr = true; }
+  if (!msg) { document.getElementById('idx-message').closest('.form-field').classList.add('error'); hasErr = true; }
+  if (hasErr) {
+    var p = document.createElement('p');
+    p.id = 'idxFormError';
+    p.style.cssText = 'color:#e04444;font-size:0.85rem;margin:0;';
+    p.textContent = isEn ? 'Please fill in all required fields (*).' : 'Bitte alle Pflichtfelder (*) ausfüllen.';
+    document.querySelector('#contactForm .form-submit').prepend(p);
+    document.querySelector('#contactForm .form-field.error').scrollIntoView({behavior:'smooth', block:'center'});
+    return;
+  }
+
+  var name = (first + ' ' + last).trim();
+  var subject = encodeURIComponent((isEn ? 'Enquiry: ' : 'Anfrage: ') + (type || 'Adroit Solutions') + ' — ' + (company || name));
+  var bodyLines = [
+    'Name: ' + name,
+    (isEn ? 'Company: ' : 'Unternehmen: ') + company,
+    'E-Mail: ' + email,
+    (isEn ? 'Enquiry Type: ' : 'Art der Anfrage: ') + (type || '—'),
+    '',
+    (isEn ? 'Message:' : 'Nachricht:'),
+    msg
+  ];
+  window.location.href = 'mailto:samdani.gulam@adroitsolutions.de?subject=' + subject + '&body=' + encodeURIComponent(bodyLines.join('\n'));
+
+  var form = document.getElementById('contactForm');
+  setTimeout(function(){
+    form.innerHTML = '<div style="text-align:center;padding:3rem 1rem">' +
+      '<svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="#c9a84c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin:0 auto 1.2rem;display:block"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>' +
+      '<h3 style="color:#c9a84c;margin-bottom:0.6rem">' + (isEn ? 'Message sent!' : 'Nachricht gesendet!') + '</h3>' +
+      '<p style="opacity:0.65;max-width:340px;margin:0 auto">' + (isEn ? 'Thank you for your enquiry. We will be in touch within 1–2 business days.' : 'Vielen Dank für Ihre Anfrage. Wir melden uns innerhalb von 1–2 Werktagen.') + '</p>' +
+    '</div>';
+  }, 800);
+}
 </script>
 <script src="/cookie-consent.js"></script>
 </body>

@@ -332,6 +332,10 @@ html[data-mode="light"] .form-note { color: rgba(10,10,10,0.4) !important; }
   .form-row { grid-template-columns: 1fr; }
   .page-hero { padding-left: 1.5rem; padding-right: 1.5rem; }
 }
+.form-field.error input, .form-field.error select, .form-field.error textarea {
+  border-color: #e04444 !important;
+  box-shadow: 0 0 0 2px rgba(224,68,68,0.15) !important;
+}
 </style>
 </head>
 <body>
@@ -449,7 +453,7 @@ html[data-mode="light"] .form-note { color: rgba(10,10,10,0.4) !important; }
     <div class="contact-form reveal-right" id="contactForm">
       <div class="form-row">
         <div class="form-field">
-          <label><span data-lang="de">Vorname</span><span data-lang="en">First Name</span></label>
+          <label><span data-lang="de">Vorname</span><span data-lang="en">First Name</span> <span class="req">*</span></label>
           <input type="text" id="firstName" placeholder="Max"/>
         </div>
         <div class="form-field">
@@ -468,7 +472,7 @@ html[data-mode="light"] .form-note { color: rgba(10,10,10,0.4) !important; }
         </div>
       </div>
       <div class="form-field">
-        <label>E-Mail</label>
+        <label>E-Mail <span class="req">*</span></label>
         <input type="email" id="email" placeholder="max@unternehmen.de"/>
       </div>
       <div class="form-field">
@@ -487,7 +491,7 @@ html[data-mode="light"] .form-note { color: rgba(10,10,10,0.4) !important; }
         </select>
       </div>
       <div class="form-field">
-        <label><span data-lang="de">Ihre Nachricht</span><span data-lang="en">Your Message</span></label>
+        <label><span data-lang="de">Ihre Nachricht</span><span data-lang="en">Your Message</span> <span class="req">*</span></label>
         <textarea id="message" placeholder="Kurze Beschreibung Ihres Bedarfs, gewünschter Starttermin, Projektlaufzeit und Standort..."></textarea>
       </div>
       <div class="form-submit">
@@ -551,21 +555,57 @@ setInterval(applyTimeMode, 3600000);
 
 function submitForm(e) {
   e.preventDefault();
-  const first = document.getElementById('firstName').value;
-  const last = document.getElementById('lastName').value;
-  const company = document.getElementById('company').value;
-  const email = document.getElementById('email').value;
-  const type = document.getElementById('enquiryType').value;
-  const msg = document.getElementById('message').value;
-  const subject = encodeURIComponent('Anfrage: ' + (type || 'Adroit Solutions') + ' — ' + company);
-  const body = encodeURIComponent(
-    'Name: ' + first + ' ' + last + '\n' +
-    'Unternehmen: ' + company + '\n' +
-    'E-Mail: ' + email + '\n' +
-    'Art der Anfrage: ' + type + '\n\n' +
-    'Nachricht:\n' + msg
-  );
-  window.location.href = 'mailto:samdani.gulam@adroitsolutions.de?subject=' + subject + '&body=' + body;
+  var isEn = document.body.classList.contains('lang-en');
+  var first = document.getElementById('firstName').value.trim();
+  var last = document.getElementById('lastName').value.trim();
+  var email = document.getElementById('email').value.trim();
+  var company = document.getElementById('company').value.trim();
+  var jobTitle = (document.getElementById('jobTitle') || {value:''}).value.trim();
+  var phone = (document.getElementById('phone') || {value:''}).value.trim();
+  var type = document.getElementById('enquiryType').value;
+  var msg = document.getElementById('message').value.trim();
+
+  document.querySelectorAll('.contact-form .form-field').forEach(function(f){ f.classList.remove('error'); });
+  var errEl = document.getElementById('formError');
+  if (errEl) errEl.remove();
+
+  var hasErr = false;
+  if (!first) { document.getElementById('firstName').closest('.form-field').classList.add('error'); hasErr = true; }
+  if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { document.getElementById('email').closest('.form-field').classList.add('error'); hasErr = true; }
+  if (!msg) { document.getElementById('message').closest('.form-field').classList.add('error'); hasErr = true; }
+  if (hasErr) {
+    var p = document.createElement('p');
+    p.id = 'formError';
+    p.style.cssText = 'color:#e04444;font-size:0.85rem;margin:0;';
+    p.textContent = isEn ? 'Please fill in all required fields (*).' : 'Bitte alle Pflichtfelder (*) ausfüllen.';
+    document.querySelector('.form-submit').prepend(p);
+    document.querySelector('.contact-form .form-field.error').scrollIntoView({behavior:'smooth', block:'center'});
+    return;
+  }
+
+  var name = (first + ' ' + last).trim();
+  var subject = encodeURIComponent((isEn ? 'Enquiry: ' : 'Anfrage: ') + (type || 'Adroit Solutions') + ' — ' + (company || name));
+  var bodyLines = [
+    'Name: ' + name,
+    (isEn ? 'Company: ' : 'Unternehmen: ') + company,
+    (isEn ? 'Job Title: ' : 'Position: ') + jobTitle,
+    'E-Mail: ' + email,
+    (isEn ? 'Phone: ' : 'Telefon: ') + (phone || '—'),
+    (isEn ? 'Enquiry Type: ' : 'Art der Anfrage: ') + (type || '—'),
+    '',
+    (isEn ? 'Message:' : 'Nachricht:'),
+    msg
+  ];
+  window.location.href = 'mailto:samdani.gulam@adroitsolutions.de?subject=' + subject + '&body=' + encodeURIComponent(bodyLines.join('\n'));
+
+  var form = document.getElementById('contactForm');
+  setTimeout(function(){
+    form.innerHTML = '<div style="text-align:center;padding:3rem 1rem">' +
+      '<svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="#c9a84c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin:0 auto 1.2rem;display:block"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>' +
+      '<h3 style="color:#c9a84c;margin-bottom:0.6rem">' + (isEn ? 'Message sent!' : 'Nachricht gesendet!') + '</h3>' +
+      '<p style="opacity:0.65;max-width:340px;margin:0 auto">' + (isEn ? 'Thank you for your enquiry. We will be in touch within 1–2 business days.' : 'Vielen Dank für Ihre Anfrage. Wir melden uns innerhalb von 1–2 Werktagen.') + '</p>' +
+    '</div>';
+  }, 800);
 }
 
 // Mobile menu toggle
