@@ -553,32 +553,57 @@ function submitForm(e) {
   const first = document.getElementById('firstName').value.trim();
   const last = document.getElementById('lastName').value.trim();
   const company = document.getElementById('company').value.trim();
+  const jobTitle = document.getElementById('jobTitle').value.trim();
   const email = document.getElementById('email').value.trim();
+  const phone = document.getElementById('phone').value.trim();
   const type = document.getElementById('enquiryType').value;
   const msg = document.getElementById('message').value.trim();
+  const lang = document.documentElement.lang || 'de';
+  const emailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
   if (!first || !email || !msg) {
-    const lang = document.documentElement.lang || 'de';
     alert(lang === 'en' ? 'Please fill in First Name, Email and Message.' : 'Bitte Vorname, E-Mail und Nachricht ausfüllen.');
     return;
   }
-  const subject = encodeURIComponent('Anfrage: ' + (type || 'Adroit Solutions') + ' — ' + company);
-  const body = encodeURIComponent(
-    'Name: ' + first + ' ' + last + '\n' +
-    'Unternehmen: ' + company + '\n' +
-    'E-Mail: ' + email + '\n' +
-    'Art der Anfrage: ' + type + '\n\n' +
-    'Nachricht:\n' + msg
-  );
-  const iframe = document.createElement('iframe');
-  iframe.style.cssText = 'display:none;width:0;height:0;border:0;';
-  iframe.src = 'mailto:samdani.gulam@adroitsolutions.de?subject=' + subject + '&body=' + body;
-  document.body.appendChild(iframe);
-  setTimeout(() => iframe.remove(), 3000);
-  const form = document.getElementById('contactForm');
-  const lang = document.documentElement.lang || 'de';
-  form.innerHTML = '<div style="padding:2rem 0;text-align:center;"><p style="font-size:1.1rem;color:var(--gold);margin-bottom:0.5rem;">✓</p><p style="font-size:1rem;">' +
-    (lang === 'en' ? 'Thank you! Your email client has opened with your message pre-filled.' : 'Danke! Ihr E-Mail-Programm wurde mit Ihrer Nachricht geöffnet.') +
-    '</p></div>';
+  if (!emailValid) {
+    alert(lang === 'en' ? 'Please enter a valid email address.' : 'Bitte eine gültige E-Mail-Adresse eingeben.');
+    return;
+  }
+  const btn = document.getElementById('submitBtn');
+  btn.style.opacity = '0.6';
+  btn.style.pointerEvents = 'none';
+  fetch('https://api.web3forms.com/submit', {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
+    body: JSON.stringify({
+      access_key: '4aa7b0fb-dc59-4a8a-bef1-5a6da637f213',
+      subject: 'Anfrage: ' + (type || 'Adroit Solutions') + ' — ' + (company || first + ' ' + last),
+      from_name: first + ' ' + last,
+      email: email,
+      'Unternehmen': company,
+      'Position': jobTitle,
+      'Telefon': phone,
+      'Art der Anfrage': type,
+      'Nachricht': msg
+    })
+  })
+  .then(r => r.json())
+  .then(data => {
+    const form = document.getElementById('contactForm');
+    if (data.success) {
+      form.innerHTML = '<div style="padding:2rem 0;text-align:center;"><p style="font-size:1.5rem;color:var(--gold);margin-bottom:0.75rem;">✓</p><p style="font-size:1rem;">' +
+        (lang === 'en' ? 'Thank you! Your message has been sent. We will get back to you shortly.' : 'Danke! Ihre Nachricht wurde gesendet. Wir melden uns in Kürze.') +
+        '</p></div>';
+    } else {
+      btn.style.opacity = '';
+      btn.style.pointerEvents = '';
+      alert(lang === 'en' ? 'Something went wrong. Please try again.' : 'Etwas ist schiefgelaufen. Bitte erneut versuchen.');
+    }
+  })
+  .catch(() => {
+    btn.style.opacity = '';
+    btn.style.pointerEvents = '';
+    alert(lang === 'en' ? 'Network error. Please try again.' : 'Netzwerkfehler. Bitte erneut versuchen.');
+  });
 }
 
 // Mobile menu toggle
