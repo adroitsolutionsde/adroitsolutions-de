@@ -595,9 +595,9 @@ function setLang(lang) {
   document.body.classList.toggle('lang-en', isEn);
   document.getElementById('btn-de').className = 'lang-btn' + (!isEn ? ' active' : '');
   document.getElementById('btn-en').className = 'lang-btn' + (isEn ? ' active' : '');
-  localStorage.setItem('adroit-lang', lang);
+  sessionStorage.setItem('adroit-lang', lang);
 }
-const savedLang = localStorage.getItem('adroit-lang') || 'de';
+const savedLang = sessionStorage.getItem('adroit-lang') || 'de';
 setLang(savedLang);
 window.addEventListener('scroll', () => {
   const prog = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
