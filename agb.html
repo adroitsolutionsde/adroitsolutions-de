@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="noindex, follow">
-  <meta name="description" content="Impressum – Adroit Solutions GmbH, Düsseldorf. Angaben gemäß § 5 TMG.">
-  <title>Imprint / Impressum – Adroit Solutions GmbH</title>
+  <meta name="description" content="Allgemeine Geschäftsbedingungen (AGB) – Adroit Solutions GmbH, Düsseldorf.">
+  <title>Terms &amp; Conditions / AGB – Adroit Solutions GmbH</title>
   <style>
     :root {
       --ink:     #0A1628;
@@ -125,6 +125,8 @@
     .sec:nth-child(6){animation-delay:.29s}
     .sec:nth-child(7){animation-delay:.34s}
     .sec:nth-child(8){animation-delay:.39s}
+    .sec:nth-child(9){animation-delay:.44s}
+    .sec:nth-child(10){animation-delay:.49s}
     @keyframes up { from{opacity:0;transform:translateY(14px)} to{opacity:1;transform:none} }
 
     .sec-label {
@@ -143,48 +145,24 @@
       margin-bottom: 20px;
     }
 
-    /* ── INFO TABLE ── */
-    .itbl { width: 100%; border-collapse: collapse; font-size: .9rem; }
-    .itbl tr { border-bottom: 1px solid var(--border); }
-    .itbl tr:last-child { border-bottom: none; }
-    .itbl td { padding: 10px 14px; vertical-align: top; }
-    .itbl td:first-child {
-      width: 36%;
+    /* ── PROSE ── */
+    .prose { font-size: .9rem; color: #3a3a3a; line-height: 1.82; margin-bottom: 10px; }
+    .prose a { color: var(--mid); word-break: break-word; }
+    .prose a:hover { color: var(--gold-d); }
+    .prose strong { color: var(--ink); }
+
+    .clause-num {
       font-family: "Trebuchet MS", sans-serif;
       font-size: .76rem;
       font-weight: 700;
       color: var(--ink);
       text-transform: uppercase;
       letter-spacing: .05em;
-      background: var(--surface);
+      margin-bottom: 6px;
     }
-    .itbl a { color: var(--mid); }
-    .itbl a:hover { color: var(--gold-d); }
-
-    /* ── PENDING BADGE ── */
-    .badge {
-      display: inline-block;
-      background: #fff8e1;
-      color: #7d5700;
-      border: 1px solid #f0c840;
-      font-family: "Trebuchet MS", sans-serif;
-      font-size: .66rem;
-      font-weight: 700;
-      letter-spacing: .07em;
-      text-transform: uppercase;
-      padding: 2px 8px;
-      border-radius: 3px;
-      margin-left: 8px;
-      vertical-align: middle;
-    }
-
-    /* ── PROSE ── */
-    .prose { font-size: .9rem; color: #3a3a3a; line-height: 1.82; margin-bottom: 10px; }
-    .prose a { color: var(--mid); word-break: break-word; }
-    .prose a:hover { color: var(--gold-d); }
 
     /* ══════════════════════════════════
-       ENTERPRISE FOOTER  (Randstad-style)
+       ENTERPRISE FOOTER
        ══════════════════════════════════ */
     .site-footer { background: var(--ink); color: rgba(255,255,255,.65); width: 100%; }
 
@@ -264,9 +242,9 @@
 
 <!-- HERO -->
 <div class="hero">
-  <p class="hero-eyebrow">Legal Notice &nbsp;/&nbsp; Rechtliche Informationen</p>
-  <h1>Imprint &nbsp;/&nbsp; Impressum</h1>
-  <p class="hero-sub">Adroit Solutions GmbH &nbsp;·&nbsp; Düsseldorf, Germany</p>
+  <p class="hero-eyebrow">General Terms &amp; Conditions &nbsp;/&nbsp; Allgemeine Geschäftsbedingungen</p>
+  <h1>Terms &amp; Conditions / AGB</h1>
+  <p class="hero-sub">Adroit Solutions GmbH &nbsp;·&nbsp; Düsseldorf, Germany &nbsp;·&nbsp; Status: May 2025</p>
   <div class="hero-bar"></div>
 </div>
 
@@ -274,85 +252,101 @@
 <main class="card">
 
   <div class="sec">
-    <p class="sec-label">Information According to § 5 TMG &nbsp;/&nbsp; Angaben gemäß § 5 TMG</p>
+    <p class="sec-label">§ 1 — Scope of Application / Geltungsbereich</p>
     <hr class="sec-rule">
-    <table class="itbl">
-      <tr><td>Company</td><td>Adroit Solutions GmbH</td></tr>
-      <tr><td>Address</td><td>Königsallee 27<br>40212 Düsseldorf<br>Germany</td></tr>
-      <tr><td>Legal form</td><td>Gesellschaft mit beschränkter Haftung (GmbH)</td></tr>
-    </table>
+    <p class="prose">These General Terms and Conditions (hereinafter "GTC") of Adroit Solutions GmbH, Königsallee 27, 40212 Düsseldorf, Germany (hereinafter "Adroit Solutions") apply to all contracts for IT consulting, software development, engineering services, and related deliverables concluded with business clients (§ 14 BGB).</p>
+    <p class="prose">These GTC apply exclusively. Deviating, conflicting, or supplementary terms and conditions of the client shall not become part of the contract unless Adroit Solutions has expressly agreed to their validity in writing. This requirement of consent applies in all cases, including where Adroit Solutions performs services without reservation with knowledge of the client's terms and conditions.</p>
   </div>
 
   <div class="sec">
-    <p class="sec-label">Represented By &nbsp;/&nbsp; Vertreten durch</p>
+    <p class="sec-label">§ 2 — Services / Leistungen</p>
     <hr class="sec-rule">
-    <table class="itbl">
-      <tr><td>Managing Director</td><td>Ayesha Jabeen <em>(Geschäftsführerin)</em></td></tr>
-    </table>
+    <p class="prose">Adroit Solutions provides IT consulting, SAP BTP engineering, enterprise IT architecture, IoT and embedded systems development, and related services as specified in the respective project agreement or statement of work (SOW).</p>
+    <p class="prose">The exact scope of services, deliverables, milestones, and acceptance criteria shall be defined in a written project agreement or SOW signed by both parties. Adroit Solutions is entitled to engage qualified subcontractors for the fulfilment of contractual obligations, provided that this does not impair the agreed service quality.</p>
+    <p class="prose">Unless expressly agreed otherwise in writing, Adroit Solutions does not owe a specific economic result but rather the diligent performance of the agreed services (Dienstvertrag, §§ 611 ff. BGB).</p>
   </div>
 
   <div class="sec">
-    <p class="sec-label">Contact &nbsp;/&nbsp; Kontakt</p>
+    <p class="sec-label">§ 3 — Conclusion of Contract / Vertragsschluss</p>
     <hr class="sec-rule">
-    <table class="itbl">
-      <tr><td>Telephone</td><td><a href="tel:+491726545228">+49 172 654 5228</a></td></tr>
-      <tr><td>Email</td><td><a href="mailto:samdani.gulam@adroitsolutions.de">samdani.gulam@adroitsolutions.de</a></td></tr>
-      <tr><td>Website</td><td><a href="https://www.adroitsolutions.de">www.adroitsolutions.de</a></td></tr>
-    </table>
+    <p class="prose">All offers by Adroit Solutions are non-binding and subject to change unless expressly designated as binding in writing. A contract is concluded only upon written confirmation by Adroit Solutions or by commencement of services.</p>
+    <p class="prose">Quotes and proposals are valid for 30 days from the date of issue unless a different validity period is stated therein.</p>
   </div>
 
   <div class="sec">
-    <p class="sec-label">Register Entry &nbsp;/&nbsp; Registereintrag</p>
+    <p class="sec-label">§ 4 — Remuneration &amp; Payment / Vergütung und Zahlung</p>
     <hr class="sec-rule">
-    <table class="itbl">
-      <tr><td>Registering court</td><td>Cologne District Court (Amtsgericht Köln)</td></tr>
-      <tr><td>Registration number</td><td>HRB entry pending — will be supplemented after publication<span class="badge">Pending</span></td></tr>
-      <tr><td>Deed number</td><td>UVZ No. 291/2025 H</td></tr>
-      <tr><td>Notary</td><td>Dr. Stefan Heinze, Cologne</td></tr>
-      <tr><td>Date of incorporation</td><td>February 11, 2025</td></tr>
-    </table>
+    <p class="prose"><strong>Rates:</strong> All fees are quoted in Euro (EUR) and exclude statutory VAT. Daily or hourly rates apply as agreed in the project agreement. Travel time is invoiced at 50 % of the agreed daily rate unless otherwise agreed.</p>
+    <p class="prose"><strong>Invoicing:</strong> Invoices are issued monthly in arrears or upon milestone completion as specified in the project agreement. Payment is due within 14 days of the invoice date without deduction.</p>
+    <p class="prose"><strong>Late payment:</strong> In the event of late payment, Adroit Solutions reserves the right to charge statutory default interest (§ 288 para. 2 BGB) at 9 percentage points above the applicable base rate, and to suspend further services until outstanding amounts have been settled.</p>
+    <p class="prose"><strong>Expenses:</strong> Reasonable, pre-approved travel and accommodation expenses are reimbursed at cost upon submission of receipts.</p>
   </div>
 
   <div class="sec">
-    <p class="sec-label">VAT ID &nbsp;/&nbsp; Umsatzsteuer</p>
+    <p class="sec-label">§ 5 — Client Obligations / Mitwirkungspflichten des Auftraggebers</p>
     <hr class="sec-rule">
-    <table class="itbl">
-      <tr>
-        <td>VAT ID (§ 27a UStG)</td>
-        <td>Will be supplemented after allocation by the tax office<span class="badge">Pending</span></td>
-      </tr>
-    </table>
+    <p class="prose">The client shall provide Adroit Solutions with all information, access, systems, and resources required for the performance of services in a timely manner and free of charge. The client shall designate a competent contact person authorised to make decisions.</p>
+    <p class="prose">If the client fails to fulfil its cooperation obligations and this results in delays or additional effort, Adroit Solutions shall be entitled to invoice the additional time incurred at the agreed rate. Agreed deadlines shall be extended by the duration of the delay caused by the client.</p>
   </div>
 
   <div class="sec">
-    <p class="sec-label">Responsible for Content (§ 55 Para. 2 RStV)</p>
+    <p class="sec-label">§ 6 — Intellectual Property / Geistiges Eigentum</p>
     <hr class="sec-rule">
-    <table class="itbl">
-      <tr><td>Name</td><td>Ayesha Jabeen</td></tr>
-      <tr><td>Address</td><td>Königsallee 27, 40212 Düsseldorf</td></tr>
-    </table>
+    <p class="prose"><strong>Work results:</strong> Upon receipt of full payment, Adroit Solutions assigns to the client all rights of use to the work results developed specifically for the client under the respective project agreement, to the extent required for the contractually agreed purpose.</p>
+    <p class="prose"><strong>Background IP:</strong> Adroit Solutions retains all rights to its pre-existing know-how, tools, frameworks, and methods used in the performance of services. The client receives a non-exclusive, non-transferable licence to use such background IP solely as embedded in the delivered work results.</p>
+    <p class="prose"><strong>Open-source components:</strong> Where open-source software is incorporated into deliverables, the respective open-source licences apply. Adroit Solutions will disclose relevant open-source components upon request.</p>
   </div>
 
   <div class="sec">
-    <p class="sec-label">EU Dispute Resolution &nbsp;/&nbsp; EU-Streitbeilegung</p>
+    <p class="sec-label">§ 7 — Confidentiality / Vertraulichkeit</p>
     <hr class="sec-rule">
-    <p class="prose">The European Commission provides a platform for online dispute resolution (ODR):
-      <a href="https://ec.europa.eu/consumers/odr/" target="_blank" rel="noopener">https://ec.europa.eu/consumers/odr/</a>
-    </p>
-    <p class="prose">As Adroit Solutions GmbH operates exclusively in the B2B sector, we are neither willing nor obliged to participate in consumer dispute resolution proceedings before a consumer arbitration board.</p>
+    <p class="prose">Both parties undertake to treat all confidential information received from the other party as strictly confidential and not to disclose it to third parties without prior written consent. This obligation survives the termination of the contract for a period of three (3) years.</p>
+    <p class="prose">Confidential information does not include information that (a) is or becomes publicly available through no fault of the receiving party; (b) was already known to the receiving party prior to disclosure; or (c) must be disclosed by law or court order.</p>
+    <p class="prose">Adroit Solutions may reference the client's company name and a general description of the project as a reference in marketing materials, unless the client objects in writing within 14 days of project completion.</p>
   </div>
 
   <div class="sec">
-    <p class="sec-label">Liability Notice &nbsp;/&nbsp; Haftungshinweise</p>
+    <p class="sec-label">§ 8 — Liability / Haftung</p>
     <hr class="sec-rule">
-    <p class="prose"><strong>Liability for content:</strong> As a service provider, we are responsible for our own content on this website in accordance with § 7 para. 1 TMG and general laws. However, pursuant to §§ 8–10 TMG, we are not obligated to monitor transmitted or stored third-party information or to investigate circumstances that indicate illegal activity.</p>
-    <p class="prose"><strong>Liability for links:</strong> Our website may contain links to external third-party websites over whose content we have no influence. We therefore accept no liability for such external content. The respective provider or operator of linked pages is always responsible for their content.</p>
-    <p class="prose"><strong>Copyright:</strong> The content and works created by the site operators on these pages are subject to German copyright law. Duplication, processing, distribution, or any form of commercialisation beyond the scope of copyright law requires the written consent of the respective author.</p>
+    <p class="prose">Adroit Solutions is liable without limitation for damages resulting from intent or gross negligence, and for damages resulting from injury to life, body, or health.</p>
+    <p class="prose">For simple negligence, Adroit Solutions is only liable for breaches of material contractual obligations (cardinal obligations). In such cases, liability is limited to the foreseeable, typically occurring damage, and in no event shall it exceed the total remuneration paid by the client in the three months preceding the damaging event.</p>
+    <p class="prose">Adroit Solutions is not liable for indirect damages, loss of profit, or consequential damages, except in cases of intent or gross negligence.</p>
+    <p class="prose">The above limitations do not apply to mandatory statutory liability, including liability under the Product Liability Act (Produkthaftungsgesetz).</p>
+  </div>
+
+  <div class="sec">
+    <p class="sec-label">§ 9 — Term &amp; Termination / Laufzeit und Kündigung</p>
+    <hr class="sec-rule">
+    <p class="prose">Project agreements commence on the agreed start date and end upon delivery and acceptance of the final deliverable, or as specified in the agreement.</p>
+    <p class="prose">Either party may terminate a project agreement for good cause (außerordentliche Kündigung aus wichtigem Grund) without notice. Good cause for Adroit Solutions includes the client's failure to make payment within 30 days of a written payment reminder.</p>
+    <p class="prose">Upon termination for any reason, the client shall pay for all services rendered up to the date of termination, plus any non-cancellable expenses already incurred.</p>
+  </div>
+
+  <div class="sec">
+    <p class="sec-label">§ 10 — Data Protection / Datenschutz</p>
+    <hr class="sec-rule">
+    <p class="prose">The processing of personal data in connection with the provision of services is governed by the applicable data protection legislation, in particular the GDPR and the BDSG. For further details, please refer to our <a href="/datenschutz.html">Privacy Policy</a>.</p>
+    <p class="prose">Where the provision of services involves the processing of personal data on behalf of the client, the parties shall conclude a separate data processing agreement (Auftragsverarbeitungsvertrag, Art. 28 GDPR).</p>
+  </div>
+
+  <div class="sec">
+    <p class="sec-label">§ 11 — Applicable Law &amp; Jurisdiction / Anwendbares Recht und Gerichtsstand</p>
+    <hr class="sec-rule">
+    <p class="prose">These GTC and all contracts concluded under them are governed exclusively by the laws of the Federal Republic of Germany, to the exclusion of the UN Convention on Contracts for the International Sale of Goods (CISG).</p>
+    <p class="prose">The exclusive place of jurisdiction for all disputes arising from or in connection with these GTC is Düsseldorf, Germany, provided the client is a registered merchant (Kaufmann), a legal entity under public law, or a special fund under public law.</p>
+  </div>
+
+  <div class="sec">
+    <p class="sec-label">§ 12 — Miscellaneous / Sonstige Bestimmungen</p>
+    <hr class="sec-rule">
+    <p class="prose"><strong>Written form:</strong> Amendments and supplements to these GTC and any project agreement must be made in writing. This also applies to any waiver of the written-form requirement itself.</p>
+    <p class="prose"><strong>Severability:</strong> Should any provision of these GTC be or become invalid or unenforceable, the remaining provisions shall continue in full force and effect. The invalid provision shall be replaced by a valid provision that most closely reflects the economic intent of the original.</p>
+    <p class="prose"><strong>Contact for legal matters:</strong> <a href="mailto:samdani.gulam@adroitsolutions.de">samdani.gulam@adroitsolutions.de</a></p>
   </div>
 
 </main>
 
-<!-- ════════════════════════════ ENTERPRISE FOOTER ════════════════════════════ -->
+<!-- ENTERPRISE FOOTER -->
 <footer class="site-footer">
 
   <div class="footer-nav-strip">
