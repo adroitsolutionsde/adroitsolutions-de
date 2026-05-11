@@ -569,11 +569,11 @@ function submitForm(e) {
     'Art der Anfrage: ' + type + '\n\n' +
     'Nachricht:\n' + msg
   );
-  const link = document.createElement('a');
-  link.href = 'mailto:samdani.gulam@adroitsolutions.de?subject=' + subject + '&body=' + body;
-  document.body.appendChild(link);
-  link.click();
-  document.body.removeChild(link);
+  const iframe = document.createElement('iframe');
+  iframe.style.cssText = 'display:none;width:0;height:0;border:0;';
+  iframe.src = 'mailto:samdani.gulam@adroitsolutions.de?subject=' + subject + '&body=' + body;
+  document.body.appendChild(iframe);
+  setTimeout(() => iframe.remove(), 3000);
   const form = document.getElementById('contactForm');
   const lang = document.documentElement.lang || 'de';
   form.innerHTML = '<div style="padding:2rem 0;text-align:center;"><p style="font-size:1.1rem;color:var(--gold);margin-bottom:0.5rem;">✓</p><p style="font-size:1rem;">' +
