@@ -147,9 +147,41 @@ html[data-mode="light"] .footer-legal { color: rgba(10,10,10,0.35) !important; }
 html[data-mode="light"] .footer-legal a { color: rgba(10,10,10,0.45) !important; }
 html[data-mode="light"] .btn-outline { border-color: rgba(10,10,10,0.3) !important; color: #0a0a0a !important; }
 html[data-mode="light"] .divider { background: linear-gradient(90deg, transparent, rgba(201,168,76,0.25), transparent) !important; }
+
+/* ── HAMBURGER MENU ── */
+.menu-btn {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  margin-left: 0.5rem;
+  flex-shrink: 0;
+}
+.menu-btn span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: rgba(245,244,240,0.75);
+  border-radius: 1px;
+  transition: all 0.25s ease;
+}
+.menu-btn.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.menu-btn.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.menu-btn.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 @media (max-width: 900px) {
   nav { padding: 0.75rem 1.5rem; }
-  .nav-links { display: none; }
+  .menu-btn { display: flex; }
+  nav { position: relative; }
+  .nav-links { display: none; position: absolute; top: 100%; left: 0; right: 0; z-index: 99; background: rgba(10,10,10,0.98); border-top: 1px solid rgba(201,168,76,0.2); flex-direction: column; padding: 0.5rem 0; gap: 0; list-style: none; }
+  .nav-links.open { display: flex; }
+  .nav-links li { border-bottom: 1px solid rgba(255,255,255,0.06); }
+  .nav-links li:last-child { border-bottom: none; }
+  .nav-links a { padding: 0.9rem 1.5rem !important; display: block; }
+  .nav-links a::after { display: none !important; }
   section, .breadcrumb { padding-left: 1.5rem; padding-right: 1.5rem; }
   footer { grid-template-columns: 1fr; }
   .footer-legal { text-align: left; }
@@ -351,6 +383,9 @@ html[data-mode="light"] .cta-band { background: linear-gradient(135deg, rgba(237
       <button class="lang-btn active" id="btn-de" onclick="setLang('de')">DE</button>
       <button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button>
     </div>
+        <button class="menu-btn" id="menuBtn" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </button>
   </div>
 </nav>
 
@@ -595,6 +630,25 @@ function filterCases(category, btn) {
     }
   });
 }
+
+// Mobile menu toggle
+(function(){
+  var btn = document.getElementById('menuBtn');
+  var nav = document.querySelector('.nav-links');
+  if (!btn || !nav) return;
+  btn.addEventListener('click', function(){
+    var open = nav.classList.toggle('open');
+    btn.classList.toggle('open', open);
+    btn.setAttribute('aria-expanded', open);
+  });
+  nav.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){
+      nav.classList.remove('open');
+      btn.classList.remove('open');
+      btn.setAttribute('aria-expanded', 'false');
+    });
+  });
+})();
 </script>
 </body>
 </html>
