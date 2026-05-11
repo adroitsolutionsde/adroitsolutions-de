@@ -18,7 +18,7 @@ html { scroll-behavior:smooth; }
 .scroll-progress { position:fixed; top:0; left:0; z-index:200; height:2px; width:0%; background:linear-gradient(90deg,var(--gold),var(--gold-light)); transition:width 0.1s linear; }
 
 nav { position:sticky; top:0; z-index:100; display:flex; align-items:center; justify-content:space-between; padding:1rem 3rem; background:rgba(10,10,10,0.95); backdrop-filter:blur(12px); border-bottom:1px solid var(--border); }
-.nav-logo img { height:56px; filter:brightness(0) invert(1); }
+.nav-logo img { height:140px; filter:brightness(0) invert(1); background:none; display:block; }
 .nav-right { display:flex; align-items:center; gap:2.5rem; }
 .nav-links { display:flex; gap:2rem; list-style:none; }
 .nav-links a { font-size:0.72rem; letter-spacing:0.12em; text-transform:uppercase; color:rgba(245,244,240,0.55); text-decoration:none; transition:color 0.2s; position:relative; }
@@ -73,6 +73,7 @@ footer { background:rgba(10,10,10,0.9); border-top:1px solid var(--border); padd
   .nav-links li { border-bottom:1px solid rgba(255,255,255,0.06); }
   .nav-links a { padding:0.9rem 1.5rem !important; display:block; }
   .nav-links a::after { display:none !important; }
+  .nav-logo img { height:52px; }
   .menu-btn { display:flex; }
   .page-hero { padding:2rem 1.5rem 1.5rem; }
   .legal-wrap { padding:2rem 1.5rem 4rem; }
