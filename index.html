@@ -183,9 +183,13 @@ section.alt { background: #1c1c1c !important; }
 
 /* SECTORS */
 .sectors-list { margin-top: 3rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; }
-.sector-item { padding: 1.25rem 1.5rem; border: 1px solid var(--border); font-size: 0.85rem; letter-spacing: 0.05em; color: rgba(245,244,240,0.65); display: flex; align-items: center; gap: 0.75rem; transition: border-color 0.2s, color 0.2s; }
+.sector-item { padding: 1.25rem 1.5rem; border: 1px solid var(--border); font-size: 0.85rem; letter-spacing: 0.05em; color: rgba(245,244,240,0.65); display: flex; align-items: center; gap: 0.75rem; transition: border-color 0.25s, color 0.25s; cursor: pointer; user-select: none; }
 .sector-item:hover { border-color: var(--gold); color: #f5f4f0; }
-.sector-item::before { content: '▸'; color: var(--gold); font-size: 0.7rem; }
+.sector-item::before { content: '▸'; color: var(--gold); font-size: 0.7rem; flex-shrink: 0; transition: transform 0.2s; }
+.sector-item.open { border-color: var(--gold); color: #f5f4f0; flex-direction: column; align-items: flex-start; }
+.sector-item.open::before { content: '▾'; }
+.sector-body { display: none; font-size: 0.78rem; line-height: 1.65; color: rgba(245,244,240,0.5); margin-top: 0.65rem; padding-top: 0.65rem; border-top: 1px solid rgba(201,168,76,0.18); letter-spacing: 0; font-weight: 400; }
+.sector-item.open .sector-body { display: block; }
 
 /* CONTACT */
 .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; margin-top: 4rem; align-items: start; }
@@ -380,10 +384,7 @@ nav.scrolled {
 }
 
 /* Sector item smooth */
-.sector-item {
-  transition: border-color 0.25s ease, color 0.25s ease, transform 0.25s ease, padding-left 0.25s ease;
-}
-.sector-item:hover {
+.sector-item:not(.open):hover {
   padding-left: 2rem;
   border-color: var(--gold);
   color: #f5f4f0;
@@ -648,14 +649,62 @@ html[data-mode="light"] .service-card:nth-child(6) {
   <div data-lang="de"><h2 class="section-title reveal">Branchen, die wir bedienen.</h2><p class="section-body">Umfangreiche Delivery-Erfahrung in regulierten, hochkomplexen Umgebungen, in denen Engineering-Qualität nicht verhandelbar ist.</p></div>
   <div data-lang="en"><h2 class="section-title reveal">Industries we serve.</h2><p class="section-body">Deep delivery experience across regulated, high-complexity environments where engineering quality is non-negotiable.</p></div>
   <div class="sectors-list stagger">
-    <div class="sector-item"><span data-lang="de">Einzelhandel & FMCG</span><span data-lang="en">Retail & FMCG</span></div>
-    <div class="sector-item"><span data-lang="de">Aviation & Reise</span><span data-lang="en">Aviation & Travel</span></div>
-    <div class="sector-item"><span data-lang="de">Finanzdienstleistungen</span><span data-lang="en">Financial Services</span></div>
-    <div class="sector-item"><span data-lang="de">Fertigung</span><span data-lang="en">Manufacturing</span></div>
-    <div class="sector-item"><span data-lang="de">Logistik & Supply Chain</span><span data-lang="en">Logistics & Supply Chain</span></div>
-    <div class="sector-item"><span data-lang="de">Maritime & Industrie IoT</span><span data-lang="en">Maritime & Industrial IoT</span></div>
-    <div class="sector-item"><span data-lang="de">Healthcare-Technologie</span><span data-lang="en">Healthcare Technology</span></div>
-    <div class="sector-item"><span data-lang="de">Digital Out-of-Home Medien</span><span data-lang="en">Digital Out-of-Home Media</span></div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <span data-lang="de">Einzelhandel & FMCG</span><span data-lang="en">Retail & FMCG</span>
+      <div class="sector-body">
+        <span data-lang="de">QR-basiertes Bestell-SaaS für Gastronomie und stationären Handel. SAP BTP-Integration für Bestands- und Lieferkettenprozesse. React.js-Frontends mit Java Spring Boot-Backends.</span>
+        <span data-lang="en">QR-based ordering SaaS for hospitality and physical retail. SAP BTP integrations for inventory and supply chain processes. React.js frontends backed by Java Spring Boot.</span>
+      </div>
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <span data-lang="de">Aviation & Reise</span><span data-lang="en">Aviation & Travel</span>
+      <div class="sector-body">
+        <span data-lang="de">Über 15 Jahre Delivery-Erfahrung mit British Airways, Aer Lingus, Virgin Australia und SITA. Geschäftskritische Reservierungs-, Check-in- und Betriebssysteme in Java 21 und Spring Boot — Systeme, bei denen Fehler keine Option sind.</span>
+        <span data-lang="en">15+ years delivering mission-critical systems for British Airways, Aer Lingus, Virgin Australia, and SITA. Reservation, check-in, and operations platforms built in Java 21 and Spring Boot — where failure is not an option.</span>
+      </div>
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <span data-lang="de">Finanzdienstleistungen</span><span data-lang="en">Financial Services</span>
+      <div class="sector-body">
+        <span data-lang="de">Sichere Enterprise-Architektur für regulierte Umgebungen. Cloud-native Microservices, SAP-Integrationen und DSGVO-konforme Datenpipelines für Compliance-kritische Workflows.</span>
+        <span data-lang="en">Secure enterprise architecture for regulated environments. Cloud-native microservices, SAP integrations, and GDPR-compliant data pipelines for compliance-critical workflows.</span>
+      </div>
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <span data-lang="de">Fertigung</span><span data-lang="en">Manufacturing</span>
+      <div class="sector-body">
+        <span data-lang="de">KI-gestützte PCB-Inspektion mit automatisierter Fehlererkennung und Lötstellen-Analyse. ESP32-Embedded-Firmware und ADROIT SENSE™ für Echtzeit-Maschinendaten und vorausschauende Wartung.</span>
+        <span data-lang="en">AI-driven PCB inspection with automated defect detection and solder joint analysis. ESP32 embedded firmware and ADROIT SENSE™ for real-time machine data and predictive maintenance.</span>
+      </div>
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <span data-lang="de">Logistik & Supply Chain</span><span data-lang="en">Logistics & Supply Chain</span>
+      <div class="sector-body">
+        <span data-lang="de">Grenzüberschreitende Komponentenbeschaffung über Samim Electronics Ltd (Malta). SAP BTP-Integration für Echtzeit-Lieferkettentransparenz, Bestandsoptimierung und Lieferantenmanagement.</span>
+        <span data-lang="en">Cross-border component procurement via Samim Electronics Ltd (Malta). SAP BTP integrations for real-time supply chain visibility, inventory optimisation, and vendor management.</span>
+      </div>
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <span data-lang="de">Maritime & Industrie IoT</span><span data-lang="en">Maritime & Industrial IoT</span>
+      <div class="sector-body">
+        <span data-lang="de">ADROIT SENSE™ IoT SaaS-Plattform auf DSGVO-konformer Hetzner-Infrastruktur. ESP32/ESP32-S3-Firmware für industrielle Sensornetzwerke, maritime Überwachung und Flottentelemetrie in Echtzeit.</span>
+        <span data-lang="en">ADROIT SENSE™ IoT SaaS platform hosted on GDPR-compliant Hetzner infrastructure. ESP32/ESP32-S3 firmware for industrial sensor networks, maritime monitoring, and real-time fleet telemetry.</span>
+      </div>
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <span data-lang="de">Healthcare-Technologie</span><span data-lang="en">Healthcare Technology</span>
+      <div class="sector-body">
+        <span data-lang="de">DSGVO-konforme IoT-Überwachungslösungen auf deutscher Cloud-Infrastruktur. Embedded-Systeme für Echtzeit-Datenerfassung und sichere Datenverarbeitung in medizinischen Umgebungen.</span>
+        <span data-lang="en">GDPR-compliant IoT monitoring on German cloud infrastructure. Embedded systems for real-time data acquisition and secure data processing in medical-grade environments.</span>
+      </div>
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <span data-lang="de">Digital Out-of-Home Medien</span><span data-lang="en">Digital Out-of-Home Media</span>
+      <div class="sector-body">
+        <span data-lang="de">DOOH-Werbenetzwerk-Design und digitale Beschilderungsinfrastruktur. React.js/TypeScript-Frontends mit Java Spring Boot-Backends für skalierbare, echtzeitfähige Inhaltsverwaltung.</span>
+        <span data-lang="en">DOOH advertising network design and digital signage infrastructure. React.js/TypeScript frontends with Java Spring Boot backends for scalable, real-time content management.</span>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -766,6 +815,12 @@ html[data-mode="light"] .service-card:nth-child(6) {
 </footer>
 
 <script>
+function toggleSector(el) {
+  const wasOpen = el.classList.contains('open');
+  document.querySelectorAll('.sector-item.open').forEach(s => s.classList.remove('open'));
+  if (!wasOpen) el.classList.add('open');
+}
+
 // ── LANGUAGE ──
 function setLang(lang) {
   const isEn = lang === 'en';
@@ -863,7 +918,8 @@ function applyTimeMode() {
       .stat { border-color: rgba(201,168,76,0.2) !important; }
       .stat-label { color: rgba(10,10,10,0.45) !important; }
       .sector-item { border-color: rgba(201,168,76,0.2) !important; color: rgba(10,10,10,0.65) !important; }
-      .sector-item:hover { color: #0a0a0a !important; border-color: #c9a84c !important; }
+      .sector-item:hover, .sector-item.open { color: #0a0a0a !important; border-color: #c9a84c !important; }
+      .sector-body { color: rgba(10,10,10,0.5) !important; border-top-color: rgba(201,168,76,0.25) !important; }
       .contact-item p, .contact-item a { color: rgba(10,10,10,0.8) !important; }
       .form-field label { color: rgba(10,10,10,0.45) !important; }
       .form-field input, .form-field textarea, .form-field select { background: rgba(0,0,0,0.05) !important; color: #0a0a0a !important; border-color: rgba(201,168,76,0.3) !important; }
