@@ -1,392 +1,277 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="de" style="background:#0a0a0a !important">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="robots" content="noindex, follow">
-  <meta name="description" content="Allgemeine Geschäftsbedingungen (AGB) – Adroit Solutions GmbH, Düsseldorf.">
-  <title>Terms &amp; Conditions / AGB – Adroit Solutions GmbH</title>
-  <style>
-    :root {
-      --ink:     #0A1628;
-      --gold:    #C9A84C;
-      --gold-d:  #a8872e;
-      --mid:     #1A3A5C;
-      --surface: #F5F7FA;
-      --border:  #DDE3EC;
-      --muted:   #6B7280;
-      --white:   #FFFFFF;
-      --max:     860px;
-      --r:       5px;
-    }
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body {
-      background: #e8ecf2;
-      color: #2D2D2D;
-      font-family: "Georgia", "Times New Roman", serif;
-      font-size: 16px;
-      line-height: 1.75;
-    }
+<meta charset="UTF-8"/>
+<meta name="color-scheme" content="dark"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="robots" content="noindex, follow"/>
+<title>AGB / Terms &amp; Conditions – Adroit Solutions GmbH</title>
+<meta name="description" content="Allgemeine Geschäftsbedingungen (AGB) – Adroit Solutions GmbH, Düsseldorf."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+html, body { background:#0a0a0a !important; color:#f5f4f0 !important; margin:0 !important; padding:0 !important; font-family:'DM Sans',sans-serif !important; font-weight:300; line-height:1.7; overflow-x:hidden; }
+*, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
+:root { --black:#0a0a0a; --white:#f5f4f0; --gold:#c9a84c; --gold-light:#e8c97a; --mid:#1c1c1c; --border:rgba(201,168,76,0.2); }
+html { scroll-behavior:smooth; }
+[data-lang="en"] { display:none; }
+body.lang-en [data-lang="de"] { display:none; }
+body.lang-en [data-lang="en"] { display:inline; }
 
-    /* ── TOPBAR ── */
-    .topbar {
-      background: var(--ink);
-      border-bottom: 1px solid rgba(201,168,76,.18);
-      padding: 0 40px;
-      height: 58px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      position: sticky;
-      top: 0;
-      z-index: 200;
-    }
-    .topbar-logo {
-      font-family: "Trebuchet MS", sans-serif;
-      font-size: .95rem;
-      font-weight: 700;
-      color: var(--white);
-      text-decoration: none;
-      letter-spacing: .1em;
-      text-transform: uppercase;
-    }
-    .topbar-logo span { color: var(--gold); }
-    .topbar-back {
-      font-family: "Trebuchet MS", sans-serif;
-      font-size: .75rem;
-      color: rgba(255,255,255,.55);
-      text-decoration: none;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-      border: 1px solid rgba(255,255,255,.15);
-      padding: 6px 16px;
-      border-radius: var(--r);
-      transition: border-color .2s, color .2s;
-    }
-    .topbar-back:hover { border-color: var(--gold); color: var(--gold); }
+.scroll-progress { position:fixed; top:0; left:0; z-index:200; height:2px; width:0%; background:linear-gradient(90deg,var(--gold),var(--gold-light)); transition:width 0.1s linear; }
 
-    /* ── HERO ── */
-    .hero {
-      background: var(--ink);
-      border-bottom: 3px solid var(--gold);
-      padding: 56px 40px 44px;
-      text-align: center;
-    }
-    .hero-eyebrow {
-      font-family: "Trebuchet MS", sans-serif;
-      font-size: .68rem;
-      letter-spacing: .26em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 14px;
-    }
-    .hero h1 {
-      font-family: "Trebuchet MS", sans-serif;
-      font-size: clamp(1.7rem, 3.5vw, 2.4rem);
-      font-weight: 700;
-      color: var(--white);
-      letter-spacing: .05em;
-      text-transform: uppercase;
-    }
-    .hero-sub {
-      margin-top: 8px;
-      font-family: "Trebuchet MS", sans-serif;
-      font-size: .82rem;
-      color: rgba(255,255,255,.4);
-      letter-spacing: .04em;
-    }
-    .hero-bar {
-      width: 48px; height: 3px;
-      background: var(--gold);
-      margin: 18px auto 0;
-      border-radius: 2px;
-    }
+nav { position:sticky; top:0; z-index:100; display:flex; align-items:center; justify-content:space-between; padding:1rem 3rem; background:rgba(10,10,10,0.95); backdrop-filter:blur(12px); border-bottom:1px solid var(--border); }
+.nav-logo img { height:56px; filter:brightness(0) invert(1); }
+.nav-right { display:flex; align-items:center; gap:2.5rem; }
+.nav-links { display:flex; gap:2rem; list-style:none; }
+.nav-links a { font-size:0.72rem; letter-spacing:0.12em; text-transform:uppercase; color:rgba(245,244,240,0.55); text-decoration:none; transition:color 0.2s; position:relative; }
+.nav-links a::after { content:''; position:absolute; bottom:-2px; left:0; width:0; height:1px; background:var(--gold); transition:width 0.3s; }
+.nav-links a:hover, .nav-links a.active { color:var(--gold); }
+.nav-links a:hover::after, .nav-links a.active::after { width:100%; }
+.lang-switcher { display:flex; gap:0.3rem; align-items:center; }
+.lang-btn { background:transparent; border:1px solid var(--border); color:rgba(245,244,240,0.4); font-size:0.65rem; letter-spacing:0.1em; cursor:pointer; padding:0.25rem 0.5rem; transition:all 0.2s; font-family:'DM Sans',sans-serif; }
+.lang-btn.active { background:var(--gold); border-color:var(--gold); color:#0a0a0a; font-weight:700; }
+.menu-btn { display:none; flex-direction:column; gap:5px; background:none; border:none; cursor:pointer; padding:4px; }
+.menu-btn span { display:block; width:22px; height:1.5px; background:#f5f4f0; transition:all 0.3s; }
 
-    /* ── CARD WRAPPER ── */
-    .card {
-      background: var(--white);
-      max-width: var(--max);
-      margin: 0 auto;
-      padding-bottom: 72px;
-      box-shadow: 0 2px 24px rgba(10,22,40,.08);
-    }
+.page-hero { padding:3.5rem 3rem 2.5rem; max-width:1100px; margin:0 auto; }
+.page-eyebrow { font-size:0.65rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--gold); margin-bottom:0.75rem; }
+.page-title { font-family:'DM Serif Display',serif; font-size:clamp(2rem,4vw,2.8rem); color:#f5f4f0; line-height:1.2; margin-bottom:0.5rem; }
+.page-sub { font-size:0.82rem; color:rgba(245,244,240,0.4); letter-spacing:0.04em; }
+.page-divider { border:none; border-top:1px solid var(--border); margin:0; }
 
-    /* ── SECTION ── */
-    .sec {
-      padding: 40px 52px 0;
-      animation: up .45s ease both;
-    }
-    .sec:nth-child(1){animation-delay:.04s}
-    .sec:nth-child(2){animation-delay:.09s}
-    .sec:nth-child(3){animation-delay:.14s}
-    .sec:nth-child(4){animation-delay:.19s}
-    .sec:nth-child(5){animation-delay:.24s}
-    .sec:nth-child(6){animation-delay:.29s}
-    .sec:nth-child(7){animation-delay:.34s}
-    .sec:nth-child(8){animation-delay:.39s}
-    .sec:nth-child(9){animation-delay:.44s}
-    .sec:nth-child(10){animation-delay:.49s}
-    @keyframes up { from{opacity:0;transform:translateY(14px)} to{opacity:1;transform:none} }
+.legal-wrap { max-width:860px; margin:0 auto; padding:3rem 3rem 6rem; }
+.legal-sec { margin-bottom:3rem; }
+.sec-eyebrow { font-size:0.6rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--gold); margin-bottom:0.5rem; }
+.sec-rule { border:none; border-top:1px solid var(--border); margin-bottom:1.5rem; }
+.legal-prose { font-size:0.88rem; line-height:1.82; color:rgba(245,244,240,0.65); margin-bottom:0.75rem; }
+.legal-prose strong { color:#f5f4f0; }
+.legal-prose a { color:var(--gold); word-break:break-word; }
+.legal-prose a:hover { color:var(--gold-light); }
 
-    .sec-label {
-      font-family: "Trebuchet MS", sans-serif;
-      font-size: .66rem;
-      letter-spacing: .22em;
-      text-transform: uppercase;
-      color: var(--mid);
-      font-weight: 700;
-      margin-bottom: 9px;
-    }
-    .sec-rule {
-      border: none;
-      border-top: 2px solid var(--gold);
-      opacity: .55;
-      margin-bottom: 20px;
-    }
+footer { background:rgba(10,10,10,0.9); border-top:1px solid var(--border); padding:2.5rem 3rem; display:grid; grid-template-columns:auto 1fr; align-items:center; gap:2rem; }
+.footer-left { display:flex; flex-direction:column; gap:0.2rem; }
+.footer-left img { height:110px; filter:brightness(0) invert(1); }
+.footer-tagline { font-size:0.8rem; color:rgba(245,244,240,0.35); margin:0; }
+.footer-legal { font-size:0.75rem; color:rgba(245,244,240,0.3); text-align:right; line-height:1.8; }
+.footer-legal a { color:rgba(245,244,240,0.4); text-decoration:none; }
+.footer-legal a:hover { color:var(--gold); }
 
-    /* ── PROSE ── */
-    .prose { font-size: .9rem; color: #3a3a3a; line-height: 1.82; margin-bottom: 10px; }
-    .prose a { color: var(--mid); word-break: break-word; }
-    .prose a:hover { color: var(--gold-d); }
-    .prose strong { color: var(--ink); }
+@media(max-width:768px){
+  nav { padding:1rem 1.5rem; }
+  .nav-links { display:none; position:absolute; top:100%; left:0; right:0; z-index:99; background:rgba(10,10,10,0.98); border-top:1px solid rgba(201,168,76,0.2); flex-direction:column; padding:0.5rem 0; gap:0; list-style:none; }
+  .nav-links.open { display:flex; }
+  .nav-links li { border-bottom:1px solid rgba(255,255,255,0.06); }
+  .nav-links a { padding:0.9rem 1.5rem !important; display:block; }
+  .nav-links a::after { display:none !important; }
+  .menu-btn { display:flex; }
+  .page-hero { padding:2rem 1.5rem 1.5rem; }
+  .legal-wrap { padding:2rem 1.5rem 4rem; }
+  footer { grid-template-columns:1fr; padding:2rem 1.5rem; }
+  .footer-legal { text-align:left; }
+}
+.menu-btn.open span:nth-child(1) { transform:translateY(7px) rotate(45deg); }
+.menu-btn.open span:nth-child(2) { opacity:0; transform:scaleX(0); }
+.menu-btn.open span:nth-child(3) { transform:translateY(-7px) rotate(-45deg); }
 
-    .clause-num {
-      font-family: "Trebuchet MS", sans-serif;
-      font-size: .76rem;
-      font-weight: 700;
-      color: var(--ink);
-      text-transform: uppercase;
-      letter-spacing: .05em;
-      margin-bottom: 6px;
-    }
-
-    /* ══════════════════════════════════
-       ENTERPRISE FOOTER
-       ══════════════════════════════════ */
-    .site-footer { background: var(--ink); color: rgba(255,255,255,.65); width: 100%; }
-
-    .footer-nav-strip { border-bottom: 1px solid rgba(255,255,255,.09); padding: 26px 0; }
-    .footer-nav-inner {
-      max-width: 1160px; margin: 0 auto; padding: 0 40px;
-      display: flex; gap: 40px; flex-wrap: wrap; justify-content: center;
-    }
-    .footer-nav-inner a {
-      color: rgba(255,255,255,.55); text-decoration: none;
-      font-family: "Trebuchet MS", sans-serif;
-      font-size: .84rem; letter-spacing: .03em;
-      transition: color .15s;
-    }
-    .footer-nav-inner a:hover { color: var(--gold); }
-
-    .footer-rule { border: none; border-top: 1px solid rgba(255,255,255,.1); max-width: 1160px; margin: 0 auto; }
-
-    .footer-social {
-      max-width: 1160px; margin: 0 auto;
-      padding: 26px 40px 22px;
-      display: flex; gap: 10px; align-items: center;
-    }
-    .s-btn {
-      display: flex; align-items: center; justify-content: center;
-      width: 36px; height: 36px; border-radius: 50%;
-      border: 1px solid rgba(255,255,255,.18);
-      color: rgba(255,255,255,.5);
-      text-decoration: none;
-      transition: border-color .15s, color .15s, background .15s;
-      flex-shrink: 0;
-    }
-    .s-btn:hover { border-color: var(--gold); color: var(--gold); background: rgba(201,168,76,.07); }
-    .s-btn svg { width: 15px; height: 15px; fill: currentColor; display: block; }
-
-    .footer-legal {
-      max-width: 1160px; margin: 0 auto;
-      padding: 0 40px 32px;
-      display: flex; align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap; gap: 14px;
-    }
-    .f-copy {
-      font-family: "Trebuchet MS", sans-serif;
-      font-size: .76rem; color: rgba(255,255,255,.35); letter-spacing: .03em;
-    }
-    .f-links { display: flex; flex-wrap: wrap; align-items: center; }
-    .f-links a {
-      font-family: "Trebuchet MS", sans-serif;
-      font-size: .76rem; color: rgba(255,255,255,.5);
-      text-decoration: none; letter-spacing: .03em;
-      padding: 3px 16px;
-      border-right: 1px solid rgba(255,255,255,.13);
-      transition: color .15s; white-space: nowrap;
-    }
-    .f-links a:first-child { padding-left: 0; }
-    .f-links a:last-child  { padding-right: 0; border-right: none; }
-    .f-links a:hover { color: var(--gold); }
-
-    @media(max-width:620px){
-      .sec { padding: 32px 22px 0; }
-      .topbar { padding: 0 20px; }
-      .hero { padding: 44px 20px 36px; }
-      .footer-nav-inner,.footer-social,.footer-legal { padding-left: 22px; padding-right: 22px; }
-      .footer-legal { flex-direction: column; align-items: flex-start; }
-      .f-links a { padding: 3px 12px; }
-    }
-  </style>
+html[data-mode="light"] body { background:#f5f2eb !important; color:#0a0a0a !important; }
+html[data-mode="light"] nav { background:rgba(245,242,235,0.96) !important; }
+html[data-mode="light"] .nav-links a { color:rgba(10,10,10,0.55) !important; }
+html[data-mode="light"] .nav-links.open { background:rgba(245,242,235,0.99) !important; border-top-color:rgba(201,168,76,0.3) !important; }
+html[data-mode="light"] .page-title { color:#0a0a0a !important; }
+html[data-mode="light"] .page-sub { color:rgba(10,10,10,0.4) !important; }
+html[data-mode="light"] .legal-prose { color:rgba(10,10,10,0.7) !important; }
+html[data-mode="light"] .legal-prose strong { color:#0a0a0a !important; }
+html[data-mode="light"] footer { background:#ede9e0 !important; }
+html[data-mode="light"] .footer-tagline { color:rgba(10,10,10,0.4) !important; }
+html[data-mode="light"] .footer-legal { color:rgba(10,10,10,0.35) !important; }
+html[data-mode="light"] .footer-legal a { color:rgba(10,10,10,0.45) !important; }
+html[data-mode="light"] nav img, html[data-mode="light"] footer img { filter:brightness(0) !important; }
+</style>
 </head>
 <body>
 
-<!-- TOPBAR -->
-<nav class="topbar">
-  <a href="/" class="topbar-logo"><span>Adroit</span> Solutions GmbH</a>
-  <a href="/" class="topbar-back">← Back</a>
+<div class="scroll-progress" id="scrollProgress"></div>
+<nav>
+  <div class="nav-logo">
+    <a href="index.html"><img src="adroit-logo.png" alt="Adroit Solutions GmbH"/></a>
+  </div>
+  <div class="nav-right">
+    <ul class="nav-links">
+      <li><a href="index.html"><span data-lang="de">Startseite</span><span data-lang="en">Home</span></a></li>
+      <li><a href="about.html"><span data-lang="de">Über uns</span><span data-lang="en">About</span></a></li>
+      <li><a href="services.html"><span data-lang="de">Leistungen</span><span data-lang="en">Services</span></a></li>
+      <li><a href="cases.html"><span data-lang="de">Referenzen</span><span data-lang="en">Case Studies</span></a></li>
+      <li><a href="careers.html"><span data-lang="de">Karriere</span><span data-lang="en">Careers</span></a></li>
+      <li><a href="contact.html"><span data-lang="de">Kontakt</span><span data-lang="en">Contact</span></a></li>
+    </ul>
+    <div class="lang-switcher">
+      <button class="lang-btn active" id="btn-de" onclick="setLang('de')">DE</button>
+      <button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button>
+    </div>
+    <button class="menu-btn" id="menuBtn" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
 </nav>
 
-<!-- HERO -->
-<div class="hero">
-  <p class="hero-eyebrow">General Terms &amp; Conditions &nbsp;/&nbsp; Allgemeine Geschäftsbedingungen</p>
-  <h1>Terms &amp; Conditions / AGB</h1>
-  <p class="hero-sub">Adroit Solutions GmbH &nbsp;·&nbsp; Düsseldorf, Germany &nbsp;·&nbsp; Status: May 2025</p>
-  <div class="hero-bar"></div>
+<div class="page-hero">
+  <p class="page-eyebrow">General Terms &amp; Conditions &nbsp;/&nbsp; Allgemeine Geschäftsbedingungen</p>
+  <h1 class="page-title">AGB <em style="font-style:italic;opacity:0.5;">/</em> Terms &amp; Conditions</h1>
+  <p class="page-sub">Adroit Solutions GmbH &nbsp;·&nbsp; Düsseldorf, Germany &nbsp;·&nbsp; Stand: Mai 2025</p>
+</div>
+<hr class="page-divider"/>
+
+<div class="legal-wrap">
+
+  <div class="legal-sec">
+    <p class="sec-eyebrow">§ 1 — Scope of Application / Geltungsbereich</p>
+    <hr class="sec-rule"/>
+    <p class="legal-prose">These General Terms and Conditions (hereinafter "GTC") of Adroit Solutions GmbH, Königsallee 27, 40212 Düsseldorf, Germany (hereinafter "Adroit Solutions") apply to all contracts for IT consulting, software development, engineering services, and related deliverables concluded with business clients (§ 14 BGB).</p>
+    <p class="legal-prose">These GTC apply exclusively. Deviating, conflicting, or supplementary terms and conditions of the client shall not become part of the contract unless Adroit Solutions has expressly agreed to their validity in writing. This requirement of consent applies in all cases, including where Adroit Solutions performs services without reservation with knowledge of the client's terms and conditions.</p>
+  </div>
+
+  <div class="legal-sec">
+    <p class="sec-eyebrow">§ 2 — Services / Leistungen</p>
+    <hr class="sec-rule"/>
+    <p class="legal-prose">Adroit Solutions provides IT consulting, SAP BTP engineering, enterprise IT architecture, IoT and embedded systems development, and related services as specified in the respective project agreement or statement of work (SOW).</p>
+    <p class="legal-prose">The exact scope of services, deliverables, milestones, and acceptance criteria shall be defined in a written project agreement or SOW signed by both parties. Adroit Solutions is entitled to engage qualified subcontractors for the fulfilment of contractual obligations, provided that this does not impair the agreed service quality.</p>
+    <p class="legal-prose">Unless expressly agreed otherwise in writing, Adroit Solutions does not owe a specific economic result but rather the diligent performance of the agreed services (Dienstvertrag, §§ 611 ff. BGB).</p>
+  </div>
+
+  <div class="legal-sec">
+    <p class="sec-eyebrow">§ 3 — Conclusion of Contract / Vertragsschluss</p>
+    <hr class="sec-rule"/>
+    <p class="legal-prose">All offers by Adroit Solutions are non-binding and subject to change unless expressly designated as binding in writing. A contract is concluded only upon written confirmation by Adroit Solutions or by commencement of services.</p>
+    <p class="legal-prose">Quotes and proposals are valid for 30 days from the date of issue unless a different validity period is stated therein.</p>
+  </div>
+
+  <div class="legal-sec">
+    <p class="sec-eyebrow">§ 4 — Remuneration &amp; Payment / Vergütung und Zahlung</p>
+    <hr class="sec-rule"/>
+    <p class="legal-prose"><strong>Rates:</strong> All fees are quoted in Euro (EUR) and exclude statutory VAT. Daily or hourly rates apply as agreed in the project agreement. Travel time is invoiced at 50 % of the agreed daily rate unless otherwise agreed.</p>
+    <p class="legal-prose"><strong>Invoicing:</strong> Invoices are issued monthly in arrears or upon milestone completion as specified in the project agreement. Payment is due within 14 days of the invoice date without deduction.</p>
+    <p class="legal-prose"><strong>Late payment:</strong> In the event of late payment, Adroit Solutions reserves the right to charge statutory default interest (§ 288 para. 2 BGB) at 9 percentage points above the applicable base rate, and to suspend further services until outstanding amounts have been settled.</p>
+    <p class="legal-prose"><strong>Expenses:</strong> Reasonable, pre-approved travel and accommodation expenses are reimbursed at cost upon submission of receipts.</p>
+  </div>
+
+  <div class="legal-sec">
+    <p class="sec-eyebrow">§ 5 — Client Obligations / Mitwirkungspflichten des Auftraggebers</p>
+    <hr class="sec-rule"/>
+    <p class="legal-prose">The client shall provide Adroit Solutions with all information, access, systems, and resources required for the performance of services in a timely manner and free of charge. The client shall designate a competent contact person authorised to make decisions.</p>
+    <p class="legal-prose">If the client fails to fulfil its cooperation obligations and this results in delays or additional effort, Adroit Solutions shall be entitled to invoice the additional time incurred at the agreed rate. Agreed deadlines shall be extended by the duration of the delay caused by the client.</p>
+  </div>
+
+  <div class="legal-sec">
+    <p class="sec-eyebrow">§ 6 — Intellectual Property / Geistiges Eigentum</p>
+    <hr class="sec-rule"/>
+    <p class="legal-prose"><strong>Work results:</strong> Upon receipt of full payment, Adroit Solutions assigns to the client all rights of use to the work results developed specifically for the client under the respective project agreement, to the extent required for the contractually agreed purpose.</p>
+    <p class="legal-prose"><strong>Background IP:</strong> Adroit Solutions retains all rights to its pre-existing know-how, tools, frameworks, and methods used in the performance of services. The client receives a non-exclusive, non-transferable licence to use such background IP solely as embedded in the delivered work results.</p>
+    <p class="legal-prose"><strong>Open-source components:</strong> Where open-source software is incorporated into deliverables, the respective open-source licences apply. Adroit Solutions will disclose relevant open-source components upon request.</p>
+  </div>
+
+  <div class="legal-sec">
+    <p class="sec-eyebrow">§ 7 — Confidentiality / Vertraulichkeit</p>
+    <hr class="sec-rule"/>
+    <p class="legal-prose">Both parties undertake to treat all confidential information received from the other party as strictly confidential and not to disclose it to third parties without prior written consent. This obligation survives the termination of the contract for a period of three (3) years.</p>
+    <p class="legal-prose">Confidential information does not include information that (a) is or becomes publicly available through no fault of the receiving party; (b) was already known to the receiving party prior to disclosure; or (c) must be disclosed by law or court order.</p>
+    <p class="legal-prose">Adroit Solutions may reference the client's company name and a general description of the project as a reference in marketing materials, unless the client objects in writing within 14 days of project completion.</p>
+  </div>
+
+  <div class="legal-sec">
+    <p class="sec-eyebrow">§ 8 — Liability / Haftung</p>
+    <hr class="sec-rule"/>
+    <p class="legal-prose">Adroit Solutions is liable without limitation for damages resulting from intent or gross negligence, and for damages resulting from injury to life, body, or health.</p>
+    <p class="legal-prose">For simple negligence, Adroit Solutions is only liable for breaches of material contractual obligations (cardinal obligations). In such cases, liability is limited to the foreseeable, typically occurring damage, and in no event shall it exceed the total remuneration paid by the client in the three months preceding the damaging event.</p>
+    <p class="legal-prose">Adroit Solutions is not liable for indirect damages, loss of profit, or consequential damages, except in cases of intent or gross negligence.</p>
+    <p class="legal-prose">The above limitations do not apply to mandatory statutory liability, including liability under the Product Liability Act (Produkthaftungsgesetz).</p>
+  </div>
+
+  <div class="legal-sec">
+    <p class="sec-eyebrow">§ 9 — Term &amp; Termination / Laufzeit und Kündigung</p>
+    <hr class="sec-rule"/>
+    <p class="legal-prose">Project agreements commence on the agreed start date and end upon delivery and acceptance of the final deliverable, or as specified in the agreement.</p>
+    <p class="legal-prose">Either party may terminate a project agreement for good cause (außerordentliche Kündigung aus wichtigem Grund) without notice. Good cause for Adroit Solutions includes the client's failure to make payment within 30 days of a written payment reminder.</p>
+    <p class="legal-prose">Upon termination for any reason, the client shall pay for all services rendered up to the date of termination, plus any non-cancellable expenses already incurred.</p>
+  </div>
+
+  <div class="legal-sec">
+    <p class="sec-eyebrow">§ 10 — Data Protection / Datenschutz</p>
+    <hr class="sec-rule"/>
+    <p class="legal-prose">The processing of personal data in connection with the provision of services is governed by the applicable data protection legislation, in particular the GDPR and the BDSG. For further details, please refer to our <a href="/datenschutz.html">Privacy Policy</a>.</p>
+    <p class="legal-prose">Where the provision of services involves the processing of personal data on behalf of the client, the parties shall conclude a separate data processing agreement (Auftragsverarbeitungsvertrag, Art. 28 GDPR).</p>
+  </div>
+
+  <div class="legal-sec">
+    <p class="sec-eyebrow">§ 11 — Applicable Law &amp; Jurisdiction / Anwendbares Recht und Gerichtsstand</p>
+    <hr class="sec-rule"/>
+    <p class="legal-prose">These GTC and all contracts concluded under them are governed exclusively by the laws of the Federal Republic of Germany, to the exclusion of the UN Convention on Contracts for the International Sale of Goods (CISG).</p>
+    <p class="legal-prose">The exclusive place of jurisdiction for all disputes arising from or in connection with these GTC is Düsseldorf, Germany, provided the client is a registered merchant (Kaufmann), a legal entity under public law, or a special fund under public law.</p>
+  </div>
+
+  <div class="legal-sec">
+    <p class="sec-eyebrow">§ 12 — Miscellaneous / Sonstige Bestimmungen</p>
+    <hr class="sec-rule"/>
+    <p class="legal-prose"><strong>Written form:</strong> Amendments and supplements to these GTC and any project agreement must be made in writing. This also applies to any waiver of the written-form requirement itself.</p>
+    <p class="legal-prose"><strong>Severability:</strong> Should any provision of these GTC be or become invalid or unenforceable, the remaining provisions shall continue in full force and effect. The invalid provision shall be replaced by a valid provision that most closely reflects the economic intent of the original.</p>
+    <p class="legal-prose"><strong>Contact for legal matters:</strong> <a href="mailto:samdani.gulam@adroitsolutions.de">samdani.gulam@adroitsolutions.de</a></p>
+  </div>
+
 </div>
 
-<!-- CONTENT -->
-<main class="card">
-
-  <div class="sec">
-    <p class="sec-label">§ 1 — Scope of Application / Geltungsbereich</p>
-    <hr class="sec-rule">
-    <p class="prose">These General Terms and Conditions (hereinafter "GTC") of Adroit Solutions GmbH, Königsallee 27, 40212 Düsseldorf, Germany (hereinafter "Adroit Solutions") apply to all contracts for IT consulting, software development, engineering services, and related deliverables concluded with business clients (§ 14 BGB).</p>
-    <p class="prose">These GTC apply exclusively. Deviating, conflicting, or supplementary terms and conditions of the client shall not become part of the contract unless Adroit Solutions has expressly agreed to their validity in writing. This requirement of consent applies in all cases, including where Adroit Solutions performs services without reservation with knowledge of the client's terms and conditions.</p>
+<footer>
+  <div class="footer-left">
+    <a href="index.html"><img src="adroit-logo.png" alt="Adroit Solutions GmbH"/></a>
+    <p class="footer-tagline">Electronics &middot; IoT &middot; Digital Solutions &middot; Düsseldorf, Deutschland</p>
   </div>
-
-  <div class="sec">
-    <p class="sec-label">§ 2 — Services / Leistungen</p>
-    <hr class="sec-rule">
-    <p class="prose">Adroit Solutions provides IT consulting, SAP BTP engineering, enterprise IT architecture, IoT and embedded systems development, and related services as specified in the respective project agreement or statement of work (SOW).</p>
-    <p class="prose">The exact scope of services, deliverables, milestones, and acceptance criteria shall be defined in a written project agreement or SOW signed by both parties. Adroit Solutions is entitled to engage qualified subcontractors for the fulfilment of contractual obligations, provided that this does not impair the agreed service quality.</p>
-    <p class="prose">Unless expressly agreed otherwise in writing, Adroit Solutions does not owe a specific economic result but rather the diligent performance of the agreed services (Dienstvertrag, §§ 611 ff. BGB).</p>
-  </div>
-
-  <div class="sec">
-    <p class="sec-label">§ 3 — Conclusion of Contract / Vertragsschluss</p>
-    <hr class="sec-rule">
-    <p class="prose">All offers by Adroit Solutions are non-binding and subject to change unless expressly designated as binding in writing. A contract is concluded only upon written confirmation by Adroit Solutions or by commencement of services.</p>
-    <p class="prose">Quotes and proposals are valid for 30 days from the date of issue unless a different validity period is stated therein.</p>
-  </div>
-
-  <div class="sec">
-    <p class="sec-label">§ 4 — Remuneration &amp; Payment / Vergütung und Zahlung</p>
-    <hr class="sec-rule">
-    <p class="prose"><strong>Rates:</strong> All fees are quoted in Euro (EUR) and exclude statutory VAT. Daily or hourly rates apply as agreed in the project agreement. Travel time is invoiced at 50 % of the agreed daily rate unless otherwise agreed.</p>
-    <p class="prose"><strong>Invoicing:</strong> Invoices are issued monthly in arrears or upon milestone completion as specified in the project agreement. Payment is due within 14 days of the invoice date without deduction.</p>
-    <p class="prose"><strong>Late payment:</strong> In the event of late payment, Adroit Solutions reserves the right to charge statutory default interest (§ 288 para. 2 BGB) at 9 percentage points above the applicable base rate, and to suspend further services until outstanding amounts have been settled.</p>
-    <p class="prose"><strong>Expenses:</strong> Reasonable, pre-approved travel and accommodation expenses are reimbursed at cost upon submission of receipts.</p>
-  </div>
-
-  <div class="sec">
-    <p class="sec-label">§ 5 — Client Obligations / Mitwirkungspflichten des Auftraggebers</p>
-    <hr class="sec-rule">
-    <p class="prose">The client shall provide Adroit Solutions with all information, access, systems, and resources required for the performance of services in a timely manner and free of charge. The client shall designate a competent contact person authorised to make decisions.</p>
-    <p class="prose">If the client fails to fulfil its cooperation obligations and this results in delays or additional effort, Adroit Solutions shall be entitled to invoice the additional time incurred at the agreed rate. Agreed deadlines shall be extended by the duration of the delay caused by the client.</p>
-  </div>
-
-  <div class="sec">
-    <p class="sec-label">§ 6 — Intellectual Property / Geistiges Eigentum</p>
-    <hr class="sec-rule">
-    <p class="prose"><strong>Work results:</strong> Upon receipt of full payment, Adroit Solutions assigns to the client all rights of use to the work results developed specifically for the client under the respective project agreement, to the extent required for the contractually agreed purpose.</p>
-    <p class="prose"><strong>Background IP:</strong> Adroit Solutions retains all rights to its pre-existing know-how, tools, frameworks, and methods used in the performance of services. The client receives a non-exclusive, non-transferable licence to use such background IP solely as embedded in the delivered work results.</p>
-    <p class="prose"><strong>Open-source components:</strong> Where open-source software is incorporated into deliverables, the respective open-source licences apply. Adroit Solutions will disclose relevant open-source components upon request.</p>
-  </div>
-
-  <div class="sec">
-    <p class="sec-label">§ 7 — Confidentiality / Vertraulichkeit</p>
-    <hr class="sec-rule">
-    <p class="prose">Both parties undertake to treat all confidential information received from the other party as strictly confidential and not to disclose it to third parties without prior written consent. This obligation survives the termination of the contract for a period of three (3) years.</p>
-    <p class="prose">Confidential information does not include information that (a) is or becomes publicly available through no fault of the receiving party; (b) was already known to the receiving party prior to disclosure; or (c) must be disclosed by law or court order.</p>
-    <p class="prose">Adroit Solutions may reference the client's company name and a general description of the project as a reference in marketing materials, unless the client objects in writing within 14 days of project completion.</p>
-  </div>
-
-  <div class="sec">
-    <p class="sec-label">§ 8 — Liability / Haftung</p>
-    <hr class="sec-rule">
-    <p class="prose">Adroit Solutions is liable without limitation for damages resulting from intent or gross negligence, and for damages resulting from injury to life, body, or health.</p>
-    <p class="prose">For simple negligence, Adroit Solutions is only liable for breaches of material contractual obligations (cardinal obligations). In such cases, liability is limited to the foreseeable, typically occurring damage, and in no event shall it exceed the total remuneration paid by the client in the three months preceding the damaging event.</p>
-    <p class="prose">Adroit Solutions is not liable for indirect damages, loss of profit, or consequential damages, except in cases of intent or gross negligence.</p>
-    <p class="prose">The above limitations do not apply to mandatory statutory liability, including liability under the Product Liability Act (Produkthaftungsgesetz).</p>
-  </div>
-
-  <div class="sec">
-    <p class="sec-label">§ 9 — Term &amp; Termination / Laufzeit und Kündigung</p>
-    <hr class="sec-rule">
-    <p class="prose">Project agreements commence on the agreed start date and end upon delivery and acceptance of the final deliverable, or as specified in the agreement.</p>
-    <p class="prose">Either party may terminate a project agreement for good cause (außerordentliche Kündigung aus wichtigem Grund) without notice. Good cause for Adroit Solutions includes the client's failure to make payment within 30 days of a written payment reminder.</p>
-    <p class="prose">Upon termination for any reason, the client shall pay for all services rendered up to the date of termination, plus any non-cancellable expenses already incurred.</p>
-  </div>
-
-  <div class="sec">
-    <p class="sec-label">§ 10 — Data Protection / Datenschutz</p>
-    <hr class="sec-rule">
-    <p class="prose">The processing of personal data in connection with the provision of services is governed by the applicable data protection legislation, in particular the GDPR and the BDSG. For further details, please refer to our <a href="/datenschutz.html">Privacy Policy</a>.</p>
-    <p class="prose">Where the provision of services involves the processing of personal data on behalf of the client, the parties shall conclude a separate data processing agreement (Auftragsverarbeitungsvertrag, Art. 28 GDPR).</p>
-  </div>
-
-  <div class="sec">
-    <p class="sec-label">§ 11 — Applicable Law &amp; Jurisdiction / Anwendbares Recht und Gerichtsstand</p>
-    <hr class="sec-rule">
-    <p class="prose">These GTC and all contracts concluded under them are governed exclusively by the laws of the Federal Republic of Germany, to the exclusion of the UN Convention on Contracts for the International Sale of Goods (CISG).</p>
-    <p class="prose">The exclusive place of jurisdiction for all disputes arising from or in connection with these GTC is Düsseldorf, Germany, provided the client is a registered merchant (Kaufmann), a legal entity under public law, or a special fund under public law.</p>
-  </div>
-
-  <div class="sec">
-    <p class="sec-label">§ 12 — Miscellaneous / Sonstige Bestimmungen</p>
-    <hr class="sec-rule">
-    <p class="prose"><strong>Written form:</strong> Amendments and supplements to these GTC and any project agreement must be made in writing. This also applies to any waiver of the written-form requirement itself.</p>
-    <p class="prose"><strong>Severability:</strong> Should any provision of these GTC be or become invalid or unenforceable, the remaining provisions shall continue in full force and effect. The invalid provision shall be replaced by a valid provision that most closely reflects the economic intent of the original.</p>
-    <p class="prose"><strong>Contact for legal matters:</strong> <a href="mailto:samdani.gulam@adroitsolutions.de">samdani.gulam@adroitsolutions.de</a></p>
-  </div>
-
-</main>
-
-<!-- ENTERPRISE FOOTER -->
-<footer class="site-footer">
-
-  <div class="footer-nav-strip">
-    <div class="footer-nav-inner">
-      <a href="/services.html">IT Consulting</a>
-      <a href="/services.html#iot">IoT &amp; Embedded</a>
-      <a href="/services.html#sap">SAP BTP</a>
-      <a href="/about.html">About Us</a>
-      <a href="mailto:samdani.gulam@adroitsolutions.de">Contact</a>
-    </div>
-  </div>
-
-  <hr class="footer-rule">
-
-  <div class="footer-social">
-    <a href="https://www.linkedin.com/company/adroit-solutions-gmbh" target="_blank" rel="noopener" class="s-btn" aria-label="LinkedIn">
-      <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-    </a>
-    <a href="https://x.com/adroitsolutions" target="_blank" rel="noopener" class="s-btn" aria-label="X (Twitter)">
-      <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.748l7.73-8.835L1.254 2.25H8.08l4.253 5.622 5.911-5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-    </a>
-    <a href="https://github.com/adroit-solutions-gmbh" target="_blank" rel="noopener" class="s-btn" aria-label="GitHub">
-      <svg viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
-    </a>
-    <a href="mailto:samdani.gulam@adroitsolutions.de" class="s-btn" aria-label="Email">
-      <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
-    </a>
-  </div>
-
   <div class="footer-legal">
-    <p class="f-copy">&copy; Adroit Solutions GmbH <span id="yr"></span></p>
-    <nav class="f-links" aria-label="Legal">
-      <a href="/agb.html">Terms &amp; Conditions</a>
-      <a href="/impressum.html">Imprint</a>
-      <a href="/datenschutz.html">Data Protection</a>
-      <a href="mailto:samdani.gulam@adroitsolutions.de">Contact</a>
-    </nav>
+    <p>&copy; 2026 Adroit Solutions GmbH. Alle Rechte vorbehalten.</p>
+    <p><a href="/impressum.html">Impressum</a> &nbsp;&middot;&nbsp; <a href="/datenschutz.html">Datenschutz</a> &nbsp;&middot;&nbsp; <a href="/agb.html">AGB</a></p>
   </div>
-
 </footer>
-<script>document.getElementById('yr').textContent = new Date().getFullYear();</script>
+
+<script>
+function setLang(lang) {
+  const isEn = lang === 'en';
+  document.body.classList.toggle('lang-en', isEn);
+  document.querySelectorAll('[data-lang="de"]').forEach(el => { el.style.display = isEn ? 'none' : ''; });
+  document.querySelectorAll('[data-lang="en"]').forEach(el => { el.style.display = isEn ? '' : 'none'; });
+  document.getElementById('btn-de').classList.toggle('active', !isEn);
+  document.getElementById('btn-en').classList.toggle('active', isEn);
+  document.documentElement.lang = lang;
+  sessionStorage.setItem('lang', lang);
+}
+(function() { setLang(sessionStorage.getItem('lang') || 'de'); })();
+function applyTimeMode() {
+  const hour = new Date().getHours();
+  const isDark = hour >= 19 || hour < 7;
+  document.documentElement.setAttribute('data-mode', isDark ? 'dark' : 'light');
+  document.body.style.background = isDark ? '#0a0a0a' : '#f5f2eb';
+  document.body.style.color = isDark ? '#f5f4f0' : '#0a0a0a';
+}
+applyTimeMode();
+setInterval(applyTimeMode, 3600000);
+window.addEventListener('scroll', () => {
+  const p = document.getElementById('scrollProgress');
+  if (p) p.style.width = (window.scrollY / (document.body.scrollHeight - window.innerHeight) * 100) + '%';
+});
+(function(){
+  var btn = document.getElementById('menuBtn');
+  var nav = document.querySelector('.nav-links');
+  if (!btn || !nav) return;
+  btn.addEventListener('click', function(){
+    var open = nav.classList.toggle('open');
+    btn.classList.toggle('open', open);
+    btn.setAttribute('aria-expanded', open);
+  });
+  nav.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){
+      nav.classList.remove('open');
+      btn.classList.remove('open');
+      btn.setAttribute('aria-expanded', 'false');
+    });
+  });
+})();
+</script>
 </body>
 </html>
