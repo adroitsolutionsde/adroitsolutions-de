@@ -230,49 +230,7 @@ html[data-mode="light"] nav img, html[data-mode="light"] footer img { filter:bri
     <p><a href="/impressum.html">Impressum</a> &nbsp;&middot;&nbsp; <a href="/datenschutz.html">Datenschutz</a> &nbsp;&middot;&nbsp; <a href="/agb.html">AGB</a></p>
   </div>
 </footer>
-
-<script>
-function setLang(lang) {
-  const isEn = lang === 'en';
-  document.body.classList.toggle('lang-en', isEn);
-  document.querySelectorAll('[data-lang="de"]').forEach(el => { el.style.display = isEn ? 'none' : ''; });
-  document.querySelectorAll('[data-lang="en"]').forEach(el => { el.style.display = isEn ? '' : 'none'; });
-  document.getElementById('btn-de').classList.toggle('active', !isEn);
-  document.getElementById('btn-en').classList.toggle('active', isEn);
-  document.documentElement.lang = lang;
-  sessionStorage.setItem('lang', lang);
-}
-(function() { setLang(sessionStorage.getItem('lang') || 'de'); })();
-function applyTimeMode() {
-  const hour = new Date().getHours();
-  const isDark = hour >= 19 || hour < 7;
-  document.documentElement.setAttribute('data-mode', isDark ? 'dark' : 'light');
-  document.body.style.background = isDark ? '#0a0a0a' : '#f5f2eb';
-  document.body.style.color = isDark ? '#f5f4f0' : '#0a0a0a';
-}
-applyTimeMode();
-setInterval(applyTimeMode, 3600000);
-window.addEventListener('scroll', () => {
-  const p = document.getElementById('scrollProgress');
-  if (p) p.style.width = (window.scrollY / (document.body.scrollHeight - window.innerHeight) * 100) + '%';
-});
-(function(){
-  var btn = document.getElementById('menuBtn');
-  var nav = document.querySelector('.nav-links');
-  if (!btn || !nav) return;
-  btn.addEventListener('click', function(){
-    var open = nav.classList.toggle('open');
-    btn.classList.toggle('open', open);
-    btn.setAttribute('aria-expanded', open);
-  });
-  nav.querySelectorAll('a').forEach(function(a){
-    a.addEventListener('click', function(){
-      nav.classList.remove('open');
-      btn.classList.remove('open');
-      btn.setAttribute('aria-expanded', 'false');
-    });
-  });
-})();
-</script>
+<script>document.getElementById('yr').textContent = new Date().getFullYear();</script>
+<script src="/cookie-consent.js"></script>
 </body>
 </html>

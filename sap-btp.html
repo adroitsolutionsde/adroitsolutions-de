@@ -631,6 +631,7 @@ function setLang(lang) {
   document.getElementById('btn-de').className = 'lang-btn' + (!isEn ? ' active' : '');
   document.getElementById('btn-en').className = 'lang-btn' + (isEn ? ' active' : '');
   sessionStorage.setItem('adroit-lang', lang);
+  document.dispatchEvent(new Event('lang-changed'));
 }
 const savedLang = sessionStorage.getItem('adroit-lang') || 'de';
 setLang(savedLang);
@@ -690,5 +691,6 @@ setInterval(applyTimeMode, 3600000);
   });
 })();
 </script>
+<script src="/cookie-consent.js"></script>
 </body>
 </html>

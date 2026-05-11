@@ -455,7 +455,7 @@ html[data-mode="light"] .timeline-dot { background: #f5f2eb !important; }
       </div>
       <div class="founder-credentials">
         <div class="credential">MCA — Osmania University</div>
-        <div class="credential">EU Blue Card — Deutschland</div>
+        <div class="credential">EU Blue Card — <span data-lang="de">Deutschland</span><span data-lang="en">Germany</span></div>
         <div class="credential">15+ <span data-lang="de">Jahre Enterprise IT</span><span data-lang="en">Years Enterprise IT</span></div>
         <div class="credential">Düsseldorf, NRW</div>
       </div>
@@ -609,6 +609,7 @@ function setLang(lang) {
   document.getElementById('btn-de').className = 'lang-btn' + (!isEn ? ' active' : '');
   document.getElementById('btn-en').className = 'lang-btn' + (isEn ? ' active' : '');
   sessionStorage.setItem('adroit-lang', lang);
+  document.dispatchEvent(new Event('lang-changed'));
 }
 const savedLang = sessionStorage.getItem('adroit-lang') || 'de';
 setLang(savedLang);
@@ -658,5 +659,6 @@ setInterval(applyTimeMode, 3600000);
   });
 })();
 </script>
+<script src="/cookie-consent.js"></script>
 </body>
 </html>
