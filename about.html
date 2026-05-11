@@ -4,21 +4,20 @@
 <meta charset="UTF-8"/>
 <meta name="color-scheme" content="dark"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Über uns – Adroit Solutions GmbH Düsseldorf</title>
-<meta name="description" content="Adroit Solutions GmbH — IT-Beratung aus Düsseldorf. Gegründet von Gulam Samdani, Senior IT Architect mit 15+ Jahren Erfahrung bei British Airways, Aer Lingus und SITA."/>
+<title>Über uns – Adroit Solutions GmbH i.Gr. Düsseldorf</title>
+<meta name="description" content="Adroit Solutions GmbH i.Gr. — IT-Beratung aus Düsseldorf. Gegründet von Gulam Samdani, Senior IT Architect mit 15+ Jahren Erfahrung bei British Airways, Aer Lingus und SITA."/>
 <link rel="canonical" href="https://adroitsolutions.de/about.html"/>
 <link rel="alternate" hreflang="de" href="https://adroitsolutions.de/about.html"/>
 <link rel="alternate" hreflang="en" href="https://adroitsolutions.de/about.html"/>
 <link rel="alternate" hreflang="x-default" href="https://adroitsolutions.de/about.html"/>
 <meta property="og:type" content="website"/>
 <meta property="og:url" content="https://adroitsolutions.de/about.html"/>
-<meta property="og:site_name" content="Adroit Solutions GmbH"/>
-<meta property="og:title" content="Über uns – Adroit Solutions GmbH Düsseldorf"/>
+<meta property="og:site_name" content="Adroit Solutions GmbH i.Gr."/>
+<meta property="og:title" content="Über uns – Adroit Solutions GmbH i.Gr. Düsseldorf"/>
 <meta property="og:description" content="Founded by Gulam Samdani, Senior IT Architect with 15+ years at British Airways, Aer Lingus, Virgin Australia and SITA. Based in Düsseldorf."/>
 <meta property="og:image" content="https://adroitsolutions.de/adroit-logo.png"/>
 <meta property="og:locale" content="de_DE"/>
-<link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="/fonts/fonts.css"/>
 <style>
 
 html, body {
@@ -189,7 +188,7 @@ html[data-mode="light"] .divider { background: linear-gradient(90deg, transparen
 .menu-btn.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 @media (max-width: 900px) {
   nav { padding: 0.5rem 1.5rem; }
-  .nav-logo img { height: 52px; }
+  .nav-logo img { height: 72px; }
   .breadcrumb { padding-top: 5rem; }
   .menu-btn { display: flex; }
   nav { position: relative; }
@@ -245,11 +244,13 @@ html[data-mode="light"] .divider { background: linear-gradient(90deg, transparen
 .founder-photo-box {
   width: 100%; aspect-ratio: 3/4;
   background:
-    linear-gradient(135deg, rgba(28,28,28,0.4), rgba(28,28,28,0.2)),
-    url('IMG_280C2FB5-114F-479D-9355-F1DA07ACB1CC.jpeg') center top/cover no-repeat;
-  border: 1px solid var(--border);
+    linear-gradient(to bottom, rgba(10,10,10,0) 45%, rgba(10,10,10,0.85) 100%),
+    url('IMG_280C2FB5-114F-479D-9355-F1DA07ACB1CC.jpeg') top center/cover no-repeat;
+  border: 1px solid var(--gold);
   display: flex; flex-direction: column;
   justify-content: flex-end; padding: 2rem;
+  filter: grayscale(15%) contrast(1.05);
+  box-shadow: 0 8px 40px rgba(0,0,0,0.4), inset 0 0 0 1px rgba(201,168,76,0.2);
 }
 .founder-name-card {
   border-top: 1px solid var(--border); padding-top: 1.25rem;
@@ -400,7 +401,7 @@ html[data-mode="light"] .timeline-dot { background: #f5f2eb !important; }
 <div class="scroll-progress" id="scrollProgress"></div>
 <nav id="mainNav">
   <div class="nav-logo">
-    <a href="index.html"><img src="adroit-logo.png" alt="Adroit Solutions GmbH"/></a>
+    <a href="index.html"><img src="adroit-logo.png" alt="Adroit Solutions GmbH i.Gr."/></a>
   </div>
   <div class="nav-right">
     <ul class="nav-links">
@@ -431,12 +432,12 @@ html[data-mode="light"] .timeline-dot { background: #f5f2eb !important; }
   <div data-lang="de">
     <div class="hero-badge">Unser Unternehmen</div>
     <h1>Präzision trifft auf <em>Erfahrung.</em></h1>
-    <p class="lead">Adroit Solutions GmbH ist eine spezialisierte IT-Beratung aus Düsseldorf — gegründet auf 15+ Jahren Enterprise-Erfahrung in der Luftfahrt, im Finanzwesen und in der Technologie.</p>
+    <p class="lead">Adroit Solutions GmbH i.Gr. ist eine spezialisierte IT-Beratung aus Düsseldorf — gegründet auf 15+ Jahren Enterprise-Erfahrung in der Luftfahrt, im Finanzwesen und in der Technologie.</p>
   </div>
   <div data-lang="en">
     <div class="hero-badge">Our Company</div>
     <h1>Precision meets <em>experience.</em></h1>
-    <p class="lead">Adroit Solutions GmbH is a specialist IT consultancy from Düsseldorf — built on 15+ years of enterprise experience in aviation, finance and technology.</p>
+    <p class="lead">Adroit Solutions GmbH i.Gr. is a specialist IT consultancy from Düsseldorf — built on 15+ years of enterprise experience in aviation, finance and technology.</p>
   </div>
 </div>
 
@@ -455,21 +456,21 @@ html[data-mode="light"] .timeline-dot { background: #f5f2eb !important; }
       </div>
       <div class="founder-credentials">
         <div class="credential">MCA — Osmania University</div>
-        <div class="credential">EU Blue Card — Deutschland</div>
+        <div class="credential">EU Blue Card — <span data-lang="de">Deutschland</span><span data-lang="en">Germany</span></div>
         <div class="credential">15+ <span data-lang="de">Jahre Enterprise IT</span><span data-lang="en">Years Enterprise IT</span></div>
         <div class="credential">Düsseldorf, NRW</div>
       </div>
     </div>
     <div class="founder-content reveal-right">
       <div data-lang="de">
-        <p>Gulam Samdani ist der Gründer und leitende Architect von Adroit Solutions GmbH. Mit über <strong>15 Jahren Erfahrung in der Enterprise-IT</strong> hat er komplexe, geschäftskritische Systeme für einige der größten Unternehmen der Welt entworfen und geliefert — darunter British Airways, Aer Lingus, Virgin Australia und SITA.</p>
+        <p>Gulam Samdani ist der Gründer und leitende Architect von Adroit Solutions GmbH i.Gr. Mit über <strong>15 Jahren Erfahrung in der Enterprise-IT</strong> hat er komplexe, geschäftskritische Systeme für einige der größten Unternehmen der Welt entworfen und geliefert — darunter British Airways, Aer Lingus, Virgin Australia und SITA.</p>
         <p>Seine Karriere umspannt Architekturentscheidungen für Millionen von Passagieren täglich, Echtzeit-Buchungssysteme, Flughafen-IT-Infrastruktur und Enterprise-Integrationsprojekte im Finanzsektor. Diese Erfahrung bildet das Fundament von Adroit Solutions.</p>
-        <p>Mit Adroit Solutions GmbH bringt er diese Delivery-Kompetenz in den deutschen Markt — als <strong>spezialisierter Partner für System Integratoren</strong>, die SAP BTP Engineers, Enterprise Architekten und Embedded Systems Spezialisten für ihre aktiven Programme benötigen.</p>
+        <p>Mit Adroit Solutions GmbH i.Gr. bringt er diese Delivery-Kompetenz in den deutschen Markt — als <strong>spezialisierter Partner für System Integratoren</strong>, die SAP BTP Engineers, Enterprise Architekten und Embedded Systems Spezialisten für ihre aktiven Programme benötigen.</p>
       </div>
       <div data-lang="en">
-        <p>Gulam Samdani is the founder and lead architect of Adroit Solutions GmbH. With over <strong>15 years of enterprise IT experience</strong>, he has designed and delivered complex, mission-critical systems for some of the world's largest organisations — including British Airways, Aer Lingus, Virgin Australia and SITA.</p>
+        <p>Gulam Samdani is the founder and lead architect of Adroit Solutions GmbH i.Gr. With over <strong>15 years of enterprise IT experience</strong>, he has designed and delivered complex, mission-critical systems for some of the world's largest organisations — including British Airways, Aer Lingus, Virgin Australia and SITA.</p>
         <p>His career spans architectural decisions affecting millions of passengers daily, real-time booking systems, airport IT infrastructure and enterprise integration projects in financial services. This experience forms the foundation of Adroit Solutions.</p>
-        <p>With Adroit Solutions GmbH, he brings this delivery competency to the German market — as a <strong>specialist partner for System Integrators</strong> requiring SAP BTP engineers, enterprise architects and embedded systems specialists for their active programmes.</p>
+        <p>With Adroit Solutions GmbH i.Gr., he brings this delivery competency to the German market — as a <strong>specialist partner for System Integrators</strong> requiring SAP BTP engineers, enterprise architects and embedded systems specialists for their active programmes.</p>
       </div>
     </div>
   </div>
@@ -511,8 +512,8 @@ html[data-mode="light"] .timeline-dot { background: #f5f2eb !important; }
       <div class="timeline-dot"></div>
       <div>
         <div class="timeline-year">2026</div>
-        <div class="timeline-title"><span data-lang="de">Adroit Solutions GmbH — Gründung</span><span data-lang="en">Adroit Solutions GmbH — Founded</span></div>
-        <div class="timeline-desc"><span data-lang="de">Gründung der Adroit Solutions GmbH in Düsseldorf. Handelsregistereintrag. Aufbau des Multi-Domain-Portfolios: IT-Consulting, SAP BTP, IoT, Embedded Systems, PCB-Handel und DOOH. Parallel: Samim Electronics Ltd (Malta) als Supply-Chain-Arm.</span><span data-lang="en">Founded Adroit Solutions GmbH in Düsseldorf. Handelsregister registration. Building multi-domain portfolio: IT consulting, SAP BTP, IoT, embedded systems, PCB trading and DOOH. Parallel: Samim Electronics Ltd (Malta) as supply chain arm.</span></div>
+        <div class="timeline-title"><span data-lang="de">Adroit Solutions GmbH i.Gr. — Gründung</span><span data-lang="en">Adroit Solutions GmbH i.Gr. — Founded</span></div>
+        <div class="timeline-desc"><span data-lang="de">Gründung der Adroit Solutions GmbH i.Gr. in Düsseldorf. Handelsregistereintrag. Aufbau des Multi-Domain-Portfolios: IT-Consulting, SAP BTP, IoT, Embedded Systems, PCB-Handel und DOOH. Parallel: Samim Electronics Ltd (Malta) als Supply-Chain-Arm.</span><span data-lang="en">Founded Adroit Solutions GmbH i.Gr. in Düsseldorf. Handelsregister registration. Building multi-domain portfolio: IT consulting, SAP BTP, IoT, embedded systems, PCB trading and DOOH. Parallel: Samim Electronics Ltd (Malta) as supply chain arm.</span></div>
       </div>
     </div>
   </div>
@@ -594,11 +595,11 @@ html[data-mode="light"] .timeline-dot { background: #f5f2eb !important; }
 
 <footer>
   <div class="footer-left">
-    <a href="index.html"><img src="adroit-logo.png" alt="Adroit Solutions GmbH"/></a>
+    <a href="index.html"><img src="adroit-logo.png" alt="Adroit Solutions GmbH i.Gr."/></a>
     <p class="footer-tagline">Electronics &middot; IoT &middot; Digital Solutions &middot; Düsseldorf</p>
   </div>
   <div class="footer-legal">
-    <p>&copy; 2026 Adroit Solutions GmbH.</p>
+    <p>&copy; 2026 Adroit Solutions GmbH i.Gr.</p>
     <p><a href="/impressum.html">Impressum</a> &nbsp;&middot;&nbsp; <a href="/datenschutz.html">Datenschutz</a></p>
   </div>
 </footer>
@@ -609,6 +610,7 @@ function setLang(lang) {
   document.getElementById('btn-de').className = 'lang-btn' + (!isEn ? ' active' : '');
   document.getElementById('btn-en').className = 'lang-btn' + (isEn ? ' active' : '');
   sessionStorage.setItem('adroit-lang', lang);
+  document.dispatchEvent(new Event('lang-changed'));
 }
 const savedLang = sessionStorage.getItem('adroit-lang') || 'de';
 setLang(savedLang);
@@ -658,5 +660,6 @@ setInterval(applyTimeMode, 3600000);
   });
 })();
 </script>
+<script src="/cookie-consent.js"></script>
 </body>
 </html>
