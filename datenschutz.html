@@ -7,8 +7,7 @@
 <meta name="robots" content="noindex, follow"/>
 <title>Datenschutz / Privacy Policy – Adroit Solutions GmbH</title>
 <meta name="description" content="Datenschutzerklärung / Privacy Policy – Adroit Solutions GmbH. DSGVO / GDPR compliant."/>
-<link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="/fonts/fonts.css"/>
 <style>
 html, body { background:#0a0a0a !important; color:#f5f4f0 !important; margin:0 !important; padding:0 !important; font-family:'DM Sans',sans-serif !important; font-weight:300; line-height:1.7; overflow-x:hidden; }
 *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
@@ -225,7 +224,7 @@ body.lang-en [data-lang="en"] { display:inline; }
     <table class="legal-tbl">
       <tr><td>Legal basis</td><td>Art. 6 I lit. f GDPR — legitimate interest in secure website operation</td></tr>
       <tr><td>Retention period</td><td>7 days, then automatic deletion</td></tr>
-      <tr><td>Third-country transfer</td><td>GitHub Inc. is certified under the EU-US Data Privacy Framework (DPF)</td></tr>
+      <tr><td>Third-country transfer</td><td>GitHub Inc. is certified under the EU-US Data Privacy Framework (DPF). The transfer is further covered by the EU adequacy decision C(2023)&nbsp;4745 of 10&nbsp;July&nbsp;2023 (Art.&nbsp;45 GDPR).</td></tr>
       <tr><td>GitHub privacy</td><td><a href="https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement" target="_blank" rel="noopener noreferrer">GitHub Privacy Statement ↗</a></td></tr>
     </table>
   </div>
@@ -245,21 +244,11 @@ body.lang-en [data-lang="en"] { display:inline; }
     <p class="sec-eyebrow">5. Cookies &amp; Tracking &nbsp;/&nbsp; Cookies &amp; Tracking-Technologien</p>
     <hr class="sec-rule"/>
     <div class="alert-box">
-      <strong>✓ No cookies. No tracking.</strong>
-      <p>This website does not use cookies or tracking technologies of any kind (no Google Analytics, no Facebook Pixel, no social media plugins). No user profiles are created.</p>
-      <em>Diese Website verwendet keinerlei Cookies oder Tracking-Technologien. Es werden keine Nutzerprofile erstellt.</em>
+      <strong>✓ No tracking. One functional cookie only.</strong>
+      <p>This website does not use analytics, advertising, or tracking cookies (no Google Analytics, no Facebook Pixel, no social media plugins). No user profiles are created.</p>
+      <p>We set <strong>one functional cookie</strong> (<code>adroit-cookie-consent</code>) to store your cookie consent choice. Legal basis: Art.&nbsp;6(1)(c) GDPR / § 25(2) TTDSG (technically necessary).</p>
+      <em>Diese Website verwendet keine Tracking-Cookies. Es wird ein einziges funktionales Cookie (<code>adroit-cookie-consent</code>) gesetzt, um Ihre Cookie-Einwilligung zu speichern. Rechtsgrundlage: Art.&nbsp;6 Abs.&nbsp;1 lit.&nbsp;c DSGVO / § 25 Abs.&nbsp;2 TTDSG.</em>
     </div>
-    <p class="legal-prose">Should we introduce cookies or tracking tools in future, we will request your explicit prior consent in accordance with § 25 TTDSG and Art. 6 GDPR.</p>
-  </div>
-
-  <div class="legal-sec" id="s6">
-    <p class="sec-eyebrow">6. External Resources &nbsp;/&nbsp; Externe Ressourcen &amp; Schriftarten</p>
-    <hr class="sec-rule"/>
-    <div class="alert-box alert-info">
-      <strong>Google Fonts loaded externally.</strong>
-      <p>This website loads fonts from Google Fonts (Google LLC, USA). When the page is accessed, your browser establishes a connection to Google's servers. Google may process your IP address in this context. For details, see <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google Privacy Policy ↗</a>.</p>
-    </div>
-    <p class="legal-prose">No social media plugins, map services, or other external scripts are embedded that would transmit data to third parties without your explicit consent.</p>
   </div>
 
   <div class="legal-sec" id="s7">
@@ -295,7 +284,7 @@ body.lang-en [data-lang="en"] { display:inline; }
     <p class="sec-eyebrow">9. Data Security &amp; Policy Currency &nbsp;/&nbsp; Datensicherheit</p>
     <hr class="sec-rule"/>
     <p class="legal-prose">This website uses <strong>HTTPS encryption (TLS)</strong>. We employ technical and organisational security measures to protect your data against accidental or intentional manipulation, loss, destruction, or unauthorised access.</p>
-    <p class="legal-prose"><strong>Policy currency:</strong> This privacy policy is currently valid. Last updated: <strong id="ds"></strong>. The latest version is always available at <a href="/datenschutz.html">www.adroitsolutions.de/datenschutz.html</a>.</p>
+    <p class="legal-prose"><strong>Policy currency:</strong> This privacy policy is currently valid. Last updated: <strong>11 May 2026</strong>. The latest version is always available at <a href="/datenschutz.html">www.adroitsolutions.de/datenschutz.html</a>.</p>
   </div>
 
 </div>
@@ -332,7 +321,7 @@ function applyTimeMode() {
 }
 applyTimeMode();
 setInterval(applyTimeMode, 3600000);
-document.getElementById('ds').textContent = new Date().toLocaleDateString('en-GB', {day:'numeric',month:'long',year:'numeric'});
+
 window.addEventListener('scroll', () => {
   const p = document.getElementById('scrollProgress');
   if (p) p.style.width = (window.scrollY / (document.body.scrollHeight - window.innerHeight) * 100) + '%';
