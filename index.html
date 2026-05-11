@@ -228,9 +228,41 @@ footer {
 .footer-legal a { color: rgba(245,244,240,0.4); text-decoration: none; }
 .footer-legal a:hover { color: var(--gold); }
 
+
+/* ── HAMBURGER MENU ── */
+.menu-btn {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  margin-left: 0.5rem;
+  flex-shrink: 0;
+}
+.menu-btn span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: rgba(245,244,240,0.75);
+  border-radius: 1px;
+  transition: all 0.25s ease;
+}
+.menu-btn.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.menu-btn.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.menu-btn.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 @media (max-width: 900px) {
   nav { padding: 1rem 1.5rem; }
-  .nav-links { display: none; }
+  .menu-btn { display: flex; }
+  nav { position: relative; }
+  .nav-links { display: none; position: absolute; top: 100%; left: 0; right: 0; z-index: 99; background: rgba(10,10,10,0.98); border-top: 1px solid rgba(201,168,76,0.2); flex-direction: column; padding: 0.5rem 0; gap: 0; list-style: none; }
+  .nav-links.open { display: flex; }
+  .nav-links li { border-bottom: 1px solid rgba(255,255,255,0.06); }
+  .nav-links li:last-child { border-bottom: none; }
+  .nav-links a { padding: 0.9rem 1.5rem !important; display: block; }
+  .nav-links a::after { display: none !important; }
   section { padding: 4rem 1.5rem; }
   .hero { padding: 7rem 1.5rem 4rem; }
   .why-grid, .contact-grid, .legal-cols { grid-template-columns: 1fr; gap: 2.5rem; }
@@ -453,6 +485,9 @@ html[data-mode="light"] .service-card:nth-child(6) {
       <button class="lang-btn active" id="btn-de" onclick="setLang('de')">DE</button>
       <button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button>
     </div>
+        <button class="menu-btn" id="menuBtn" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </button>
   </div>
 </nav>
 
@@ -856,6 +891,25 @@ function applyTimeMode() {
 
 applyTimeMode();
 setInterval(applyTimeMode, 60 * 60 * 1000);
+
+// Mobile menu toggle
+(function(){
+  var btn = document.getElementById('menuBtn');
+  var nav = document.querySelector('.nav-links');
+  if (!btn || !nav) return;
+  btn.addEventListener('click', function(){
+    var open = nav.classList.toggle('open');
+    btn.classList.toggle('open', open);
+    btn.setAttribute('aria-expanded', open);
+  });
+  nav.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){
+      nav.classList.remove('open');
+      btn.classList.remove('open');
+      btn.setAttribute('aria-expanded', 'false');
+    });
+  });
+})();
 </script>
 </body>
 </html>
