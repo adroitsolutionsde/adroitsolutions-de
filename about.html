@@ -244,11 +244,13 @@ html[data-mode="light"] .divider { background: linear-gradient(90deg, transparen
 .founder-photo-box {
   width: 100%; aspect-ratio: 3/4;
   background:
-    linear-gradient(135deg, rgba(28,28,28,0.9), rgba(28,28,28,0.7)),
-    url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=80&auto=format&fit=crop') center/cover no-repeat;
-  border: 1px solid var(--border);
+    linear-gradient(to bottom, rgba(10,10,10,0) 45%, rgba(10,10,10,0.85) 100%),
+    url('IMG_3222.jpeg') top center/cover no-repeat;
+  border: 1px solid var(--gold);
   display: flex; flex-direction: column;
   justify-content: flex-end; padding: 2rem;
+  filter: grayscale(15%) contrast(1.05);
+  box-shadow: 0 8px 40px rgba(0,0,0,0.4), inset 0 0 0 1px rgba(201,168,76,0.2);
 }
 .founder-name-card {
   border-top: 1px solid var(--border); padding-top: 1.25rem;
