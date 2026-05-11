@@ -5,10 +5,9 @@
 <meta name="color-scheme" content="dark"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <meta name="robots" content="noindex, follow"/>
-<title>Impressum / Imprint – Adroit Solutions GmbH</title>
-<meta name="description" content="Impressum – Adroit Solutions GmbH, Düsseldorf. Angaben gemäß § 5 TMG."/>
-<link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<title>Impressum / Imprint – Adroit Solutions GmbH i.Gr.</title>
+<meta name="description" content="Impressum – Adroit Solutions GmbH i.Gr., Düsseldorf. Angaben gemäß § 5 TMG."/>
+  <link rel="stylesheet" href="/fonts/fonts.css"/>
 <style>
 html, body { background:#0a0a0a !important; color:#f5f4f0 !important; margin:0 !important; padding:0 !important; font-family:'DM Sans',sans-serif !important; font-weight:300; line-height:1.7; overflow-x:hidden; }
 *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
@@ -73,7 +72,7 @@ footer { background:rgba(10,10,10,0.9); border-top:1px solid var(--border); padd
   .nav-links li { border-bottom:1px solid rgba(255,255,255,0.06); }
   .nav-links a { padding:0.9rem 1.5rem !important; display:block; }
   .nav-links a::after { display:none !important; }
-  .nav-logo img { height:52px; }
+  .nav-logo img { height: 72px; }
   .menu-btn { display:flex; }
   .page-hero { padding:2rem 1.5rem 1.5rem; }
   .legal-wrap { padding:2rem 1.5rem 4rem; }
@@ -110,7 +109,7 @@ body.lang-en [data-lang="en"] { display:inline; }
 <div class="scroll-progress" id="scrollProgress"></div>
 <nav>
   <div class="nav-logo">
-    <a href="index.html"><img src="adroit-logo.png" alt="Adroit Solutions GmbH"/></a>
+    <a href="index.html"><img src="adroit-logo.png" alt="Adroit Solutions GmbH i.Gr."/></a>
   </div>
   <div class="nav-right">
     <ul class="nav-links">
@@ -134,7 +133,7 @@ body.lang-en [data-lang="en"] { display:inline; }
 <div class="page-hero">
   <p class="page-eyebrow">Legal Notice &nbsp;/&nbsp; Rechtliche Informationen</p>
   <h1 class="page-title">Impressum <em style="font-style:italic;opacity:0.5;">/</em> Imprint</h1>
-  <p class="page-sub">Adroit Solutions GmbH &nbsp;·&nbsp; Düsseldorf, Germany &nbsp;·&nbsp; Angaben gemäß § 5 TMG</p>
+  <p class="page-sub">Adroit Solutions GmbH i.Gr. &nbsp;·&nbsp; Düsseldorf, Germany &nbsp;·&nbsp; Angaben gemäß § 5 TMG</p>
 </div>
 <hr class="page-divider"/>
 
@@ -144,7 +143,7 @@ body.lang-en [data-lang="en"] { display:inline; }
     <p class="sec-eyebrow">Information According to § 5 TMG &nbsp;/&nbsp; Angaben gemäß § 5 TMG</p>
     <hr class="sec-rule"/>
     <table class="legal-tbl">
-      <tr><td>Company</td><td>Adroit Solutions GmbH</td></tr>
+      <tr><td>Company</td><td>Adroit Solutions GmbH i.Gr.</td></tr>
       <tr><td>Address</td><td>Königsallee 27<br/>40212 Düsseldorf<br/>Germany</td></tr>
       <tr><td>Legal form</td><td>Gesellschaft mit beschränkter Haftung (GmbH)</td></tr>
     </table>
@@ -201,7 +200,7 @@ body.lang-en [data-lang="en"] { display:inline; }
     <p class="sec-eyebrow">EU Dispute Resolution &nbsp;/&nbsp; EU-Streitbeilegung</p>
     <hr class="sec-rule"/>
     <p class="legal-prose">The European Commission provides a platform for online dispute resolution (ODR): <a href="https://ec.europa.eu/consumers/odr/" target="_blank" rel="noopener noreferrer">https://ec.europa.eu/consumers/odr/</a></p>
-    <p class="legal-prose">As Adroit Solutions GmbH operates exclusively in the B2B sector, we are neither willing nor obliged to participate in consumer dispute resolution proceedings before a consumer arbitration board.</p>
+    <p class="legal-prose">As Adroit Solutions GmbH i.Gr. operates exclusively in the B2B sector, we are neither willing nor obliged to participate in consumer dispute resolution proceedings before a consumer arbitration board.</p>
   </div>
 
   <div class="legal-sec">
@@ -216,57 +215,15 @@ body.lang-en [data-lang="en"] { display:inline; }
 
 <footer>
   <div class="footer-left">
-    <a href="index.html"><img src="adroit-logo.png" alt="Adroit Solutions GmbH"/></a>
+    <a href="index.html"><img src="adroit-logo.png" alt="Adroit Solutions GmbH i.Gr."/></a>
     <p class="footer-tagline">Electronics &middot; IoT &middot; Digital Solutions &middot; Düsseldorf, Deutschland</p>
   </div>
   <div class="footer-legal">
-    <p>&copy; 2026 Adroit Solutions GmbH. Alle Rechte vorbehalten.</p>
+    <p>&copy; 2026 Adroit Solutions GmbH i.Gr. Alle Rechte vorbehalten.</p>
     <p><a href="/impressum.html">Impressum</a> &nbsp;&middot;&nbsp; <a href="/datenschutz.html">Datenschutz</a> &nbsp;&middot;&nbsp; <a href="/agb.html">AGB</a></p>
   </div>
 </footer>
-
-<script>
-function setLang(lang) {
-  const isEn = lang === 'en';
-  document.body.classList.toggle('lang-en', isEn);
-  document.querySelectorAll('[data-lang="de"]').forEach(el => { el.style.display = isEn ? 'none' : ''; });
-  document.querySelectorAll('[data-lang="en"]').forEach(el => { el.style.display = isEn ? '' : 'none'; });
-  document.getElementById('btn-de').classList.toggle('active', !isEn);
-  document.getElementById('btn-en').classList.toggle('active', isEn);
-  document.documentElement.lang = lang;
-  sessionStorage.setItem('lang', lang);
-}
-(function() { setLang(sessionStorage.getItem('lang') || 'de'); })();
-function applyTimeMode() {
-  const hour = new Date().getHours();
-  const isDark = hour >= 19 || hour < 7;
-  document.documentElement.setAttribute('data-mode', isDark ? 'dark' : 'light');
-  document.body.style.background = isDark ? '#0a0a0a' : '#f5f2eb';
-  document.body.style.color = isDark ? '#f5f4f0' : '#0a0a0a';
-}
-applyTimeMode();
-setInterval(applyTimeMode, 3600000);
-window.addEventListener('scroll', () => {
-  const p = document.getElementById('scrollProgress');
-  if (p) p.style.width = (window.scrollY / (document.body.scrollHeight - window.innerHeight) * 100) + '%';
-});
-(function(){
-  var btn = document.getElementById('menuBtn');
-  var nav = document.querySelector('.nav-links');
-  if (!btn || !nav) return;
-  btn.addEventListener('click', function(){
-    var open = nav.classList.toggle('open');
-    btn.classList.toggle('open', open);
-    btn.setAttribute('aria-expanded', open);
-  });
-  nav.querySelectorAll('a').forEach(function(a){
-    a.addEventListener('click', function(){
-      nav.classList.remove('open');
-      btn.classList.remove('open');
-      btn.setAttribute('aria-expanded', 'false');
-    });
-  });
-})();
-</script>
+<script>document.getElementById('yr').textContent = new Date().getFullYear();</script>
+<script src="/cookie-consent.js"></script>
 </body>
 </html>

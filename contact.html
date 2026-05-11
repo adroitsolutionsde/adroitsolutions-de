@@ -4,21 +4,20 @@
 <meta charset="UTF-8"/>
 <meta name="color-scheme" content="dark"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Kontakt – Adroit Solutions GmbH Düsseldorf</title>
-<meta name="description" content="Kontaktieren Sie Adroit Solutions GmbH in Düsseldorf. SAP BTP Subcontracting, IT-Architektur, IoT und Embedded Systems. Antwort innerhalb von 24 Stunden."/>
+<title>Kontakt – Adroit Solutions GmbH i.Gr. Düsseldorf</title>
+<meta name="description" content="Kontaktieren Sie Adroit Solutions GmbH i.Gr. in Düsseldorf. SAP BTP Subcontracting, IT-Architektur, IoT und Embedded Systems. Antwort innerhalb von 24 Stunden."/>
 <link rel="canonical" href="https://adroitsolutions.de/contact.html"/>
 <link rel="alternate" hreflang="de" href="https://adroitsolutions.de/contact.html"/>
 <link rel="alternate" hreflang="en" href="https://adroitsolutions.de/contact.html"/>
 <link rel="alternate" hreflang="x-default" href="https://adroitsolutions.de/contact.html"/>
 <meta property="og:type" content="website"/>
 <meta property="og:url" content="https://adroitsolutions.de/contact.html"/>
-<meta property="og:site_name" content="Adroit Solutions GmbH"/>
-<meta property="og:title" content="Kontakt – Adroit Solutions GmbH Düsseldorf"/>
-<meta property="og:description" content="Contact Adroit Solutions GmbH in Düsseldorf. SAP BTP subcontracting, IT architecture, IoT and embedded systems. Response within 24 hours."/>
+<meta property="og:site_name" content="Adroit Solutions GmbH i.Gr."/>
+<meta property="og:title" content="Kontakt – Adroit Solutions GmbH i.Gr. Düsseldorf"/>
+<meta property="og:description" content="Contact Adroit Solutions GmbH i.Gr. in Düsseldorf. SAP BTP subcontracting, IT architecture, IoT and embedded systems. Response within 24 hours."/>
 <meta property="og:image" content="https://adroitsolutions.de/adroit-logo.png"/>
 <meta property="og:locale" content="de_DE"/>
-<link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="/fonts/fonts.css"/>
 <style>
 
 html, body {
@@ -189,7 +188,7 @@ html[data-mode="light"] .divider { background: linear-gradient(90deg, transparen
 .menu-btn.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 @media (max-width: 900px) {
   nav { padding: 0.5rem 1.5rem; }
-  .nav-logo img { height: 52px; }
+  .nav-logo img { height: 72px; }
   .breadcrumb { padding-top: 5rem; }
   .menu-btn { display: flex; }
   nav { position: relative; }
@@ -343,13 +342,17 @@ html[data-mode="light"] .form-note { color: rgba(10,10,10,0.4) !important; }
   .form-row { grid-template-columns: 1fr; }
   .page-hero { padding-left: 1.5rem; padding-right: 1.5rem; }
 }
+.form-field.error input, .form-field.error select, .form-field.error textarea {
+  border-color: #e04444 !important;
+  box-shadow: 0 0 0 2px rgba(224,68,68,0.15) !important;
+}
 </style>
 </head>
 <body>
 <div class="scroll-progress" id="scrollProgress"></div>
 <nav id="mainNav">
   <div class="nav-logo">
-    <a href="index.html"><img src="adroit-logo.png" alt="Adroit Solutions GmbH"/></a>
+    <a href="index.html"><img src="adroit-logo.png" alt="Adroit Solutions GmbH i.Gr."/></a>
   </div>
   <div class="nav-right">
     <ul class="nav-links">
@@ -432,7 +435,7 @@ html[data-mode="light"] .form-note { color: rgba(10,10,10,0.4) !important; }
       </div>
       <div class="contact-block">
         <h4><span data-lang="de">Büro</span><span data-lang="en">Office</span></h4>
-        <p>Adroit Solutions GmbH<br/>Königsallee 27<br/>40212 Düsseldorf<br/><span data-lang="de">Deutschland</span><span data-lang="en">Germany</span></p>
+        <p>Adroit Solutions GmbH i.Gr.<br/>Königsallee 27<br/>40212 Düsseldorf<br/><span data-lang="de">Deutschland</span><span data-lang="en">Germany</span></p>
       </div>
       <div class="contact-block">
         <h4>E-Mail</h4>
@@ -460,8 +463,8 @@ html[data-mode="light"] .form-note { color: rgba(10,10,10,0.4) !important; }
     <div class="contact-form reveal-right" id="contactForm">
       <div class="form-row">
         <div class="form-field">
-          <label for="firstName"><span data-lang="de">Vorname</span><span data-lang="en">First Name</span></label>
-          <input type="text" id="firstName" placeholder="Max" required maxlength="100"/>
+          <label><span data-lang="de">Vorname</span><span data-lang="en">First Name</span> <span class="req">*</span></label>
+          <input type="text" id="firstName" placeholder="Max"/>
         </div>
         <div class="form-field">
           <label for="lastName"><span data-lang="de">Nachname</span><span data-lang="en">Last Name</span></label>
@@ -479,8 +482,8 @@ html[data-mode="light"] .form-note { color: rgba(10,10,10,0.4) !important; }
         </div>
       </div>
       <div class="form-field">
-        <label for="email">E-Mail</label>
-        <input type="email" id="email" placeholder="max@unternehmen.de" required maxlength="254"/>
+        <label>E-Mail <span class="req">*</span></label>
+        <input type="email" id="email" placeholder="max@unternehmen.de"/>
       </div>
       <div class="form-field">
         <label for="phone"><span data-lang="de">Telefon (optional)</span><span data-lang="en">Phone (optional)</span></label>
@@ -498,11 +501,14 @@ html[data-mode="light"] .form-note { color: rgba(10,10,10,0.4) !important; }
         </select>
       </div>
       <div class="form-field">
-        <label for="message"><span data-lang="de">Ihre Nachricht</span><span data-lang="en">Your Message</span></label>
-        <textarea id="message" placeholder="Kurze Beschreibung Ihres Bedarfs, gewünschter Starttermin, Projektlaufzeit und Standort..." required maxlength="2000"></textarea>
+        <label><span data-lang="de">Ihre Nachricht</span><span data-lang="en">Your Message</span> <span class="req">*</span></label>
+        <textarea id="message" placeholder="Kurze Beschreibung Ihres Bedarfs, gewünschter Starttermin, Projektlaufzeit und Standort..."></textarea>
       </div>
       <div class="form-submit">
-        <p class="form-note"><span data-lang="de">Ihre Daten werden vertraulich behandelt und nicht weitergegeben.</span><span data-lang="en">Your data is treated confidentially and not shared with third parties.</span></p>
+        <p class="form-note">
+          <span data-lang="de">Ihre Angaben werden ausschließlich zur Bearbeitung Ihrer Anfrage verwendet (Rechtsgrundlage: Art.&nbsp;6 Abs.&nbsp;1 lit.&nbsp;b DSGVO). Wir speichern Ihre Daten für maximal 6&nbsp;Monate nach Abschluss des Kontaktvorgangs. Keine Weitergabe an Dritte. <a href="/datenschutz.html" style="color:var(--gold);text-decoration:underline">Datenschutzerklärung</a></span>
+          <span data-lang="en">Your data is processed solely to handle your enquiry (legal basis: Art.&nbsp;6(1)(b) GDPR). We retain it for up to 6&nbsp;months after the end of the contact process. No disclosure to third parties. <a href="/datenschutz.html" style="color:var(--gold);text-decoration:underline">Privacy Policy</a></span>
+        </p>
         <a id="submitBtn" href="#" class="btn-primary" onclick="submitForm(event)">
           <span data-lang="de">Nachricht senden</span><span data-lang="en">Send Message</span>
         </a>
@@ -513,11 +519,11 @@ html[data-mode="light"] .form-note { color: rgba(10,10,10,0.4) !important; }
 
 <footer>
   <div class="footer-left">
-    <a href="index.html"><img src="adroit-logo.png" alt="Adroit Solutions GmbH"/></a>
+    <a href="index.html"><img src="adroit-logo.png" alt="Adroit Solutions GmbH i.Gr."/></a>
     <p class="footer-tagline">Electronics &middot; IoT &middot; Digital Solutions &middot; Düsseldorf</p>
   </div>
   <div class="footer-legal">
-    <p>&copy; 2026 Adroit Solutions GmbH.</p>
+    <p>&copy; 2026 Adroit Solutions GmbH i.Gr.</p>
     <p><a href="/impressum.html">Impressum</a> &nbsp;&middot;&nbsp; <a href="/datenschutz.html">Datenschutz</a></p>
   </div>
 </footer>
@@ -529,6 +535,7 @@ function setLang(lang) {
   document.getElementById('btn-de').className = 'lang-btn' + (!isEn ? ' active' : '');
   document.getElementById('btn-en').className = 'lang-btn' + (isEn ? ' active' : '');
   sessionStorage.setItem('adroit-lang', lang);
+  document.dispatchEvent(new Event('lang-changed'));
 }
 const savedLang = sessionStorage.getItem('adroit-lang') || 'de';
 setLang(savedLang);
@@ -561,60 +568,57 @@ setInterval(applyTimeMode, 3600000);
 
 function submitForm(e) {
   e.preventDefault();
-  const first = document.getElementById('firstName').value.trim();
-  const last = document.getElementById('lastName').value.trim();
-  const company = document.getElementById('company').value.trim();
-  const jobTitle = document.getElementById('jobTitle').value.trim();
-  const email = document.getElementById('email').value.trim();
-  const phone = document.getElementById('phone').value.trim();
-  const type = document.getElementById('enquiryType').value;
-  const msg = document.getElementById('message').value.trim();
-  const lang = document.documentElement.lang || 'de';
-  const emailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-  if (!first || !email || !msg) {
-    alert(lang === 'en' ? 'Please fill in First Name, Email and Message.' : 'Bitte Vorname, E-Mail und Nachricht ausfüllen.');
+  var isEn = document.body.classList.contains('lang-en');
+  var first = document.getElementById('firstName').value.trim();
+  var last = document.getElementById('lastName').value.trim();
+  var email = document.getElementById('email').value.trim();
+  var company = document.getElementById('company').value.trim();
+  var jobTitle = (document.getElementById('jobTitle') || {value:''}).value.trim();
+  var phone = (document.getElementById('phone') || {value:''}).value.trim();
+  var type = document.getElementById('enquiryType').value;
+  var msg = document.getElementById('message').value.trim();
+
+  document.querySelectorAll('.contact-form .form-field').forEach(function(f){ f.classList.remove('error'); });
+  var errEl = document.getElementById('formError');
+  if (errEl) errEl.remove();
+
+  var hasErr = false;
+  if (!first) { document.getElementById('firstName').closest('.form-field').classList.add('error'); hasErr = true; }
+  if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { document.getElementById('email').closest('.form-field').classList.add('error'); hasErr = true; }
+  if (!msg) { document.getElementById('message').closest('.form-field').classList.add('error'); hasErr = true; }
+  if (hasErr) {
+    var p = document.createElement('p');
+    p.id = 'formError';
+    p.style.cssText = 'color:#e04444;font-size:0.85rem;margin:0;';
+    p.textContent = isEn ? 'Please fill in all required fields (*).' : 'Bitte alle Pflichtfelder (*) ausfüllen.';
+    document.querySelector('.form-submit').prepend(p);
+    document.querySelector('.contact-form .form-field.error').scrollIntoView({behavior:'smooth', block:'center'});
     return;
   }
-  if (!emailValid) {
-    alert(lang === 'en' ? 'Please enter a valid email address.' : 'Bitte eine gültige E-Mail-Adresse eingeben.');
-    return;
-  }
-  const btn = document.getElementById('submitBtn');
-  btn.style.opacity = '0.6';
-  btn.style.pointerEvents = 'none';
-  fetch('https://api.web3forms.com/submit', {
-    method: 'POST',
-    headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
-    body: JSON.stringify({
-      access_key: 'e065deaf-d1d6-40bc-9d75-e54e26158241',
-      subject: 'Anfrage: ' + (type || 'Adroit Solutions') + ' — ' + (company || first + ' ' + last),
-      from_name: first + ' ' + last,
-      email: email,
-      'Unternehmen': company,
-      'Position': jobTitle,
-      'Telefon': phone,
-      'Art der Anfrage': type,
-      'Nachricht': msg
-    })
-  })
-  .then(r => r.json())
-  .then(data => {
-    const form = document.getElementById('contactForm');
-    if (data.success) {
-      form.innerHTML = '<div style="padding:2rem 0;text-align:center;"><p style="font-size:1.5rem;color:var(--gold);margin-bottom:0.75rem;">✓</p><p style="font-size:1rem;">' +
-        (lang === 'en' ? 'Thank you! Your message has been sent. We will get back to you shortly.' : 'Danke! Ihre Nachricht wurde gesendet. Wir melden uns in Kürze.') +
-        '</p></div>';
-    } else {
-      btn.style.opacity = '';
-      btn.style.pointerEvents = '';
-      alert(lang === 'en' ? 'Something went wrong. Please try again.' : 'Etwas ist schiefgelaufen. Bitte erneut versuchen.');
-    }
-  })
-  .catch(() => {
-    btn.style.opacity = '';
-    btn.style.pointerEvents = '';
-    alert(lang === 'en' ? 'Network error. Please try again.' : 'Netzwerkfehler. Bitte erneut versuchen.');
-  });
+
+  var name = (first + ' ' + last).trim();
+  var subject = encodeURIComponent((isEn ? 'Enquiry: ' : 'Anfrage: ') + (type || 'Adroit Solutions') + ' — ' + (company || name));
+  var bodyLines = [
+    'Name: ' + name,
+    (isEn ? 'Company: ' : 'Unternehmen: ') + company,
+    (isEn ? 'Job Title: ' : 'Position: ') + jobTitle,
+    'E-Mail: ' + email,
+    (isEn ? 'Phone: ' : 'Telefon: ') + (phone || '—'),
+    (isEn ? 'Enquiry Type: ' : 'Art der Anfrage: ') + (type || '—'),
+    '',
+    (isEn ? 'Message:' : 'Nachricht:'),
+    msg
+  ];
+  window.location.href = 'mailto:samdani.gulam@adroitsolutions.de?subject=' + subject + '&body=' + encodeURIComponent(bodyLines.join('\n'));
+
+  var form = document.getElementById('contactForm');
+  setTimeout(function(){
+    form.innerHTML = '<div style="text-align:center;padding:3rem 1rem">' +
+      '<svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="#c9a84c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin:0 auto 1.2rem;display:block"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>' +
+      '<h3 style="color:#c9a84c;margin-bottom:0.6rem">' + (isEn ? 'Message sent!' : 'Nachricht gesendet!') + '</h3>' +
+      '<p style="opacity:0.65;max-width:340px;margin:0 auto">' + (isEn ? 'Thank you for your enquiry. We will be in touch within 1–2 business days.' : 'Vielen Dank für Ihre Anfrage. Wir melden uns innerhalb von 1–2 Werktagen.') + '</p>' +
+    '</div>';
+  }, 800);
 }
 
 // Mobile menu toggle
@@ -636,5 +640,6 @@ function submitForm(e) {
   });
 })();
 </script>
+<script src="/cookie-consent.js"></script>
 </body>
 </html>

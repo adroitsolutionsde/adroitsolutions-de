@@ -4,10 +4,9 @@
 <meta charset="UTF-8"/>
 <meta name="color-scheme" content="dark"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>SAP BTP Engineering – Adroit Solutions GmbH Düsseldorf</title>
-<meta name="description" content="SAP BTP Engineering Subcontracting für System Integratoren in Deutschland. CAP, RAP, Fiori, HANA Cloud — 2-Wochen-Mobilisierung, kein Bench-Overhead. Adroit Solutions GmbH, Düsseldorf."/>
-<link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<title>SAP BTP Engineering – Adroit Solutions GmbH i.Gr. Düsseldorf</title>
+<meta name="description" content="SAP BTP Engineering Subcontracting für System Integratoren in Deutschland. CAP, RAP, Fiori, HANA Cloud — 2-Wochen-Mobilisierung, kein Bench-Overhead. Adroit Solutions GmbH i.Gr., Düsseldorf."/>
+  <link rel="stylesheet" href="/fonts/fonts.css"/>
 <style>
 html, body {
   background: #0a0a0a !important;
@@ -372,7 +371,7 @@ html[data-mode="light"] .btn-outline { border-color: rgba(10,10,10,0.3) !importa
 .menu-btn.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 @media (max-width: 900px) {
   nav { padding: 0.5rem 1.5rem; }
-  .nav-logo img { height: 52px; }
+  .nav-logo img { height: 72px; }
   .breadcrumb { padding-top: 5rem; }
   .menu-btn { display: flex; }
   nav { position: relative; }
@@ -400,7 +399,7 @@ html[data-mode="light"] .btn-outline { border-color: rgba(10,10,10,0.3) !importa
 <!-- NAV -->
 <nav id="mainNav">
   <div class="nav-logo">
-    <a href="index.html"><img src="adroit-logo.png" alt="Adroit Solutions GmbH"/></a>
+    <a href="index.html"><img src="adroit-logo.png" alt="Adroit Solutions GmbH i.Gr."/></a>
   </div>
   <div class="nav-right">
     <ul class="nav-links">
@@ -615,11 +614,11 @@ html[data-mode="light"] .btn-outline { border-color: rgba(10,10,10,0.3) !importa
 <!-- FOOTER -->
 <footer>
   <div class="footer-left">
-    <a href="index.html"><img src="adroit-logo.png" alt="Adroit Solutions GmbH"/></a>
+    <a href="index.html"><img src="adroit-logo.png" alt="Adroit Solutions GmbH i.Gr."/></a>
     <p class="footer-tagline">Electronics &middot; IoT &middot; Digital Solutions &middot; Düsseldorf</p>
   </div>
   <div class="footer-legal">
-    <p>&copy; 2026 Adroit Solutions GmbH.</p>
+    <p>&copy; 2026 Adroit Solutions GmbH i.Gr.</p>
     <p><a href="/impressum.html">Impressum</a> &nbsp;&middot;&nbsp; <a href="/datenschutz.html">Datenschutz</a></p>
   </div>
 </footer>
@@ -631,6 +630,7 @@ function setLang(lang) {
   document.getElementById('btn-de').className = 'lang-btn' + (!isEn ? ' active' : '');
   document.getElementById('btn-en').className = 'lang-btn' + (isEn ? ' active' : '');
   sessionStorage.setItem('adroit-lang', lang);
+  document.dispatchEvent(new Event('lang-changed'));
 }
 const savedLang = sessionStorage.getItem('adroit-lang') || 'de';
 setLang(savedLang);
@@ -690,5 +690,6 @@ setInterval(applyTimeMode, 3600000);
   });
 })();
 </script>
+<script src="/cookie-consent.js"></script>
 </body>
 </html>
