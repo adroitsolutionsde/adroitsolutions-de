@@ -1,161 +1,179 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="de" style="background:#0a0a0a !important">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="robots" content="noindex, follow">
-  <meta name="description" content="Datenschutzerklärung / Privacy Policy – Adroit Solutions GmbH. DSGVO / GDPR compliant.">
-  <title>Data Protection / Datenschutz – Adroit Solutions GmbH</title>
-  <style>
-    :root {
-      --ink:     #0A1628;
-      --gold:    #C9A84C;
-      --gold-d:  #a8872e;
-      --mid:     #1A3A5C;
-      --surface: #F5F7FA;
-      --border:  #DDE3EC;
-      --muted:   #6B7280;
-      --white:   #FFFFFF;
-      --max:     860px;
-      --r:       5px;
-    }
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body {
-      background: #e8ecf2;
-      color: #2D2D2D;
-      font-family: "Georgia", "Times New Roman", serif;
-      font-size: 16px;
-      line-height: 1.75;
-    }
+<meta charset="UTF-8"/>
+<meta name="color-scheme" content="dark"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="robots" content="noindex, follow"/>
+<title>Datenschutz / Privacy Policy – Adroit Solutions GmbH</title>
+<meta name="description" content="Datenschutzerklärung / Privacy Policy – Adroit Solutions GmbH. DSGVO / GDPR compliant."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+html, body { background:#0a0a0a !important; color:#f5f4f0 !important; margin:0 !important; padding:0 !important; font-family:'DM Sans',sans-serif !important; font-weight:300; line-height:1.7; overflow-x:hidden; }
+*, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
+:root { --black:#0a0a0a; --white:#f5f4f0; --gold:#c9a84c; --gold-light:#e8c97a; --mid:#1c1c1c; --border:rgba(201,168,76,0.2); }
+html { scroll-behavior:smooth; }
 
-    /* ── TOPBAR ── */
-    .topbar {
-      background: var(--ink);
-      border-bottom: 1px solid rgba(201,168,76,.18);
-      padding: 0 40px; height: 58px;
-      display: flex; align-items: center; justify-content: space-between;
-      position: sticky; top: 0; z-index: 200;
-    }
-    .topbar-logo { font-family:"Trebuchet MS",sans-serif; font-size:.95rem; font-weight:700; color:var(--white); text-decoration:none; letter-spacing:.1em; text-transform:uppercase; }
-    .topbar-logo span { color: var(--gold); }
-    .topbar-back { font-family:"Trebuchet MS",sans-serif; font-size:.75rem; color:rgba(255,255,255,.55); text-decoration:none; letter-spacing:.08em; text-transform:uppercase; border:1px solid rgba(255,255,255,.15); padding:6px 16px; border-radius:var(--r); transition:border-color .2s,color .2s; }
-    .topbar-back:hover { border-color:var(--gold); color:var(--gold); }
+.scroll-progress { position:fixed; top:0; left:0; z-index:200; height:2px; width:0%; background:linear-gradient(90deg,var(--gold),var(--gold-light)); transition:width 0.1s linear; }
 
-    /* ── HERO ── */
-    .hero { background:var(--ink); border-bottom:3px solid var(--gold); padding:56px 40px 44px; text-align:center; }
-    .hero-eyebrow { font-family:"Trebuchet MS",sans-serif; font-size:.68rem; letter-spacing:.26em; text-transform:uppercase; color:var(--gold); margin-bottom:14px; }
-    .hero h1 { font-family:"Trebuchet MS",sans-serif; font-size:clamp(1.6rem,3.5vw,2.3rem); font-weight:700; color:var(--white); letter-spacing:.05em; text-transform:uppercase; }
-    .hero-sub { margin-top:8px; font-family:"Trebuchet MS",sans-serif; font-size:.82rem; color:rgba(255,255,255,.4); letter-spacing:.04em; }
-    .hero-bar { width:48px; height:3px; background:var(--gold); margin:18px auto 0; border-radius:2px; }
+nav { position:sticky; top:0; z-index:100; display:flex; align-items:center; justify-content:space-between; padding:1rem 3rem; background:rgba(10,10,10,0.95); backdrop-filter:blur(12px); border-bottom:1px solid var(--border); }
+.nav-logo img { height:140px; filter:brightness(0) invert(1); background:none; display:block; }
+.nav-right { display:flex; align-items:center; gap:2.5rem; }
+.nav-links { display:flex; gap:2rem; list-style:none; }
+.nav-links a { font-size:0.72rem; letter-spacing:0.12em; text-transform:uppercase; color:rgba(245,244,240,0.55); text-decoration:none; transition:color 0.2s; position:relative; }
+.nav-links a::after { content:''; position:absolute; bottom:-2px; left:0; width:0; height:1px; background:var(--gold); transition:width 0.3s; }
+.nav-links a:hover, .nav-links a.active { color:var(--gold); }
+.nav-links a:hover::after, .nav-links a.active::after { width:100%; }
+.lang-switcher { display:flex; gap:0.3rem; align-items:center; }
+.lang-btn { background:transparent; border:1px solid var(--border); color:rgba(245,244,240,0.4); font-size:0.65rem; letter-spacing:0.1em; cursor:pointer; padding:0.25rem 0.5rem; transition:all 0.2s; font-family:'DM Sans',sans-serif; }
+.lang-btn.active { background:var(--gold); border-color:var(--gold); color:#0a0a0a; font-weight:700; }
+.menu-btn { display:none; flex-direction:column; gap:5px; background:none; border:none; cursor:pointer; padding:4px; }
+.menu-btn span { display:block; width:22px; height:1.5px; background:#f5f4f0; transition:all 0.3s; }
 
-    /* ── TOC ── */
-    .toc-wrap { background:var(--white); max-width:var(--max); margin:0 auto; }
-    .toc {
-      background:var(--surface); border-left:4px solid var(--gold);
-      padding:24px 40px;
-    }
-    .toc-title { font-family:"Trebuchet MS",sans-serif; font-size:.66rem; letter-spacing:.2em; text-transform:uppercase; color:var(--mid); font-weight:700; margin-bottom:12px; }
-    .toc ol { list-style:decimal; padding-left:18px; display:grid; grid-template-columns:1fr 1fr; gap:4px 28px; }
-    .toc ol li a { font-family:"Trebuchet MS",sans-serif; font-size:.82rem; color:var(--mid); text-decoration:none; transition:color .15s; }
-    .toc ol li a:hover { color:var(--gold-d); }
+.page-hero { padding:3.5rem 3rem 2.5rem; max-width:1100px; margin:0 auto; }
+.page-eyebrow { font-size:0.65rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--gold); margin-bottom:0.75rem; }
+.page-title { font-family:'DM Serif Display',serif; font-size:clamp(2rem,4vw,2.8rem); color:#f5f4f0; line-height:1.2; margin-bottom:0.5rem; }
+.page-sub { font-size:0.82rem; color:rgba(245,244,240,0.4); letter-spacing:0.04em; }
+.page-divider { border:none; border-top:1px solid var(--border); margin:0; }
 
-    /* ── CARD ── */
-    .card { background:var(--white); max-width:var(--max); margin:0 auto; padding-bottom:72px; box-shadow:0 2px 24px rgba(10,22,40,.08); }
+.legal-wrap { max-width:860px; margin:0 auto; padding:3rem 3rem 6rem; }
 
-    /* ── SECTION ── */
-    .sec { padding:40px 52px 0; animation:up .45s ease both; }
-    .sec:nth-child(1){animation-delay:.04s}.sec:nth-child(2){animation-delay:.09s}.sec:nth-child(3){animation-delay:.14s}.sec:nth-child(4){animation-delay:.19s}.sec:nth-child(5){animation-delay:.24s}.sec:nth-child(6){animation-delay:.29s}.sec:nth-child(7){animation-delay:.34s}.sec:nth-child(8){animation-delay:.39s}.sec:nth-child(9){animation-delay:.44s}.sec:nth-child(10){animation-delay:.49s}
-    @keyframes up { from{opacity:0;transform:translateY(14px)} to{opacity:1;transform:none} }
+.toc-box { border:1px solid var(--border); padding:1.5rem 2rem; margin-bottom:3rem; }
+.toc-label { font-size:0.6rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--gold); margin-bottom:0.75rem; }
+.toc-box ol { padding-left:1.25rem; display:grid; grid-template-columns:1fr 1fr; gap:0.3rem 2rem; }
+.toc-box ol li a { font-size:0.82rem; color:rgba(245,244,240,0.5); text-decoration:none; transition:color 0.15s; }
+.toc-box ol li a:hover { color:var(--gold); }
 
-    .sec-label { font-family:"Trebuchet MS",sans-serif; font-size:.66rem; letter-spacing:.22em; text-transform:uppercase; color:var(--mid); font-weight:700; margin-bottom:9px; }
-    .sec-rule { border:none; border-top:2px solid var(--gold); opacity:.55; margin-bottom:20px; }
+.legal-sec { margin-bottom:3rem; }
+.sec-eyebrow { font-size:0.6rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--gold); margin-bottom:0.5rem; }
+.sec-rule { border:none; border-top:1px solid var(--border); margin-bottom:1.5rem; }
 
-    /* ── INFO TABLE ── */
-    .itbl { width:100%; border-collapse:collapse; font-size:.9rem; margin-bottom:14px; }
-    .itbl tr { border-bottom:1px solid var(--border); }
-    .itbl tr:last-child { border-bottom:none; }
-    .itbl td { padding:10px 14px; vertical-align:top; }
-    .itbl td:first-child { width:34%; font-family:"Trebuchet MS",sans-serif; font-size:.76rem; font-weight:700; color:var(--ink); text-transform:uppercase; letter-spacing:.05em; background:var(--surface); }
-    .itbl a { color:var(--mid); word-break:break-word; }
-    .itbl a:hover { color:var(--gold-d); }
+.legal-tbl { width:100%; border-collapse:collapse; margin-bottom:1rem; }
+.legal-tbl tr { border-bottom:1px solid var(--border); }
+.legal-tbl tr:last-child { border-bottom:none; }
+.legal-tbl td { padding:0.75rem 1rem; vertical-align:top; font-size:0.86rem; color:rgba(245,244,240,0.75); }
+.legal-tbl td:first-child { width:36%; font-size:0.7rem; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:var(--gold); background:rgba(201,168,76,0.05); }
+.legal-tbl a { color:rgba(245,244,240,0.6); word-break:break-word; text-decoration:none; }
+.legal-tbl a:hover { color:var(--gold); }
 
-    /* ── PROSE ── */
-    .prose { font-size:.9rem; color:#3a3a3a; line-height:1.82; margin-bottom:10px; }
-    .prose strong { color:var(--ink); }
-    .prose a { color:var(--mid); word-break:break-word; }
-    .prose a:hover { color:var(--gold-d); }
-    .prose em { color:var(--muted); font-size:.88em; }
+.legal-prose { font-size:0.88rem; line-height:1.82; color:rgba(245,244,240,0.65); margin-bottom:0.75rem; }
+.legal-prose strong { color:#f5f4f0; }
+.legal-prose a { color:var(--gold); word-break:break-word; }
+.legal-prose a:hover { color:var(--gold-light); }
+.legal-prose em { color:rgba(245,244,240,0.45); font-style:italic; }
 
-    /* ── ALERT BOXES ── */
-    .alert { border-left:4px solid var(--gold); padding:14px 18px; margin:12px 0; font-family:"Trebuchet MS",sans-serif; font-size:.85rem; border-radius:0 var(--r) var(--r) 0; line-height:1.6; }
-    .alert-warn  { background:#fffbeb; border-color:#f0c840; color:#6b4a00; }
-    .alert-good  { background:#f0faf2; border-color:#52b869; color:#1a5c2a; }
-    .alert-info  { background:#f0f5ff; border-color:#4a7fc1; color:#1a3a6b; }
-    .alert strong { display:block; margin-bottom:4px; }
+.alert-box { border-left:3px solid var(--gold); padding:1rem 1.25rem; margin:1rem 0; background:rgba(201,168,76,0.06); font-size:0.86rem; line-height:1.65; }
+.alert-box strong { display:block; color:var(--gold); margin-bottom:0.4rem; }
+.alert-box p { color:rgba(245,244,240,0.6); }
+.alert-box em { color:rgba(245,244,240,0.4); font-style:italic; }
+.alert-box a { color:var(--gold); text-decoration:none; word-break:break-word; }
+.alert-box a:hover { color:var(--gold-light); }
 
-    /* ── RIGHTS GRID ── */
-    .rights { display:grid; grid-template-columns:repeat(auto-fill,minmax(210px,1fr)); gap:10px; margin:14px 0; }
-    .right-card { background:var(--surface); border:1px solid var(--border); border-top:3px solid var(--gold); border-radius:var(--r); padding:14px 16px; }
-    .right-card .art { font-family:"Trebuchet MS",sans-serif; font-size:.64rem; letter-spacing:.1em; text-transform:uppercase; color:var(--gold-d); font-weight:700; margin-bottom:3px; }
-    .right-card .rt  { font-family:"Trebuchet MS",sans-serif; font-size:.84rem; font-weight:700; color:var(--ink); margin-bottom:3px; }
-    .right-card .rd  { font-size:.78rem; color:var(--muted); line-height:1.45; }
+.rights-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:0.75rem; margin:1rem 0; }
+.right-card { border:1px solid var(--border); padding:1rem 1.25rem; }
+.right-card .art { font-size:0.6rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--gold); margin-bottom:0.25rem; }
+.right-card .rt { font-size:0.85rem; font-weight:600; color:#f5f4f0; margin-bottom:0.25rem; }
+.right-card .rd { font-size:0.78rem; color:rgba(245,244,240,0.5); line-height:1.5; }
 
-    /* ── CTA BLOCK ── */
-    .cta { background:var(--mid); border-radius:var(--r); padding:20px 26px; margin-top:18px; display:flex; align-items:center; gap:18px; flex-wrap:wrap; }
-    .cta p { color:rgba(255,255,255,.8); font-family:"Trebuchet MS",sans-serif; font-size:.85rem; flex:1; }
-    .cta a { background:var(--gold); color:var(--ink); font-family:"Trebuchet MS",sans-serif; font-size:.76rem; font-weight:700; letter-spacing:.06em; text-transform:uppercase; text-decoration:none; padding:9px 20px; border-radius:var(--r); white-space:nowrap; transition:background .18s; }
-    .cta a:hover { background:#e0b83d; }
+.legal-cta { border:1px solid var(--border); padding:1.25rem 1.75rem; margin-top:1.5rem; display:flex; align-items:center; gap:1.5rem; flex-wrap:wrap; background:rgba(201,168,76,0.04); }
+.legal-cta p { font-size:0.85rem; color:rgba(245,244,240,0.6); flex:1; line-height:1.6; }
+.legal-cta a { background:var(--gold); color:#0a0a0a; font-size:0.72rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; text-decoration:none; padding:0.6rem 1.25rem; transition:background 0.2s; white-space:nowrap; }
+.legal-cta a:hover { background:var(--gold-light); }
 
-    /* ══════════════════ ENTERPRISE FOOTER ══════════════════ */
-    .site-footer { background:var(--ink); color:rgba(255,255,255,.65); width:100%; }
-    .footer-nav-strip { border-bottom:1px solid rgba(255,255,255,.09); padding:26px 0; }
-    .footer-nav-inner { max-width:1160px; margin:0 auto; padding:0 40px; display:flex; gap:40px; flex-wrap:wrap; justify-content:center; }
-    .footer-nav-inner a { color:rgba(255,255,255,.55); text-decoration:none; font-family:"Trebuchet MS",sans-serif; font-size:.84rem; letter-spacing:.03em; transition:color .15s; }
-    .footer-nav-inner a:hover { color:var(--gold); }
-    .footer-rule { border:none; border-top:1px solid rgba(255,255,255,.1); max-width:1160px; margin:0 auto; }
-    .footer-social { max-width:1160px; margin:0 auto; padding:26px 40px 22px; display:flex; gap:10px; align-items:center; }
-    .s-btn { display:flex; align-items:center; justify-content:center; width:36px; height:36px; border-radius:50%; border:1px solid rgba(255,255,255,.18); color:rgba(255,255,255,.5); text-decoration:none; transition:border-color .15s,color .15s,background .15s; flex-shrink:0; }
-    .s-btn:hover { border-color:var(--gold); color:var(--gold); background:rgba(201,168,76,.07); }
-    .s-btn svg { width:15px; height:15px; fill:currentColor; display:block; }
-    .footer-legal { max-width:1160px; margin:0 auto; padding:0 40px 32px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:14px; }
-    .f-copy { font-family:"Trebuchet MS",sans-serif; font-size:.76rem; color:rgba(255,255,255,.35); letter-spacing:.03em; }
-    .f-links { display:flex; flex-wrap:wrap; align-items:center; }
-    .f-links a { font-family:"Trebuchet MS",sans-serif; font-size:.76rem; color:rgba(255,255,255,.5); text-decoration:none; letter-spacing:.03em; padding:3px 16px; border-right:1px solid rgba(255,255,255,.13); transition:color .15s; white-space:nowrap; }
-    .f-links a:first-child { padding-left:0; }
-    .f-links a:last-child  { padding-right:0; border-right:none; }
-    .f-links a:hover { color:var(--gold); }
+footer { background:rgba(10,10,10,0.9); border-top:1px solid var(--border); padding:2.5rem 3rem; display:grid; grid-template-columns:auto 1fr; align-items:center; gap:2rem; }
+.footer-left { display:flex; flex-direction:column; gap:0.2rem; }
+.footer-left img { height:110px; filter:brightness(0) invert(1); }
+.footer-tagline { font-size:0.8rem; color:rgba(245,244,240,0.35); margin:0; }
+.footer-legal { font-size:0.75rem; color:rgba(245,244,240,0.3); text-align:right; line-height:1.8; }
+.footer-legal a { color:rgba(245,244,240,0.4); text-decoration:none; }
+.footer-legal a:hover { color:var(--gold); }
 
-    @media(max-width:620px){
-      .sec{padding:32px 22px 0}
-      .topbar{padding:0 20px}
-      .hero{padding:44px 20px 36px}
-      .toc{padding:20px 22px}
-      .toc ol{grid-template-columns:1fr}
-      .footer-nav-inner,.footer-social,.footer-legal{padding-left:22px;padding-right:22px}
-      .footer-legal{flex-direction:column;align-items:flex-start}
-      .f-links a{padding:3px 12px}
-    }
-  </style>
+@media(max-width:768px){
+  nav { padding:1rem 1.5rem; }
+  .nav-links { display:none; position:absolute; top:100%; left:0; right:0; z-index:99; background:rgba(10,10,10,0.98); border-top:1px solid rgba(201,168,76,0.2); flex-direction:column; padding:0.5rem 0; gap:0; list-style:none; }
+  .nav-links.open { display:flex; }
+  .nav-links li { border-bottom:1px solid rgba(255,255,255,0.06); }
+  .nav-links a { padding:0.9rem 1.5rem !important; display:block; }
+  .nav-links a::after { display:none !important; }
+  .nav-logo img { height:52px; }
+  .menu-btn { display:flex; }
+  .page-hero { padding:2rem 1.5rem 1.5rem; }
+  .legal-wrap { padding:2rem 1.5rem 4rem; }
+  .toc-box ol { grid-template-columns:1fr; }
+  footer { grid-template-columns:1fr; padding:2rem 1.5rem; }
+  .footer-legal { text-align:left; }
+}
+.menu-btn.open span:nth-child(1) { transform:translateY(7px) rotate(45deg); }
+.menu-btn.open span:nth-child(2) { opacity:0; transform:scaleX(0); }
+.menu-btn.open span:nth-child(3) { transform:translateY(-7px) rotate(-45deg); }
+
+html[data-mode="light"] body { background:#f5f2eb !important; color:#0a0a0a !important; }
+html[data-mode="light"] nav { background:rgba(245,242,235,0.96) !important; }
+html[data-mode="light"] .nav-links a { color:rgba(10,10,10,0.55) !important; }
+html[data-mode="light"] .nav-links.open { background:rgba(245,242,235,0.99) !important; border-top-color:rgba(201,168,76,0.3) !important; }
+html[data-mode="light"] .page-title { color:#0a0a0a !important; }
+html[data-mode="light"] .page-sub { color:rgba(10,10,10,0.4) !important; }
+html[data-mode="light"] .toc-box ol li a { color:rgba(10,10,10,0.55) !important; }
+html[data-mode="light"] .legal-tbl td { color:rgba(10,10,10,0.75) !important; }
+html[data-mode="light"] .legal-tbl td:first-child { background:rgba(201,168,76,0.08) !important; }
+html[data-mode="light"] .legal-tbl a { color:rgba(10,10,10,0.6) !important; }
+html[data-mode="light"] .legal-prose { color:rgba(10,10,10,0.7) !important; }
+html[data-mode="light"] .legal-prose strong { color:#0a0a0a !important; }
+html[data-mode="light"] .legal-prose em { color:rgba(10,10,10,0.45) !important; }
+html[data-mode="light"] .alert-box { background:rgba(201,168,76,0.08) !important; }
+html[data-mode="light"] .alert-box p, html[data-mode="light"] .alert-box em { color:rgba(10,10,10,0.65) !important; }
+html[data-mode="light"] .right-card .rt { color:#0a0a0a !important; }
+html[data-mode="light"] .right-card .rd { color:rgba(10,10,10,0.55) !important; }
+html[data-mode="light"] .legal-cta { background:rgba(201,168,76,0.06) !important; }
+html[data-mode="light"] .legal-cta p { color:rgba(10,10,10,0.65) !important; }
+html[data-mode="light"] footer { background:#ede9e0 !important; }
+html[data-mode="light"] .footer-tagline { color:rgba(10,10,10,0.4) !important; }
+html[data-mode="light"] .footer-legal { color:rgba(10,10,10,0.35) !important; }
+html[data-mode="light"] .footer-legal a { color:rgba(10,10,10,0.45) !important; }
+html[data-mode="light"] nav img, html[data-mode="light"] footer img { filter:brightness(0) !important; }
+[data-lang="en"] { display:none; }
+body.lang-en [data-lang="de"] { display:none; }
+body.lang-en [data-lang="en"] { display:inline; }
+</style>
 </head>
 <body>
 
-<nav class="topbar">
-  <a href="/" class="topbar-logo"><span>Adroit</span> Solutions GmbH</a>
-  <a href="/" class="topbar-back">← Back</a>
+<div class="scroll-progress" id="scrollProgress"></div>
+<nav>
+  <div class="nav-logo">
+    <a href="index.html"><img src="adroit-logo.png" alt="Adroit Solutions GmbH"/></a>
+  </div>
+  <div class="nav-right">
+    <ul class="nav-links">
+      <li><a href="index.html"><span data-lang="de">Startseite</span><span data-lang="en">Home</span></a></li>
+      <li><a href="about.html"><span data-lang="de">Über uns</span><span data-lang="en">About</span></a></li>
+      <li><a href="services.html"><span data-lang="de">Leistungen</span><span data-lang="en">Services</span></a></li>
+      <li><a href="cases.html"><span data-lang="de">Referenzen</span><span data-lang="en">Case Studies</span></a></li>
+      <li><a href="careers.html"><span data-lang="de">Karriere</span><span data-lang="en">Careers</span></a></li>
+      <li><a href="contact.html"><span data-lang="de">Kontakt</span><span data-lang="en">Contact</span></a></li>
+    </ul>
+    <div class="lang-switcher">
+      <button class="lang-btn active" id="btn-de" onclick="setLang('de')">DE</button>
+      <button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button>
+    </div>
+    <button class="menu-btn" id="menuBtn" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
 </nav>
 
-<div class="hero">
-  <p class="hero-eyebrow">Privacy &amp; Data Protection &nbsp;/&nbsp; Datenschutz</p>
-  <h1>Privacy Policy &nbsp;/&nbsp; Datenschutzerklärung</h1>
-  <p class="hero-sub">Adroit Solutions GmbH &nbsp;·&nbsp; DSGVO / GDPR Compliant</p>
-  <div class="hero-bar"></div>
+<div class="page-hero">
+  <p class="page-eyebrow">Privacy &amp; Data Protection &nbsp;/&nbsp; Datenschutz</p>
+  <h1 class="page-title">Datenschutzerklärung <em style="font-style:italic;opacity:0.5;">/</em> Privacy Policy</h1>
+  <p class="page-sub">Adroit Solutions GmbH &nbsp;·&nbsp; DSGVO / GDPR Compliant</p>
 </div>
+<hr class="page-divider"/>
 
-<!-- TOC -->
-<div class="toc-wrap">
-  <div class="toc">
-    <p class="toc-title">Contents / Inhalt</p>
+<div class="legal-wrap">
+
+  <div class="toc-box">
+    <p class="toc-label">Contents / Inhalt</p>
     <ol>
       <li><a href="#s1">Responsible Body</a></li>
       <li><a href="#s2">Legal Basis</a></li>
@@ -168,21 +186,14 @@
       <li><a href="#s9">Data Security</a></li>
     </ol>
   </div>
-</div>
 
-<main class="card">
+  <p class="legal-prose">The protection of your personal data is a high priority for us. This privacy policy informs you in accordance with Art. 13 GDPR (DSGVO) about the nature, scope and purpose of processing personal data on this website.</p>
+  <p class="legal-prose"><em>Der Schutz Ihrer persönlichen Daten hat für uns hohe Priorität. Diese Datenschutzerklärung informiert Sie gemäß Art. 13 DSGVO über Art, Umfang und Zweck der Verarbeitung personenbezogener Daten auf dieser Website.</em></p>
 
-  <!-- Intro -->
-  <div class="sec" style="padding-top:44px">
-    <p class="prose">The protection of your personal data is a high priority for us. This privacy policy informs you in accordance with Art. 13 GDPR (DSGVO) about the nature, scope and purpose of processing personal data on this website.</p>
-    <p class="prose"><em>Der Schutz Ihrer persönlichen Daten hat für uns hohe Priorität. Diese Datenschutzerklärung informiert Sie gemäß Art. 13 DSGVO über Art, Umfang und Zweck der Verarbeitung personenbezogener Daten auf dieser Website.</em></p>
-  </div>
-
-  <!-- 1 -->
-  <div class="sec" id="s1">
-    <p class="sec-label">1. Responsible Body &nbsp;/&nbsp; Verantwortliche Stelle (Art. 4 Nr. 7 DSGVO)</p>
-    <hr class="sec-rule">
-    <table class="itbl">
+  <div class="legal-sec" id="s1">
+    <p class="sec-eyebrow">1. Responsible Body &nbsp;/&nbsp; Verantwortliche Stelle (Art. 4 Nr. 7 DSGVO)</p>
+    <hr class="sec-rule"/>
+    <table class="legal-tbl">
       <tr><td>Company</td><td>Adroit Solutions GmbH</td></tr>
       <tr><td>Managing Director</td><td>Ayesha Jabeen</td></tr>
       <tr><td>Address</td><td>Königsallee 27, 40212 Düsseldorf, Germany</td></tr>
@@ -191,11 +202,10 @@
     </table>
   </div>
 
-  <!-- 2 -->
-  <div class="sec" id="s2">
-    <p class="sec-label">2. Legal Basis &nbsp;/&nbsp; Rechtsgrundlagen (Art. 6 DSGVO)</p>
-    <hr class="sec-rule">
-    <table class="itbl">
+  <div class="legal-sec" id="s2">
+    <p class="sec-eyebrow">2. Legal Basis &nbsp;/&nbsp; Rechtsgrundlagen (Art. 6 DSGVO)</p>
+    <hr class="sec-rule"/>
+    <table class="legal-tbl">
       <tr><td>Art. 6 I lit. a</td><td>Consent of the data subject / Einwilligung</td></tr>
       <tr><td>Art. 6 I lit. b</td><td>Performance of a contract or pre-contractual measures / Vertragserfüllung</td></tr>
       <tr><td>Art. 6 I lit. c</td><td>Compliance with a legal obligation / Rechtliche Verpflichtung</td></tr>
@@ -203,64 +213,59 @@
     </table>
   </div>
 
-  <!-- 3 -->
-  <div class="sec" id="s3">
-    <p class="sec-label">3. Data Collection &nbsp;/&nbsp; Datenerhebung</p>
-    <hr class="sec-rule">
-    <div class="alert alert-good">
+  <div class="legal-sec" id="s3">
+    <p class="sec-eyebrow">3. Data Collection &nbsp;/&nbsp; Datenerhebung</p>
+    <hr class="sec-rule"/>
+    <div class="alert-box">
       <strong>✓ No automatic data collection</strong>
-      This website does not automatically collect any personal data upon visit. Contact requests are processed exclusively via email and will not be shared with third parties.<br>
+      <p>This website does not automatically collect any personal data upon visit. Contact requests are processed exclusively via email and will not be shared with third parties.</p>
       <em>Diese Website erhebt beim Besuch automatisch keine personenbezogenen Daten. Kontaktanfragen werden ausschließlich per E-Mail bearbeitet und nicht an Dritte weitergegeben.</em>
     </div>
-    <p class="prose"><strong>Server log files (GitHub Pages hosting):</strong> Our hosting provider GitHub Pages (GitHub Inc., San Francisco, CA, USA) automatically stores server log files on page access containing: browser type/version, operating system, referrer URL, anonymised IP address, and date/time of access.</p>
-    <table class="itbl">
+    <p class="legal-prose"><strong>Server log files (GitHub Pages hosting):</strong> Our hosting provider GitHub Pages (GitHub Inc., San Francisco, CA, USA) automatically stores server log files on page access containing: browser type/version, operating system, referrer URL, anonymised IP address, and date/time of access.</p>
+    <table class="legal-tbl">
       <tr><td>Legal basis</td><td>Art. 6 I lit. f GDPR — legitimate interest in secure website operation</td></tr>
       <tr><td>Retention period</td><td>7 days, then automatic deletion</td></tr>
       <tr><td>Third-country transfer</td><td>GitHub Inc. is certified under the EU-US Data Privacy Framework (DPF)</td></tr>
-      <tr><td>GitHub privacy</td><td><a href="https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement" target="_blank" rel="noopener">GitHub Privacy Statement ↗</a></td></tr>
+      <tr><td>GitHub privacy</td><td><a href="https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement" target="_blank" rel="noopener noreferrer">GitHub Privacy Statement ↗</a></td></tr>
     </table>
   </div>
 
-  <!-- 4 -->
-  <div class="sec" id="s4">
-    <p class="sec-label">4. Contact via Email &nbsp;/&nbsp; Kontaktaufnahme per E-Mail</p>
-    <hr class="sec-rule">
-    <p class="prose">When you contact us by email, the data you transmit (name, email address, message content) is stored solely to process your enquiry. It will not be shared with third parties.</p>
-    <table class="itbl">
+  <div class="legal-sec" id="s4">
+    <p class="sec-eyebrow">4. Contact via Email &nbsp;/&nbsp; Kontaktaufnahme per E-Mail</p>
+    <hr class="sec-rule"/>
+    <p class="legal-prose">When you contact us by email, the data you transmit (name, email address, message content) is stored solely to process your enquiry. It will not be shared with third parties.</p>
+    <table class="legal-tbl">
       <tr><td>Legal basis</td><td>Art. 6 I lit. b GDPR (pre-contractual measures) or Art. 6 I lit. f GDPR</td></tr>
       <tr><td>Retention period</td><td>Until the matter is fully resolved; thereafter per statutory retention periods (typically 6–10 years)</td></tr>
       <tr><td>Third parties</td><td>No disclosure to third parties</td></tr>
     </table>
   </div>
 
-  <!-- 5 -->
-  <div class="sec" id="s5">
-    <p class="sec-label">5. Cookies &amp; Tracking &nbsp;/&nbsp; Cookies &amp; Tracking-Technologien</p>
-    <hr class="sec-rule">
-    <div class="alert alert-good">
+  <div class="legal-sec" id="s5">
+    <p class="sec-eyebrow">5. Cookies &amp; Tracking &nbsp;/&nbsp; Cookies &amp; Tracking-Technologien</p>
+    <hr class="sec-rule"/>
+    <div class="alert-box">
       <strong>✓ No cookies. No tracking.</strong>
-      This website does not use cookies or tracking technologies of any kind (no Google Analytics, no Facebook Pixel, no social media plugins). No user profiles are created.<br>
+      <p>This website does not use cookies or tracking technologies of any kind (no Google Analytics, no Facebook Pixel, no social media plugins). No user profiles are created.</p>
       <em>Diese Website verwendet keinerlei Cookies oder Tracking-Technologien. Es werden keine Nutzerprofile erstellt.</em>
     </div>
-    <p class="prose">Should we introduce cookies or tracking tools in future, we will request your explicit prior consent in accordance with § 25 TTDSG and Art. 6 GDPR.</p>
+    <p class="legal-prose">Should we introduce cookies or tracking tools in future, we will request your explicit prior consent in accordance with § 25 TTDSG and Art. 6 GDPR.</p>
   </div>
 
-  <!-- 6 -->
-  <div class="sec" id="s6">
-    <p class="sec-label">6. External Resources &nbsp;/&nbsp; Externe Ressourcen &amp; Schriftarten</p>
-    <hr class="sec-rule">
-    <div class="alert alert-info">
-      <strong>All fonts are self-hosted.</strong>
-      No external CDN resources (including Google Fonts) are loaded from this website. No automatic data transfer to third parties is triggered by loading this page.
+  <div class="legal-sec" id="s6">
+    <p class="sec-eyebrow">6. External Resources &nbsp;/&nbsp; Externe Ressourcen &amp; Schriftarten</p>
+    <hr class="sec-rule"/>
+    <div class="alert-box alert-info">
+      <strong>Google Fonts loaded externally.</strong>
+      <p>This website loads fonts from Google Fonts (Google LLC, USA). When the page is accessed, your browser establishes a connection to Google's servers. Google may process your IP address in this context. For details, see <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google Privacy Policy ↗</a>.</p>
     </div>
-    <p class="prose">No social media plugins, map services, or external scripts are embedded that would transmit data to third parties without your explicit consent.</p>
+    <p class="legal-prose">No social media plugins, map services, or other external scripts are embedded that would transmit data to third parties without your explicit consent.</p>
   </div>
 
-  <!-- 7 -->
-  <div class="sec" id="s7">
-    <p class="sec-label">7. Your Rights &nbsp;/&nbsp; Ihre Rechte als betroffene Person (DSGVO / GDPR)</p>
-    <hr class="sec-rule">
-    <div class="rights">
+  <div class="legal-sec" id="s7">
+    <p class="sec-eyebrow">7. Your Rights &nbsp;/&nbsp; Ihre Rechte als betroffene Person (DSGVO / GDPR)</p>
+    <hr class="sec-rule"/>
+    <div class="rights-grid">
       <div class="right-card"><p class="art">Art. 15 GDPR</p><p class="rt">Right of Access</p><p class="rd">Obtain information about personal data we hold about you</p></div>
       <div class="right-card"><p class="art">Art. 16 GDPR</p><p class="rt">Right to Rectification</p><p class="rd">Correction of inaccurate or incomplete data</p></div>
       <div class="right-card"><p class="art">Art. 17 GDPR</p><p class="rt">Right to Erasure</p><p class="rd">Deletion of your data where legally permissible</p></div>
@@ -268,67 +273,94 @@
       <div class="right-card"><p class="art">Art. 20 GDPR</p><p class="rt">Data Portability</p><p class="rd">Receive your data in a machine-readable format</p></div>
       <div class="right-card"><p class="art">Art. 21 GDPR</p><p class="rt">Right to Object</p><p class="rd">Object to processing based on legitimate interests</p></div>
     </div>
-    <div class="cta">
-      <p>To exercise any of your rights, contact us directly —<br><em>Zur Ausübung Ihrer Rechte wenden Sie sich bitte an:</em></p>
+    <div class="legal-cta">
+      <p>To exercise any of your rights, contact us directly —<br/><em>Zur Ausübung Ihrer Rechte wenden Sie sich bitte an:</em></p>
       <a href="mailto:samdani.gulam@adroitsolutions.de">Send Request</a>
     </div>
   </div>
 
-  <!-- 8 -->
-  <div class="sec" id="s8">
-    <p class="sec-label">8. Supervisory Authority &nbsp;/&nbsp; Aufsichtsbehörde (Art. 77 DSGVO)</p>
-    <hr class="sec-rule">
-    <p class="prose">You have the right to lodge a complaint with the competent data protection supervisory authority:</p>
-    <table class="itbl">
+  <div class="legal-sec" id="s8">
+    <p class="sec-eyebrow">8. Supervisory Authority &nbsp;/&nbsp; Aufsichtsbehörde (Art. 77 DSGVO)</p>
+    <hr class="sec-rule"/>
+    <p class="legal-prose">You have the right to lodge a complaint with the competent data protection supervisory authority:</p>
+    <table class="legal-tbl">
       <tr><td>Authority (NRW)</td><td>Landesbeauftragte für Datenschutz und Informationsfreiheit NRW (LDI NRW)</td></tr>
       <tr><td>Address</td><td>Kavalleriestr. 2–4, 40213 Düsseldorf</td></tr>
       <tr><td>Telephone</td><td>+49 211 38424-0</td></tr>
-      <tr><td>Website</td><td><a href="https://www.ldi.nrw.de" target="_blank" rel="noopener">www.ldi.nrw.de ↗</a></td></tr>
+      <tr><td>Website</td><td><a href="https://www.ldi.nrw.de" target="_blank" rel="noopener noreferrer">www.ldi.nrw.de ↗</a></td></tr>
     </table>
   </div>
 
-  <!-- 9 -->
-  <div class="sec" id="s9">
-    <p class="sec-label">9. Data Security &amp; Policy Currency &nbsp;/&nbsp; Datensicherheit</p>
-    <hr class="sec-rule">
-    <p class="prose">This website uses <strong>HTTPS encryption (TLS)</strong>. We employ technical and organisational security measures to protect your data against accidental or intentional manipulation, loss, destruction, or unauthorised access.</p>
-    <p class="prose"><strong>Policy currency:</strong> This privacy policy is currently valid. Last updated: <strong id="ds"></strong>. The latest version is always available at <a href="/datenschutz.html">www.adroitsolutions.de/datenschutz.html</a>.</p>
+  <div class="legal-sec" id="s9">
+    <p class="sec-eyebrow">9. Data Security &amp; Policy Currency &nbsp;/&nbsp; Datensicherheit</p>
+    <hr class="sec-rule"/>
+    <p class="legal-prose">This website uses <strong>HTTPS encryption (TLS)</strong>. We employ technical and organisational security measures to protect your data against accidental or intentional manipulation, loss, destruction, or unauthorised access.</p>
+    <p class="legal-prose"><strong>Policy currency:</strong> This privacy policy is currently valid. Last updated: <strong id="ds"></strong>. The latest version is always available at <a href="/datenschutz.html">www.adroitsolutions.de/datenschutz.html</a>.</p>
   </div>
 
-</main>
+</div>
 
-<!-- ════════════════════════ ENTERPRISE FOOTER ════════════════════════ -->
-<footer class="site-footer">
-  <div class="footer-nav-strip">
-    <div class="footer-nav-inner">
-      <a href="/services.html">IT Consulting</a>
-      <a href="/services.html#iot">IoT &amp; Embedded</a>
-      <a href="/services.html#sap">SAP BTP</a>
-      <a href="/about.html">About Us</a>
-      <a href="mailto:samdani.gulam@adroitsolutions.de">Contact</a>
-    </div>
-  </div>
-  <hr class="footer-rule">
-  <div class="footer-social">
-    <a href="https://www.linkedin.com/company/adroit-solutions-gmbh" target="_blank" rel="noopener" class="s-btn" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
-    <a href="https://x.com/adroitsolutions" target="_blank" rel="noopener" class="s-btn" aria-label="X"><svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.748l7.73-8.835L1.254 2.25H8.08l4.253 5.622 5.911-5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
-    <a href="https://github.com/adroit-solutions-gmbh" target="_blank" rel="noopener" class="s-btn" aria-label="GitHub"><svg viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></a>
-    <a href="mailto:samdani.gulam@adroitsolutions.de" class="s-btn" aria-label="Email"><svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg></a>
+<footer>
+  <div class="footer-left">
+    <a href="index.html"><img src="adroit-logo.png" alt="Adroit Solutions GmbH"/></a>
+    <p class="footer-tagline">Electronics &middot; IoT &middot; Digital Solutions &middot; Düsseldorf, Deutschland</p>
   </div>
   <div class="footer-legal">
-    <p class="f-copy">&copy; Adroit Solutions GmbH <span id="yr"></span></p>
-    <nav class="f-links" aria-label="Legal">
-      <a href="/agb.html">Terms &amp; Conditions</a>
-      <a href="/impressum.html">Imprint</a>
-      <a href="/datenschutz.html">Data Protection</a>
-      <a href="mailto:samdani.gulam@adroitsolutions.de">Contact</a>
-    </nav>
+    <p>&copy; 2026 Adroit Solutions GmbH. Alle Rechte vorbehalten.</p>
+    <p><a href="/impressum.html">Impressum</a> &nbsp;&middot;&nbsp; <a href="/datenschutz.html">Datenschutz</a> &nbsp;&middot;&nbsp; <a href="/agb.html">AGB</a></p>
   </div>
 </footer>
 
 <script>
-  document.getElementById('yr').textContent = new Date().getFullYear();
-  document.getElementById('ds').textContent = new Date().toLocaleDateString('en-GB', {day:'numeric',month:'long',year:'numeric'});
+function setLang(lang) {
+  const isEn = lang === 'en';
+  document.body.classList.toggle('lang-en', isEn);
+  document.querySelectorAll('[data-lang="de"]').forEach(el => { el.style.display = isEn ? 'none' : ''; });
+  document.querySelectorAll('[data-lang="en"]').forEach(el => { el.style.display = isEn ? '' : 'none'; });
+  document.getElementById('btn-de').classList.toggle('active', !isEn);
+  document.getElementById('btn-en').classList.toggle('active', isEn);
+  document.documentElement.lang = lang;
+  sessionStorage.setItem('lang', lang);
+}
+(function() { setLang(sessionStorage.getItem('lang') || 'de'); })();
+function applyTimeMode() {
+  const hour = new Date().getHours();
+  const isDark = hour >= 19 || hour < 7;
+  document.documentElement.setAttribute('data-mode', isDark ? 'dark' : 'light');
+  document.body.style.background = isDark ? '#0a0a0a' : '#f5f2eb';
+  document.body.style.color = isDark ? '#f5f4f0' : '#0a0a0a';
+}
+applyTimeMode();
+setInterval(applyTimeMode, 3600000);
+document.getElementById('ds').textContent = new Date().toLocaleDateString('en-GB', {day:'numeric',month:'long',year:'numeric'});
+window.addEventListener('scroll', () => {
+  const p = document.getElementById('scrollProgress');
+  if (p) p.style.width = (window.scrollY / (document.body.scrollHeight - window.innerHeight) * 100) + '%';
+});
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    e.preventDefault();
+    const t = document.querySelector(a.getAttribute('href'));
+    if (t) window.scrollTo({top: t.getBoundingClientRect().top + window.scrollY - 100, behavior:'smooth'});
+  });
+});
+(function(){
+  var btn = document.getElementById('menuBtn');
+  var nav = document.querySelector('.nav-links');
+  if (!btn || !nav) return;
+  btn.addEventListener('click', function(){
+    var open = nav.classList.toggle('open');
+    btn.classList.toggle('open', open);
+    btn.setAttribute('aria-expanded', open);
+  });
+  nav.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){
+      nav.classList.remove('open');
+      btn.classList.remove('open');
+      btn.setAttribute('aria-expanded', 'false');
+    });
+  });
+})();
 </script>
 <script src="/cookie-consent.js"></script>
 </body>
