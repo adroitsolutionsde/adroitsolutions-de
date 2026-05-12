@@ -283,14 +283,25 @@ footer {
 .cap-title { font-size: 0.95rem; font-weight: 500; color: #f5f4f0; margin-bottom: 0.5rem; }
 .cap-body { font-size: 0.85rem; color: var(--muted); line-height: 1.7; }
 
-/* ── FOUNDER ── */
-.founder-name { font-family: 'DM Serif Display', serif; font-size: 2rem; color: #f5f4f0; margin-bottom: 0.2rem; }
-.founder-role { font-size: 0.78rem; color: var(--gold); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 1rem; }
-.founder-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 2rem; }
-.founder-tag { font-size: 0.7rem; letter-spacing: 0.06em; text-transform: uppercase; padding: 4px 10px; border: 1px solid var(--border); color: var(--muted); }
-.founder-content { display: flex; flex-direction: column; gap: 1.5rem; max-width: 820px; }
-.founder-content p { font-size: 1.05rem; color: rgba(245,244,240,0.7); line-height: 1.8; }
-.founder-content strong { color: #f5f4f0; font-weight: 600; }
+/* ── LEADERSHIP ── */
+.leadership-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 4rem;
+  margin-top: 3rem; align-items: start;
+}
+.leader-meta {
+  display: inline-block; padding: 4px 12px; margin-bottom: 1rem;
+  border: 1px solid var(--border); background: #1c1c1c;
+  font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted);
+}
+.leader-name { font-family: 'DM Serif Display', serif; font-size: 1.9rem; color: #f5f4f0; margin-bottom: 0.2rem; }
+.leader-title { font-size: 0.85rem; color: var(--gold); font-weight: 500; margin-bottom: 1.4rem; letter-spacing: 0.04em; }
+.leader-text { font-size: 0.92rem; color: var(--muted); line-height: 1.85; margin-bottom: 1.2rem; }
+.leader-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 0.4rem; }
+.leader-tag {
+  font-size: 0.7rem; letter-spacing: 0.05em; text-transform: uppercase;
+  padding: 4px 10px; border: 1px solid var(--border); color: var(--muted);
+}
+.panels-stack { display: flex; flex-direction: column; gap: 1px; }
 
 /* CLIENTS PANEL */
 .clients-panel {
@@ -417,10 +428,10 @@ html[data-mode="light"] .cap-title { color: #0a0a0a !important; }
 html[data-mode="light"] .cap-body { color: rgba(10,10,10,0.65) !important; }
 html[data-mode="light"] .clients-panel { background: #ede9e0 !important; }
 html[data-mode="light"] .clients-list li { color: rgba(10,10,10,0.75) !important; }
-html[data-mode="light"] .founder-content p { color: rgba(10,10,10,0.75) !important; }
-html[data-mode="light"] .founder-content strong { color: #0a0a0a !important; }
-html[data-mode="light"] .founder-name { color: #0a0a0a !important; }
-html[data-mode="light"] .founder-tag { color: rgba(10,10,10,0.6) !important; }
+html[data-mode="light"] .leader-name { color: #0a0a0a !important; }
+html[data-mode="light"] .leader-meta { background: #ede9e0 !important; }
+html[data-mode="light"] .leader-text { color: rgba(10,10,10,0.65) !important; }
+html[data-mode="light"] .leader-tag { color: rgba(10,10,10,0.55) !important; }
 html[data-mode="light"] .structure-section { background: #ede9e0 !important; }
 html[data-mode="light"] .structure-cell { background: #ede9e0 !important; }
 html[data-mode="light"] .structure-cell:hover { background: #e6e0d3 !important; }
@@ -456,7 +467,8 @@ html[data-mode="light"] .cta-band { background: linear-gradient(135deg, rgba(237
   .hero-stats { gap: 1.6rem; }
   .identity-grid { grid-template-columns: 1fr; }
   .cap-grid { grid-template-columns: 1fr; }
-.structure-grid { grid-template-columns: 1fr; }
+  .leadership-grid { grid-template-columns: 1fr; }
+  .structure-grid { grid-template-columns: 1fr; }
   .structure-section { padding-left: 1.5rem; padding-right: 1.5rem; }
   .cta-band { grid-template-columns: 1fr; padding-left: 1.5rem; padding-right: 1.5rem; }
   .cta-actions { align-items: flex-start; }
@@ -655,50 +667,60 @@ html[data-mode="light"] .cta-band { background: linear-gradient(135deg, rgba(237
 
 <div class="divider"></div>
 
-<!-- FOUNDER / LEADERSHIP -->
+<!-- LEADERSHIP -->
 <section id="founder">
-  <div class="section-label reveal"><span data-lang="de">Gründer &amp; Lead Architect</span><span data-lang="en">Founder &amp; Lead Architect</span></div>
-  <div class="reveal">
-    <div class="founder-name">Gulam Samdani</div>
-    <div class="founder-role">Senior IT Systems &amp; Embedded Solutions Architect</div>
-    <div class="founder-tags">
-      <span class="founder-tag">MCA — Osmania University</span>
-      <span class="founder-tag">EU Blue Card — Germany</span>
-      <span class="founder-tag">15+ Years Enterprise IT</span>
-      <span class="founder-tag">Düsseldorf, NRW</span>
-    </div>
-    <div class="founder-content">
+  <div class="section-label reveal"><span data-lang="de">Leadership</span><span data-lang="en">Leadership</span></div>
+  <div data-lang="de" class="reveal">
+    <h2 class="section-title">Das Team hinter der Firma</h2>
+    <p class="section-body">Adroit Solutions GmbH i.Gr. wird von Experten mit nachgewiesener Erfolgsbilanz in der Enterprise-Systems-Delivery in den Bereichen Luftfahrt, Finanzdienstleistungen und Industrie geführt.</p>
+  </div>
+  <div data-lang="en" class="reveal">
+    <h2 class="section-title">The team behind the firm</h2>
+    <p class="section-body">Adroit Solutions GmbH i.Gr. is led by professionals with proven track records in enterprise systems delivery across aviation, financial services, and industrial sectors.</p>
+  </div>
+
+  <div class="leadership-grid">
+    <div class="leader-bio reveal-left">
+      <div class="leader-meta"><span data-lang="de">Leitender Architect</span><span data-lang="en">Principal Architect</span></div>
+      <div class="leader-name">Gulam Samdani</div>
+      <div class="leader-title">Senior IT Systems &amp; Embedded Solutions Architect</div>
       <div data-lang="de">
-        <p>Gulam Samdani ist der Gründer und leitende Architect von Adroit Solutions GmbH i.Gr. Mit über <strong>15 Jahren Erfahrung in der Enterprise-IT</strong> hat er komplexe, geschäftskritische Systeme für einige der größten Unternehmen der Welt entworfen und geliefert — darunter British Airways, Aer Lingus, Virgin Australia und SITA.</p>
-        <p>Seine Karriere umspannt Architekturentscheidungen für Millionen von Passagieren täglich, Echtzeit-Buchungssysteme, Flughafen-IT-Infrastruktur und Enterprise-Integrationsprojekte im Finanzsektor. Diese Erfahrung bildet das Fundament von Adroit Solutions.</p>
-        <p>Mit Adroit Solutions GmbH i.Gr. bringt er diese Delivery-Kompetenz in den deutschen Markt — als <strong>spezialisierter Partner für System Integratoren</strong>, die SAP BTP Engineers, Enterprise Architekten und Embedded Systems Spezialisten für ihre aktiven Programme benötigen.</p>
+        <p class="leader-text">15+ Jahre Enterprise-IT-Architektur-Erfahrung in den Bereichen Luftfahrt, Finanzdienstleistungen und Embedded IoT. Verantwortlich für technische Delivery, Kundenstrategie und Embedded-Systems-Entwicklung über alle Praxisbereiche der Firma.</p>
+        <p class="leader-text">Frühere Rollen umfassten die Gestaltung geschäftskritischer Systeme für British Airways, Aer Lingus, Virgin Australia, SITA (Luftfahrt-IT) und NBAD (Finanzdienstleistungen) — Delivery an der Schnittstelle von Hochverfügbarkeit, Compliance und Systemskalierung.</p>
       </div>
       <div data-lang="en">
-        <p>Gulam Samdani is the founder and lead architect of Adroit Solutions GmbH i.Gr. With over <strong>15 years of enterprise IT experience</strong>, he has designed and delivered complex, mission-critical systems for some of the world's largest organisations — including British Airways, Aer Lingus, Virgin Australia and SITA.</p>
-        <p>His career spans architectural decisions affecting millions of passengers daily, real-time booking systems, airport IT infrastructure and enterprise integration projects in financial services. This experience forms the foundation of Adroit Solutions.</p>
-        <p>With Adroit Solutions GmbH i.Gr., he brings this delivery competency to the German market — as a <strong>specialist partner for System Integrators</strong> requiring SAP BTP engineers, enterprise architects and embedded systems specialists for their active programmes.</p>
+        <p class="leader-text">15+ years of enterprise IT architecture experience spanning aviation, financial services, and embedded IoT. Responsible for technical delivery, client engagement strategy, and embedded systems development across the firm's practice areas.</p>
+        <p class="leader-text">Prior roles included mission-critical systems design for British Airways, Aer Lingus, Virgin Australia, SITA (aviation infrastructure), and NBAD (financial services) — delivering at the intersection of high availability, compliance, and systems scale.</p>
+      </div>
+      <div class="leader-tags">
+        <span class="leader-tag">Java / Spring Boot</span>
+        <span class="leader-tag">Kafka / Microservices</span>
+        <span class="leader-tag">ESP32 / C++</span>
+        <span class="leader-tag">MQTT / IoT</span>
+        <span class="leader-tag">PCB Engineering</span>
+        <span class="leader-tag">Aviation Systems</span>
       </div>
     </div>
-      <div style="margin-top:2rem; display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--border);">
-        <div class="clients-panel">
-          <div class="clients-label"><span data-lang="de">Ausgewählte frühere Kundenerfahrung</span><span data-lang="en">Selected Prior Client Experience</span></div>
-          <ul class="clients-list">
-            <li>British Airways <span class="clients-sector">Aviation</span></li>
-            <li>Aer Lingus <span class="clients-sector">Aviation</span></li>
-            <li>Virgin Australia <span class="clients-sector">Aviation</span></li>
-            <li>SITA <span class="clients-sector">Aviation IT</span></li>
-            <li>NBAD <span class="clients-sector">Financial Services</span></li>
-          </ul>
-        </div>
-        <div class="clients-panel">
-          <div class="clients-label"><span data-lang="de">Zertifizierungen &amp; Qualifikationen</span><span data-lang="en">Certifications &amp; Qualifications</span></div>
-          <ul class="clients-list">
-            <li>MCA — Osmania University</li>
-            <li>EU Blue Card — <span data-lang="de">Deutschland</span><span data-lang="en">Germany</span></li>
-            <li>GmbH — Amtsgericht Köln</li>
-          </ul>
-        </div>
+    <div class="panels-stack reveal-right">
+      <div class="clients-panel">
+        <div class="clients-label"><span data-lang="de">Ausgewählte frühere Kundenerfahrung</span><span data-lang="en">Selected Prior Client Experience</span></div>
+        <ul class="clients-list">
+          <li>British Airways <span class="clients-sector">Aviation</span></li>
+          <li>Aer Lingus <span class="clients-sector">Aviation</span></li>
+          <li>Virgin Australia <span class="clients-sector">Aviation</span></li>
+          <li>SITA <span class="clients-sector">Aviation IT</span></li>
+          <li>NBAD <span class="clients-sector">Financial Services</span></li>
+        </ul>
       </div>
+      <div class="clients-panel">
+        <div class="clients-label"><span data-lang="de">Zertifizierungen &amp; Qualifikationen</span><span data-lang="en">Certifications &amp; Qualifications</span></div>
+        <ul class="clients-list">
+          <li>MCA — Osmania University</li>
+          <li>EU Blue Card — <span data-lang="de">Deutschland</span><span data-lang="en">Germany</span></li>
+          <li>GmbH — Amtsgericht Köln</li>
+        </ul>
+      </div>
+    </div>
   </div>
 </section>
 
