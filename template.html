@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="de" style="background:#0a0a0a !important">
+<head>
+<meta charset="UTF-8"/>
+<meta name="color-scheme" content="dark"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+<!-- ── PAGE META (customise per page) ── -->
+<title>PAGE TITLE – Adroit Solutions GmbH i.Gr. Düsseldorf</title>
+<meta name="description" content="PAGE DESCRIPTION"/>
+<link rel="canonical" href="https://adroitsolutions.de/PAGE.html"/>
+<link rel="alternate" hreflang="de"        href="https://adroitsolutions.de/PAGE.html"/>
+<link rel="alternate" hreflang="en"        href="https://adroitsolutions.de/PAGE.html"/>
+<link rel="alternate" hreflang="x-default" href="https://adroitsolutions.de/PAGE.html"/>
+
+<!-- Open Graph -->
+<meta property="og:type"        content="website"/>
+<meta property="og:url"         content="https://adroitsolutions.de/PAGE.html"/>
+<meta property="og:site_name"   content="Adroit Solutions GmbH i.Gr."/>
+<meta property="og:title"       content="PAGE TITLE – Adroit Solutions GmbH i.Gr. Düsseldorf"/>
+<meta property="og:description" content="PAGE OG DESCRIPTION"/>
+<meta property="og:image"       content="https://adroitsolutions.de/adroit-logo.png"/>
+<meta property="og:locale"      content="de_DE"/>
+
+<!-- ── FONTS & STYLES ── -->
+<link rel="stylesheet" href="/fonts/fonts.css"/>
+<link rel="stylesheet" href="/base.css"/>
+
+<!-- ── PAGE-SPECIFIC STYLES (add below) ── -->
+<style>
+</style>
+</head>
+<body>
+
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<!-- ════════════════════ NAV ════════════════════ -->
+<nav id="mainNav">
+  <div class="nav-logo">
+    <a href="index.html"><img src="adroit-logo.png" alt="Adroit Solutions GmbH i.Gr."/></a>
+  </div>
+  <div class="nav-right">
+    <ul class="nav-links">
+      <li><a href="index.html"><span data-lang="de">Startseite</span><span data-lang="en">Home</span></a></li>
+      <li><a href="about.html"><span data-lang="de">Über uns</span><span data-lang="en">About</span></a></li>
+      <li><a href="services.html"><span data-lang="de">Leistungen</span><span data-lang="en">Services</span></a></li>
+      <li><a href="cases.html"><span data-lang="de">Referenzen</span><span data-lang="en">Case Studies</span></a></li>
+      <li><a href="careers.html"><span data-lang="de">Karriere</span><span data-lang="en">Careers</span></a></li>
+      <li><a href="contact.html"><span data-lang="de">Kontakt</span><span data-lang="en">Contact</span></a></li>
+    </ul>
+    <div class="lang-switcher">
+      <button class="lang-btn active" id="btn-de" onclick="setLang('de')">DE</button>
+      <button class="lang-btn"        id="btn-en" onclick="setLang('en')">EN</button>
+    </div>
+    <button class="menu-btn" id="menuBtn" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ════════════════════ HERO ════════════════════ -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid-lines"></div>
+  <div class="hero-inner">
+    <div>
+      <div class="hero-tag">
+        <span data-lang="de">HERO LABEL DE</span>
+        <span data-lang="en">HERO LABEL EN</span>
+      </div>
+      <div data-lang="de">
+        <h1>Heading <em>italic</em><br>line two.</h1>
+        <p class="hero-desc">Beschreibungstext für die Seite. Maximal zwei bis drei Sätze.</p>
+      </div>
+      <div data-lang="en">
+        <h1>Heading <em>italic</em><br>line two.</h1>
+        <p class="hero-desc">Page description text. Keep it to two or three sentences.</p>
+      </div>
+      <div class="hero-stats">
+        <div>
+          <div class="stat-n">00<sup>+</sup></div>
+          <div class="stat-l"><span data-lang="de">Stat Label DE</span><span data-lang="en">Stat Label EN</span></div>
+        </div>
+        <div>
+          <div class="stat-n">00</div>
+          <div class="stat-l"><span data-lang="de">Stat Label DE</span><span data-lang="en">Stat Label EN</span></div>
+        </div>
+        <div>
+          <div class="stat-n">DE · EU</div>
+          <div class="stat-l"><span data-lang="de">Eingetragen &amp; tätig</span><span data-lang="en">Registered &amp; Operating</span></div>
+        </div>
+      </div>
+    </div>
+    <!-- Optional right-column visual (SVG, image, etc.) -->
+    <div class="hero-visual" aria-hidden="true">
+      <!-- INSERT VISUAL HERE -->
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ════════════════════ SECTION EXAMPLE ════════════════════ -->
+<div class="section reveal">
+  <div class="s-label">Section Label</div>
+  <h2 class="s-title">Section <em>heading</em></h2>
+  <p class="s-desc">
+    <span data-lang="de">Beschreibungstext Deutsch.</span>
+    <span data-lang="en">Description text English.</span>
+  </p>
+
+  <!-- Content goes here -->
+</div>
+
+<div class="divider"></div>
+
+<!-- ════════════════════ CTA ════════════════════ -->
+<div class="cta-section">
+  <div data-lang="de" class="reveal">
+    <h2>Bereit für Ihr <em>Projekt?</em></h2>
+    <p>Kurze Beschreibung des nächsten Schritts.</p>
+  </div>
+  <div data-lang="en" class="reveal">
+    <h2>Ready to discuss<br>your <em>requirements?</em></h2>
+    <p>Short description of the next step.</p>
+  </div>
+  <div class="cta-btns reveal">
+    <a href="contact.html" class="btn-primary">
+      <span data-lang="de">Kontakt aufnehmen</span>
+      <span data-lang="en">Contact Us</span>
+    </a>
+    <a href="services.html" class="btn-outline">
+      <span data-lang="de">Alle Leistungen ansehen</span>
+      <span data-lang="en">View All Services</span>
+    </a>
+  </div>
+</div>
+
+<!-- ════════════════════ FOOTER ════════════════════ -->
+<footer>
+  <div class="footer-left">
+    <a href="index.html"><img src="adroit-logo.png" alt="Adroit Solutions GmbH i.Gr."/></a>
+    <p class="footer-tagline">Electronics &middot; IoT &middot; Digital Solutions &middot; Düsseldorf</p>
+  </div>
+  <div class="footer-legal">
+    <p>&copy; 2026 Adroit Solutions GmbH i.Gr.</p>
+    <p><a href="/impressum.html">Impressum</a> &nbsp;&middot;&nbsp; <a href="/datenschutz.html">Datenschutz</a></p>
+  </div>
+</footer>
+
+<!-- ════════════════════ SCRIPTS ════════════════════ -->
+<script src="/site.js"></script>
+<script src="/cookie-consent.js"></script>
+
+<!-- Page-specific inline JS (if needed) -->
+<script>
+</script>
+
+</body>
+</html>
