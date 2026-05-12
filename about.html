@@ -284,33 +284,11 @@ footer {
 .cap-body { font-size: 0.85rem; color: var(--muted); line-height: 1.7; }
 
 /* ── FOUNDER ── */
-.founder-grid {
-  display: grid; grid-template-columns: 1fr 2fr; gap: 5rem;
-  align-items: start; margin-top: 2rem;
-}
-.founder-photo-box {
-  width: 100%; aspect-ratio: 3/4;
-  background:
-    linear-gradient(to bottom, rgba(10,10,10,0) 45%, rgba(10,10,10,0.85) 100%),
-    url('IMG_280C2FB5-114F-479D-9355-F1DA07ACB1CC.jpeg') top center/cover no-repeat;
-  border: 1px solid var(--gold);
-  display: flex; flex-direction: column;
-  justify-content: flex-end; padding: 2rem;
-  filter: grayscale(15%) contrast(1.05);
-  box-shadow: 0 8px 40px rgba(0,0,0,0.4), inset 0 0 0 1px rgba(201,168,76,0.2);
-}
-.founder-name-card {
-  border-top: 1px solid var(--border); padding-top: 1.25rem;
-}
-.founder-name-card h3 {
-  font-family: 'DM Serif Display', serif;
-  font-size: 1.5rem; color: #f5f4f0; margin-bottom: 0.2rem;
-}
-.founder-name-card p { font-size: 0.78rem; color: var(--gold); letter-spacing: 0.1em; text-transform: uppercase; }
-.founder-credentials { display: flex; flex-direction: column; gap: 0.5rem; margin-top: 1.5rem; }
-.credential { font-size: 0.8rem; color: var(--muted); display: flex; gap: 0.6rem; align-items: center; }
-.credential::before { content: '▸'; color: var(--gold); }
-.founder-content { display: flex; flex-direction: column; gap: 2rem; }
+.founder-name { font-family: 'DM Serif Display', serif; font-size: 2rem; color: #f5f4f0; margin-bottom: 0.2rem; }
+.founder-role { font-size: 0.78rem; color: var(--gold); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 1rem; }
+.founder-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 2rem; }
+.founder-tag { font-size: 0.7rem; letter-spacing: 0.06em; text-transform: uppercase; padding: 4px 10px; border: 1px solid var(--border); color: var(--muted); }
+.founder-content { display: flex; flex-direction: column; gap: 1.5rem; max-width: 820px; }
 .founder-content p { font-size: 1.05rem; color: rgba(245,244,240,0.7); line-height: 1.8; }
 .founder-content strong { color: #f5f4f0; font-weight: 600; }
 
@@ -441,8 +419,8 @@ html[data-mode="light"] .clients-panel { background: #ede9e0 !important; }
 html[data-mode="light"] .clients-list li { color: rgba(10,10,10,0.75) !important; }
 html[data-mode="light"] .founder-content p { color: rgba(10,10,10,0.75) !important; }
 html[data-mode="light"] .founder-content strong { color: #0a0a0a !important; }
-html[data-mode="light"] .credential { color: rgba(10,10,10,0.6) !important; }
-html[data-mode="light"] .founder-name-card h3 { color: #0a0a0a !important; }
+html[data-mode="light"] .founder-name { color: #0a0a0a !important; }
+html[data-mode="light"] .founder-tag { color: rgba(10,10,10,0.6) !important; }
 html[data-mode="light"] .structure-section { background: #ede9e0 !important; }
 html[data-mode="light"] .structure-cell { background: #ede9e0 !important; }
 html[data-mode="light"] .structure-cell:hover { background: #e6e0d3 !important; }
@@ -478,8 +456,7 @@ html[data-mode="light"] .cta-band { background: linear-gradient(135deg, rgba(237
   .hero-stats { gap: 1.6rem; }
   .identity-grid { grid-template-columns: 1fr; }
   .cap-grid { grid-template-columns: 1fr; }
-  .founder-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-  .structure-grid { grid-template-columns: 1fr; }
+.structure-grid { grid-template-columns: 1fr; }
   .structure-section { padding-left: 1.5rem; padding-right: 1.5rem; }
   .cta-band { grid-template-columns: 1fr; padding-left: 1.5rem; padding-right: 1.5rem; }
   .cta-actions { align-items: flex-start; }
@@ -681,34 +658,27 @@ html[data-mode="light"] .cta-band { background: linear-gradient(135deg, rgba(237
 <!-- FOUNDER / LEADERSHIP -->
 <section id="founder">
   <div class="section-label reveal"><span data-lang="de">Gründer &amp; Lead Architect</span><span data-lang="en">Founder &amp; Lead Architect</span></div>
-  <div class="founder-grid">
-    <div class="reveal-left">
-      <div class="founder-photo-box">
-        <div class="founder-name-card">
-          <h3>Gulam Samdani</h3>
-          <p>Senior IT Systems &amp; Embedded Solutions Architect</p>
-        </div>
+  <div class="reveal">
+    <div class="founder-name">Gulam Samdani</div>
+    <div class="founder-role">Senior IT Systems &amp; Embedded Solutions Architect</div>
+    <div class="founder-tags">
+      <span class="founder-tag">MCA — Osmania University</span>
+      <span class="founder-tag">EU Blue Card — Germany</span>
+      <span class="founder-tag">15+ Years Enterprise IT</span>
+      <span class="founder-tag">Düsseldorf, NRW</span>
+    </div>
+    <div class="founder-content">
+      <div data-lang="de">
+        <p>Gulam Samdani ist der Gründer und leitende Architect von Adroit Solutions GmbH i.Gr. Mit über <strong>15 Jahren Erfahrung in der Enterprise-IT</strong> hat er komplexe, geschäftskritische Systeme für einige der größten Unternehmen der Welt entworfen und geliefert — darunter British Airways, Aer Lingus, Virgin Australia und SITA.</p>
+        <p>Seine Karriere umspannt Architekturentscheidungen für Millionen von Passagieren täglich, Echtzeit-Buchungssysteme, Flughafen-IT-Infrastruktur und Enterprise-Integrationsprojekte im Finanzsektor. Diese Erfahrung bildet das Fundament von Adroit Solutions.</p>
+        <p>Mit Adroit Solutions GmbH i.Gr. bringt er diese Delivery-Kompetenz in den deutschen Markt — als <strong>spezialisierter Partner für System Integratoren</strong>, die SAP BTP Engineers, Enterprise Architekten und Embedded Systems Spezialisten für ihre aktiven Programme benötigen.</p>
       </div>
-      <div class="founder-credentials">
-        <div class="credential">MCA — Osmania University</div>
-        <div class="credential">EU Blue Card — <span data-lang="de">Deutschland</span><span data-lang="en">Germany</span></div>
-        <div class="credential">15+ <span data-lang="de">Jahre Enterprise IT</span><span data-lang="en">Years Enterprise IT</span></div>
-        <div class="credential">Düsseldorf, NRW</div>
+      <div data-lang="en">
+        <p>Gulam Samdani is the founder and lead architect of Adroit Solutions GmbH i.Gr. With over <strong>15 years of enterprise IT experience</strong>, he has designed and delivered complex, mission-critical systems for some of the world's largest organisations — including British Airways, Aer Lingus, Virgin Australia and SITA.</p>
+        <p>His career spans architectural decisions affecting millions of passengers daily, real-time booking systems, airport IT infrastructure and enterprise integration projects in financial services. This experience forms the foundation of Adroit Solutions.</p>
+        <p>With Adroit Solutions GmbH i.Gr., he brings this delivery competency to the German market — as a <strong>specialist partner for System Integrators</strong> requiring SAP BTP engineers, enterprise architects and embedded systems specialists for their active programmes.</p>
       </div>
     </div>
-    <div class="reveal-right">
-      <div class="founder-content">
-        <div data-lang="de">
-          <p>Gulam Samdani ist der Gründer und leitende Architect von Adroit Solutions GmbH i.Gr. Mit über <strong>15 Jahren Erfahrung in der Enterprise-IT</strong> hat er komplexe, geschäftskritische Systeme für einige der größten Unternehmen der Welt entworfen und geliefert — darunter British Airways, Aer Lingus, Virgin Australia und SITA.</p>
-          <p>Seine Karriere umspannt Architekturentscheidungen für Millionen von Passagieren täglich, Echtzeit-Buchungssysteme, Flughafen-IT-Infrastruktur und Enterprise-Integrationsprojekte im Finanzsektor. Diese Erfahrung bildet das Fundament von Adroit Solutions.</p>
-          <p>Mit Adroit Solutions GmbH i.Gr. bringt er diese Delivery-Kompetenz in den deutschen Markt — als <strong>spezialisierter Partner für System Integratoren</strong>, die SAP BTP Engineers, Enterprise Architekten und Embedded Systems Spezialisten für ihre aktiven Programme benötigen.</p>
-        </div>
-        <div data-lang="en">
-          <p>Gulam Samdani is the founder and lead architect of Adroit Solutions GmbH i.Gr. With over <strong>15 years of enterprise IT experience</strong>, he has designed and delivered complex, mission-critical systems for some of the world's largest organisations — including British Airways, Aer Lingus, Virgin Australia and SITA.</p>
-          <p>His career spans architectural decisions affecting millions of passengers daily, real-time booking systems, airport IT infrastructure and enterprise integration projects in financial services. This experience forms the foundation of Adroit Solutions.</p>
-          <p>With Adroit Solutions GmbH i.Gr., he brings this delivery competency to the German market — as a <strong>specialist partner for System Integrators</strong> requiring SAP BTP engineers, enterprise architects and embedded systems specialists for their active programmes.</p>
-        </div>
-      </div>
       <div style="margin-top:2rem; display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--border);">
         <div class="clients-panel">
           <div class="clients-label"><span data-lang="de">Ausgewählte frühere Kundenerfahrung</span><span data-lang="en">Selected Prior Client Experience</span></div>
@@ -729,7 +699,6 @@ html[data-mode="light"] .cta-band { background: linear-gradient(135deg, rgba(237
           </ul>
         </div>
       </div>
-    </div>
   </div>
 </section>
 
