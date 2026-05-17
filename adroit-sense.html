@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="en" style="background:#0a0a0a !important">
+<head>
+<meta charset="UTF-8"/>
+<meta name="color-scheme" content="dark"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>ADROIT SENSE™ IoT Platform — Adroit Solutions GmbH</title>
+<meta name="description" content="Proprietary industrial IoT SaaS platform for German Mittelstand manufacturers — real-time factory monitoring, OEE dashboards, and predictive maintenance. Adroit Solutions GmbH, Düsseldorf."/>
+<link rel="canonical" href="https://adroitsolutions.de/adroit-sense.html"/>
+<link rel="stylesheet" href="/fonts/fonts.css"/>
+<style>
+html, body {
+  background: #0a0a0a !important; color: #f5f4f0 !important;
+  margin: 0 !important; padding: 0 !important;
+  font-family: 'DM Sans', sans-serif !important;
+  font-weight: 300; line-height: 1.7; overflow-x: hidden;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --ink: #0a0a0a; --ink3: #141414; --white: #f5f4f0;
+  --gold: #c9a84c; --gold2: #e8c97a; --soft: rgba(245,244,240,0.45);
+  --surface: #161616; --surface2: #1c1c1c; --border: rgba(201,168,76,0.2); --mid: #1c1c1c;
+}
+html { scroll-behavior: smooth; }
+.scroll-progress { position: fixed; top: 0; left: 0; z-index: 200; height: 2px; width: 0%; background: linear-gradient(90deg, var(--gold), var(--gold2)); transition: width 0.1s linear; }
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0.75rem 4rem; background: rgba(10,10,10,0.95) !important; backdrop-filter: blur(16px); border-bottom: 1px solid var(--border); }
+.nav-logo img { height: 140px; filter: brightness(0) invert(1); display: block; }
+.nav-right { display: flex; align-items: center; gap: 2rem; }
+.nav-links { display: flex; gap: 2rem; list-style: none; }
+.nav-links a { color: rgba(245,244,240,0.6); text-decoration: none; font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; position: relative; transition: color 0.2s; }
+.nav-links a::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 1px; background: var(--gold); transition: width 0.3s ease; }
+.nav-links a:hover { color: var(--gold); }
+.nav-links a:hover::after { width: 100%; }
+.nav-links a.active { color: var(--gold); }
+.nav-links a.active::after { width: 100%; }
+.lang-switcher { display: flex; gap: 0.4rem; }
+.lang-btn { background: none; border: 1px solid rgba(201,168,76,0.4); color: rgba(245,244,240,0.6); font-family: 'DM Sans', sans-serif; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; padding: 0.35rem 0.8rem; cursor: pointer; transition: all 0.25s; }
+.lang-btn.active { background: var(--gold); border-color: var(--gold); color: #0a0a0a; font-weight: 700; }
+.lang-btn:hover { border-color: var(--gold); color: var(--gold); }
+.lang-btn.active:hover { background: var(--gold2); color: #0a0a0a; }
+.menu-btn { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; }
+.menu-btn span { display: block; width: 22px; height: 1.5px; background: rgba(245,244,240,0.75); transition: all 0.3s; }
+.nav-links.open { display: flex !important; flex-direction: column; position: absolute; top: 100%; left: 0; right: 0; background: rgba(10,10,10,0.99); padding: 1.5rem 2rem; gap: 1rem; border-bottom: 1px solid var(--border); }
+@media (max-width: 900px) { nav { padding: 0.75rem 1.5rem; } .nav-links { display: none; } .menu-btn { display: flex; } .nav-logo img { height: 100px; } }
+
+.s-label { font-size: 0.68rem; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.2rem; display: block; }
+.s-label.light { color: var(--gold2); }
+.s-title { font-family: 'DM Sans', sans-serif; font-size: clamp(1.8rem, 3vw, 2.8rem); font-weight: 300; color: var(--white); line-height: 1.2; margin-bottom: 1rem; }
+.s-title em { font-style: italic; color: var(--gold2); }
+.s-desc { font-size: 0.95rem; color: var(--soft); max-width: 600px; line-height: 1.85; }
+.btn-gold { display: inline-block; padding: 0.85rem 2rem; background: var(--gold); color: #0a0a0a; font-family: 'DM Sans', sans-serif; font-size: 0.82rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; transition: background 0.25s; }
+.btn-gold:hover { background: var(--gold2); }
+.btn-outline { display: inline-block; padding: 0.85rem 2rem; background: none; border: 1px solid rgba(201,168,76,0.5); color: var(--gold); font-family: 'DM Sans', sans-serif; font-size: 0.82rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; transition: all 0.25s; }
+.btn-outline:hover { border-color: var(--gold); background: rgba(201,168,76,0.08); }
+.btn-row { display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; }
+.breadcrumb { display: flex; gap: 0.5rem; align-items: center; font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(245,244,240,0.35); margin-bottom: 1.4rem; }
+.breadcrumb a { color: rgba(245,244,240,0.45); text-decoration: none; transition: color 0.2s; }
+.breadcrumb a:hover { color: var(--gold); }
+.breadcrumb .current { color: var(--gold); }
+
+/* ANIMATIONS */
+.blink-dot { animation: blink 2s ease-in-out infinite; }
+.blink-dot2 { animation: blink 2s 0.7s ease-in-out infinite; }
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
+.spark { animation: dash 2s linear infinite; stroke-dasharray: 100; }
+.spark2 { animation: dash 2s 0.6s linear infinite; stroke-dasharray: 100; }
+.spark3 { animation: dash 2s 1.2s linear infinite; stroke-dasharray: 100; }
+@keyframes dash { to { stroke-dashoffset: -200; } }
+@keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(1.15)} }
+
+/* HERO */
+.svc-hero { background: var(--ink); padding: 148px 5vw 100px; position: relative; overflow: hidden; }
+.svc-hero-bg { position: absolute; inset: 0; background: radial-gradient(ellipse 60% 70% at 80% 40%, rgba(196,154,42,0.1) 0%, transparent 65%), radial-gradient(ellipse 30% 40% at 10% 70%, rgba(196,154,42,0.04) 0%, transparent 60%); }
+.svc-hero-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(196,154,42,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(196,154,42,0.04) 1px, transparent 1px); background-size: 60px 60px; }
+.svc-hero .inner { position: relative; z-index: 2; max-width: 1320px; margin: 0 auto; display: grid; grid-template-columns: 1fr 440px; gap: 6vw; align-items: center; }
+.svc-hero h1 { font-family: 'DM Sans', sans-serif; font-size: clamp(2.4rem, 4.5vw, 4rem); font-weight: 300; line-height: 1.1; color: var(--white); margin-bottom: 1.4rem; }
+.svc-hero h1 em { font-style: italic; color: var(--gold2); }
+.svc-hero p { font-size: 1rem; font-weight: 300; color: rgba(245,244,240,0.42); line-height: 1.9; max-width: 520px; margin-bottom: 2rem; }
+.hero-tag { font-size: 0.68rem; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.2rem; }
+.hero-badges { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 1.6rem; }
+.badge { font-size: 0.68rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; padding: 5px 12px; border: 1px solid rgba(201,168,76,0.3); color: var(--gold2); }
+.hero-art { display: flex; align-items: center; justify-content: center; }
+.hero-art svg { width: 100%; height: auto; }
+
+/* OVERVIEW */
+.overview-band { padding: 100px 5vw; }
+.overview-band .inner { max-width: 1320px; margin: 0 auto; }
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 5vw; align-items: start; margin-top: 3.5rem; }
+.prose p { font-size: 0.95rem; color: var(--soft); line-height: 1.95; margin-bottom: 1.2rem; }
+.prose strong { color: var(--white); font-weight: 500; }
+.kpi-stack { display: flex; flex-direction: column; }
+.kpi-item { display: flex; align-items: flex-start; gap: 1.4rem; padding: 1.4rem 0; border-top: 1px solid var(--border); }
+.kpi-item:last-child { border-bottom: 1px solid var(--border); }
+.kpi-n { font-size: 1.5rem; font-weight: 300; color: var(--border); min-width: 28px; line-height: 1; }
+.kpi-title { font-size: 0.9rem; font-weight: 500; color: var(--white); margin-bottom: 0.3rem; }
+.kpi-body { font-size: 0.82rem; color: var(--soft); line-height: 1.7; }
+
+/* METRICS STRIP */
+.metrics-strip { padding: 80px 5vw; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.metrics-strip .inner { max-width: 1320px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; }
+.metric-item { text-align: center; }
+.metric-num { font-size: 3rem; font-weight: 300; color: var(--white); line-height: 1; }
+.metric-num sup { font-size: 1.2rem; color: var(--gold); }
+.metric-label { font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--soft); margin-top: 6px; }
+.metric-desc { font-size: 0.8rem; color: var(--soft); margin-top: 4px; }
+
+/* CAPABILITIES */
+.cap-deep { background: var(--ink3); padding: 110px 5vw; }
+.cap-deep .inner { max-width: 1320px; margin: 0 auto; }
+.cap-deep-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.06); margin-top: 3.5rem; }
+.cd-card { background: #0e0e0e; padding: 2.2rem 1.8rem; transition: background 0.3s; position: relative; overflow: hidden; }
+.cd-card::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, rgba(196,154,42,0.4), transparent); transform: scaleX(0); transform-origin: center; transition: transform 0.4s; }
+.cd-card:hover { background: #0a0a0a; }
+.cd-card:hover::after { transform: scaleX(1); }
+.cd-art { height: 80px; margin-bottom: 1.4rem; display: flex; align-items: center; }
+.cd-art svg { height: 70px; width: auto; }
+.cd-title { font-size: 0.95rem; font-weight: 500; color: var(--white); margin-bottom: 0.5rem; }
+.cd-body { font-size: 0.8rem; font-weight: 300; color: rgba(245,244,240,0.38); line-height: 1.7; }
+.cd-tags { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 1rem; }
+.cd-tag { font-size: 0.65rem; letter-spacing: 0.08em; text-transform: uppercase; padding: 3px 7px; background: rgba(196,154,42,0.08); color: rgba(196,154,42,0.6); border: 1px solid rgba(196,154,42,0.15); }
+
+/* ARCHITECTURE */
+.arch-section { padding: 110px 5vw; background: var(--surface); }
+.arch-section .inner { max-width: 1320px; margin: 0 auto; }
+.arch-visual { border: 1px solid var(--border); background: var(--white); padding: 3rem; margin-top: 3rem; }
+.arch-visual svg { width: 100%; height: auto; display: block; }
+
+/* TECH STACK */
+.tech-stack { background: var(--surface); padding: 0 5vw 110px; }
+.tech-stack .inner { max-width: 1320px; margin: 0 auto; }
+.stack-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); margin-top: 3rem; }
+.stack-cell { background: var(--white); padding: 1.8rem 1.5rem; transition: background 0.2s; }
+.stack-cell:hover { background: #e8e4da; }
+.sc-layer { font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.6rem; }
+.sc-tech { font-size: 0.92rem; font-weight: 500; color: var(--ink); margin-bottom: 0.3rem; }
+.sc-detail { font-size: 0.78rem; color: rgba(10,10,10,0.55); line-height: 1.6; }
+
+/* PRICING */
+.pricing-section { background: var(--ink3); padding: 110px 5vw; }
+.pricing-section .inner { max-width: 1320px; margin: 0 auto; }
+.pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.06); margin-top: 3rem; }
+.price-card { background: #111; padding: 2.4rem 2rem; position: relative; }
+.price-card.featured { background: rgba(196,154,42,0.06); border: 1px solid rgba(196,154,42,0.25); }
+.price-badge { font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); border: 1px solid rgba(196,154,42,0.3); padding: 3px 8px; display: inline-block; margin-bottom: 1rem; }
+.price-tier { font-size: 1.6rem; font-weight: 300; color: var(--white); margin-bottom: 0.4rem; }
+.price-amount { font-size: 0.85rem; color: rgba(245,244,240,0.4); margin-bottom: 1.4rem; }
+.price-features { list-style: none; margin-bottom: 1.6rem; }
+.price-features li { font-size: 0.8rem; color: rgba(245,244,240,0.45); padding: 5px 0; border-bottom: 1px solid rgba(255,255,255,0.04); display: flex; align-items: center; gap: 8px; }
+.price-features li::before { content: ''; display: block; width: 4px; height: 4px; background: var(--gold); flex-shrink: 0; opacity: 0.7; }
+
+/* DELIVERY */
+.delivery-section { padding: 110px 5vw; }
+.delivery-section .inner { max-width: 1320px; margin: 0 auto; }
+.delivery-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; margin-top: 3rem; }
+.dr-cell { border: 1px solid var(--border); padding: 2rem 1.6rem; transition: border-color 0.2s; }
+.dr-cell:hover { border-color: var(--gold); }
+.dr-step { font-size: 3rem; font-weight: 300; color: var(--border); line-height: 1; margin-bottom: 1rem; }
+.dr-title { font-size: 0.9rem; font-weight: 500; color: var(--white); margin-bottom: 0.5rem; }
+.dr-body { font-size: 0.8rem; color: var(--soft); line-height: 1.7; }
+
+/* SERVICE NAV + CTA */
+.svc-nav-bar { border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 1.4rem 5vw; }
+.svc-nav-bar .inner { max-width: 1320px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+.snb-prev, .snb-next { display: flex; align-items: center; gap: 8px; font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--soft); text-decoration: none; transition: color 0.2s; }
+.snb-prev:hover, .snb-next:hover { color: var(--gold); }
+.snb-prev svg, .snb-next svg { width: 12px; height: 12px; stroke: currentColor; fill: none; stroke-width: 2; }
+.snb-label { font-size: 0.68rem; color: var(--gold); display: block; margin-bottom: 2px; }
+.snb-all { font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--soft); text-decoration: none; transition: color 0.2s; }
+.snb-all:hover { color: var(--gold); }
+.svc-cta-band { background: var(--surface); padding: 110px 5vw; text-align: center; }
+.svc-cta-band h2 { font-size: clamp(2rem, 3.5vw, 3rem); font-weight: 300; margin-bottom: 1rem; color: var(--white); }
+.svc-cta-band h2 em { font-style: italic; color: var(--gold); }
+.svc-cta-band p { font-size: 0.95rem; color: var(--soft); max-width: 440px; margin: 0 auto 2.4rem; }
+.svc-cta-band .btn-row { justify-content: center; }
+
+/* FOOTER */
+footer { background: var(--surface2); padding: 2.5rem 4rem; display: flex; align-items: center; justify-content: space-between; border-top: 1px solid var(--border); gap: 2rem; flex-wrap: wrap; }
+.footer-left { display: flex; align-items: center; gap: 1.5rem; }
+.footer-left img { height: 100px; filter: brightness(0) invert(1); }
+.footer-tagline { font-size: 0.75rem; color: rgba(245,244,240,0.3); letter-spacing: 0.05em; }
+.footer-legal { text-align: right; }
+.footer-legal p { font-size: 0.75rem; color: rgba(245,244,240,0.3); margin-bottom: 0.3rem; }
+.footer-legal a { color: rgba(245,244,240,0.4); text-decoration: none; font-size: 0.75rem; transition: color 0.2s; }
+.footer-legal a:hover { color: var(--gold); }
+
+/* LIGHT MODE */
+html[data-mode="light"] body { background: #f5f2eb !important; color: #0a0a0a !important; }
+html[data-mode="light"] nav { background: rgba(245,242,235,0.97) !important; }
+html[data-mode="light"] nav img, html[data-mode="light"] footer img { filter: brightness(0) !important; }
+html[data-mode="light"] .menu-btn span { background: rgba(10,10,10,0.75) !important; }
+html[data-mode="light"] .lang-btn { color: rgba(10,10,10,0.6) !important; border-color: rgba(10,10,10,0.25) !important; }
+html[data-mode="light"] .lang-btn.active { background: var(--gold) !important; border-color: var(--gold) !important; color: #fff !important; }
+html[data-mode="light"] .nav-links a { color: rgba(10,10,10,0.65) !important; }
+html[data-mode="light"] .nav-links.open { background: rgba(245,242,235,0.99) !important; }
+html[data-mode="light"] footer { background: #e5e1d7 !important; }
+html[data-mode="light"] .footer-tagline { color: rgba(10,10,10,0.4) !important; }
+html[data-mode="light"] .footer-legal p, html[data-mode="light"] .footer-legal a { color: rgba(10,10,10,0.45) !important; }
+html[data-mode="light"] .svc-hero { background: #1a1a1a !important; }
+html[data-mode="light"] .cap-deep { background: #1a1a1a !important; }
+html[data-mode="light"] .cd-card { background: #111 !important; }
+html[data-mode="light"] .pricing-section { background: #1c1c1c !important; }
+html[data-mode="light"] .price-card { background: #141414 !important; }
+html[data-mode="light"] .arch-section { background: #e8e4d8 !important; }
+html[data-mode="light"] .arch-visual { background: #f5f2eb !important; border-color: rgba(10,10,10,0.15) !important; }
+html[data-mode="light"] .tech-stack { background: #e8e4d8 !important; }
+html[data-mode="light"] .stack-cell { background: #f5f2eb !important; }
+html[data-mode="light"] .sc-tech { color: #0a0a0a !important; }
+html[data-mode="light"] .sc-detail { color: rgba(10,10,10,0.55) !important; }
+html[data-mode="light"] .overview-band { background: #f5f2eb !important; }
+html[data-mode="light"] .s-title { color: #0a0a0a !important; }
+html[data-mode="light"] .s-desc { color: rgba(10,10,10,0.55) !important; }
+html[data-mode="light"] .prose p { color: rgba(10,10,10,0.65) !important; }
+html[data-mode="light"] .kpi-title { color: #0a0a0a !important; }
+html[data-mode="light"] .kpi-body { color: rgba(10,10,10,0.55) !important; }
+html[data-mode="light"] .metrics-strip { background: #f5f2eb !important; border-color: rgba(10,10,10,0.1) !important; }
+html[data-mode="light"] .metric-num { color: #0a0a0a !important; }
+html[data-mode="light"] .metric-label, html[data-mode="light"] .metric-desc { color: rgba(10,10,10,0.55) !important; }
+html[data-mode="light"] .delivery-section { background: #f5f2eb !important; }
+html[data-mode="light"] .dr-title { color: #0a0a0a !important; }
+html[data-mode="light"] .dr-body { color: rgba(10,10,10,0.55) !important; }
+html[data-mode="light"] .dr-cell { border-color: rgba(10,10,10,0.1) !important; }
+html[data-mode="light"] .dr-step { color: rgba(10,10,10,0.1) !important; }
+html[data-mode="light"] .svc-cta-band { background: #ece8de !important; }
+html[data-mode="light"] .svc-cta-band h2 { color: #0a0a0a !important; }
+html[data-mode="light"] .svc-cta-band p { color: rgba(10,10,10,0.6) !important; }
+html[data-mode="light"] .svc-nav-bar { background: #f5f2eb !important; border-color: rgba(10,10,10,0.1) !important; }
+html[data-mode="light"] .snb-prev, html[data-mode="light"] .snb-next, html[data-mode="light"] .snb-all { color: rgba(10,10,10,0.5) !important; }
+
+@media (max-width: 1000px) {
+  .svc-hero .inner { grid-template-columns: 1fr; }
+  .hero-art { max-width: 360px; margin: 2rem auto 0; }
+  .two-col { grid-template-columns: 1fr; }
+  .cap-deep-grid { grid-template-columns: 1fr 1fr; }
+  .stack-grid { grid-template-columns: 1fr 1fr; }
+  .delivery-row { grid-template-columns: 1fr 1fr; }
+  .metrics-strip .inner { grid-template-columns: 1fr 1fr; }
+  .pricing-grid { grid-template-columns: 1fr; }
+  footer { padding: 2rem 1.5rem; flex-direction: column; align-items: flex-start; }
+  .footer-legal { text-align: left; }
+}
+@media (max-width: 600px) {
+  .cap-deep-grid { grid-template-columns: 1fr; }
+  .stack-grid { grid-template-columns: 1fr; }
+  .delivery-row { grid-template-columns: 1fr; }
+  .svc-nav-bar .inner { flex-direction: column; gap: 1rem; align-items: flex-start; }
+}
+</style>
+</head>
+<body>
+<div class="scroll-progress" id="scrollProgress"></div>
+<nav id="mainNav">
+  <div class="nav-logo">
+    <a href="index.html"><img src="adroit-logo.png" alt="Adroit Solutions GmbH"/></a>
+  </div>
+  <div class="nav-right">
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html"><span data-lang="de">Startseite</span><span data-lang="en">Home</span></a></li>
+      <li><a href="about.html"><span data-lang="de">Über uns</span><span data-lang="en">About</span></a></li>
+      <li><a href="services.html" class="active"><span data-lang="de">Leistungen</span><span data-lang="en">Services</span></a></li>
+      <li><a href="cases.html"><span data-lang="de">Referenzen</span><span data-lang="en">Case Studies</span></a></li>
+      <li><a href="careers.html"><span data-lang="de">Karriere</span><span data-lang="en">Careers</span></a></li>
+      <li><a href="contact.html"><span data-lang="de">Kontakt</span><span data-lang="en">Contact</span></a></li>
+    </ul>
+    <div class="lang-switcher">
+      <button class="lang-btn active" id="btn-de" onclick="setLang('de')">DE</button>
+      <button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button>
+    </div>
+    <button class="menu-btn" id="menuBtn" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="svc-hero">
+  <div class="svc-hero-bg"></div>
+  <div class="svc-hero-grid"></div>
+  <div class="inner">
+    <div>
+      <div class="breadcrumb">
+        <a href="index.html">Home</a><span>›</span>
+        <a href="services.html">Services</a><span>›</span>
+        <span class="current">ADROIT SENSE™ IoT Platform</span>
+      </div>
+      <div class="hero-tag">Practice Area 03 · Proprietary SaaS</div>
+      <h1>ADROIT SENSE™<br><em>IoT Platform</em></h1>
+      <p>A proprietary industrial IoT SaaS platform purpose-built for German Mittelstand manufacturers — delivering real-time factory floor monitoring, predictive maintenance signals, and OEE dashboards without enterprise-tier complexity or pricing.</p>
+      <div class="hero-badges">
+        <span class="badge">Real-Time Monitoring</span>
+        <span class="badge">Predictive Maintenance</span>
+        <span class="badge">OEE Dashboards</span>
+        <span class="badge">MQTT Ingestion</span>
+        <span class="badge">Mittelstand SaaS</span>
+      </div>
+    </div>
+    <div class="hero-art">
+      <svg viewBox="0 0 420 340" xmlns="http://www.w3.org/2000/svg">
+        <defs><filter id="glow4"><feGaussianBlur stdDeviation="2" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+        <rect x="10" y="10" width="400" height="320" rx="4" fill="rgba(196,154,42,0.03)" stroke="rgba(196,154,42,0.25)" stroke-width="1"/>
+        <rect x="10" y="10" width="400" height="28" rx="4" fill="rgba(196,154,42,0.1)" stroke="none"/>
+        <text x="26" y="27" font-family="Outfit" font-size="7" fill="rgba(196,154,42,0.9)" letter-spacing="0.5">ADROIT SENSE™</text>
+        <text x="180" y="27" font-family="Outfit" font-size="6" fill="rgba(196,154,42,0.5)">Factory Dashboard · Live</text>
+        <circle class="blink-dot" cx="400" cy="24" r="5" fill="#C49A2A" filter="url(#glow4)"/>
+        <rect x="10" y="38" width="50" height="292" fill="rgba(196,154,42,0.04)" stroke="none"/>
+        <circle cx="35" cy="62" r="8" fill="rgba(196,154,42,0.15)" stroke="rgba(196,154,42,0.4)" stroke-width="0.8"/>
+        <text x="35" y="66" text-anchor="middle" font-family="Outfit" font-size="5" fill="rgba(196,154,42,0.8)">⚡</text>
+        <rect x="68" y="44" width="70" height="44" rx="2" fill="rgba(196,154,42,0.1)" stroke="rgba(196,154,42,0.3)" stroke-width="0.8"/>
+        <text x="103" y="58" text-anchor="middle" font-family="Outfit" font-size="5.5" fill="rgba(196,154,42,0.55)">OEE</text>
+        <text x="103" y="74" text-anchor="middle" font-family="Outfit" font-size="14" font-weight="500" fill="rgba(196,154,42,0.95)">87%</text>
+        <rect x="144" y="44" width="70" height="44" rx="2" fill="rgba(196,154,42,0.07)" stroke="rgba(196,154,42,0.22)" stroke-width="0.8"/>
+        <text x="179" y="58" text-anchor="middle" font-family="Outfit" font-size="5.5" fill="rgba(196,154,42,0.5)">UPTIME</text>
+        <text x="179" y="74" text-anchor="middle" font-family="Outfit" font-size="14" font-weight="500" fill="rgba(196,154,42,0.85)">99.2%</text>
+        <rect x="220" y="44" width="70" height="44" rx="2" fill="rgba(196,154,42,0.07)" stroke="rgba(196,154,42,0.22)" stroke-width="0.8"/>
+        <text x="255" y="58" text-anchor="middle" font-family="Outfit" font-size="5.5" fill="rgba(196,154,42,0.5)">ALERTS</text>
+        <text x="255" y="74" text-anchor="middle" font-family="Outfit" font-size="14" font-weight="500" fill="rgba(196,154,42,0.85)">2</text>
+        <rect x="296" y="44" width="112" height="44" rx="2" fill="rgba(196,154,42,0.07)" stroke="rgba(196,154,42,0.22)" stroke-width="0.8"/>
+        <text x="352" y="58" text-anchor="middle" font-family="Outfit" font-size="5.5" fill="rgba(196,154,42,0.5)">MACHINES ONLINE</text>
+        <text x="352" y="74" text-anchor="middle" font-family="Outfit" font-size="14" font-weight="500" fill="rgba(196,154,42,0.85)">14 / 16</text>
+        <rect x="68" y="96" width="224" height="100" rx="2" fill="rgba(196,154,42,0.03)" stroke="rgba(196,154,42,0.18)" stroke-width="0.8"/>
+        <text x="80" y="109" font-family="Outfit" font-size="5.5" fill="rgba(196,154,42,0.5)">Production Output · Last 8hrs</text>
+        <g stroke="rgba(196,154,42,0.07)" stroke-width="0.6">
+          <line x1="68" y1="120" x2="292" y2="120"/><line x1="68" y1="140" x2="292" y2="140"/>
+          <line x1="68" y1="160" x2="292" y2="160"/><line x1="68" y1="180" x2="292" y2="180"/>
+        </g>
+        <polyline points="80,182 108,162 136,168 164,148 192,155 220,138 248,144 276,128 292,132" fill="none" stroke="rgba(196,154,42,0.8)" stroke-width="1.8" stroke-linejoin="round"/>
+        <polyline points="80,182 108,162 136,168 164,148 192,155 220,138 248,144 276,128 292,132 292,192 80,192" fill="rgba(196,154,42,0.07)" stroke="none"/>
+        <path class="spark" d="M80,182 108,162 136,168 164,148" fill="none" stroke="rgba(196,154,42,0.5)" stroke-width="2"/>
+        <text x="80" y="200" font-family="Outfit" font-size="4.5" fill="rgba(196,154,42,0.3)">06:00</text>
+        <text x="136" y="200" font-family="Outfit" font-size="4.5" fill="rgba(196,154,42,0.3)">09:00</text>
+        <text x="192" y="200" font-family="Outfit" font-size="4.5" fill="rgba(196,154,42,0.3)">12:00</text>
+        <text x="248" y="200" font-family="Outfit" font-size="4.5" fill="rgba(196,154,42,0.3)">15:00</text>
+        <rect x="298" y="96" width="110" height="100" rx="2" fill="rgba(196,154,42,0.03)" stroke="rgba(196,154,42,0.18)" stroke-width="0.8"/>
+        <text x="310" y="109" font-family="Outfit" font-size="5.5" fill="rgba(196,154,42,0.5)">Machine Status</text>
+        <g font-family="Outfit" font-size="5" fill="rgba(255,255,255,0.5)">
+          <text x="310" y="124">CNC-01</text><circle cx="390" cy="121" r="4" fill="rgba(100,220,100,0.6)"/>
+          <text x="310" y="136">CNC-02</text><circle cx="390" cy="133" r="4" fill="rgba(100,220,100,0.6)"/>
+          <text x="310" y="148">WELD-01</text><circle cx="390" cy="145" r="4" fill="rgba(220,180,60,0.6)"/>
+          <text x="310" y="160">WELD-02</text><circle cx="390" cy="157" r="4" fill="rgba(100,220,100,0.6)"/>
+          <text x="310" y="172">PRESS-01</text><circle cx="390" cy="169" r="4" fill="rgba(220,80,60,0.6)"/>
+        </g>
+        <rect x="68" y="208" width="340" height="50" rx="2" fill="rgba(196,154,42,0.04)" stroke="rgba(196,154,42,0.18)" stroke-width="0.8"/>
+        <text x="80" y="221" font-family="Outfit" font-size="5.5" fill="rgba(196,154,42,0.5)">Active Alerts</text>
+        <rect x="80" y="226" width="316" height="14" rx="1" fill="rgba(220,180,60,0.08)" stroke="rgba(220,180,60,0.3)" stroke-width="0.6"/>
+        <text x="88" y="235.5" font-family="Outfit" font-size="5" fill="rgba(220,180,60,0.7)">⚠ WELD-01 · Vibration threshold exceeded · 14:32:08</text>
+        <rect x="80" y="242" width="316" height="14" rx="1" fill="rgba(220,80,60,0.08)" stroke="rgba(220,80,60,0.3)" stroke-width="0.6"/>
+        <text x="88" y="251.5" font-family="Outfit" font-size="5" fill="rgba(220,80,60,0.7)">🔴 PRESS-01 · Offline · Last seen 13:58:22 · Maintenance required</text>
+        <rect x="68" y="266" width="340" height="56" rx="2" fill="rgba(196,154,42,0.03)" stroke="rgba(196,154,42,0.15)" stroke-width="0.8"/>
+        <text x="80" y="279" font-family="Outfit" font-size="5.5" fill="rgba(196,154,42,0.5)">Live Sensor Readings</text>
+        <text x="80" y="295" font-family="Outfit" font-size="4.5" fill="rgba(196,154,42,0.45)">Temp</text>
+        <rect x="110" y="289" width="60" height="6" rx="1" fill="rgba(255,255,255,0.05)"/>
+        <rect x="110" y="289" width="42" height="6" rx="1" fill="rgba(196,154,42,0.6)"/>
+        <text x="175" y="295" font-family="Outfit" font-size="4.5" fill="rgba(196,154,42,0.55)">72°C</text>
+        <text x="200" y="295" font-family="Outfit" font-size="4.5" fill="rgba(196,154,42,0.45)">Vibration</text>
+        <rect x="238" y="289" width="60" height="6" rx="1" fill="rgba(255,255,255,0.05)"/>
+        <rect x="238" y="289" width="50" height="6" rx="1" fill="rgba(220,180,60,0.6)"/>
+        <text x="303" y="295" font-family="Outfit" font-size="4.5" fill="rgba(220,180,60,0.7)">HIGH</text>
+        <text x="80" y="312" font-family="Outfit" font-size="4.5" fill="rgba(196,154,42,0.45)">Current</text>
+        <rect x="110" y="306" width="60" height="6" rx="1" fill="rgba(255,255,255,0.05)"/>
+        <rect x="110" y="306" width="32" height="6" rx="1" fill="rgba(196,154,42,0.5)"/>
+        <text x="175" y="312" font-family="Outfit" font-size="4.5" fill="rgba(196,154,42,0.55)">14.2A</text>
+        <text x="200" y="312" font-family="Outfit" font-size="4.5" fill="rgba(196,154,42,0.45)">Pressure</text>
+        <rect x="238" y="306" width="60" height="6" rx="1" fill="rgba(255,255,255,0.05)"/>
+        <rect x="238" y="306" width="44" height="6" rx="1" fill="rgba(196,154,42,0.5)"/>
+        <text x="303" y="312" font-family="Outfit" font-size="4.5" fill="rgba(196,154,42,0.55)">6.2 bar</text>
+      </svg>
+    </div>
+  </div>
+</div>
+
+<!-- OVERVIEW -->
+<div class="overview-band">
+  <div class="inner">
+    <span class="s-label">Overview</span>
+    <h2 class="s-title">Industrial IoT without the<br><em>enterprise</em> price tag.</h2>
+    <p class="s-desc">ADROIT SENSE™ is designed specifically for German Mittelstand manufacturers who need real operational intelligence — without a six-month implementation programme or enterprise software licencing costs.</p>
+    <div class="two-col">
+      <div class="prose">
+        <p>Most industrial IoT platforms are either too complex for mid-size manufacturers to deploy without dedicated IT teams, or too simplistic to deliver meaningful operational intelligence. ADROIT SENSE™ fills that gap — a <strong>cloud-native SaaS platform</strong> that connects to existing factory floor equipment via ESP32-based sensor nodes, requiring no changes to existing machinery or PLCs.</p>
+        <p>The platform ingests <strong>MQTT telemetry</strong> from deployed sensor nodes, processes it through a Java/Spring Boot backend on AWS eu-central-1, and surfaces real-time KPIs via a React.js dashboard — OEE, uptime, alert thresholds, machine status, and predictive maintenance signals based on vibration, temperature, and current draw anomaly detection.</p>
+        <p>Designed for <strong>German data residency requirements</strong> — all data processed and stored within AWS eu-central-1 (Frankfurt). GDPR-compliant by design, with customer-isolated data tenancy and full audit logging.</p>
+      </div>
+      <div class="kpi-stack">
+        <div class="kpi-item">
+          <div class="kpi-n">01</div>
+          <div><div class="kpi-title">No PLC Modification Required</div><div class="kpi-body">ESP32-S3 sensor nodes attach externally to existing machinery — measuring current draw, vibration, temperature, and cycle counts without touching the machine control systems.</div></div>
+        </div>
+        <div class="kpi-item">
+          <div class="kpi-n">02</div>
+          <div><div class="kpi-title">Real-Time OEE Calculation</div><div class="kpi-body">Availability, Performance, and Quality metrics calculated in real-time from sensor telemetry — OEE dashboards updated every 5 seconds with configurable shift and production period windows.</div></div>
+        </div>
+        <div class="kpi-item">
+          <div class="kpi-n">03</div>
+          <div><div class="kpi-title">Predictive Maintenance Signals</div><div class="kpi-body">Anomaly detection on vibration and thermal signatures — alerting maintenance teams before machine failure, not after. Configurable threshold rules per machine profile.</div></div>
+        </div>
+        <div class="kpi-item">
+          <div class="kpi-n">04</div>
+          <div><div class="kpi-title">German Data Residency</div><div class="kpi-body">All data processed and stored on AWS eu-central-1 (Frankfurt). Customer-isolated multi-tenant architecture with full GDPR compliance and audit trail logging.</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- METRICS STRIP -->
+<div class="metrics-strip">
+  <div class="inner">
+    <div class="metric-item">
+      <div class="metric-num">5<sup>s</sup></div>
+      <div class="metric-label">Dashboard Refresh Rate</div>
+      <div class="metric-desc">Real-time KPI updates every 5 seconds from live sensor telemetry</div>
+    </div>
+    <div class="metric-item">
+      <div class="metric-num">99<sup>%+</sup></div>
+      <div class="metric-label">Platform Uptime Target</div>
+      <div class="metric-desc">AWS eu-central-1 multi-AZ deployment with automatic failover</div>
+    </div>
+    <div class="metric-item">
+      <div class="metric-num">0</div>
+      <div class="metric-label">PLC Changes Required</div>
+      <div class="metric-desc">Non-invasive sensor node installation — no machine modification needed</div>
+    </div>
+    <div class="metric-item">
+      <div class="metric-num">14<sup>d</sup></div>
+      <div class="metric-label">Typical Go-Live Time</div>
+      <div class="metric-desc">From sensor node installation to live dashboard in under two weeks</div>
+    </div>
+  </div>
+</div>
+
+<!-- CAPABILITIES -->
+<div class="cap-deep">
+  <div class="inner">
+    <span class="s-label light" style="padding-top:0;">Platform Capabilities</span>
+    <h2 class="s-title light">What ADROIT SENSE™ <em>delivers</em></h2>
+    <p class="s-desc light">Six core platform modules — each addressing a specific operational intelligence need for manufacturing clients.</p>
+    <div class="cap-deep-grid">
+
+      <div class="cd-card">
+        <div class="cd-art">
+          <svg viewBox="0 0 140 70" xmlns="http://www.w3.org/2000/svg">
+            <path d="M30 52 A24 24 0 0 1 78 52" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="8" stroke-linecap="round"/>
+            <path d="M30 52 A24 24 0 0 1 72 36" fill="none" stroke="rgba(196,154,42,0.75)" stroke-width="8" stroke-linecap="round"/>
+            <text x="54" y="55" text-anchor="middle" font-family="Outfit" font-size="12" font-weight="500" fill="rgba(196,154,42,0.95)">87%</text>
+            <text x="54" y="65" text-anchor="middle" font-family="Outfit" font-size="5" fill="rgba(196,154,42,0.45)">OEE</text>
+            <rect x="90" y="15" width="45" height="14" rx="1" fill="rgba(196,154,42,0.08)" stroke="rgba(196,154,42,0.25)" stroke-width="0.7"/>
+            <text x="112" y="25" text-anchor="middle" font-family="Outfit" font-size="5" fill="rgba(196,154,42,0.6)">Availability 94%</text>
+            <rect x="90" y="32" width="45" height="14" rx="1" fill="rgba(196,154,42,0.08)" stroke="rgba(196,154,42,0.25)" stroke-width="0.7"/>
+            <text x="112" y="42" text-anchor="middle" font-family="Outfit" font-size="5" fill="rgba(196,154,42,0.6)">Performance 91%</text>
+            <rect x="90" y="49" width="45" height="14" rx="1" fill="rgba(196,154,42,0.08)" stroke="rgba(196,154,42,0.25)" stroke-width="0.7"/>
+            <text x="112" y="59" text-anchor="middle" font-family="Outfit" font-size="5" fill="rgba(196,154,42,0.6)">Quality 98%</text>
+          </svg>
+        </div>
+        <div class="cd-title">OEE Monitoring</div>
+        <div class="cd-body">Real-time Overall Equipment Effectiveness calculation — Availability, Performance, and Quality metrics updated every 5 seconds with shift-based and production-period reporting.</div>
+        <div class="cd-tags"><span class="cd-tag">OEE</span><span class="cd-tag">Shift Reports</span><span class="cd-tag">KPI Dashboards</span></div>
+      </div>
+
+      <div class="cd-card">
+        <div class="cd-art">
+          <svg viewBox="0 0 140 70" xmlns="http://www.w3.org/2000/svg">
+            <polyline points="5,45 18,35 28,42 38,25 48,38 58,20 68,35 78,28 88,18 98,30 108,22 118,32 128,40 135,35" fill="none" stroke="rgba(196,154,42,0.65)" stroke-width="1.5" stroke-linejoin="round"/>
+            <line x1="5" y1="15" x2="135" y2="15" stroke="rgba(220,80,60,0.4)" stroke-width="1" stroke-dasharray="3,2"/>
+            <text x="10" y="12" font-family="Outfit" font-size="4.5" fill="rgba(220,80,60,0.6)">THRESHOLD</text>
+            <circle cx="88" cy="18" r="5" fill="none" stroke="rgba(220,80,60,0.7)" stroke-width="1.2"/>
+            <circle cx="88" cy="18" r="2" fill="rgba(220,80,60,0.6)"/>
+            <text x="95" y="12" font-family="Outfit" font-size="4.5" fill="rgba(220,80,60,0.7)">ANOMALY</text>
+            <text x="70" y="62" text-anchor="middle" font-family="Outfit" font-size="4.5" fill="rgba(196,154,42,0.35)">VIBRATION · THERMAL · CURRENT DRAW</text>
+          </svg>
+        </div>
+        <div class="cd-title">Predictive Maintenance</div>
+        <div class="cd-body">Anomaly detection on vibration, thermal, and current draw signatures — alerting maintenance teams to developing issues before machine failure occurs. Configurable per-machine threshold rules.</div>
+        <div class="cd-tags"><span class="cd-tag">Anomaly Detection</span><span class="cd-tag">Threshold Alerts</span><span class="cd-tag">SMS / Email</span></div>
+      </div>
+
+      <div class="cd-card">
+        <div class="cd-art">
+          <svg viewBox="0 0 140 70" xmlns="http://www.w3.org/2000/svg">
+            <rect x="5" y="24" width="30" height="22" rx="2" fill="rgba(196,154,42,0.1)" stroke="rgba(196,154,42,0.4)" stroke-width="1"/>
+            <text x="20" y="33" text-anchor="middle" font-family="Outfit" font-size="5" fill="rgba(196,154,42,0.8)">ESP32</text>
+            <text x="20" y="41" text-anchor="middle" font-family="Outfit" font-size="4" fill="rgba(196,154,42,0.5)">Node</text>
+            <path class="spark2" d="M35 35 Q52 35 68 35" fill="none" stroke="rgba(196,154,42,0.6)" stroke-width="1.2"/>
+            <rect x="68" y="24" width="34" height="22" rx="2" fill="rgba(196,154,42,0.08)" stroke="rgba(196,154,42,0.35)" stroke-width="1"/>
+            <text x="85" y="33" text-anchor="middle" font-family="Outfit" font-size="5" fill="rgba(196,154,42,0.7)">MQTT</text>
+            <text x="85" y="41" text-anchor="middle" font-family="Outfit" font-size="4" fill="rgba(196,154,42,0.45)">Broker</text>
+            <path class="spark3" d="M102 35 Q118 35 130 35" fill="none" stroke="rgba(196,154,42,0.5)" stroke-width="1.2"/>
+            <rect x="112" y="20" width="23" height="30" rx="2" fill="rgba(196,154,42,0.07)" stroke="rgba(196,154,42,0.28)" stroke-width="0.8"/>
+            <text x="123" y="33" text-anchor="middle" font-family="Outfit" font-size="5" fill="rgba(196,154,42,0.65)">AWS</text>
+            <text x="123" y="42" text-anchor="middle" font-family="Outfit" font-size="4" fill="rgba(196,154,42,0.4)">IoT</text>
+            <text x="70" y="62" text-anchor="middle" font-family="Outfit" font-size="4.5" fill="rgba(196,154,42,0.35)">TLS · QoS 1 · AWS IOT CORE · EU-CENTRAL-1</text>
+          </svg>
+        </div>
+        <div class="cd-title">MQTT Telemetry Ingestion</div>
+        <div class="cd-body">Secure MQTT telemetry pipeline from ESP32 sensor nodes through AWS IoT Core — TLS-encrypted, QoS 1 delivery, with automatic device registration and certificate management.</div>
+        <div class="cd-tags"><span class="cd-tag">AWS IoT Core</span><span class="cd-tag">MQTT v5</span><span class="cd-tag">TLS 1.3</span></div>
+      </div>
+
+      <div class="cd-card">
+        <div class="cd-art">
+          <svg viewBox="0 0 140 70" xmlns="http://www.w3.org/2000/svg">
+            <text x="10" y="14" font-family="Outfit" font-size="5.5" fill="rgba(196,154,42,0.5)">Machine Status Board</text>
+            <g font-family="Outfit" font-size="5">
+              <rect x="10" y="20" width="55" height="10" rx="1" fill="rgba(100,220,100,0.08)" stroke="rgba(100,220,100,0.3)" stroke-width="0.6"/>
+              <text x="18" y="27.5" fill="rgba(100,220,100,0.7)">CNC-01 ● RUNNING</text>
+              <rect x="10" y="33" width="55" height="10" rx="1" fill="rgba(100,220,100,0.08)" stroke="rgba(100,220,100,0.3)" stroke-width="0.6"/>
+              <text x="18" y="40.5" fill="rgba(100,220,100,0.7)">CNC-02 ● RUNNING</text>
+              <rect x="10" y="46" width="55" height="10" rx="1" fill="rgba(220,180,60,0.08)" stroke="rgba(220,180,60,0.3)" stroke-width="0.6"/>
+              <text x="18" y="53.5" fill="rgba(220,180,60,0.7)">WELD-01 ⚠ WARN</text>
+              <rect x="75" y="20" width="58" height="10" rx="1" fill="rgba(100,220,100,0.08)" stroke="rgba(100,220,100,0.3)" stroke-width="0.6"/>
+              <text x="82" y="27.5" fill="rgba(100,220,100,0.7)">PRESS-01 ● OK</text>
+              <rect x="75" y="33" width="58" height="10" rx="1" fill="rgba(220,80,60,0.08)" stroke="rgba(220,80,60,0.3)" stroke-width="0.6"/>
+              <text x="82" y="40.5" fill="rgba(220,80,60,0.7)">PRESS-02 ✕ OFFLINE</text>
+            </g>
+          </svg>
+        </div>
+        <div class="cd-title">Machine Status Monitoring</div>
+        <div class="cd-body">Real-time status board for all connected machines — Running, Idle, Warning, and Offline states with timestamped last-seen records and configurable offline timeout alerts.</div>
+        <div class="cd-tags"><span class="cd-tag">Real-Time Status</span><span class="cd-tag">Offline Alerts</span><span class="cd-tag">Multi-Machine</span></div>
+      </div>
+
+      <div class="cd-card">
+        <div class="cd-art">
+          <svg viewBox="0 0 140 70" xmlns="http://www.w3.org/2000/svg">
+            <rect x="10" y="8" width="70" height="54" rx="2" fill="rgba(196,154,42,0.05)" stroke="rgba(196,154,42,0.28)" stroke-width="1"/>
+            <rect x="10" y="8" width="70" height="12" rx="2" fill="rgba(196,154,42,0.1)"/>
+            <text x="45" y="17" text-anchor="middle" font-family="Outfit" font-size="5" fill="rgba(196,154,42,0.8)">Weekly OEE Report</text>
+            <rect x="18" y="26" width="54" height="5" rx="0.8" fill="rgba(196,154,42,0.12)"/>
+            <rect x="18" y="34" width="40" height="5" rx="0.8" fill="rgba(196,154,42,0.08)"/>
+            <rect x="18" y="42" width="50" height="5" rx="0.8" fill="rgba(196,154,42,0.08)"/>
+            <rect x="18" y="50" width="34" height="5" rx="0.8" fill="rgba(196,154,42,0.06)"/>
+            <line x1="80" y1="35" x2="96" y2="35" stroke="rgba(196,154,42,0.4)" stroke-width="1" stroke-dasharray="2,2"/>
+            <rect x="96" y="22" width="36" height="26" rx="2" fill="rgba(196,154,42,0.08)" stroke="rgba(196,154,42,0.35)" stroke-width="0.8"/>
+            <text x="114" y="33" text-anchor="middle" font-family="Outfit" font-size="5" fill="rgba(196,154,42,0.7)">PDF</text>
+            <text x="114" y="42" text-anchor="middle" font-family="Outfit" font-size="5" fill="rgba(196,154,42,0.55)">Excel</text>
+            <text x="70" y="68" text-anchor="middle" font-family="Outfit" font-size="4.5" fill="rgba(196,154,42,0.3)">SHIFT · DAILY · WEEKLY · MONTHLY</text>
+          </svg>
+        </div>
+        <div class="cd-title">Reporting &amp; Export</div>
+        <div class="cd-body">Automated shift reports, daily summaries, and weekly OEE performance reviews — exported as PDF or Excel. Configurable report delivery via email on schedule or on-demand.</div>
+        <div class="cd-tags"><span class="cd-tag">PDF Export</span><span class="cd-tag">Excel</span><span class="cd-tag">Scheduled Reports</span></div>
+      </div>
+
+      <div class="cd-card">
+        <div class="cd-art">
+          <svg viewBox="0 0 140 70" xmlns="http://www.w3.org/2000/svg">
+            <rect x="5" y="10" width="40" height="30" rx="2" fill="rgba(196,154,42,0.08)" stroke="rgba(196,154,42,0.35)" stroke-width="0.8"/>
+            <text x="25" y="22" text-anchor="middle" font-family="Outfit" font-size="5" fill="rgba(196,154,42,0.7)">Tenant A</text>
+            <text x="25" y="32" text-anchor="middle" font-family="Outfit" font-size="4.5" fill="rgba(196,154,42,0.45)">Isolated DB</text>
+            <rect x="50" y="10" width="40" height="30" rx="2" fill="rgba(196,154,42,0.08)" stroke="rgba(196,154,42,0.35)" stroke-width="0.8"/>
+            <text x="70" y="22" text-anchor="middle" font-family="Outfit" font-size="5" fill="rgba(196,154,42,0.7)">Tenant B</text>
+            <text x="70" y="32" text-anchor="middle" font-family="Outfit" font-size="4.5" fill="rgba(196,154,42,0.45)">Isolated DB</text>
+            <rect x="95" y="10" width="40" height="30" rx="2" fill="rgba(196,154,42,0.08)" stroke="rgba(196,154,42,0.35)" stroke-width="0.8"/>
+            <text x="115" y="22" text-anchor="middle" font-family="Outfit" font-size="5" fill="rgba(196,154,42,0.7)">Tenant C</text>
+            <text x="115" y="32" text-anchor="middle" font-family="Outfit" font-size="4.5" fill="rgba(196,154,42,0.45)">Isolated DB</text>
+            <rect x="40" y="48" width="60" height="14" rx="2" fill="rgba(196,154,42,0.12)" stroke="rgba(196,154,42,0.45)" stroke-width="0.8"/>
+            <text x="70" y="58" text-anchor="middle" font-family="Outfit" font-size="5.5" fill="rgba(196,154,42,0.85)">Shared Platform</text>
+            <g stroke="rgba(196,154,42,0.25)" stroke-width="0.8">
+              <line x1="25" y1="40" x2="55" y2="48"/><line x1="70" y1="40" x2="70" y2="48"/><line x1="115" y1="40" x2="85" y2="48"/>
+            </g>
+          </svg>
+        </div>
+        <div class="cd-title">Multi-Tenant SaaS Architecture</div>
+        <div class="cd-body">Customer-isolated multi-tenant platform — each manufacturer's data is logically separated with independent access controls, audit trails, and configurable data retention policies.</div>
+        <div class="cd-tags"><span class="cd-tag">Multi-Tenant</span><span class="cd-tag">GDPR</span><span class="cd-tag">Audit Logs</span></div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- PLATFORM ARCHITECTURE -->
+<div class="arch-section">
+  <div class="inner">
+    <span class="s-label">Platform Architecture</span>
+    <h2 class="s-title" style="color:#0a0a0a;">End-to-end <em>architecture</em></h2>
+    <p class="s-desc" style="color:rgba(10,10,10,0.55);">From factory floor sensor node through to browser dashboard — the complete ADROIT SENSE™ data pipeline.</p>
+    <div class="arch-visual">
+      <svg viewBox="0 0 900 180" xmlns="http://www.w3.org/2000/svg">
+        <rect x="10" y="20" width="130" height="140" rx="3" fill="rgba(196,154,42,0.04)" stroke="rgba(196,154,42,0.18)" stroke-width="1"/>
+        <text x="75" y="36" text-anchor="middle" font-family="Outfit" font-size="6" fill="rgba(196,154,42,0.45)" letter-spacing="0.5">EDGE LAYER</text>
+        <rect x="22" y="44" width="106" height="28" rx="2" fill="rgba(196,154,42,0.1)" stroke="rgba(196,154,42,0.38)" stroke-width="0.8"/>
+        <text x="75" y="56" text-anchor="middle" font-family="Outfit" font-size="6.5" fill="rgba(196,154,42,0.85)">ESP32-S3</text>
+        <text x="75" y="65" text-anchor="middle" font-family="Outfit" font-size="5" fill="rgba(196,154,42,0.55)">Sensor Node</text>
+        <rect x="22" y="80" width="106" height="22" rx="2" fill="rgba(196,154,42,0.06)" stroke="rgba(196,154,42,0.25)" stroke-width="0.8"/>
+        <text x="75" y="94" text-anchor="middle" font-family="Outfit" font-size="5.5" fill="rgba(196,154,42,0.6)">FreeRTOS · C/C++</text>
+        <rect x="22" y="110" width="106" height="22" rx="2" fill="rgba(196,154,42,0.06)" stroke="rgba(196,154,42,0.25)" stroke-width="0.8"/>
+        <text x="75" y="124" text-anchor="middle" font-family="Outfit" font-size="5.5" fill="rgba(196,154,42,0.6)">BME280 · ADC · CSI</text>
+        <rect x="22" y="140" width="106" height="14" rx="2" fill="rgba(196,154,42,0.06)" stroke="rgba(196,154,42,0.25)" stroke-width="0.8"/>
+        <text x="75" y="150" text-anchor="middle" font-family="Outfit" font-size="5" fill="rgba(196,154,42,0.5)">OTA · TLS · WiFi</text>
+        <line x1="140" y1="90" x2="175" y2="90" stroke="rgba(196,154,42,0.45)" stroke-width="1.2" stroke-dasharray="3,2"/>
+        <text x="157" y="85" text-anchor="middle" font-family="Outfit" font-size="5" fill="rgba(196,154,42,0.4)">MQTT</text>
+        <text x="157" y="98" text-anchor="middle" font-family="Outfit" font-size="4.5" fill="rgba(196,154,42,0.3)">TLS 1.3</text>
+        <rect x="175" y="20" width="130" height="140" rx="3" fill="rgba(196,154,42,0.04)" stroke="rgba(196,154,42,0.18)" stroke-width="1"/>
+        <text x="240" y="36" text-anchor="middle" font-family="Outfit" font-size="6" fill="rgba(196,154,42,0.45)" letter-spacing="0.5">CLOUD INGESTION</text>
+        <rect x="187" y="44" width="106" height="28" rx="2" fill="rgba(196,154,42,0.1)" stroke="rgba(196,154,42,0.38)" stroke-width="0.8"/>
+        <text x="240" y="56" text-anchor="middle" font-family="Outfit" font-size="6.5" fill="rgba(196,154,42,0.85)">AWS IoT Core</text>
+        <text x="240" y="65" text-anchor="middle" font-family="Outfit" font-size="5" fill="rgba(196,154,42,0.55)">eu-central-1</text>
+        <rect x="187" y="80" width="106" height="22" rx="2" fill="rgba(196,154,42,0.06)" stroke="rgba(196,154,42,0.25)" stroke-width="0.8"/>
+        <text x="240" y="94" text-anchor="middle" font-family="Outfit" font-size="5.5" fill="rgba(196,154,42,0.6)">Rules Engine</text>
+        <rect x="187" y="110" width="106" height="22" rx="2" fill="rgba(196,154,42,0.06)" stroke="rgba(196,154,42,0.25)" stroke-width="0.8"/>
+        <text x="240" y="124" text-anchor="middle" font-family="Outfit" font-size="5.5" fill="rgba(196,154,42,0.6)">Kinesis → Lambda</text>
+        <line x1="305" y1="90" x2="340" y2="90" stroke="rgba(196,154,42,0.45)" stroke-width="1.2" stroke-dasharray="3,2"/>
+        <rect x="340" y="20" width="160" height="140" rx="3" fill="rgba(196,154,42,0.05)" stroke="rgba(196,154,42,0.22)" stroke-width="1"/>
+        <text x="420" y="36" text-anchor="middle" font-family="Outfit" font-size="6" fill="rgba(196,154,42,0.45)" letter-spacing="0.5">BACKEND PLATFORM</text>
+        <rect x="352" y="44" width="136" height="28" rx="2" fill="rgba(196,154,42,0.12)" stroke="rgba(196,154,42,0.45)" stroke-width="1"/>
+        <text x="420" y="56" text-anchor="middle" font-family="Outfit" font-size="6.5" fill="rgba(196,154,42,0.9)">Spring Boot 3.x</text>
+        <text x="420" y="65" text-anchor="middle" font-family="Outfit" font-size="5" fill="rgba(196,154,42,0.6)">Java 21 · REST API · WebSocket</text>
+        <rect x="352" y="80" width="65" height="22" rx="2" fill="rgba(196,154,42,0.06)" stroke="rgba(196,154,42,0.25)" stroke-width="0.8"/>
+        <text x="384" y="94" text-anchor="middle" font-family="Outfit" font-size="5.5" fill="rgba(196,154,42,0.6)">Kafka Streams</text>
+        <rect x="423" y="80" width="65" height="22" rx="2" fill="rgba(196,154,42,0.06)" stroke="rgba(196,154,42,0.25)" stroke-width="0.8"/>
+        <text x="455" y="94" text-anchor="middle" font-family="Outfit" font-size="5.5" fill="rgba(196,154,42,0.6)">Anomaly Detect</text>
+        <rect x="352" y="110" width="65" height="22" rx="2" fill="rgba(196,154,42,0.06)" stroke="rgba(196,154,42,0.25)" stroke-width="0.8"/>
+        <text x="384" y="124" text-anchor="middle" font-family="Outfit" font-size="5.5" fill="rgba(196,154,42,0.6)">TimescaleDB</text>
+        <rect x="423" y="110" width="65" height="22" rx="2" fill="rgba(196,154,42,0.06)" stroke="rgba(196,154,42,0.25)" stroke-width="0.8"/>
+        <text x="455" y="124" text-anchor="middle" font-family="Outfit" font-size="5.5" fill="rgba(196,154,42,0.6)">Redis Cache</text>
+        <line x1="500" y1="90" x2="535" y2="90" stroke="rgba(196,154,42,0.45)" stroke-width="1.2" stroke-dasharray="3,2"/>
+        <rect x="535" y="20" width="130" height="140" rx="3" fill="rgba(196,154,42,0.04)" stroke="rgba(196,154,42,0.18)" stroke-width="1"/>
+        <text x="600" y="36" text-anchor="middle" font-family="Outfit" font-size="6" fill="rgba(196,154,42,0.45)" letter-spacing="0.5">FRONTEND</text>
+        <rect x="547" y="44" width="106" height="28" rx="2" fill="rgba(196,154,42,0.1)" stroke="rgba(196,154,42,0.38)" stroke-width="0.8"/>
+        <text x="600" y="56" text-anchor="middle" font-family="Outfit" font-size="6.5" fill="rgba(196,154,42,0.85)">React.js</text>
+        <text x="600" y="65" text-anchor="middle" font-family="Outfit" font-size="5" fill="rgba(196,154,42,0.55)">TypeScript · Recharts</text>
+        <rect x="547" y="80" width="106" height="22" rx="2" fill="rgba(196,154,42,0.06)" stroke="rgba(196,154,42,0.25)" stroke-width="0.8"/>
+        <text x="600" y="94" text-anchor="middle" font-family="Outfit" font-size="5.5" fill="rgba(196,154,42,0.6)">OEE Dashboard</text>
+        <rect x="547" y="110" width="106" height="22" rx="2" fill="rgba(196,154,42,0.06)" stroke="rgba(196,154,42,0.25)" stroke-width="0.8"/>
+        <text x="600" y="124" text-anchor="middle" font-family="Outfit" font-size="5.5" fill="rgba(196,154,42,0.6)">Alert Management</text>
+        <line x1="665" y1="90" x2="700" y2="90" stroke="rgba(196,154,42,0.45)" stroke-width="1.2" stroke-dasharray="3,2"/>
+        <rect x="700" y="20" width="190" height="140" rx="3" fill="rgba(196,154,42,0.04)" stroke="rgba(196,154,42,0.18)" stroke-width="1"/>
+        <text x="795" y="36" text-anchor="middle" font-family="Outfit" font-size="6" fill="rgba(196,154,42,0.45)" letter-spacing="0.5">END USER</text>
+        <rect x="712" y="44" width="166" height="28" rx="2" fill="rgba(196,154,42,0.08)" stroke="rgba(196,154,42,0.32)" stroke-width="0.8"/>
+        <text x="795" y="56" text-anchor="middle" font-family="Outfit" font-size="6.5" fill="rgba(196,154,42,0.8)">Production Manager</text>
+        <text x="795" y="65" text-anchor="middle" font-family="Outfit" font-size="5" fill="rgba(196,154,42,0.5)">Browser · Mobile · Tablet</text>
+        <rect x="712" y="80" width="76" height="22" rx="2" fill="rgba(196,154,42,0.06)" stroke="rgba(196,154,42,0.25)" stroke-width="0.8"/>
+        <text x="750" y="94" text-anchor="middle" font-family="Outfit" font-size="5.5" fill="rgba(196,154,42,0.6)">Live Dashboard</text>
+        <rect x="796" y="80" width="82" height="22" rx="2" fill="rgba(196,154,42,0.06)" stroke="rgba(196,154,42,0.25)" stroke-width="0.8"/>
+        <text x="837" y="94" text-anchor="middle" font-family="Outfit" font-size="5.5" fill="rgba(196,154,42,0.6)">Alert Notifications</text>
+      </svg>
+    </div>
+  </div>
+</div>
+
+<!-- TECH STACK -->
+<div class="tech-stack">
+  <div class="inner">
+    <span class="s-label">Technology Stack</span>
+    <h2 class="s-title" style="color:#0a0a0a;">Built on <em>proven</em> foundations</h2>
+    <p class="s-desc" style="color:rgba(10,10,10,0.55);">The complete technology stack powering ADROIT SENSE™ — from edge firmware through to cloud infrastructure.</p>
+    <div class="stack-grid">
+      <div class="stack-cell"><div class="sc-layer">Edge Firmware</div><div class="sc-tech">ESP32-S3 · C/C++</div><div class="sc-detail">FreeRTOS, ESP-IDF v5.x, MQTT client, TLS 1.3, OTA update with rollback</div></div>
+      <div class="stack-cell"><div class="sc-layer">Cloud Ingestion</div><div class="sc-tech">AWS IoT Core</div><div class="sc-detail">eu-central-1, device certificates, Rules Engine, Kinesis Data Streams, Lambda triggers</div></div>
+      <div class="stack-cell"><div class="sc-layer">Backend</div><div class="sc-tech">Java 21 · Spring Boot 3</div><div class="sc-detail">Spring Boot 3.x, Kafka Streams for OEE calculation, WebSocket for real-time push</div></div>
+      <div class="stack-cell"><div class="sc-layer">Database</div><div class="sc-tech">TimescaleDB · Redis</div><div class="sc-detail">TimescaleDB for time-series telemetry, PostgreSQL for operational data, Redis for live KPI caching</div></div>
+      <div class="stack-cell"><div class="sc-layer">Frontend</div><div class="sc-tech">React.js · TypeScript</div><div class="sc-detail">React 18, TypeScript, Recharts for OEE visualisation, WebSocket live data, PWA-ready</div></div>
+      <div class="stack-cell"><div class="sc-layer">Infrastructure</div><div class="sc-tech">AWS · Terraform</div><div class="sc-detail">ECS Fargate, RDS PostgreSQL, ElastiCache Redis, CloudFront, S3, Route53, Terraform IaC</div></div>
+      <div class="stack-cell"><div class="sc-layer">Security</div><div class="sc-tech">Keycloak · mTLS</div><div class="sc-detail">Keycloak IAM, role-based access control, device mTLS certificates, KMS encryption at rest</div></div>
+      <div class="stack-cell"><div class="sc-layer">Compliance</div><div class="sc-tech">GDPR · Data Residency</div><div class="sc-detail">All data in eu-central-1 (Frankfurt), customer data isolation, configurable retention, full audit logs</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- PRICING -->
+<div class="pricing-section">
+  <div class="inner">
+    <span class="s-label light">Pricing</span>
+    <h2 class="s-title light">Mittelstand-appropriate <em>pricing</em></h2>
+    <p class="s-desc light">Transparent monthly SaaS pricing — no per-seat charges, no hidden implementation fees. Hardware sensor nodes billed separately at cost.</p>
+    <div class="pricing-grid">
+      <div class="price-card">
+        <div class="price-badge">Starter</div>
+        <div class="price-tier">Starter</div>
+        <div class="price-amount">From €299 / month · Up to 5 machines</div>
+        <ul class="price-features">
+          <li>Up to 5 connected machines</li>
+          <li>Real-time OEE dashboard</li>
+          <li>Basic alert notifications (email)</li>
+          <li>Daily shift reports (PDF)</li>
+          <li>1 user account</li>
+          <li>EU data residency (Frankfurt)</li>
+        </ul>
+        <a href="contact.html" class="btn-outline" style="width:100%;text-align:center;display:block;">Enquire</a>
+      </div>
+      <div class="price-card featured">
+        <div class="price-badge">Most Popular</div>
+        <div class="price-tier">Professional</div>
+        <div class="price-amount">From €699 / month · Up to 20 machines</div>
+        <ul class="price-features">
+          <li>Up to 20 connected machines</li>
+          <li>Full OEE + predictive maintenance</li>
+          <li>Multi-channel alerts (email, SMS)</li>
+          <li>Weekly &amp; monthly reports</li>
+          <li>Up to 5 user accounts</li>
+          <li>Machine status board</li>
+          <li>Excel &amp; PDF export</li>
+          <li>Priority support</li>
+        </ul>
+        <a href="contact.html" class="btn-gold" style="width:100%;text-align:center;display:block;">Enquire</a>
+      </div>
+      <div class="price-card">
+        <div class="price-badge">Enterprise</div>
+        <div class="price-tier">Enterprise</div>
+        <div class="price-amount">Custom pricing · Unlimited machines</div>
+        <ul class="price-features">
+          <li>Unlimited machines</li>
+          <li>Custom dashboard &amp; branding</li>
+          <li>API access for ERP integration</li>
+          <li>Dedicated tenant infrastructure</li>
+          <li>Unlimited user accounts</li>
+          <li>SLA-backed uptime guarantee</li>
+          <li>On-site sensor installation</li>
+          <li>Dedicated support contact</li>
+        </ul>
+        <a href="contact.html" class="btn-outline" style="width:100%;text-align:center;display:block;">Contact Us</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- DELIVERY -->
+<div class="delivery-section">
+  <div class="inner">
+    <span class="s-label">Deployment Process</span>
+    <h2 class="s-title">Live in <em>14 days</em></h2>
+    <p class="s-desc">A structured, low-disruption deployment — your factory floor operations are never interrupted.</p>
+    <div class="delivery-row">
+      <div class="dr-cell"><div class="dr-step">01</div><div class="dr-title">Site Survey</div><div class="dr-body">We assess your factory floor — machine count, WiFi coverage, power availability, and sensor placement. Typically completed in half a day without disrupting production.</div></div>
+      <div class="dr-cell"><div class="dr-step">02</div><div class="dr-title">Sensor Installation</div><div class="dr-body">ESP32-S3 sensor nodes installed externally on each machine — magnetic or adhesive mounting, no wiring into control systems. Installation takes 15–30 minutes per machine.</div></div>
+      <div class="dr-cell"><div class="dr-step">03</div><div class="dr-title">Platform Configuration</div><div class="dr-body">Your tenant environment configured — machine profiles, shift schedules, alert thresholds, and user accounts set up. Dashboard goes live as nodes connect and telemetry flows.</div></div>
+      <div class="dr-cell"><div class="dr-step">04</div><div class="dr-title">Go-Live &amp; Training</div><div class="dr-body">A half-day on-site training session for your production management team — covering dashboard navigation, alert management, and report generation. Optional German-language session available.</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- SERVICE NAV -->
+<div class="svc-nav-bar">
+  <div class="inner">
+    <a href="embedded-systems.html" class="snb-prev">
+      <svg viewBox="0 0 12 12"><line x1="12" y1="6" x2="2" y2="6"/><polyline points="6,2 2,6 6,10"/></svg>
+      <span><span class="snb-label">Previous</span>Embedded Systems Engineering</span>
+    </a>
+    <a href="services.html" class="snb-all">All Practice Areas</a>
+    <a href="dooh-networks.html" class="snb-next">
+      <span><span class="snb-label">Next</span>DOOH Advertising Networks</span>
+      <svg viewBox="0 0 12 12"><line x1="0" y1="6" x2="10" y2="6"/><polyline points="6,2 10,6 6,10"/></svg>
+    </a>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="svc-cta-band">
+  <h2>Ready to see ADROIT SENSE™<br><em>in action?</em></h2>
+  <p>Request a live demo or discuss a pilot deployment for your factory — we can have you live within two weeks.</p>
+  <div class="btn-row">
+    <a href="contact.html" class="btn-gold">Request a Demo</a>
+    <a href="services.html" class="btn-outline">All Practice Areas</a>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-left">
+    <a href="index.html"><img src="adroit-logo.png" alt="Adroit Solutions GmbH"/></a>
+    <p class="footer-tagline">Electronics &middot; IoT &middot; Digital Solutions &middot; Düsseldorf</p>
+  </div>
+  <div class="footer-legal">
+    <p>&copy; 2026 Adroit Solutions GmbH</p>
+    <p><a href="impressum.html">Impressum</a> &nbsp;&middot;&nbsp; <a href="datenschutz.html">Datenschutz</a></p>
+  </div>
+</footer>
+
+<script src="/site.js"></script>
+<script src="/cookie-consent.js"></script>
+</body>
+</html>

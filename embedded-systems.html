@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="en" style="background:#0a0a0a !important">
+<head>
+<meta charset="UTF-8"/>
+<meta name="color-scheme" content="dark"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Embedded Systems Engineering — Adroit Solutions GmbH</title>
+<meta name="description" content="ESP32/C/C++ firmware development, MQTT protocol integration, real-time sensor networks, and custom embedded hardware solutions. Adroit Solutions GmbH, Düsseldorf."/>
+<link rel="canonical" href="https://adroitsolutions.de/embedded-systems.html"/>
+<link rel="stylesheet" href="/fonts/fonts.css"/>
+<style>
+html, body {
+  background: #0a0a0a !important;
+  color: #f5f4f0 !important;
+  margin: 0 !important; padding: 0 !important;
+  font-family: 'DM Sans', sans-serif !important;
+  font-weight: 300; line-height: 1.7; overflow-x: hidden;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --ink:    #0a0a0a;
+  --ink3:   #141414;
+  --white:  #f5f4f0;
+  --gold:   #c9a84c;
+  --gold2:  #e8c97a;
+  --soft:   rgba(245,244,240,0.45);
+  --surface: #161616;
+  --surface2: #1c1c1c;
+  --border: rgba(201,168,76,0.2);
+  --mid:    #1c1c1c;
+}
+html { scroll-behavior: smooth; }
+
+.scroll-progress {
+  position: fixed; top: 0; left: 0; z-index: 200;
+  height: 2px; width: 0%;
+  background: linear-gradient(90deg, var(--gold), var(--gold2));
+  transition: width 0.1s linear;
+}
+
+/* NAV */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0.75rem 4rem;
+  background: rgba(10,10,10,0.95) !important;
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
+  transition: padding 0.3s ease;
+}
+.nav-logo img { height: 140px; filter: brightness(0) invert(1); background: none; display: block; }
+.nav-right { display: flex; align-items: center; gap: 2rem; }
+.nav-links { display: flex; gap: 2rem; list-style: none; }
+.nav-links a {
+  color: rgba(245,244,240,0.6); text-decoration: none;
+  font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase;
+  position: relative; transition: color 0.2s;
+}
+.nav-links a::after {
+  content: ''; position: absolute; bottom: -4px; left: 0;
+  width: 0; height: 1px; background: var(--gold); transition: width 0.3s ease;
+}
+.nav-links a:hover { color: var(--gold); }
+.nav-links a:hover::after { width: 100%; }
+.nav-links a.active { color: var(--gold); }
+.nav-links a.active::after { width: 100%; }
+.lang-switcher { display: flex; gap: 0.4rem; }
+.lang-btn {
+  background: none; border: 1px solid rgba(201,168,76,0.4);
+  color: rgba(245,244,240,0.6); font-family: 'DM Sans', sans-serif;
+  font-size: 0.75rem; font-weight: 600; letter-spacing: 0.12em;
+  text-transform: uppercase; padding: 0.35rem 0.8rem;
+  cursor: pointer; transition: all 0.25s;
+}
+.lang-btn.active { background: var(--gold); border-color: var(--gold); color: #0a0a0a; font-weight: 700; }
+.lang-btn:hover { border-color: var(--gold); color: var(--gold); }
+.lang-btn.active:hover { background: var(--gold2); color: #0a0a0a; }
+.menu-btn {
+  display: none; flex-direction: column; gap: 5px;
+  background: none; border: none; cursor: pointer; padding: 4px;
+}
+.menu-btn span { display: block; width: 22px; height: 1.5px; background: rgba(245,244,240,0.75); transition: all 0.3s; }
+.nav-links.open { display: flex !important; flex-direction: column; position: absolute; top: 100%; left: 0; right: 0; background: rgba(10,10,10,0.99); padding: 1.5rem 2rem; gap: 1rem; border-bottom: 1px solid var(--border); }
+
+/* MOBILE NAV */
+@media (max-width: 900px) {
+  nav { padding: 0.75rem 1.5rem; }
+  .nav-links { display: none; }
+  .menu-btn { display: flex; }
+  .nav-logo img { height: 100px; }
+}
+
+/* SECTION LABELS */
+.s-label {
+  font-size: 0.68rem; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 1.2rem; display: block;
+}
+.s-label.light { color: var(--gold2); }
+.s-title {
+  font-family: 'DM Sans', sans-serif; font-size: clamp(1.8rem, 3vw, 2.8rem);
+  font-weight: 300; color: var(--white); line-height: 1.2; margin-bottom: 1rem;
+}
+.s-title em { font-style: italic; color: var(--gold2); }
+.s-title.light { color: var(--white); }
+.s-desc {
+  font-size: 0.95rem; color: var(--soft); max-width: 600px; line-height: 1.85;
+}
+.s-desc.light { color: rgba(245,244,240,0.45); }
+
+/* BUTTONS */
+.btn-gold {
+  display: inline-block; padding: 0.85rem 2rem; background: var(--gold); color: #0a0a0a;
+  font-family: 'DM Sans', sans-serif; font-size: 0.82rem; font-weight: 600;
+  letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none;
+  transition: background 0.25s;
+}
+.btn-gold:hover { background: var(--gold2); }
+.btn-outline {
+  display: inline-block; padding: 0.85rem 2rem; background: none;
+  border: 1px solid rgba(201,168,76,0.5); color: var(--gold);
+  font-family: 'DM Sans', sans-serif; font-size: 0.82rem; font-weight: 500;
+  letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none;
+  transition: all 0.25s;
+}
+.btn-outline:hover { border-color: var(--gold); background: rgba(201,168,76,0.08); }
+.btn-row { display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; }
+
+/* BREADCRUMB */
+.breadcrumb {
+  display: flex; gap: 0.5rem; align-items: center;
+  font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase;
+  color: rgba(245,244,240,0.35); margin-bottom: 1.4rem;
+}
+.breadcrumb a { color: rgba(245,244,240,0.45); text-decoration: none; transition: color 0.2s; }
+.breadcrumb a:hover { color: var(--gold); }
+.breadcrumb .current { color: var(--gold); }
+.breadcrumb span { color: rgba(245,244,240,0.25); }
+
+/* HERO */
+.svc-hero {
+  background: var(--ink); padding: 148px 5vw 100px;
+  position: relative; overflow: hidden;
+}
+.svc-hero-bg {
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 55% 70% at 85% 40%, rgba(196,154,42,0.09) 0%, transparent 65%),
+              radial-gradient(ellipse 30% 40% at 10% 70%, rgba(196,154,42,0.04) 0%, transparent 60%);
+}
+.svc-hero-grid {
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(196,154,42,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(196,154,42,0.04) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+.svc-hero .inner {
+  position: relative; z-index: 2; max-width: 1320px; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 420px; gap: 6vw; align-items: center;
+}
+.svc-hero h1 {
+  font-family: 'DM Sans', sans-serif;
+  font-size: clamp(2.4rem, 4.5vw, 4rem); font-weight: 300;
+  line-height: 1.1; color: var(--white); margin-bottom: 1.4rem;
+}
+.svc-hero h1 em { font-style: italic; color: var(--gold2); }
+.svc-hero p { font-size: 1rem; font-weight: 300; color: rgba(245,244,240,0.42); line-height: 1.9; max-width: 520px; margin-bottom: 2rem; }
+.hero-tag { font-size: 0.68rem; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.2rem; }
+.hero-badges { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 1.6rem; }
+.badge { font-size: 0.68rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; padding: 5px 12px; border: 1px solid rgba(201,168,76,0.3); color: var(--gold2); }
+.hero-art { display: flex; align-items: center; justify-content: center; }
+.hero-art svg { width: 100%; height: auto; }
+
+/* ANIMATIONS */
+.pulse1 { animation: pulse 2s 0.2s ease-in-out infinite; }
+.pulse2 { animation: pulse 2s 0.8s ease-in-out infinite; }
+.pulse3 { animation: pulse 2s 1.4s ease-in-out infinite; }
+@keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(1.15)} }
+.wave1 { animation: dash 2.5s linear infinite; stroke-dasharray: 80; }
+.wave2 { animation: dash 2.5s 0.8s linear infinite; stroke-dasharray: 80; }
+.wave3 { animation: dash 2.5s 1.6s linear infinite; stroke-dasharray: 80; }
+@keyframes dash { to { stroke-dashoffset: -200; } }
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
+
+/* OVERVIEW */
+.overview-band { padding: 100px 5vw; }
+.overview-band .inner { max-width: 1320px; margin: 0 auto; }
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 5vw; align-items: start; margin-top: 3.5rem; }
+.prose p { font-size: 0.95rem; color: var(--soft); line-height: 1.95; margin-bottom: 1.2rem; }
+.prose strong { color: var(--white); font-weight: 500; }
+.kpi-stack { display: flex; flex-direction: column; }
+.kpi-item { display: flex; align-items: flex-start; gap: 1.4rem; padding: 1.4rem 0; border-top: 1px solid var(--border); }
+.kpi-item:last-child { border-bottom: 1px solid var(--border); }
+.kpi-n { font-family: 'DM Sans', sans-serif; font-size: 1.5rem; font-weight: 300; color: var(--border); min-width: 28px; line-height: 1; }
+.kpi-title { font-size: 0.9rem; font-weight: 500; color: var(--white); margin-bottom: 0.3rem; }
+.kpi-body { font-size: 0.82rem; color: var(--soft); line-height: 1.7; }
+
+/* FIRMWARE PIPELINE */
+.pipeline-section { background: var(--ink3); padding: 110px 5vw; }
+.pipeline-section .inner { max-width: 1320px; margin: 0 auto; }
+.pipeline-visual {
+  border: 1px solid rgba(255,255,255,0.06);
+  padding: 3rem; margin-top: 3rem;
+  background: rgba(255,255,255,0.02);
+}
+.pipeline-visual svg { width: 100%; height: auto; display: block; }
+
+/* CAPABILITIES */
+.cap-deep { background: var(--ink3); padding: 0 5vw 110px; }
+.cap-deep .inner { max-width: 1320px; margin: 0 auto; }
+.cap-deep-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px;
+  background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.06);
+  margin-top: 3.5rem;
+}
+.cd-card { background: #0e0e0e; padding: 2.2rem 1.8rem; transition: background 0.3s; position: relative; overflow: hidden; }
+.cd-card::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, rgba(196,154,42,0.4), transparent); transform: scaleX(0); transform-origin: center; transition: transform 0.4s; }
+.cd-card:hover { background: #0a0a0a; }
+.cd-card:hover::after { transform: scaleX(1); }
+.cd-art { height: 80px; margin-bottom: 1.4rem; display: flex; align-items: center; }
+.cd-art svg { height: 70px; width: auto; }
+.cd-title { font-size: 0.95rem; font-weight: 500; color: var(--white); margin-bottom: 0.5rem; }
+.cd-body { font-size: 0.8rem; font-weight: 300; color: rgba(245,244,240,0.38); line-height: 1.7; }
+.cd-tags { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 1rem; }
+.cd-tag { font-size: 0.65rem; letter-spacing: 0.08em; text-transform: uppercase; padding: 3px 7px; background: rgba(196,154,42,0.08); color: rgba(196,154,42,0.6); border: 1px solid rgba(196,154,42,0.15); }
+
+/* TECH STACK */
+.tech-stack { background: var(--surface); padding: 110px 5vw; }
+.tech-stack .inner { max-width: 1320px; margin: 0 auto; }
+.stack-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); margin-top: 3rem; }
+.stack-cell { background: var(--white); padding: 1.8rem 1.5rem; transition: background 0.2s; }
+.stack-cell:hover { background: #e8e4da; }
+.sc-layer { font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.6rem; }
+.sc-tech { font-size: 0.92rem; font-weight: 500; color: var(--ink); margin-bottom: 0.3rem; }
+.sc-detail { font-size: 0.78rem; color: rgba(10,10,10,0.55); line-height: 1.6; }
+
+/* USE CASES */
+.usecases { padding: 110px 5vw; }
+.usecases .inner { max-width: 1320px; margin: 0 auto; }
+.uc-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: 3rem; }
+.uc-card { border: 1px solid var(--border); padding: 2rem 1.8rem; transition: border-color 0.2s; }
+.uc-card:hover { border-color: var(--gold); }
+.uc-art { height: 70px; margin-bottom: 1.2rem; display: flex; align-items: center; }
+.uc-art svg { height: 60px; width: auto; }
+.uc-title { font-size: 0.95rem; font-weight: 500; color: var(--white); margin-bottom: 0.4rem; }
+.uc-body { font-size: 0.83rem; color: var(--soft); line-height: 1.7; }
+
+/* DELIVERY */
+.delivery-section { background: var(--ink3); padding: 110px 5vw; }
+.delivery-section .inner { max-width: 1320px; margin: 0 auto; }
+.delivery-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: rgba(255,255,255,0.06); margin-top: 3rem; }
+.dr-cell { background: #111; padding: 2rem 1.6rem; }
+.dr-step { font-size: 3rem; font-weight: 300; color: rgba(255,255,255,0.04); line-height: 1; margin-bottom: 1rem; }
+.dr-title { font-size: 0.9rem; font-weight: 500; color: var(--white); margin-bottom: 0.5rem; }
+.dr-body { font-size: 0.8rem; font-weight: 300; color: rgba(245,244,240,0.35); line-height: 1.7; }
+
+/* SERVICE NAV + CTA */
+.svc-nav-bar { border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 1.4rem 5vw; }
+.svc-nav-bar .inner { max-width: 1320px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+.snb-prev, .snb-next { display: flex; align-items: center; gap: 8px; font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--soft); text-decoration: none; transition: color 0.2s; }
+.snb-prev:hover, .snb-next:hover { color: var(--gold); }
+.snb-prev svg, .snb-next svg { width: 12px; height: 12px; stroke: currentColor; fill: none; stroke-width: 2; }
+.snb-label { font-size: 0.68rem; color: var(--gold); display: block; margin-bottom: 2px; }
+.snb-all { font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--soft); text-decoration: none; transition: color 0.2s; }
+.snb-all:hover { color: var(--gold); }
+.svc-cta-band { background: var(--surface); padding: 110px 5vw; text-align: center; }
+.svc-cta-band h2 { font-size: clamp(2rem, 3.5vw, 3rem); font-weight: 300; margin-bottom: 1rem; color: var(--white); }
+.svc-cta-band h2 em { font-style: italic; color: var(--gold); }
+.svc-cta-band p { font-size: 0.95rem; color: var(--soft); max-width: 440px; margin: 0 auto 2.4rem; }
+.svc-cta-band .btn-row { justify-content: center; }
+
+/* FOOTER */
+footer {
+  background: var(--surface2); padding: 2.5rem 4rem;
+  display: flex; align-items: center; justify-content: space-between;
+  border-top: 1px solid var(--border); gap: 2rem; flex-wrap: wrap;
+}
+.footer-left { display: flex; align-items: center; gap: 1.5rem; }
+.footer-left img { height: 100px; filter: brightness(0) invert(1); }
+.footer-tagline { font-size: 0.75rem; color: rgba(245,244,240,0.3); letter-spacing: 0.05em; }
+.footer-legal { text-align: right; }
+.footer-legal p { font-size: 0.75rem; color: rgba(245,244,240,0.3); margin-bottom: 0.3rem; }
+.footer-legal a { color: rgba(245,244,240,0.4); text-decoration: none; font-size: 0.75rem; transition: color 0.2s; }
+.footer-legal a:hover { color: var(--gold); }
+
+/* LIGHT MODE */
+html[data-mode="light"] body { background: #f5f2eb !important; color: #0a0a0a !important; }
+html[data-mode="light"] nav { background: rgba(245,242,235,0.97) !important; }
+html[data-mode="light"] nav img, html[data-mode="light"] footer img { filter: brightness(0) !important; }
+html[data-mode="light"] .menu-btn span { background: rgba(10,10,10,0.75) !important; }
+html[data-mode="light"] .lang-btn { color: rgba(10,10,10,0.6) !important; border-color: rgba(10,10,10,0.25) !important; }
+html[data-mode="light"] .lang-btn.active { background: var(--gold) !important; border-color: var(--gold) !important; color: #fff !important; }
+html[data-mode="light"] .nav-links a { color: rgba(10,10,10,0.65) !important; }
+html[data-mode="light"] .nav-links.open { background: rgba(245,242,235,0.99) !important; }
+html[data-mode="light"] footer { background: #e5e1d7 !important; }
+html[data-mode="light"] .footer-tagline { color: rgba(10,10,10,0.4) !important; }
+html[data-mode="light"] .footer-legal p, html[data-mode="light"] .footer-legal a { color: rgba(10,10,10,0.45) !important; }
+html[data-mode="light"] .svc-hero { background: #1a1a1a !important; }
+html[data-mode="light"] .pipeline-section { background: #1c1c1c !important; }
+html[data-mode="light"] .cap-deep { background: #1a1a1a !important; }
+html[data-mode="light"] .cd-card { background: #111 !important; }
+html[data-mode="light"] .delivery-section { background: #1c1c1c !important; }
+html[data-mode="light"] .dr-cell { background: #141414 !important; }
+html[data-mode="light"] .tech-stack { background: #e8e4d8 !important; }
+html[data-mode="light"] .stack-cell { background: #f5f2eb !important; }
+html[data-mode="light"] .sc-tech { color: #0a0a0a !important; }
+html[data-mode="light"] .sc-detail { color: rgba(10,10,10,0.55) !important; }
+html[data-mode="light"] .overview-band { background: #f5f2eb !important; }
+html[data-mode="light"] .prose p { color: rgba(10,10,10,0.65) !important; }
+html[data-mode="light"] .prose strong { color: #0a0a0a !important; }
+html[data-mode="light"] .kpi-title { color: #0a0a0a !important; }
+html[data-mode="light"] .kpi-body { color: rgba(10,10,10,0.55) !important; }
+html[data-mode="light"] .s-title { color: #0a0a0a !important; }
+html[data-mode="light"] .s-desc { color: rgba(10,10,10,0.55) !important; }
+html[data-mode="light"] .usecases { background: #f5f2eb !important; }
+html[data-mode="light"] .uc-title { color: #0a0a0a !important; }
+html[data-mode="light"] .uc-body { color: rgba(10,10,10,0.6) !important; }
+html[data-mode="light"] .uc-card { border-color: rgba(10,10,10,0.15) !important; }
+html[data-mode="light"] .svc-cta-band { background: #ece8de !important; }
+html[data-mode="light"] .svc-cta-band h2 { color: #0a0a0a !important; }
+html[data-mode="light"] .svc-cta-band p { color: rgba(10,10,10,0.6) !important; }
+html[data-mode="light"] .svc-nav-bar { background: #f5f2eb !important; border-color: rgba(10,10,10,0.1) !important; }
+html[data-mode="light"] .snb-prev, html[data-mode="light"] .snb-next, html[data-mode="light"] .snb-all { color: rgba(10,10,10,0.5) !important; }
+
+@media (max-width: 1000px) {
+  .svc-hero .inner { grid-template-columns: 1fr; }
+  .hero-art { max-width: 320px; margin: 2rem auto 0; }
+  .two-col { grid-template-columns: 1fr; }
+  .cap-deep-grid { grid-template-columns: 1fr 1fr; }
+  .stack-grid { grid-template-columns: 1fr 1fr; }
+  .delivery-row { grid-template-columns: 1fr 1fr; }
+  .uc-grid { grid-template-columns: 1fr 1fr; }
+  footer { padding: 2rem 1.5rem; flex-direction: column; align-items: flex-start; }
+  .footer-legal { text-align: left; }
+}
+@media (max-width: 600px) {
+  .cap-deep-grid { grid-template-columns: 1fr; }
+  .stack-grid { grid-template-columns: 1fr; }
+  .delivery-row { grid-template-columns: 1fr; }
+  .uc-grid { grid-template-columns: 1fr; }
+  .svc-nav-bar .inner { flex-direction: column; gap: 1rem; align-items: flex-start; }
+}
+</style>
+</head>
+<body>
+
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<nav id="mainNav">
+  <div class="nav-logo">
+    <a href="index.html"><img src="adroit-logo.png" alt="Adroit Solutions GmbH"/></a>
+  </div>
+  <div class="nav-right">
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html"><span data-lang="de">Startseite</span><span data-lang="en">Home</span></a></li>
+      <li><a href="about.html"><span data-lang="de">Über uns</span><span data-lang="en">About</span></a></li>
+      <li><a href="services.html" class="active"><span data-lang="de">Leistungen</span><span data-lang="en">Services</span></a></li>
+      <li><a href="cases.html"><span data-lang="de">Referenzen</span><span data-lang="en">Case Studies</span></a></li>
+      <li><a href="careers.html"><span data-lang="de">Karriere</span><span data-lang="en">Careers</span></a></li>
+      <li><a href="contact.html"><span data-lang="de">Kontakt</span><span data-lang="en">Contact</span></a></li>
+    </ul>
+    <div class="lang-switcher">
+      <button class="lang-btn active" id="btn-de" onclick="setLang('de')">DE</button>
+      <button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button>
+    </div>
+    <button class="menu-btn" id="menuBtn" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="svc-hero">
+  <div class="svc-hero-bg"></div>
+  <div class="svc-hero-grid"></div>
+  <div class="inner">
+    <div>
+      <div class="breadcrumb">
+        <a href="index.html">Home</a><span>›</span>
+        <a href="services.html">Services</a><span>›</span>
+        <span class="current">Embedded Systems Engineering</span>
+      </div>
+      <div class="hero-tag">Practice Area 02</div>
+      <h1>Embedded Systems<br><em>Engineering</em></h1>
+      <p>ESP32/C/C++ firmware development, MQTT protocol integration, real-time sensor networks, and custom embedded hardware solutions — built for the reliability demands of industrial and maritime environments.</p>
+      <div class="hero-badges">
+        <span class="badge">ESP32 · ESP32-S3</span>
+        <span class="badge">C / C++</span>
+        <span class="badge">FreeRTOS</span>
+        <span class="badge">MQTT</span>
+        <span class="badge">OTA Updates</span>
+        <span class="badge">Industrial IoT</span>
+      </div>
+    </div>
+    <div class="hero-art">
+      <svg viewBox="0 0 380 380" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <filter id="glow3"><feGaussianBlur stdDeviation="2.5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+        </defs>
+        <rect x="60" y="60" width="260" height="260" rx="4" fill="rgba(196,154,42,0.04)" stroke="rgba(196,154,42,0.18)" stroke-width="1"/>
+        <g stroke="rgba(196,154,42,0.08)" stroke-width="0.8" fill="none">
+          <line x1="60" y1="100" x2="320" y2="100"/><line x1="60" y1="140" x2="320" y2="140"/>
+          <line x1="60" y1="200" x2="320" y2="200"/><line x1="60" y1="240" x2="320" y2="240"/>
+          <line x1="60" y1="280" x2="320" y2="280"/>
+          <line x1="100" y1="60" x2="100" y2="320"/><line x1="140" y1="60" x2="140" y2="320"/>
+          <line x1="200" y1="60" x2="200" y2="320"/><line x1="240" y1="60" x2="240" y2="320"/>
+          <line x1="280" y1="60" x2="280" y2="320"/>
+        </g>
+        <rect x="140" y="140" width="100" height="100" rx="4" fill="rgba(196,154,42,0.1)" stroke="rgba(196,154,42,0.55)" stroke-width="1.5" filter="url(#glow3)"/>
+        <rect x="150" y="150" width="80" height="80" rx="2" fill="rgba(196,154,42,0.06)" stroke="rgba(196,154,42,0.25)" stroke-width="0.8"/>
+        <circle cx="155" cy="155" r="3" fill="none" stroke="rgba(196,154,42,0.4)" stroke-width="0.8"/>
+        <text x="190" y="182" text-anchor="middle" font-family="Outfit" font-size="7.5" fill="rgba(196,154,42,0.85)" letter-spacing="0.5">ESP32</text>
+        <text x="190" y="194" text-anchor="middle" font-family="Outfit" font-size="5.5" fill="rgba(196,154,42,0.6)">-S3</text>
+        <text x="190" y="206" text-anchor="middle" font-family="Outfit" font-size="5" fill="rgba(196,154,42,0.45)">240MHz · Dual Core</text>
+        <text x="190" y="216" text-anchor="middle" font-family="Outfit" font-size="4.5" fill="rgba(196,154,42,0.35)">WiFi · BT5 · USB OTG</text>
+        <g stroke="rgba(196,154,42,0.6)" stroke-width="1.2">
+          <line x1="100" y1="152" x2="140" y2="152"/><line x1="100" y1="162" x2="140" y2="162"/>
+          <line x1="100" y1="172" x2="140" y2="172"/><line x1="100" y1="182" x2="140" y2="182"/>
+          <line x1="100" y1="192" x2="140" y2="192"/><line x1="100" y1="202" x2="140" y2="202"/>
+          <line x1="100" y1="212" x2="140" y2="212"/><line x1="100" y1="222" x2="140" y2="222"/>
+          <line x1="100" y1="232" x2="140" y2="232"/>
+        </g>
+        <g stroke="rgba(196,154,42,0.6)" stroke-width="1.2">
+          <line x1="240" y1="152" x2="280" y2="152"/><line x1="240" y1="162" x2="280" y2="162"/>
+          <line x1="240" y1="172" x2="280" y2="172"/><line x1="240" y1="182" x2="280" y2="182"/>
+          <line x1="240" y1="192" x2="280" y2="192"/><line x1="240" y1="202" x2="280" y2="202"/>
+          <line x1="240" y1="212" x2="280" y2="212"/><line x1="240" y1="222" x2="280" y2="222"/>
+          <line x1="240" y1="232" x2="280" y2="232"/>
+        </g>
+        <g stroke="rgba(196,154,42,0.6)" stroke-width="1.2">
+          <line x1="152" y1="100" x2="152" y2="140"/><line x1="162" y1="100" x2="162" y2="140"/>
+          <line x1="172" y1="100" x2="172" y2="140"/><line x1="182" y1="100" x2="182" y2="140"/>
+          <line x1="192" y1="100" x2="192" y2="140"/><line x1="202" y1="100" x2="202" y2="140"/>
+          <line x1="212" y1="100" x2="212" y2="140"/><line x1="222" y1="100" x2="222" y2="140"/>
+          <line x1="232" y1="100" x2="232" y2="140"/>
+        </g>
+        <g stroke="rgba(196,154,42,0.6)" stroke-width="1.2">
+          <line x1="152" y1="240" x2="152" y2="280"/><line x1="162" y1="240" x2="162" y2="280"/>
+          <line x1="172" y1="240" x2="172" y2="280"/><line x1="182" y1="240" x2="182" y2="280"/>
+          <line x1="192" y1="240" x2="192" y2="280"/><line x1="202" y1="240" x2="202" y2="280"/>
+          <line x1="212" y1="240" x2="212" y2="280"/><line x1="222" y1="240" x2="222" y2="280"/>
+          <line x1="232" y1="240" x2="232" y2="280"/>
+        </g>
+        <rect x="66" y="66" width="28" height="22" rx="2" fill="rgba(196,154,42,0.08)" stroke="rgba(196,154,42,0.38)" stroke-width="1"/>
+        <text x="80" y="76" text-anchor="middle" font-family="Outfit" font-size="5" fill="rgba(196,154,42,0.7)">BME280</text>
+        <text x="80" y="84" text-anchor="middle" font-family="Outfit" font-size="4" fill="rgba(196,154,42,0.45)">TEMP·HUM·PRESS</text>
+        <rect x="286" y="66" width="28" height="22" rx="2" fill="rgba(196,154,42,0.08)" stroke="rgba(196,154,42,0.38)" stroke-width="1"/>
+        <text x="300" y="76" text-anchor="middle" font-family="Outfit" font-size="5" fill="rgba(196,154,42,0.7)">NOR Flash</text>
+        <text x="300" y="84" text-anchor="middle" font-family="Outfit" font-size="4" fill="rgba(196,154,42,0.45)">16MB · SPI</text>
+        <rect x="66" y="292" width="28" height="22" rx="2" fill="rgba(196,154,42,0.08)" stroke="rgba(196,154,42,0.38)" stroke-width="1"/>
+        <text x="80" y="302" text-anchor="middle" font-family="Outfit" font-size="5" fill="rgba(196,154,42,0.7)">LDO 3.3V</text>
+        <text x="80" y="310" text-anchor="middle" font-family="Outfit" font-size="4" fill="rgba(196,154,42,0.45)">AMS1117</text>
+        <rect x="286" y="292" width="28" height="22" rx="2" fill="rgba(196,154,42,0.08)" stroke="rgba(196,154,42,0.38)" stroke-width="1"/>
+        <text x="300" y="302" text-anchor="middle" font-family="Outfit" font-size="5" fill="rgba(196,154,42,0.7)">OLED</text>
+        <text x="300" y="310" text-anchor="middle" font-family="Outfit" font-size="4" fill="rgba(196,154,42,0.45)">I2C · 128x64</text>
+        <path class="wave1" d="M160 30 Q170 20 180 30" fill="none" stroke="rgba(196,154,42,0.6)" stroke-width="1.3"/>
+        <path class="wave2" d="M150 30 Q170 12 190 30" fill="none" stroke="rgba(196,154,42,0.35)" stroke-width="1"/>
+        <path class="wave3" d="M140 30 Q170 5 200 30" fill="none" stroke="rgba(196,154,42,0.18)" stroke-width="0.8"/>
+        <text x="170" y="48" text-anchor="middle" font-family="Outfit" font-size="5" fill="rgba(196,154,42,0.45)" letter-spacing="0.5">MQTT · WiFi · OTA</text>
+        <text x="190" y="350" text-anchor="middle" font-family="Outfit" font-size="5" fill="rgba(196,154,42,0.3)" letter-spacing="0.8">FreeRTOS · MULTI-TASK · REAL-TIME · INDUSTRIAL</text>
+        <circle class="pulse1" cx="100" cy="182" r="4" fill="rgba(196,154,42,0.2)" stroke="#C49A2A" stroke-width="1" filter="url(#glow3)"/>
+        <circle class="pulse2" cx="280" cy="202" r="4" fill="rgba(196,154,42,0.2)" stroke="#C49A2A" stroke-width="1" filter="url(#glow3)"/>
+        <circle class="pulse3" cx="192" cy="100" r="4" fill="rgba(196,154,42,0.2)" stroke="#C49A2A" stroke-width="1" filter="url(#glow3)"/>
+        <circle class="pulse1" cx="192" cy="280" r="3.5" fill="rgba(196,154,42,0.15)" stroke="rgba(196,154,42,0.6)" stroke-width="1" filter="url(#glow3)"/>
+      </svg>
+    </div>
+  </div>
+</div>
+
+<!-- OVERVIEW -->
+<div class="overview-band">
+  <div class="inner">
+    <span class="s-label">Overview</span>
+    <h2 class="s-title">Firmware that <em>runs</em> when it matters.</h2>
+    <p class="s-desc">We design and deliver embedded firmware for industrial and maritime environments — where power consumption, reliability, and real-time response are non-negotiable.</p>
+    <div class="two-col">
+      <div class="prose">
+        <p>Our Embedded Systems Engineering practice specialises in <strong>ESP32 and ESP32-S3 platform development</strong> — writing production-grade C/C++ firmware under FreeRTOS for devices that must operate reliably in harsh industrial environments, often without physical access for maintenance or debugging.</p>
+        <p>We have designed embedded systems for factory floor sensor networks, maritime shore-power monitoring, IoT edge devices, and computer vision inference engines — each requiring careful attention to task scheduling, interrupt handling, power management, and over-the-air update reliability.</p>
+        <p>Our firmware development follows disciplined engineering practices — hardware abstraction layers, unit-testable components, structured logging, and documented ADRs for every significant design decision. Code that ships is code that can be maintained.</p>
+      </div>
+      <div class="kpi-stack">
+        <div class="kpi-item">
+          <div class="kpi-n">01</div>
+          <div><div class="kpi-title">ESP32 / ESP32-S3 Expertise</div><div class="kpi-body">Deep platform knowledge — dual-core task management, WiFi/BT co-existence, USB OTG, camera interfaces (OV5640), and PSRAM utilisation for ML inference workloads.</div></div>
+        </div>
+        <div class="kpi-item">
+          <div class="kpi-n">02</div>
+          <div><div class="kpi-title">FreeRTOS Real-Time Architecture</div><div class="kpi-body">Multi-task firmware design with proper priority assignment, queue-based inter-task communication, watchdog management, and deterministic interrupt handling.</div></div>
+        </div>
+        <div class="kpi-item">
+          <div class="kpi-n">03</div>
+          <div><div class="kpi-title">MQTT &amp; IoT Connectivity</div><div class="kpi-body">Production MQTT client implementation with QoS, last-will messages, TLS/SSL, reconnect logic, and broker integration with AWS IoT Core, HiveMQ, and Mosquitto.</div></div>
+        </div>
+        <div class="kpi-item">
+          <div class="kpi-n">04</div>
+          <div><div class="kpi-title">OTA Update Infrastructure</div><div class="kpi-body">Reliable over-the-air firmware update pipelines with rollback protection, dual-partition boot schemes, and cryptographic signature verification.</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FIRMWARE PIPELINE -->
+<div class="pipeline-section">
+  <div class="inner">
+    <span class="s-label light">Firmware Architecture</span>
+    <h2 class="s-title light">How the <em>firmware</em> is structured</h2>
+    <p class="s-desc light">A disciplined layered firmware architecture — from hardware abstraction through to cloud connectivity.</p>
+    <div class="pipeline-visual">
+      <svg viewBox="0 0 900 220" xmlns="http://www.w3.org/2000/svg">
+        <rect x="10" y="10" width="880" height="38" rx="2" fill="rgba(196,154,42,0.06)" stroke="rgba(196,154,42,0.2)" stroke-width="1"/>
+        <rect x="10" y="58" width="880" height="38" rx="2" fill="rgba(196,154,42,0.05)" stroke="rgba(196,154,42,0.18)" stroke-width="1"/>
+        <rect x="10" y="106" width="880" height="38" rx="2" fill="rgba(196,154,42,0.07)" stroke="rgba(196,154,42,0.22)" stroke-width="1"/>
+        <rect x="10" y="154" width="880" height="38" rx="2" fill="rgba(196,154,42,0.09)" stroke="rgba(196,154,42,0.3)" stroke-width="1"/>
+        <text x="20" y="24" font-family="Outfit" font-size="5.5" fill="rgba(196,154,42,0.4)" letter-spacing="0.8">CLOUD / CONNECTIVITY LAYER</text>
+        <text x="20" y="72" font-family="Outfit" font-size="5.5" fill="rgba(196,154,42,0.4)" letter-spacing="0.8">APPLICATION LAYER</text>
+        <text x="20" y="120" font-family="Outfit" font-size="5.5" fill="rgba(196,154,42,0.4)" letter-spacing="0.8">RTOS / MIDDLEWARE LAYER</text>
+        <text x="20" y="168" font-family="Outfit" font-size="5.5" fill="rgba(196,154,42,0.4)" letter-spacing="0.8">HARDWARE ABSTRACTION LAYER (HAL)</text>
+        <g fill="rgba(196,154,42,0.1)" stroke="rgba(196,154,42,0.4)" stroke-width="0.8">
+          <rect x="120" y="14" width="80" height="28" rx="1.5"/><rect x="210" y="14" width="80" height="28" rx="1.5"/>
+          <rect x="300" y="14" width="80" height="28" rx="1.5"/><rect x="390" y="14" width="80" height="28" rx="1.5"/>
+          <rect x="480" y="14" width="80" height="28" rx="1.5"/><rect x="570" y="14" width="80" height="28" rx="1.5"/>
+          <rect x="660" y="14" width="80" height="28" rx="1.5"/><rect x="750" y="14" width="80" height="28" rx="1.5"/>
+        </g>
+        <text x="160" y="31" text-anchor="middle" font-family="Outfit" font-size="6" fill="rgba(196,154,42,0.8)">MQTT Client</text>
+        <text x="250" y="31" text-anchor="middle" font-family="Outfit" font-size="6" fill="rgba(196,154,42,0.7)">TLS/SSL</text>
+        <text x="340" y="31" text-anchor="middle" font-family="Outfit" font-size="6" fill="rgba(196,154,42,0.7)">WiFi Stack</text>
+        <text x="430" y="31" text-anchor="middle" font-family="Outfit" font-size="6" fill="rgba(196,154,42,0.7)">OTA Engine</text>
+        <text x="520" y="31" text-anchor="middle" font-family="Outfit" font-size="6" fill="rgba(196,154,42,0.7)">Telemetry</text>
+        <text x="610" y="31" text-anchor="middle" font-family="Outfit" font-size="6" fill="rgba(196,154,42,0.7)">BLE Stack</text>
+        <text x="700" y="31" text-anchor="middle" font-family="Outfit" font-size="6" fill="rgba(196,154,42,0.7)">HTTP/REST</text>
+        <text x="790" y="31" text-anchor="middle" font-family="Outfit" font-size="6" fill="rgba(196,154,42,0.7)">NTP Sync</text>
+        <g fill="rgba(196,154,42,0.08)" stroke="rgba(196,154,42,0.35)" stroke-width="0.8">
+          <rect x="120" y="62" width="120" height="28" rx="1.5"/><rect x="250" y="62" width="120" height="28" rx="1.5"/>
+          <rect x="380" y="62" width="120" height="28" rx="1.5"/><rect x="510" y="62" width="120" height="28" rx="1.5"/>
+          <rect x="640" y="62" width="120" height="28" rx="1.5"/><rect x="770" y="62" width="80" height="28" rx="1.5"/>
+        </g>
+        <text x="180" y="79" text-anchor="middle" font-family="Outfit" font-size="6" fill="rgba(196,154,42,0.72)">Sensor Manager</text>
+        <text x="310" y="79" text-anchor="middle" font-family="Outfit" font-size="6" fill="rgba(196,154,42,0.68)">Event Dispatcher</text>
+        <text x="440" y="79" text-anchor="middle" font-family="Outfit" font-size="6" fill="rgba(196,154,42,0.68)">Config Manager</text>
+        <text x="570" y="79" text-anchor="middle" font-family="Outfit" font-size="6" fill="rgba(196,154,42,0.68)">Alert Engine</text>
+        <text x="700" y="79" text-anchor="middle" font-family="Outfit" font-size="6" fill="rgba(196,154,42,0.68)">Data Logger</text>
+        <text x="810" y="79" text-anchor="middle" font-family="Outfit" font-size="6" fill="rgba(196,154,42,0.68)">CLI / Debug</text>
+        <g fill="rgba(196,154,42,0.1)" stroke="rgba(196,154,42,0.38)" stroke-width="0.8">
+          <rect x="120" y="110" width="150" height="28" rx="1.5"/><rect x="280" y="110" width="150" height="28" rx="1.5"/>
+          <rect x="440" y="110" width="150" height="28" rx="1.5"/><rect x="600" y="110" width="150" height="28" rx="1.5"/>
+          <rect x="760" y="110" width="90" height="28" rx="1.5"/>
+        </g>
+        <text x="195" y="127" text-anchor="middle" font-family="Outfit" font-size="6" fill="rgba(196,154,42,0.8)">FreeRTOS Scheduler</text>
+        <text x="355" y="127" text-anchor="middle" font-family="Outfit" font-size="6" fill="rgba(196,154,42,0.72)">Queue / Semaphore</text>
+        <text x="515" y="127" text-anchor="middle" font-family="Outfit" font-size="6" fill="rgba(196,154,42,0.72)">Timer / Interrupt</text>
+        <text x="675" y="127" text-anchor="middle" font-family="Outfit" font-size="6" fill="rgba(196,154,42,0.72)">NVS / Partitions</text>
+        <text x="805" y="127" text-anchor="middle" font-family="Outfit" font-size="6" fill="rgba(196,154,42,0.72)">Watchdog</text>
+        <g fill="rgba(196,154,42,0.12)" stroke="rgba(196,154,42,0.45)" stroke-width="0.8">
+          <rect x="120" y="158" width="100" height="28" rx="1.5"/><rect x="230" y="158" width="100" height="28" rx="1.5"/>
+          <rect x="340" y="158" width="100" height="28" rx="1.5"/><rect x="450" y="158" width="100" height="28" rx="1.5"/>
+          <rect x="560" y="158" width="100" height="28" rx="1.5"/><rect x="670" y="158" width="100" height="28" rx="1.5"/>
+          <rect x="780" y="158" width="70" height="28" rx="1.5"/>
+        </g>
+        <text x="170" y="175" text-anchor="middle" font-family="Outfit" font-size="6" fill="rgba(196,154,42,0.85)">GPIO / ADC</text>
+        <text x="280" y="175" text-anchor="middle" font-family="Outfit" font-size="6" fill="rgba(196,154,42,0.75)">I2C / SPI</text>
+        <text x="390" y="175" text-anchor="middle" font-family="Outfit" font-size="6" fill="rgba(196,154,42,0.75)">UART / RS485</text>
+        <text x="500" y="175" text-anchor="middle" font-family="Outfit" font-size="6" fill="rgba(196,154,42,0.75)">PWM / DAC</text>
+        <text x="610" y="175" text-anchor="middle" font-family="Outfit" font-size="6" fill="rgba(196,154,42,0.75)">Camera CSI</text>
+        <text x="720" y="175" text-anchor="middle" font-family="Outfit" font-size="6" fill="rgba(196,154,42,0.75)">USB OTG</text>
+        <text x="815" y="175" text-anchor="middle" font-family="Outfit" font-size="6" fill="rgba(196,154,42,0.75)">RMT / LEDC</text>
+        <text x="455" y="212" text-anchor="middle" font-family="Outfit" font-size="6" fill="rgba(196,154,42,0.25)" letter-spacing="1">ESP32-S3 HARDWARE · FreeRTOS · ESPRESSIF IDF v5.x</text>
+      </svg>
+    </div>
+  </div>
+</div>
+
+<!-- CAPABILITIES -->
+<div class="cap-deep">
+  <div class="inner">
+    <span class="s-label light" style="padding-top:110px;display:block;">Capability Breakdown</span>
+    <h2 class="s-title light">What we actually <em>build</em></h2>
+    <p class="s-desc light">Specific embedded engineering capabilities across firmware, connectivity, and hardware integration.</p>
+    <div class="cap-deep-grid">
+
+      <div class="cd-card">
+        <div class="cd-art">
+          <svg viewBox="0 0 140 70" xmlns="http://www.w3.org/2000/svg">
+            <rect x="5" y="8" width="130" height="14" rx="1.5" fill="rgba(196,154,42,0.1)" stroke="rgba(196,154,42,0.4)" stroke-width="0.8"/>
+            <text x="70" y="18" text-anchor="middle" font-family="Outfit" font-size="5.5" fill="rgba(196,154,42,0.8)">FreeRTOS Scheduler</text>
+            <g stroke="rgba(196,154,42,0.25)" stroke-width="0.8">
+              <line x1="25" y1="22" x2="25" y2="30"/><line x1="55" y1="22" x2="55" y2="30"/>
+              <line x1="85" y1="22" x2="85" y2="30"/><line x1="115" y1="22" x2="115" y2="30"/>
+            </g>
+            <rect x="10" y="30" width="30" height="18" rx="1" fill="rgba(196,154,42,0.08)" stroke="rgba(196,154,42,0.3)" stroke-width="0.7"/>
+            <text x="25" y="41" text-anchor="middle" font-family="Outfit" font-size="4.5" fill="rgba(196,154,42,0.65)">MQTT P:3</text>
+            <rect x="42" y="30" width="26" height="18" rx="1" fill="rgba(196,154,42,0.08)" stroke="rgba(196,154,42,0.3)" stroke-width="0.7"/>
+            <text x="55" y="41" text-anchor="middle" font-family="Outfit" font-size="4.5" fill="rgba(196,154,42,0.65)">Sensor P:2</text>
+            <rect x="72" y="30" width="26" height="18" rx="1" fill="rgba(196,154,42,0.08)" stroke="rgba(196,154,42,0.3)" stroke-width="0.7"/>
+            <text x="85" y="41" text-anchor="middle" font-family="Outfit" font-size="4.5" fill="rgba(196,154,42,0.65)">OTA P:2</text>
+            <rect x="102" y="30" width="26" height="18" rx="1" fill="rgba(196,154,42,0.06)" stroke="rgba(196,154,42,0.25)" stroke-width="0.7"/>
+            <text x="115" y="41" text-anchor="middle" font-family="Outfit" font-size="4.5" fill="rgba(196,154,42,0.55)">Log P:1</text>
+            <text x="70" y="62" text-anchor="middle" font-family="Outfit" font-size="4.5" fill="rgba(196,154,42,0.35)">QUEUE · SEMAPHORE · MUTEX · NOTIFY</text>
+          </svg>
+        </div>
+        <div class="cd-title">FreeRTOS Firmware Design</div>
+        <div class="cd-body">Multi-task firmware architecture with proper priority assignment, queue-based IPC, binary/counting semaphores, event groups, and deterministic interrupt service routines.</div>
+        <div class="cd-tags"><span class="cd-tag">FreeRTOS</span><span class="cd-tag">ESP-IDF v5</span><span class="cd-tag">C / C++</span><span class="cd-tag">ISR Design</span></div>
+      </div>
+
+      <div class="cd-card">
+        <div class="cd-art">
+          <svg viewBox="0 0 140 70" xmlns="http://www.w3.org/2000/svg">
+            <rect x="5" y="25" width="35" height="22" rx="2" fill="rgba(196,154,42,0.1)" stroke="rgba(196,154,42,0.45)" stroke-width="1"/>
+            <text x="22" y="38" text-anchor="middle" font-family="Outfit" font-size="5" fill="rgba(196,154,42,0.8)">ESP32</text>
+            <path d="M40 32 Q55 26 68 32" fill="none" stroke="rgba(196,154,42,0.55)" stroke-width="1.2"/>
+            <path d="M40 36 Q55 30 68 36" fill="none" stroke="rgba(196,154,42,0.35)" stroke-width="0.8"/>
+            <path d="M68 40 Q55 46 40 40" fill="none" stroke="rgba(196,154,42,0.25)" stroke-width="0.8" stroke-dasharray="2,2"/>
+            <rect x="68" y="22" width="36" height="28" rx="2" fill="rgba(196,154,42,0.08)" stroke="rgba(196,154,42,0.38)" stroke-width="1"/>
+            <text x="86" y="33" text-anchor="middle" font-family="Outfit" font-size="5" fill="rgba(196,154,42,0.7)">MQTT</text>
+            <text x="86" y="42" text-anchor="middle" font-family="Outfit" font-size="4.5" fill="rgba(196,154,42,0.5)">Broker</text>
+            <line x1="104" y1="36" x2="118" y2="36" stroke="rgba(196,154,42,0.4)" stroke-width="1" stroke-dasharray="2,2"/>
+            <rect x="118" y="26" width="18" height="18" rx="1.5" fill="rgba(196,154,42,0.08)" stroke="rgba(196,154,42,0.3)" stroke-width="0.8"/>
+            <text x="127" y="37" text-anchor="middle" font-family="Outfit" font-size="4" fill="rgba(196,154,42,0.6)">Cloud</text>
+            <text x="70" y="62" text-anchor="middle" font-family="Outfit" font-size="4.5" fill="rgba(196,154,42,0.35)">QoS 0/1/2 · TLS · LAST WILL · RETAIN</text>
+          </svg>
+        </div>
+        <div class="cd-title">MQTT Protocol &amp; Connectivity</div>
+        <div class="cd-body">Production MQTT client with QoS level handling, last-will messages, TLS/mTLS authentication, automatic reconnection with exponential backoff, and AWS IoT Core integration.</div>
+        <div class="cd-tags"><span class="cd-tag">MQTT v5</span><span class="cd-tag">AWS IoT Core</span><span class="cd-tag">HiveMQ</span><span class="cd-tag">TLS 1.3</span></div>
+      </div>
+
+      <div class="cd-card">
+        <div class="cd-art">
+          <svg viewBox="0 0 140 70" xmlns="http://www.w3.org/2000/svg">
+            <rect x="5" y="10" width="130" height="50" rx="2" fill="rgba(196,154,42,0.04)" stroke="rgba(196,154,42,0.2)" stroke-width="0.8"/>
+            <text x="70" y="22" text-anchor="middle" font-family="Outfit" font-size="5" fill="rgba(196,154,42,0.45)">Flash Partition Map</text>
+            <rect x="12" y="26" width="52" height="16" rx="1" fill="rgba(196,154,42,0.15)" stroke="rgba(196,154,42,0.5)" stroke-width="0.8"/>
+            <text x="38" y="37" text-anchor="middle" font-family="Outfit" font-size="5" fill="rgba(196,154,42,0.85)">OTA_0 (ACTIVE)</text>
+            <rect x="72" y="26" width="52" height="16" rx="1" fill="rgba(196,154,42,0.06)" stroke="rgba(196,154,42,0.28)" stroke-width="0.8"/>
+            <text x="98" y="37" text-anchor="middle" font-family="Outfit" font-size="5" fill="rgba(196,154,42,0.5)">OTA_1 (STANDBY)</text>
+            <text x="70" y="52" text-anchor="middle" font-family="Outfit" font-size="4.5" fill="rgba(196,154,42,0.35)">ROLLBACK · SHA256 VERIFY · SIGNED BINARY</text>
+          </svg>
+        </div>
+        <div class="cd-title">OTA Update Infrastructure</div>
+        <div class="cd-body">Dual-partition OTA with automatic rollback on boot failure, cryptographic binary signature verification, staged rollout support, and version management across device fleets.</div>
+        <div class="cd-tags"><span class="cd-tag">ESP-IDF OTA</span><span class="cd-tag">SHA256</span><span class="cd-tag">Rollback</span><span class="cd-tag">Fleet Management</span></div>
+      </div>
+
+      <div class="cd-card">
+        <div class="cd-art">
+          <svg viewBox="0 0 140 70" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="22" cy="35" r="12" fill="rgba(196,154,42,0.08)" stroke="rgba(196,154,42,0.4)" stroke-width="1"/>
+            <text x="22" y="32" text-anchor="middle" font-family="Outfit" font-size="4.5" fill="rgba(196,154,42,0.7)">BME</text>
+            <text x="22" y="40" text-anchor="middle" font-family="Outfit" font-size="4" fill="rgba(196,154,42,0.5)">280</text>
+            <circle cx="22" cy="62" r="7" fill="rgba(196,154,42,0.06)" stroke="rgba(196,154,42,0.3)" stroke-width="0.8"/>
+            <text x="22" y="65" text-anchor="middle" font-family="Outfit" font-size="4" fill="rgba(196,154,42,0.5)">ADC</text>
+            <line x1="34" y1="35" x2="55" y2="35" stroke="rgba(196,154,42,0.4)" stroke-width="1" stroke-dasharray="2,2"/>
+            <line x1="28" y1="58" x2="55" y2="45" stroke="rgba(196,154,42,0.3)" stroke-width="0.8" stroke-dasharray="2,2"/>
+            <rect x="55" y="22" width="30" height="28" rx="2" fill="rgba(196,154,42,0.1)" stroke="rgba(196,154,42,0.45)" stroke-width="1"/>
+            <text x="70" y="34" text-anchor="middle" font-family="Outfit" font-size="5" fill="rgba(196,154,42,0.8)">HAL</text>
+            <text x="70" y="44" text-anchor="middle" font-family="Outfit" font-size="4" fill="rgba(196,154,42,0.5)">I2C/SPI</text>
+            <line x1="85" y1="36" x2="100" y2="36" stroke="rgba(196,154,42,0.4)" stroke-width="1"/>
+            <rect x="100" y="22" width="35" height="28" rx="2" fill="rgba(196,154,42,0.08)" stroke="rgba(196,154,42,0.35)" stroke-width="0.8"/>
+            <text x="117" y="34" text-anchor="middle" font-family="Outfit" font-size="5" fill="rgba(196,154,42,0.7)">Sensor</text>
+            <text x="117" y="44" text-anchor="middle" font-family="Outfit" font-size="4.5" fill="rgba(196,154,42,0.5)">Manager</text>
+          </svg>
+        </div>
+        <div class="cd-title">Sensor Integration</div>
+        <div class="cd-body">I2C, SPI, UART, and ADC sensor integration with proper hardware abstraction layers — temperature, humidity, pressure, current, vibration, and vision sensors across industrial deployments.</div>
+        <div class="cd-tags"><span class="cd-tag">I2C · SPI · UART</span><span class="cd-tag">ADC</span><span class="cd-tag">BME280</span><span class="cd-tag">Modbus RTU</span></div>
+      </div>
+
+      <div class="cd-card">
+        <div class="cd-art">
+          <svg viewBox="0 0 140 70" xmlns="http://www.w3.org/2000/svg">
+            <rect x="5" y="14" width="44" height="42" rx="2" fill="rgba(196,154,42,0.07)" stroke="rgba(196,154,42,0.38)" stroke-width="1"/>
+            <circle cx="27" cy="35" r="12" fill="rgba(196,154,42,0.06)" stroke="rgba(196,154,42,0.4)" stroke-width="0.8"/>
+            <circle cx="27" cy="35" r="7" fill="rgba(196,154,42,0.1)" stroke="rgba(196,154,42,0.45)" stroke-width="0.8"/>
+            <circle cx="27" cy="35" r="3" fill="rgba(196,154,42,0.3)"/>
+            <text x="27" y="54" text-anchor="middle" font-family="Outfit" font-size="4.5" fill="rgba(196,154,42,0.5)">OV5640</text>
+            <line x1="49" y1="35" x2="62" y2="35" stroke="rgba(196,154,42,0.4)" stroke-width="1" stroke-dasharray="2,2"/>
+            <rect x="62" y="20" width="38" height="30" rx="2" fill="rgba(196,154,42,0.1)" stroke="rgba(196,154,42,0.45)" stroke-width="1"/>
+            <text x="81" y="32" text-anchor="middle" font-family="Outfit" font-size="5" fill="rgba(196,154,42,0.8)">Edge ML</text>
+            <text x="81" y="42" text-anchor="middle" font-family="Outfit" font-size="4.5" fill="rgba(196,154,42,0.55)">MobileNet</text>
+            <line x1="100" y1="35" x2="112" y2="35" stroke="rgba(196,154,42,0.4)" stroke-width="1"/>
+            <rect x="112" y="24" width="23" height="22" rx="1.5" fill="rgba(196,154,42,0.07)" stroke="rgba(196,154,42,0.3)" stroke-width="0.8"/>
+            <text x="123" y="35" text-anchor="middle" font-family="Outfit" font-size="4.5" fill="rgba(196,154,42,0.6)">INT8</text>
+            <text x="123" y="43" text-anchor="middle" font-family="Outfit" font-size="4" fill="rgba(196,154,42,0.4)">TFLite</text>
+            <text x="70" y="64" text-anchor="middle" font-family="Outfit" font-size="4.5" fill="rgba(196,154,42,0.3)">PSRAM · LVGL · JPEG DECODE</text>
+          </svg>
+        </div>
+        <div class="cd-title">Camera &amp; Edge ML</div>
+        <div class="cd-body">OV5640 camera integration with ESP32-S3, PSRAM-backed frame buffers, JPEG streaming, and on-device MobileNetV3-Small INT8 inference for computer vision QA applications.</div>
+        <div class="cd-tags"><span class="cd-tag">OV5640</span><span class="cd-tag">TensorFlow Lite</span><span class="cd-tag">MobileNetV3</span><span class="cd-tag">PSRAM</span></div>
+      </div>
+
+      <div class="cd-card">
+        <div class="cd-art">
+          <svg viewBox="0 0 140 70" xmlns="http://www.w3.org/2000/svg">
+            <rect x="5" y="10" width="42" height="50" rx="2" fill="rgba(196,154,42,0.08)" stroke="rgba(196,154,42,0.38)" stroke-width="1"/>
+            <text x="26" y="28" text-anchor="middle" font-family="Outfit" font-size="5.5" fill="rgba(196,154,42,0.75)">Battery</text>
+            <text x="26" y="38" text-anchor="middle" font-family="Outfit" font-size="5" fill="rgba(196,154,42,0.55)">LiPo</text>
+            <text x="26" y="48" text-anchor="middle" font-family="Outfit" font-size="4.5" fill="rgba(196,154,42,0.4)">3.7V</text>
+            <line x1="47" y1="35" x2="62" y2="35" stroke="rgba(196,154,42,0.4)" stroke-width="1"/>
+            <rect x="62" y="20" width="35" height="30" rx="2" fill="rgba(196,154,42,0.1)" stroke="rgba(196,154,42,0.45)" stroke-width="1"/>
+            <text x="79" y="32" text-anchor="middle" font-family="Outfit" font-size="5" fill="rgba(196,154,42,0.8)">Power</text>
+            <text x="79" y="42" text-anchor="middle" font-family="Outfit" font-size="4.5" fill="rgba(196,154,42,0.6)">Manager</text>
+            <line x1="97" y1="30" x2="112" y2="22" stroke="rgba(196,154,42,0.35)" stroke-width="0.8"/>
+            <line x1="97" y1="35" x2="112" y2="35" stroke="rgba(196,154,42,0.35)" stroke-width="0.8"/>
+            <line x1="97" y1="40" x2="112" y2="48" stroke="rgba(196,154,42,0.35)" stroke-width="0.8"/>
+            <text x="125" y="24" font-family="Outfit" font-size="4.5" fill="rgba(196,154,42,0.55)">Active</text>
+            <text x="125" y="37" font-family="Outfit" font-size="4.5" fill="rgba(196,154,42,0.45)">Light Sleep</text>
+            <text x="125" y="50" font-family="Outfit" font-size="4.5" fill="rgba(196,154,42,0.35)">Deep Sleep</text>
+          </svg>
+        </div>
+        <div class="cd-title">Power Management</div>
+        <div class="cd-body">Multi-mode power management — active, light sleep, and deep sleep with ULP co-processor wakeup. Optimised for battery-operated field devices requiring months of operation between charges.</div>
+        <div class="cd-tags"><span class="cd-tag">Deep Sleep</span><span class="cd-tag">ULP</span><span class="cd-tag">RTC Wakeup</span><span class="cd-tag">LiPo</span></div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- TECH STACK -->
+<div class="tech-stack">
+  <div class="inner">
+    <span class="s-label">Technology Stack</span>
+    <h2 class="s-title" style="color:#0a0a0a;">Tools we <em>ship</em> with</h2>
+    <p class="s-desc" style="color:rgba(10,10,10,0.55);">Specific tools and frameworks we use to deliver production embedded firmware — not aspirational lists.</p>
+    <div class="stack-grid">
+      <div class="stack-cell"><div class="sc-layer">Platform</div><div class="sc-tech">ESP32 / ESP32-S3</div><div class="sc-detail">Espressif ESP-IDF v5.x, Xtensa LX7 dual-core, 240MHz, WiFi 802.11 b/g/n, BT5</div></div>
+      <div class="stack-cell"><div class="sc-layer">Language</div><div class="sc-tech">C / C++ (C17 / C++17)</div><div class="sc-detail">Structured C for HAL layers, C++ for application logic and object-oriented drivers</div></div>
+      <div class="stack-cell"><div class="sc-layer">RTOS</div><div class="sc-tech">FreeRTOS</div><div class="sc-detail">Tasks, queues, event groups, timers, semaphores, mutexes, and stream buffers</div></div>
+      <div class="stack-cell"><div class="sc-layer">Connectivity</div><div class="sc-tech">MQTT · WiFi · BLE</div><div class="sc-detail">Eclipse Paho MQTT, ESP-IDF WiFi stack, NimBLE for BT5 Low Energy peripherals</div></div>
+      <div class="stack-cell"><div class="sc-layer">Storage</div><div class="sc-tech">NVS · SPIFFS · FAT</div><div class="sc-detail">Non-volatile storage for config, SPIFFS for file system, external SPI flash management</div></div>
+      <div class="stack-cell"><div class="sc-layer">Security</div><div class="sc-tech">TLS 1.3 · Secure Boot</div><div class="sc-detail">mbedTLS, secure boot v2, flash encryption, and cryptographic certificate management</div></div>
+      <div class="stack-cell"><div class="sc-layer">Toolchain</div><div class="sc-tech">ESP-IDF · CMake</div><div class="sc-detail">IDF component manager, CMake build system, Menuconfig, and JTAG debugging via OpenOCD</div></div>
+      <div class="stack-cell"><div class="sc-layer">Testing</div><div class="sc-tech">Unity · pytest-embedded</div><div class="sc-detail">On-target unit testing with Unity, host-side mocking with CMock, and CI via pytest-embedded</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- USE CASES -->
+<div class="usecases">
+  <div class="inner">
+    <span class="s-label">Use Cases</span>
+    <h2 class="s-title">Where we <em>deploy</em> embedded systems</h2>
+    <p class="s-desc">Specific deployment environments where our embedded firmware has been applied or is actively in development.</p>
+    <div class="uc-grid">
+      <div class="uc-card">
+        <div class="uc-art">
+          <svg viewBox="0 0 120 60" xmlns="http://www.w3.org/2000/svg">
+            <rect x="5" y="10" width="110" height="40" rx="2" fill="rgba(196,154,42,0.04)" stroke="rgba(196,154,42,0.2)" stroke-width="0.8"/>
+            <rect x="15" y="18" width="20" height="24" rx="1" fill="rgba(196,154,42,0.1)" stroke="rgba(196,154,42,0.35)" stroke-width="0.8"/>
+            <rect x="45" y="22" width="14" height="20" rx="1" fill="rgba(196,154,42,0.08)" stroke="rgba(196,154,42,0.3)" stroke-width="0.8"/>
+            <rect x="68" y="15" width="16" height="27" rx="1" fill="rgba(196,154,42,0.1)" stroke="rgba(196,154,42,0.35)" stroke-width="0.8"/>
+            <rect x="92" y="20" width="18" height="22" rx="1" fill="rgba(196,154,42,0.08)" stroke="rgba(196,154,42,0.28)" stroke-width="0.8"/>
+            <circle cx="25" cy="14" r="3" fill="rgba(196,154,42,0.3)" stroke="rgba(196,154,42,0.6)" stroke-width="0.8"/>
+            <circle cx="76" cy="11" r="3" fill="rgba(196,154,42,0.3)" stroke="rgba(196,154,42,0.6)" stroke-width="0.8"/>
+            <path d="M25 11 Q38 5 76 8" fill="none" stroke="rgba(196,154,42,0.3)" stroke-width="0.8" stroke-dasharray="2,2"/>
+          </svg>
+        </div>
+        <div class="uc-title">Factory Floor Monitoring</div>
+        <div class="uc-body">ESP32-based sensor nodes on production lines — temperature, vibration, current draw, and machine cycle counting. MQTT telemetry to ADROIT SENSE™ cloud platform.</div>
+      </div>
+      <div class="uc-card">
+        <div class="uc-art">
+          <svg viewBox="0 0 120 60" xmlns="http://www.w3.org/2000/svg">
+            <path d="M5 45 Q30 35 60 38 Q90 35 115 42" fill="none" stroke="rgba(196,154,42,0.25)" stroke-width="1.5"/>
+            <rect x="40" y="20" width="40" height="25" rx="2" fill="rgba(196,154,42,0.08)" stroke="rgba(196,154,42,0.38)" stroke-width="1"/>
+            <text x="60" y="34" text-anchor="middle" font-family="Outfit" font-size="5" fill="rgba(196,154,42,0.7)">Shore</text>
+            <text x="60" y="42" text-anchor="middle" font-family="Outfit" font-size="5" fill="rgba(196,154,42,0.55)">Pedestal</text>
+            <line x1="60" y1="20" x2="60" y2="10" stroke="rgba(196,154,42,0.4)" stroke-width="1"/>
+            <rect x="48" y="5" width="24" height="8" rx="1" fill="rgba(196,154,42,0.1)" stroke="rgba(196,154,42,0.4)" stroke-width="0.8"/>
+            <text x="60" y="11" text-anchor="middle" font-family="Outfit" font-size="4.5" fill="rgba(196,154,42,0.7)">ESP32 Node</text>
+          </svg>
+        </div>
+        <div class="uc-title">Maritime Shore Power IoT</div>
+        <div class="uc-body">EU-assembled drop-in meter modules for marina shore-power pedestals — metering, MQTT telemetry, and remote management for Rolec, GEWISS, and Plusmarine infrastructure.</div>
+      </div>
+      <div class="uc-card">
+        <div class="uc-art">
+          <svg viewBox="0 0 120 60" xmlns="http://www.w3.org/2000/svg">
+            <rect x="5" y="12" width="60" height="40" rx="1.5" fill="rgba(196,154,42,0.05)" stroke="rgba(196,154,42,0.25)" stroke-width="0.8"/>
+            <g stroke="rgba(196,154,42,0.2)" stroke-width="0.6" fill="none">
+              <line x1="15" y1="22" x2="35" y2="22"/><line x1="35" y1="22" x2="35" y2="35"/>
+              <line x1="35" y1="35" x2="50" y2="35"/>
+            </g>
+            <rect x="14" y="18" width="10" height="7" rx="0.8" fill="rgba(196,154,42,0.12)" stroke="rgba(196,154,42,0.35)" stroke-width="0.6"/>
+            <rect x="38" y="28" width="10" height="7" rx="0.8" fill="rgba(196,154,42,0.12)" stroke="rgba(196,154,42,0.35)" stroke-width="0.6"/>
+            <circle cx="35" cy="44" r="5" fill="none" stroke="rgba(220,80,60,0.55)" stroke-width="1" stroke-dasharray="1.5,1"/>
+            <rect x="72" y="8" width="43" height="36" rx="2" fill="rgba(196,154,42,0.06)" stroke="rgba(196,154,42,0.32)" stroke-width="0.8"/>
+            <circle cx="93" cy="26" r="12" fill="none" stroke="rgba(196,154,42,0.4)" stroke-width="0.8"/>
+            <circle cx="93" cy="26" r="7" fill="rgba(196,154,42,0.1)" stroke="rgba(196,154,42,0.45)" stroke-width="0.8"/>
+            <circle cx="93" cy="26" r="3" fill="rgba(196,154,42,0.3)"/>
+          </svg>
+        </div>
+        <div class="uc-title">PCB Computer Vision QA</div>
+        <div class="uc-body">ESP32-S3 cluster driving OV5640 cameras for PCB defect detection — MobileNetV3-Small INT8 on-device inference with MQTT result publishing and solenoid reject control.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- DELIVERY PROCESS -->
+<div class="delivery-section">
+  <div class="inner">
+    <span class="s-label light">Delivery Process</span>
+    <h2 class="s-title light">How an engagement <em>runs</em></h2>
+    <p class="s-desc light">From hardware requirements brief through to production firmware handover.</p>
+    <div class="delivery-row">
+      <div class="dr-cell">
+        <div class="dr-step">01</div>
+        <div class="dr-title">Hardware &amp; Requirements Brief</div>
+        <div class="dr-body">We begin by understanding your target hardware, sensor requirements, connectivity constraints, power budget, and safety or certification requirements before any firmware is scoped.</div>
+      </div>
+      <div class="dr-cell">
+        <div class="dr-step">02</div>
+        <div class="dr-title">Firmware Architecture Spec</div>
+        <div class="dr-body">A documented firmware specification — task breakdown, HAL design, MQTT topic schema, partition map, and OTA strategy — reviewed and signed off before development begins.</div>
+      </div>
+      <div class="dr-cell">
+        <div class="dr-step">03</div>
+        <div class="dr-title">Iterative Development</div>
+        <div class="dr-body">Firmware delivered in testable increments — hardware-in-the-loop testing at each milestone, with JTAG debugging sessions and structured code review against the spec.</div>
+      </div>
+      <div class="dr-cell">
+        <div class="dr-step">04</div>
+        <div class="dr-title">Production Handover</div>
+        <div class="dr-body">Full source code, build toolchain documentation, flash programming scripts, and a maintenance guide. Optional ongoing support retainer for field issue triage and firmware updates.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SERVICE NAV -->
+<div class="svc-nav-bar">
+  <div class="inner">
+    <a href="it-architecture.html" class="snb-prev">
+      <svg viewBox="0 0 12 12"><line x1="12" y1="6" x2="2" y2="6"/><polyline points="6,2 2,6 6,10"/></svg>
+      <span><span class="snb-label">Previous</span>IT Architecture Consulting</span>
+    </a>
+    <a href="services.html" class="snb-all">All Practice Areas</a>
+    <a href="adroit-sense.html" class="snb-next">
+      <span><span class="snb-label">Next</span>ADROIT SENSE™ IoT Platform</span>
+      <svg viewBox="0 0 12 12"><line x1="0" y1="6" x2="10" y2="6"/><polyline points="6,2 10,6 6,10"/></svg>
+    </a>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="svc-cta-band">
+  <h2>Need embedded firmware<br><em>expertise?</em></h2>
+  <p>Tell us about your hardware platform and requirements — we respond with a direct technical assessment.</p>
+  <div class="btn-row">
+    <a href="contact.html" class="btn-gold">Start a Conversation</a>
+    <a href="services.html" class="btn-outline">All Practice Areas</a>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-left">
+    <a href="index.html"><img src="adroit-logo.png" alt="Adroit Solutions GmbH"/></a>
+    <p class="footer-tagline">Electronics &middot; IoT &middot; Digital Solutions &middot; Düsseldorf</p>
+  </div>
+  <div class="footer-legal">
+    <p>&copy; 2026 Adroit Solutions GmbH</p>
+    <p><a href="impressum.html">Impressum</a> &nbsp;&middot;&nbsp; <a href="datenschutz.html">Datenschutz</a></p>
+  </div>
+</footer>
+
+<script src="/site.js"></script>
+<script src="/cookie-consent.js"></script>
+</body>
+</html>
