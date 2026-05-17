@@ -1,0 +1,1083 @@
+<!DOCTYPE html>
+<html lang="en" style="background:#0a0a0a !important">
+<head>
+<meta charset="UTF-8"/>
+<meta name="color-scheme" content="dark"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>QR Ordering SaaS — Adroit Solutions GmbH</title>
+<meta name="description" content="QR-code based digital ordering platform for hospitality and retail venues — tableside ordering, live menu management, and integrated payment processing. No hardware required. Adroit Solutions GmbH, Düsseldorf."/>
+<link rel="canonical" href="https://adroitsolutions.de/qr-ordering.html"/>
+<link rel="stylesheet" href="/fonts/fonts.css"/>
+<style>
+html, body {
+  background: #0a0a0a !important;
+  color: #f5f4f0 !important;
+  margin: 0 !important; padding: 0 !important;
+  font-family: 'DM Sans', sans-serif !important;
+  font-weight: 300; line-height: 1.7; overflow-x: hidden;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --ink:    #0a0a0a;
+  --ink3:   #141414;
+  --white:  #f5f4f0;
+  --gold:   #c9a84c;
+  --gold2:  #e8c97a;
+  --soft:   rgba(245,244,240,0.45);
+  --surface: #161616;
+  --surface2: #1c1c1c;
+  --border: rgba(201,168,76,0.2);
+  --mid:    #1c1c1c;
+}
+html { scroll-behavior: smooth; }
+
+/* SCROLL PROGRESS */
+.scroll-progress {
+  position: fixed; top: 0; left: 0; z-index: 200;
+  height: 2px; width: 0%;
+  background: linear-gradient(90deg, var(--gold), var(--gold2));
+  transition: width 0.1s linear;
+}
+
+/* NAV */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0.75rem 4rem;
+  background: rgba(10,10,10,0.95) !important;
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
+  transition: padding 0.3s ease;
+}
+.nav-logo img { height: 140px; filter: brightness(0) invert(1); background: none; display: block; }
+.nav-right { display: flex; align-items: center; gap: 2rem; }
+.nav-links { display: flex; gap: 2rem; list-style: none; }
+.nav-links a {
+  color: rgba(245,244,240,0.6); text-decoration: none;
+  font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase;
+  position: relative; transition: color 0.2s;
+}
+.nav-links a::after {
+  content: ''; position: absolute; bottom: -4px; left: 0;
+  width: 0; height: 1px; background: var(--gold); transition: width 0.3s ease;
+}
+.nav-links a:hover { color: var(--gold); }
+.nav-links a:hover::after { width: 100%; }
+.nav-links a.active { color: var(--gold); }
+.nav-links a.active::after { width: 100%; }
+.lang-switcher { display: flex; gap: 0.4rem; }
+.lang-btn {
+  background: none; border: 1px solid rgba(201,168,76,0.4);
+  color: rgba(245,244,240,0.6); font-family: 'DM Sans', sans-serif;
+  font-size: 0.75rem; font-weight: 600; letter-spacing: 0.12em;
+  text-transform: uppercase; padding: 0.35rem 0.8rem;
+  cursor: pointer; transition: all 0.25s;
+}
+.lang-btn.active { background: var(--gold); border-color: var(--gold); color: #0a0a0a; font-weight: 700; }
+.lang-btn:hover { border-color: var(--gold); color: var(--gold); }
+.lang-btn.active:hover { background: var(--gold2); color: #0a0a0a; }
+.menu-btn {
+  display: none; flex-direction: column; gap: 5px;
+  background: none; border: none; cursor: pointer; padding: 4px;
+}
+.menu-btn span { display: block; width: 22px; height: 1.5px; background: rgba(245,244,240,0.7); transition: all 0.3s; }
+
+/* BREADCRUMB */
+.breadcrumb {
+  padding: 8rem 4rem 0;
+  max-width: 1320px; margin: 0 auto;
+  font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--soft);
+}
+.breadcrumb a { color: var(--soft); text-decoration: none; transition: color 0.2s; }
+.breadcrumb a:hover { color: var(--gold); }
+.breadcrumb span { margin: 0 0.5rem; }
+.breadcrumb .current { color: var(--gold); }
+
+/* HERO */
+.svc-hero {
+  background: var(--ink); padding: 60px 4rem 100px;
+  position: relative; overflow: hidden;
+}
+.svc-hero-bg {
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 55% 70% at 80% 40%, rgba(196,154,42,0.09) 0%, transparent 65%),
+              radial-gradient(ellipse 25% 40% at 10% 75%, rgba(196,154,42,0.04) 0%, transparent 60%);
+}
+.svc-hero-grid {
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(196,154,42,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(196,154,42,0.04) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+.svc-hero .inner {
+  position: relative; z-index: 2; max-width: 1320px; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 440px; gap: 6vw; align-items: center;
+}
+.hero-tag {
+  font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 1rem;
+}
+.svc-hero h1 {
+  font-family: 'DM Sans', sans-serif;
+  font-size: clamp(2.6rem, 4.5vw, 4.2rem); font-weight: 200;
+  line-height: 1.1; color: var(--white); margin-bottom: 1.4rem;
+}
+.svc-hero h1 em { font-style: italic; color: var(--gold2); }
+.svc-hero > .inner > div > p {
+  font-size: 1rem; font-weight: 300; color: rgba(245,244,240,0.45); line-height: 1.9; max-width: 520px;
+}
+.hero-badges { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 1.6rem; }
+.badge {
+  font-size: 0.68rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase;
+  padding: 5px 12px; border: 1px solid rgba(201,168,76,0.3); color: var(--gold2);
+}
+.hero-art { display: flex; align-items: center; justify-content: center; }
+.hero-art svg { width: 100%; height: auto; }
+
+/* ANIMATIONS */
+.qr-scan { animation: scanMove 2.5s ease-in-out infinite; }
+@keyframes scanMove { 0%,100%{transform:translateY(0)} 50%{transform:translateY(40px)} }
+.blink-status { animation: blink 2s ease-in-out infinite; }
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.2} }
+.flow-in { animation: dash 2s linear infinite; stroke-dasharray: 50; }
+@keyframes dash { to { stroke-dashoffset: -100; } }
+
+/* SECTION LABELS */
+.s-label {
+  font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 0.8rem;
+}
+.s-label.light { color: var(--gold2); }
+.s-title {
+  font-family: 'DM Sans', sans-serif;
+  font-size: clamp(1.8rem, 3vw, 2.8rem); font-weight: 200;
+  color: var(--ink); line-height: 1.15; margin-bottom: 1rem;
+}
+.s-title.light { color: var(--white); }
+.s-title em { font-style: italic; color: var(--gold); }
+.s-title.light em { color: var(--gold2); }
+.s-desc { font-size: 0.9rem; color: var(--soft); max-width: 600px; line-height: 1.8; }
+.s-desc.light { color: rgba(245,244,240,0.45); }
+
+/* OVERVIEW */
+.overview-band { padding: 100px 4rem; max-width: 1320px; margin: 0 auto; }
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 5vw; align-items: start; }
+.prose p { font-size: 0.95rem; color: rgba(245,244,240,0.5); line-height: 1.95; margin-bottom: 1.2rem; }
+.prose strong { color: var(--white); font-weight: 500; }
+.kpi-stack { display: flex; flex-direction: column; }
+.kpi-item { display: flex; align-items: flex-start; gap: 1.4rem; padding: 1.4rem 0; border-top: 1px solid var(--border); }
+.kpi-item:last-child { border-bottom: 1px solid var(--border); }
+.kpi-n { font-family: 'DM Sans', sans-serif; font-size: 1.5rem; font-weight: 200; color: rgba(201,168,76,0.3); min-width: 28px; line-height: 1; }
+.kpi-title { font-size: 0.9rem; font-weight: 500; color: var(--white); margin-bottom: 0.3rem; }
+.kpi-body { font-size: 0.82rem; color: var(--soft); line-height: 1.7; }
+
+/* METRICS */
+.metrics-strip { padding: 70px 4rem; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.metrics-strip .inner { max-width: 1320px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; }
+.metric-item { text-align: center; }
+.metric-num { font-family: 'DM Sans', sans-serif; font-size: 3rem; font-weight: 200; color: var(--white); line-height: 1; }
+.metric-num sup { font-size: 1.2rem; color: var(--gold); }
+.metric-label { font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--soft); margin-top: 6px; }
+.metric-desc { font-size: 0.8rem; color: var(--soft); margin-top: 4px; }
+
+/* HOW IT WORKS */
+.how-section { background: var(--surface); padding: 110px 4rem; }
+.how-section .inner { max-width: 1320px; margin: 0 auto; }
+.how-steps {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px;
+  background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.06);
+  margin-top: 3.5rem;
+}
+.how-step { background: var(--ink3); padding: 2.2rem 1.8rem; position: relative; overflow: hidden; }
+.hs-num { font-family: 'DM Sans', sans-serif; font-size: 4rem; font-weight: 200; color: rgba(255,255,255,0.04); line-height: 1; margin-bottom: 1rem; }
+.hs-art { height: 70px; margin-bottom: 1.2rem; display: flex; align-items: center; }
+.hs-art svg { height: 60px; width: auto; }
+.hs-title { font-size: 0.92rem; font-weight: 500; color: var(--white); margin-bottom: 0.4rem; }
+.hs-body { font-size: 0.8rem; font-weight: 300; color: rgba(255,255,255,0.38); line-height: 1.7; }
+
+/* CAPABILITIES */
+.cap-deep { background: var(--ink); padding: 0 4rem 110px; }
+.cap-deep .inner { max-width: 1320px; margin: 0 auto; }
+.cap-deep-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px;
+  background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.06);
+  margin-top: 3.5rem;
+}
+.cd-card { background: var(--ink3); padding: 2.2rem 1.8rem; transition: background 0.3s; position: relative; overflow: hidden; }
+.cd-card::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, rgba(196,154,42,0.4), transparent); transform: scaleX(0); transform-origin: center; transition: transform 0.4s; }
+.cd-card:hover { background: #0e0e0e; }
+.cd-card:hover::after { transform: scaleX(1); }
+.cd-art { height: 80px; margin-bottom: 1.4rem; display: flex; align-items: center; }
+.cd-art svg { height: 70px; width: auto; }
+.cd-title { font-size: 0.95rem; font-weight: 500; color: var(--white); margin-bottom: 0.5rem; }
+.cd-body { font-size: 0.8rem; font-weight: 300; color: rgba(255,255,255,0.38); line-height: 1.7; }
+.cd-tags { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 1rem; }
+.cd-tag { font-size: 0.65rem; letter-spacing: 0.08em; text-transform: uppercase; padding: 3px 7px; background: rgba(196,154,42,0.08); color: rgba(196,154,42,0.6); border: 1px solid rgba(196,154,42,0.15); }
+
+/* VENUE TYPES */
+.venue-section { background: var(--surface2); padding: 110px 4rem; }
+.venue-section .inner { max-width: 1320px; margin: 0 auto; }
+.venue-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.06); margin-top: 3rem; }
+.venue-cell { background: var(--ink3); padding: 2.2rem 2rem; transition: background 0.2s; }
+.venue-cell:hover { background: #0e0e0e; }
+.vc-art { height: 70px; margin-bottom: 1.2rem; display: flex; align-items: center; }
+.vc-art svg { height: 60px; width: auto; }
+.vc-title { font-size: 1rem; font-weight: 500; color: var(--white); margin-bottom: 0.4rem; }
+.vc-body { font-size: 0.83rem; color: rgba(255,255,255,0.38); line-height: 1.75; }
+.vc-tags { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 0.8rem; }
+.vc-tag { font-size: 0.65rem; letter-spacing: 0.06em; text-transform: uppercase; padding: 3px 8px; border: 1px solid rgba(201,168,76,0.2); color: rgba(201,168,76,0.5); }
+
+/* PRICING */
+.pricing-section { background: var(--ink); padding: 110px 4rem; }
+.pricing-section .inner { max-width: 1320px; margin: 0 auto; }
+.pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.06); margin-top: 3rem; }
+.price-card { background: var(--ink3); padding: 2.4rem 2rem; }
+.price-card.featured { background: rgba(196,154,42,0.07); border: 1px solid rgba(196,154,42,0.25); }
+.price-badge { font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); border: 1px solid rgba(196,154,42,0.3); padding: 3px 8px; display: inline-block; margin-bottom: 1rem; }
+.price-tier { font-family: 'DM Sans', sans-serif; font-size: 1.6rem; font-weight: 200; color: var(--white); margin-bottom: 0.3rem; }
+.price-amount { font-family: 'DM Sans', sans-serif; font-size: 2.6rem; font-weight: 200; color: var(--gold); line-height: 1; }
+.price-period { font-size: 0.78rem; color: rgba(255,255,255,0.35); margin-bottom: 1.4rem; }
+.price-features { list-style: none; margin-bottom: 1.8rem; }
+.price-features li { font-size: 0.8rem; color: rgba(255,255,255,0.42); padding: 5px 0; border-bottom: 1px solid rgba(255,255,255,0.05); display: flex; align-items: center; gap: 8px; }
+.price-features li::before { content: ''; display: block; width: 4px; height: 4px; background: var(--gold); flex-shrink: 0; opacity: 0.7; }
+.btn-gold {
+  display: inline-block; padding: 0.75rem 1.8rem;
+  background: var(--gold); color: #0a0a0a; text-decoration: none;
+  font-size: 0.78rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+  transition: background 0.2s;
+}
+.btn-gold:hover { background: var(--gold2); }
+.btn-outline-light {
+  display: inline-block; padding: 0.75rem 1.8rem;
+  background: none; border: 1px solid rgba(201,168,76,0.3);
+  color: rgba(245,244,240,0.5); text-decoration: none;
+  font-size: 0.78rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase;
+  transition: all 0.2s;
+}
+.btn-outline-light:hover { border-color: var(--gold); color: var(--gold); }
+
+/* TECH STACK */
+.tech-stack { background: var(--surface); padding: 110px 4rem; }
+.tech-stack .inner { max-width: 1320px; margin: 0 auto; }
+.stack-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.06); margin-top: 3rem; }
+.stack-cell { background: var(--ink3); padding: 1.8rem 1.5rem; transition: background 0.2s; }
+.stack-cell:hover { background: #0e0e0e; }
+.sc-layer { font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.6rem; }
+.sc-tech { font-size: 0.92rem; font-weight: 500; color: var(--white); margin-bottom: 0.3rem; }
+.sc-detail { font-size: 0.78rem; color: var(--soft); line-height: 1.6; }
+
+/* ONBOARDING */
+.onboard-section { padding: 110px 4rem; max-width: 1320px; margin: 0 auto; }
+.onboard-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; margin-top: 3rem; }
+.ob-card { border: 1px solid var(--border); padding: 2rem 1.8rem; transition: border-color 0.2s; }
+.ob-card:hover { border-color: var(--gold); }
+.ob-step { font-family: 'DM Sans', sans-serif; font-size: 3rem; font-weight: 200; color: rgba(201,168,76,0.2); line-height: 1; margin-bottom: 1rem; }
+.ob-title { font-size: 0.9rem; font-weight: 500; color: var(--white); margin-bottom: 0.5rem; }
+.ob-body { font-size: 0.8rem; color: var(--soft); line-height: 1.7; }
+
+/* SERVICE NAV */
+.svc-nav-bar { border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 1.4rem 4rem; }
+.svc-nav-bar .inner { max-width: 1320px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+.snb-prev, .snb-next { display: flex; align-items: center; gap: 8px; font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--soft); text-decoration: none; transition: color 0.2s; }
+.snb-prev:hover, .snb-next:hover { color: var(--gold); }
+.snb-prev svg, .snb-next svg { width: 12px; height: 12px; stroke: currentColor; fill: none; stroke-width: 2; }
+.snb-label { font-size: 0.68rem; color: var(--gold); display: block; margin-bottom: 2px; }
+.snb-all { font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--soft); text-decoration: none; transition: color 0.2s; }
+.snb-all:hover { color: var(--gold); }
+
+/* CTA BAND */
+.svc-cta-band { background: var(--surface2); padding: 110px 4rem; text-align: center; }
+.svc-cta-band h2 { font-family: 'DM Sans', sans-serif; font-size: clamp(2rem, 3.5vw, 3.2rem); font-weight: 200; color: var(--white); margin-bottom: 1rem; }
+.svc-cta-band h2 em { font-style: italic; color: var(--gold2); }
+.svc-cta-band p { font-size: 0.95rem; color: var(--soft); max-width: 440px; margin: 0 auto 2.4rem; }
+.btn-row { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+.btn-outline {
+  display: inline-block; padding: 0.75rem 1.8rem;
+  background: none; border: 1px solid var(--border);
+  color: var(--soft); text-decoration: none;
+  font-size: 0.78rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase;
+  transition: all 0.2s;
+}
+.btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+
+/* FOOTER */
+footer {
+  background: #050505; border-top: 1px solid var(--border);
+  padding: 2.5rem 4rem;
+  display: grid; grid-template-columns: 1fr auto;
+  align-items: center; gap: 2rem;
+}
+.footer-left { display: flex; flex-direction: column; gap: 0.2rem; }
+.footer-left img { height: 110px; filter: brightness(0) invert(1); background: none; display: block; }
+.footer-tagline { font-size: 0.8rem; color: rgba(245,244,240,0.35); margin: 0; }
+.footer-legal { font-size: 0.75rem; color: rgba(245,244,240,0.3); text-align: right; line-height: 1.8; }
+.footer-legal a { color: rgba(245,244,240,0.4); text-decoration: none; }
+.footer-legal a:hover { color: var(--gold); }
+
+/* RESPONSIVE */
+@media (max-width: 1000px) {
+  nav { padding: 0.5rem 1.5rem; }
+  .nav-logo img { height: 72px; }
+  .nav-links { display: none; position: absolute; top: 100%; left: 0; right: 0; z-index: 99; background: rgba(10,10,10,0.98); border-top: 1px solid rgba(201,168,76,0.2); flex-direction: column; padding: 0.5rem 0; gap: 0; list-style: none; }
+  .nav-links.open { display: flex; }
+  .nav-links li { border-bottom: 1px solid rgba(255,255,255,0.06); }
+  .nav-links li:last-child { border-bottom: none; }
+  .nav-links a { padding: 0.9rem 1.5rem !important; display: block; }
+  .nav-links a::after { display: none !important; }
+  .menu-btn { display: flex; }
+  .breadcrumb { padding: 6rem 1.5rem 0; }
+  .svc-hero { padding: 40px 1.5rem 80px; }
+  .svc-hero .inner { grid-template-columns: 1fr; }
+  .hero-art { max-width: 340px; margin: 2rem auto 0; }
+  .two-col { grid-template-columns: 1fr; }
+  .how-steps { grid-template-columns: 1fr 1fr; }
+  .cap-deep-grid { grid-template-columns: 1fr 1fr; }
+  .venue-grid { grid-template-columns: 1fr 1fr; }
+  .pricing-grid { grid-template-columns: 1fr; }
+  .stack-grid { grid-template-columns: 1fr 1fr; }
+  .onboard-grid { grid-template-columns: 1fr 1fr; }
+  .metrics-strip .inner { grid-template-columns: 1fr 1fr; }
+  .overview-band, .onboard-section { padding: 60px 1.5rem; }
+  .metrics-strip, .how-section, .cap-deep, .venue-section, .pricing-section, .tech-stack, .svc-cta-band { padding-left: 1.5rem; padding-right: 1.5rem; }
+  .svc-nav-bar { padding: 1.4rem 1.5rem; }
+  footer { padding: 2rem 1.5rem; }
+}
+@media (max-width: 600px) {
+  .how-steps { grid-template-columns: 1fr; }
+  .cap-deep-grid { grid-template-columns: 1fr; }
+  .venue-grid { grid-template-columns: 1fr; }
+  .stack-grid { grid-template-columns: 1fr; }
+  .onboard-grid { grid-template-columns: 1fr; }
+  .metrics-strip .inner { grid-template-columns: 1fr 1fr; }
+  footer { grid-template-columns: 1fr; }
+  .footer-legal { text-align: left; }
+}
+</style>
+</head>
+<body>
+
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<!-- NAV -->
+<nav id="mainNav">
+  <div class="nav-logo">
+    <a href="index.html"><img src="adroit-logo.png" alt="Adroit Solutions GmbH"/></a>
+  </div>
+  <div class="nav-right">
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="services.html" class="active">Services</a></li>
+      <li><a href="cases.html">Case Studies</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <button class="menu-btn" id="menuBtn" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- BREADCRUMB -->
+<div class="breadcrumb">
+  <a href="index.html">Home</a><span>›</span>
+  <a href="services.html">Services</a><span>›</span>
+  <span class="current">QR Ordering SaaS</span>
+</div>
+
+<!-- HERO -->
+<div class="svc-hero">
+  <div class="svc-hero-bg"></div>
+  <div class="svc-hero-grid"></div>
+  <div class="inner">
+    <div>
+      <div class="hero-tag">Practice Area 07</div>
+      <h1>QR Ordering<br><em>SaaS</em></h1>
+      <p>A QR-code based digital ordering platform for hospitality and retail venues — enabling tableside ordering, live menu management, and integrated payment processing without dedicated hardware, expensive POS terminals, or complex implementation.</p>
+      <div class="hero-badges">
+        <span class="badge">QR Tableside Ordering</span>
+        <span class="badge">Live Menu Management</span>
+        <span class="badge">Payment Integration</span>
+        <span class="badge">No Hardware Required</span>
+        <span class="badge">Multi-Venue SaaS</span>
+      </div>
+    </div>
+    <div class="hero-art">
+      <svg viewBox="0 0 380 420" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <filter id="glow8"><feGaussianBlur stdDeviation="2" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+        </defs>
+        <!-- Background grid -->
+        <g stroke="rgba(196,154,42,0.05)" stroke-width="0.8">
+          <line x1="0" y1="80" x2="380" y2="80"/><line x1="0" y1="160" x2="380" y2="160"/>
+          <line x1="0" y1="240" x2="380" y2="240"/><line x1="0" y1="320" x2="380" y2="320"/>
+          <line x1="80" y1="0" x2="80" y2="420"/><line x1="160" y1="0" x2="160" y2="420"/>
+          <line x1="240" y1="0" x2="240" y2="420"/><line x1="320" y1="0" x2="320" y2="420"/>
+        </g>
+        <!-- QR Code (table card) -->
+        <rect x="30" y="30" width="100" height="100" rx="3" fill="rgba(196,154,42,0.08)" stroke="rgba(196,154,42,0.35)" stroke-width="1"/>
+        <rect x="38" y="38" width="20" height="20" rx="1" fill="none" stroke="rgba(196,154,42,0.6)" stroke-width="1.2"/>
+        <rect x="41" y="41" width="14" height="14" fill="rgba(196,154,42,0.5)"/>
+        <rect x="82" y="38" width="20" height="20" rx="1" fill="none" stroke="rgba(196,154,42,0.6)" stroke-width="1.2"/>
+        <rect x="85" y="41" width="14" height="14" fill="rgba(196,154,42,0.5)"/>
+        <rect x="38" y="82" width="20" height="20" rx="1" fill="none" stroke="rgba(196,154,42,0.6)" stroke-width="1.2"/>
+        <rect x="41" y="85" width="14" height="14" fill="rgba(196,154,42,0.5)"/>
+        <g fill="rgba(196,154,42,0.45)">
+          <rect x="63" y="38" width="5" height="5"/><rect x="70" y="38" width="5" height="5"/>
+          <rect x="63" y="45" width="5" height="5"/><rect x="76" y="45" width="5" height="5"/>
+          <rect x="70" y="52" width="5" height="5"/><rect x="63" y="59" width="5" height="5"/>
+          <rect x="76" y="59" width="5" height="5"/><rect x="63" y="66" width="5" height="5"/>
+          <rect x="38" y="63" width="5" height="5"/><rect x="45" y="63" width="5" height="5"/>
+          <rect x="45" y="70" width="5" height="5"/><rect x="38" y="77" width="5" height="5"/>
+          <rect x="63" y="82" width="5" height="5"/><rect x="76" y="82" width="5" height="5"/>
+          <rect x="70" y="89" width="5" height="5"/><rect x="63" y="96" width="5" height="5"/>
+          <rect x="82" y="63" width="5" height="5"/><rect x="89" y="70" width="5" height="5"/>
+          <rect x="82" y="77" width="5" height="5"/><rect x="95" y="63" width="5" height="5"/>
+          <rect x="95" y="89" width="5" height="5"/><rect x="89" y="96" width="5" height="5"/>
+        </g>
+        <g clip-path="url(#qrClip)">
+          <rect class="qr-scan" x="30" y="28" width="100" height="2" fill="rgba(196,154,42,0.7)" filter="url(#glow8)"/>
+        </g>
+        <defs><clipPath id="qrClip"><rect x="30" y="30" width="100" height="100"/></clipPath></defs>
+        <text x="80" y="142" text-anchor="middle" font-family="DM Sans" font-size="5.5" fill="rgba(196,154,42,0.5)">TABLE 12 · Scan to Order</text>
+        <!-- Phone — customer scanning -->
+        <rect x="158" y="20" width="62" height="110" rx="7" fill="rgba(196,154,42,0.08)" stroke="rgba(196,154,42,0.4)" stroke-width="1.2"/>
+        <rect x="163" y="30" width="52" height="90" rx="3" fill="rgba(196,154,42,0.04)"/>
+        <circle cx="189" cy="133" r="4" fill="none" stroke="rgba(196,154,42,0.3)" stroke-width="0.8"/>
+        <rect x="166" y="33" width="46" height="10" rx="1" fill="rgba(196,154,42,0.12)" stroke="rgba(196,154,42,0.25)" stroke-width="0.5"/>
+        <text x="189" y="40.5" text-anchor="middle" font-family="DM Sans" font-size="4.5" fill="rgba(196,154,42,0.8)">Margherita</text>
+        <text x="189" y="50" text-anchor="middle" font-family="DM Sans" font-size="4" fill="rgba(196,154,42,0.5)">€12.50</text>
+        <rect x="166" y="52" width="46" height="10" rx="1" fill="rgba(196,154,42,0.08)" stroke="rgba(196,154,42,0.2)" stroke-width="0.5"/>
+        <text x="189" y="59.5" text-anchor="middle" font-family="DM Sans" font-size="4.5" fill="rgba(196,154,42,0.7)">Caesar Salad</text>
+        <text x="189" y="69" text-anchor="middle" font-family="DM Sans" font-size="4" fill="rgba(196,154,42,0.45)">€9.90</text>
+        <rect x="166" y="71" width="46" height="10" rx="1" fill="rgba(196,154,42,0.08)" stroke="rgba(196,154,42,0.2)" stroke-width="0.5"/>
+        <text x="189" y="78.5" text-anchor="middle" font-family="DM Sans" font-size="4.5" fill="rgba(196,154,42,0.7)">Paulaner 0.5L</text>
+        <text x="189" y="88" text-anchor="middle" font-family="DM Sans" font-size="4" fill="rgba(196,154,42,0.45)">€5.40</text>
+        <rect x="170" y="95" width="38" height="14" rx="2" fill="rgba(196,154,42,0.5)" stroke="rgba(196,154,42,0.7)" stroke-width="0.8"/>
+        <text x="189" y="104.5" text-anchor="middle" font-family="DM Sans" font-size="5.5" fill="rgba(196,154,42,0.95)">Place Order →</text>
+        <!-- Connection line QR → Phone -->
+        <path class="flow-in" d="M130 80 Q144 80 158 80" fill="none" stroke="rgba(196,154,42,0.5)" stroke-width="1.2"/>
+        <!-- Cloud / SaaS backend -->
+        <path d="M240 55 Q252 42 268 47 Q272 34 286 38 Q300 30 308 42 Q320 36 320 50 Q320 64 308 64 L240 64 Q228 64 228 50 Q228 38 240 55Z"
+          fill="rgba(196,154,42,0.08)" stroke="rgba(196,154,42,0.4)" stroke-width="1" filter="url(#glow8)"/>
+        <text x="274" y="52" text-anchor="middle" font-family="DM Sans" font-size="6" fill="rgba(196,154,42,0.85)">SaaS Cloud</text>
+        <text x="274" y="62" text-anchor="middle" font-family="DM Sans" font-size="4.5" fill="rgba(196,154,42,0.5)">Spring Boot · React · AWS</text>
+        <!-- Connection phone → cloud -->
+        <path class="flow-in" d="M220 55 Q228 55 228 55" fill="none" stroke="rgba(196,154,42,0.4)" stroke-width="1" stroke-dasharray="3,2"/>
+        <!-- Kitchen display -->
+        <rect x="228" y="100" width="130" height="80" rx="3" fill="rgba(196,154,42,0.07)" stroke="rgba(196,154,42,0.35)" stroke-width="1"/>
+        <rect x="228" y="100" width="130" height="14" rx="3" fill="rgba(196,154,42,0.12)"/>
+        <text x="293" y="110.5" text-anchor="middle" font-family="DM Sans" font-size="5.5" fill="rgba(196,154,42,0.85)">Kitchen Display · Live Orders</text>
+        <rect x="234" y="120" width="55" height="50" rx="2" fill="rgba(196,154,42,0.1)" stroke="rgba(196,154,42,0.3)" stroke-width="0.7"/>
+        <text x="261" y="132" text-anchor="middle" font-family="DM Sans" font-size="5" fill="rgba(196,154,42,0.75)">Table 12</text>
+        <text x="261" y="142" text-anchor="middle" font-family="DM Sans" font-size="4.5" fill="rgba(196,154,42,0.55)">Margherita ×1</text>
+        <text x="261" y="151" text-anchor="middle" font-family="DM Sans" font-size="4.5" fill="rgba(196,154,42,0.55)">Caesar ×1</text>
+        <text x="261" y="160" text-anchor="middle" font-family="DM Sans" font-size="4.5" fill="rgba(196,154,42,0.55)">Paulaner ×2</text>
+        <rect x="295" y="120" width="55" height="50" rx="2" fill="rgba(196,154,42,0.07)" stroke="rgba(196,154,42,0.22)" stroke-width="0.7"/>
+        <text x="322" y="132" text-anchor="middle" font-family="DM Sans" font-size="5" fill="rgba(196,154,42,0.6)">Table 7</text>
+        <text x="322" y="142" text-anchor="middle" font-family="DM Sans" font-size="4.5" fill="rgba(196,154,42,0.45)">Schnitzel ×2</text>
+        <text x="322" y="151" text-anchor="middle" font-family="DM Sans" font-size="4.5" fill="rgba(196,154,42,0.45)">Riesling ×1</text>
+        <!-- Cloud → kitchen arrow -->
+        <line x1="274" y1="64" x2="274" y2="100" stroke="rgba(196,154,42,0.35)" stroke-width="1" stroke-dasharray="3,2"/>
+        <!-- Venue admin dashboard -->
+        <rect x="30" y="170" width="170" height="130" rx="3" fill="rgba(196,154,42,0.05)" stroke="rgba(196,154,42,0.22)" stroke-width="0.8"/>
+        <rect x="30" y="170" width="170" height="16" rx="3" fill="rgba(196,154,42,0.1)"/>
+        <text x="115" y="181.5" text-anchor="middle" font-family="DM Sans" font-size="5.5" fill="rgba(196,154,42,0.85)">Venue Admin Dashboard</text>
+        <g font-family="DM Sans" font-size="5" fill="rgba(196,154,42,0.55)">
+          <text x="40" y="200">Orders today:</text><text x="140" y="200" fill="rgba(196,154,42,0.85)">148</text>
+          <text x="40" y="212">Revenue:</text><text x="140" y="212" fill="rgba(196,154,42,0.85)">€3,315.40</text>
+          <text x="40" y="224">Avg. order:</text><text x="140" y="224" fill="rgba(196,154,42,0.85)">€22.40</text>
+          <text x="40" y="236">Tables active:</text><text x="140" y="236" fill="rgba(196,154,42,0.85)">12 / 16</text>
+          <text x="40" y="248">Top item:</text><text x="140" y="248" fill="rgba(196,154,42,0.85)">Margherita</text>
+          <text x="40" y="260">Payment:</text><text x="140" y="260" fill="rgba(100,200,100,0.75)">Integrated ✓</text>
+          <text x="40" y="272">Menu live:</text><text x="140" y="272" fill="rgba(100,200,100,0.75)">Updated 14:22</text>
+          <text x="40" y="284">Stripe:</text><text x="140" y="284" fill="rgba(100,200,100,0.75)">Connected ✓</text>
+        </g>
+        <polyline points="40,295 58,288 76,291 94,282 112,285 130,276 148,279 166,268 186,271"
+          fill="none" stroke="rgba(196,154,42,0.6)" stroke-width="1.4" stroke-linejoin="round"/>
+        <!-- Payment panel -->
+        <rect x="228" y="200" width="130" height="100" rx="3" fill="rgba(196,154,42,0.06)" stroke="rgba(196,154,42,0.25)" stroke-width="0.8"/>
+        <text x="293" y="216" text-anchor="middle" font-family="DM Sans" font-size="5.5" fill="rgba(196,154,42,0.65)">Payment Flow</text>
+        <rect x="238" y="222" width="110" height="18" rx="2" fill="rgba(196,154,42,0.1)" stroke="rgba(196,154,42,0.3)" stroke-width="0.7"/>
+        <text x="293" y="233.5" text-anchor="middle" font-family="DM Sans" font-size="5.5" fill="rgba(196,154,42,0.8)">Stripe · Apple Pay · Google Pay</text>
+        <rect x="238" y="244" width="110" height="18" rx="2" fill="rgba(196,154,42,0.08)" stroke="rgba(196,154,42,0.22)" stroke-width="0.7"/>
+        <text x="293" y="255.5" text-anchor="middle" font-family="DM Sans" font-size="5.5" fill="rgba(196,154,42,0.6)">PayPal · Bank Transfer</text>
+        <rect x="238" y="266" width="110" height="18" rx="2" fill="rgba(196,154,42,0.06)" stroke="rgba(196,154,42,0.18)" stroke-width="0.7"/>
+        <text x="293" y="277.5" text-anchor="middle" font-family="DM Sans" font-size="5.5" fill="rgba(196,154,42,0.45)">Pay at Counter (manual)</text>
+        <!-- Connecting lines -->
+        <line x1="228" y1="130" x2="200" y2="235" stroke="rgba(196,154,42,0.2)" stroke-width="0.8" stroke-dasharray="3,2"/>
+        <line x1="274" y1="64" x2="293" y2="200" stroke="rgba(196,154,42,0.18)" stroke-width="0.8" stroke-dasharray="3,2"/>
+        <!-- Footer label -->
+        <text x="190" y="400" text-anchor="middle" font-family="DM Sans" font-size="5" fill="rgba(196,154,42,0.25)" letter-spacing="0.8">QR · NO HARDWARE · SPRING BOOT · REACT · STRIPE · AWS</text>
+      </svg>
+    </div>
+  </div>
+</div>
+
+<!-- OVERVIEW -->
+<div class="overview-band">
+  <div class="s-label">Overview</div>
+  <h2 class="s-title">Digital ordering without the <em>hardware</em> headache.</h2>
+  <p class="s-desc">A SaaS platform that turns any venue's tables into smart ordering stations — using QR codes that guests scan with their own smartphones, with no app download, no dedicated hardware, and no complex installation.</p>
+  <div class="two-col" style="margin-top:3.5rem;">
+    <div class="prose">
+      <p>Traditional POS and ordering systems cost €5,000–€30,000+ in hardware alone — tablet terminals, card readers, kitchen display units, and cabling. For independent restaurants, cafés, and retail venues, that capital outlay is a barrier to digital ordering adoption. Our QR Ordering SaaS eliminates the hardware entirely.</p>
+      <p>Guests scan a <strong>QR code placed on the table</strong> — printed on a card, engraved on a stand, or stuck to the surface — and the full menu appears in their browser. No app download required. They browse, select, customise, and pay — all from their own phone. The order appears instantly on the <strong>kitchen display</strong> and the <strong>venue admin dashboard</strong>.</p>
+      <p>The platform is managed entirely through a <strong>web-based admin dashboard</strong> — venue owners can update menus, change prices, add daily specials, and manage tables in real time without technical knowledge. Integrated payment processing via Stripe handles Apple Pay, Google Pay, and card — with funds settled directly to the venue's bank account.</p>
+    </div>
+    <div class="kpi-stack">
+      <div class="kpi-item">
+        <div class="kpi-n">01</div>
+        <div><div class="kpi-title">Zero Hardware Cost</div><div class="kpi-body">No tablets, no card terminals, no kitchen hardware required. Guests use their own smartphones. Kitchen display runs on any existing screen with a browser. Total setup cost: zero hardware.</div></div>
+      </div>
+      <div class="kpi-item">
+        <div class="kpi-n">02</div>
+        <div><div class="kpi-title">No App Download</div><div class="kpi-body">QR code opens directly in the guest's mobile browser — no app store, no installation, no friction. Works on any smartphone with a camera and browser, including older devices.</div></div>
+      </div>
+      <div class="kpi-item">
+        <div class="kpi-n">03</div>
+        <div><div class="kpi-title">Live Menu Management</div><div class="kpi-body">Update menu items, prices, availability, and daily specials in real time from the admin dashboard — changes appear on guest phones instantly. No reprinting menus, no waiting for developers.</div></div>
+      </div>
+      <div class="kpi-item">
+        <div class="kpi-n">04</div>
+        <div><div class="kpi-title">Integrated Payment</div><div class="kpi-body">Stripe integration for card, Apple Pay, and Google Pay — funds settled directly to venue bank account within 2 business days. No card terminals, no separate payment hardware.</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- METRICS -->
+<div class="metrics-strip">
+  <div class="inner">
+    <div class="metric-item">
+      <div class="metric-num">0</div>
+      <div class="metric-label">Hardware Required</div>
+      <div class="metric-desc">Guests use their own phones — no tablets, terminals or installation needed</div>
+    </div>
+    <div class="metric-item">
+      <div class="metric-num">&lt;30<sup>min</sup></div>
+      <div class="metric-label">Setup Time</div>
+      <div class="metric-desc">From account creation to first live QR code on a table</div>
+    </div>
+    <div class="metric-item">
+      <div class="metric-num">2<sup>days</sup></div>
+      <div class="metric-label">Payment Settlement</div>
+      <div class="metric-desc">Stripe settles to venue bank account within 2 business days</div>
+    </div>
+    <div class="metric-item">
+      <div class="metric-num">DE · EU</div>
+      <div class="metric-label">Operating Jurisdiction</div>
+      <div class="metric-desc">German GmbH-invoiced, VAT-compliant, GDPR-compliant data handling</div>
+    </div>
+  </div>
+</div>
+
+<!-- HOW IT WORKS -->
+<div class="how-section">
+  <div class="inner">
+    <div class="s-label light">How It Works</div>
+    <h2 class="s-title light">From QR scan to <em>kitchen</em></h2>
+    <p class="s-desc light">The complete guest ordering journey — from QR code scan to kitchen display notification, in under 90 seconds.</p>
+    <div class="how-steps">
+      <div class="how-step">
+        <div class="hs-num">01</div>
+        <div class="hs-art">
+          <svg viewBox="0 0 100 60" xmlns="http://www.w3.org/2000/svg">
+            <rect x="28" y="5" width="44" height="50" rx="3" fill="rgba(196,154,42,0.07)" stroke="rgba(196,154,42,0.38)" stroke-width="1"/>
+            <rect x="33" y="12" width="34" height="36" rx="1.5" fill="rgba(196,154,42,0.04)"/>
+            <rect x="37" y="15" width="10" height="10" rx="0.5" fill="none" stroke="rgba(196,154,42,0.5)" stroke-width="0.7"/>
+            <rect x="38.5" y="16.5" width="7" height="7" fill="rgba(196,154,42,0.4)"/>
+            <rect x="50" y="15" width="10" height="10" rx="0.5" fill="none" stroke="rgba(196,154,42,0.5)" stroke-width="0.7"/>
+            <rect x="51.5" y="16.5" width="7" height="7" fill="rgba(196,154,42,0.4)"/>
+            <rect x="37" y="28" width="10" height="10" rx="0.5" fill="none" stroke="rgba(196,154,42,0.5)" stroke-width="0.7"/>
+            <rect x="38.5" y="29.5" width="7" height="7" fill="rgba(196,154,42,0.4)"/>
+            <g fill="rgba(196,154,42,0.35)"><rect x="50" y="28" width="3" height="3"/><rect x="55" y="28" width="3" height="3"/><rect x="50" y="33" width="3" height="3"/><rect x="57" y="33" width="3" height="3"/></g>
+            <line x1="33" y1="35" x2="67" y2="35" stroke="rgba(196,154,42,0.6)" stroke-width="1" stroke-dasharray="2,1"/>
+          </svg>
+        </div>
+        <div class="hs-title">Guest Scans QR Code</div>
+        <div class="hs-body">Guest picks up phone camera and scans the QR code on the table. Opens instantly in mobile browser — no app download, no login required. Menu displayed in 1–2 seconds.</div>
+      </div>
+      <div class="how-step">
+        <div class="hs-num">02</div>
+        <div class="hs-art">
+          <svg viewBox="0 0 100 60" xmlns="http://www.w3.org/2000/svg">
+            <rect x="10" y="5" width="80" height="50" rx="3" fill="rgba(196,154,42,0.06)" stroke="rgba(196,154,42,0.28)" stroke-width="0.8"/>
+            <rect x="10" y="5" width="80" height="12" rx="3" fill="rgba(196,154,42,0.1)"/>
+            <text x="50" y="13.5" text-anchor="middle" font-family="DM Sans" font-size="5" fill="rgba(196,154,42,0.8)">Menu · Table 12</text>
+            <rect x="16" y="22" width="64" height="9" rx="1" fill="rgba(196,154,42,0.1)" stroke="rgba(196,154,42,0.25)" stroke-width="0.5"/>
+            <text x="38" y="28.5" font-family="DM Sans" font-size="4.5" fill="rgba(196,154,42,0.7)">Margherita Pizza</text>
+            <text x="68" y="28.5" font-family="DM Sans" font-size="4.5" fill="rgba(196,154,42,0.55)">€12.50</text>
+            <rect x="16" y="33" width="64" height="9" rx="1" fill="rgba(196,154,42,0.07)" stroke="rgba(196,154,42,0.18)" stroke-width="0.5"/>
+            <text x="38" y="39.5" font-family="DM Sans" font-size="4.5" fill="rgba(196,154,42,0.6)">Caesar Salad</text>
+            <text x="68" y="39.5" font-family="DM Sans" font-size="4.5" fill="rgba(196,154,42,0.5)">€9.90</text>
+            <rect x="16" y="44" width="64" height="9" rx="1" fill="rgba(196,154,42,0.07)" stroke="rgba(196,154,42,0.18)" stroke-width="0.5"/>
+            <text x="38" y="50.5" font-family="DM Sans" font-size="4.5" fill="rgba(196,154,42,0.6)">Paulaner 0.5L</text>
+            <text x="68" y="50.5" font-family="DM Sans" font-size="4.5" fill="rgba(196,154,42,0.5)">€5.40</text>
+          </svg>
+        </div>
+        <div class="hs-title">Browses &amp; Selects</div>
+        <div class="hs-body">Full menu displayed with categories, item descriptions, photos, allergen information, and pricing. Guest adds items to cart, selects quantities, and adds special instructions.</div>
+      </div>
+      <div class="how-step">
+        <div class="hs-num">03</div>
+        <div class="hs-art">
+          <svg viewBox="0 0 100 60" xmlns="http://www.w3.org/2000/svg">
+            <rect x="10" y="5" width="80" height="50" rx="3" fill="rgba(196,154,42,0.06)" stroke="rgba(196,154,42,0.28)" stroke-width="0.8"/>
+            <text x="50" y="18" text-anchor="middle" font-family="DM Sans" font-size="5" fill="rgba(196,154,42,0.65)">Order Total: €27.80</text>
+            <rect x="16" y="22" width="68" height="12" rx="2" fill="rgba(196,154,42,0.15)" stroke="rgba(196,154,42,0.5)" stroke-width="0.8"/>
+            <text x="50" y="30.5" text-anchor="middle" font-family="DM Sans" font-size="5.5" fill="rgba(196,154,42,0.9)">Pay with Apple Pay</text>
+            <rect x="16" y="36" width="68" height="10" rx="2" fill="rgba(196,154,42,0.08)" stroke="rgba(196,154,42,0.25)" stroke-width="0.6"/>
+            <text x="50" y="42.5" text-anchor="middle" font-family="DM Sans" font-size="5" fill="rgba(196,154,42,0.6)">Card · Google Pay</text>
+            <rect x="16" y="48" width="68" height="8" rx="1.5" fill="rgba(196,154,42,0.05)" stroke="rgba(196,154,42,0.18)" stroke-width="0.5"/>
+            <text x="50" y="53.5" text-anchor="middle" font-family="DM Sans" font-size="4.5" fill="rgba(196,154,42,0.4)">Pay at counter</text>
+          </svg>
+        </div>
+        <div class="hs-title">Pays at Table</div>
+        <div class="hs-body">Guest pays via Apple Pay, Google Pay, card, or selects "pay at counter." Payment processed securely via Stripe — no card terminal required. Confirmation displayed instantly.</div>
+      </div>
+      <div class="how-step">
+        <div class="hs-num">04</div>
+        <div class="hs-art">
+          <svg viewBox="0 0 100 60" xmlns="http://www.w3.org/2000/svg">
+            <rect x="5" y="5" width="90" height="50" rx="2" fill="rgba(196,154,42,0.07)" stroke="rgba(196,154,42,0.35)" stroke-width="1"/>
+            <rect x="5" y="5" width="90" height="12" rx="2" fill="rgba(196,154,42,0.12)"/>
+            <text x="50" y="13.5" text-anchor="middle" font-family="DM Sans" font-size="5" fill="rgba(196,154,42,0.85)">NEW ORDER — Table 12</text>
+            <g font-family="DM Sans" font-size="5" fill="rgba(196,154,42,0.65)">
+              <text x="14" y="26">× 1  Margherita Pizza</text>
+              <text x="14" y="36">× 1  Caesar Salad</text>
+              <text x="14" y="46">× 2  Paulaner 0.5L</text>
+            </g>
+            <circle class="blink-status" cx="88" cy="11" r="4" fill="#C49A2A" filter="url(#glow8)"/>
+          </svg>
+        </div>
+        <div class="hs-title">Kitchen Gets the Order</div>
+        <div class="hs-body">Order appears instantly on the kitchen display screen and venue admin dashboard — with table number, items, quantities, and any special instructions. No paper, no shouting across the room.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CAPABILITIES -->
+<div class="cap-deep">
+  <div class="inner">
+    <div class="s-label light" style="padding-top:110px;">Platform Features</div>
+    <h2 class="s-title light">Everything a venue <em>needs</em></h2>
+    <p class="s-desc light">Six core platform modules — covering the complete digital ordering and venue management workflow.</p>
+    <div class="cap-deep-grid">
+
+      <div class="cd-card">
+        <div class="cd-art">
+          <svg viewBox="0 0 140 70" xmlns="http://www.w3.org/2000/svg">
+            <rect x="5" y="8" width="130" height="54" rx="2" fill="rgba(196,154,42,0.04)" stroke="rgba(196,154,42,0.2)" stroke-width="0.7"/>
+            <text x="70" y="20" text-anchor="middle" font-family="DM Sans" font-size="5.5" fill="rgba(196,154,42,0.55)">Menu Manager</text>
+            <rect x="10" y="26" width="55" height="8" rx="1" fill="rgba(196,154,42,0.12)" stroke="rgba(196,154,42,0.3)" stroke-width="0.5"/>
+            <text x="37" y="31.5" text-anchor="middle" font-family="DM Sans" font-size="4.5" fill="rgba(196,154,42,0.75)">Pizza (8 items)</text>
+            <rect x="10" y="37" width="55" height="8" rx="1" fill="rgba(196,154,42,0.08)" stroke="rgba(196,154,42,0.22)" stroke-width="0.5"/>
+            <text x="37" y="42.5" text-anchor="middle" font-family="DM Sans" font-size="4.5" fill="rgba(196,154,42,0.6)">Salads (5 items)</text>
+            <rect x="10" y="48" width="55" height="8" rx="1" fill="rgba(196,154,42,0.08)" stroke="rgba(196,154,42,0.22)" stroke-width="0.5"/>
+            <text x="37" y="53.5" text-anchor="middle" font-family="DM Sans" font-size="4.5" fill="rgba(196,154,42,0.6)">Drinks (12 items)</text>
+            <rect x="75" y="26" width="55" height="36" rx="1" fill="rgba(196,154,42,0.06)" stroke="rgba(196,154,42,0.2)" stroke-width="0.5"/>
+            <text x="102" y="38" text-anchor="middle" font-family="DM Sans" font-size="5" fill="rgba(196,154,42,0.6)">Edit · Price</text>
+            <text x="102" y="48" text-anchor="middle" font-family="DM Sans" font-size="5" fill="rgba(196,154,42,0.5)">Hide · Delete</text>
+            <text x="102" y="56" text-anchor="middle" font-family="DM Sans" font-size="5" fill="rgba(196,154,42,0.45)">Add Special</text>
+          </svg>
+        </div>
+        <div class="cd-title">Live Menu Management</div>
+        <div class="cd-body">Add, edit, hide, and delete menu items in real time — changes appear on guest phones instantly. Category management, item photos, allergen tags, and daily specials supported.</div>
+        <div class="cd-tags"><span class="cd-tag">Real-Time Updates</span><span class="cd-tag">Categories</span><span class="cd-tag">Allergen Tags</span></div>
+      </div>
+
+      <div class="cd-card">
+        <div class="cd-art">
+          <svg viewBox="0 0 140 70" xmlns="http://www.w3.org/2000/svg">
+            <text x="70" y="12" text-anchor="middle" font-family="DM Sans" font-size="5.5" fill="rgba(196,154,42,0.5)">Table Map</text>
+            <g fill="rgba(196,154,42,0.12)" stroke="rgba(196,154,42,0.4)" stroke-width="0.8">
+              <rect x="10" y="18" width="22" height="16" rx="1.5"/><text x="21" y="28" text-anchor="middle" font-family="DM Sans" font-size="5" fill="rgba(196,154,42,0.75)">T1</text>
+              <rect x="36" y="18" width="22" height="16" rx="1.5"/><text x="47" y="28" text-anchor="middle" font-family="DM Sans" font-size="5" fill="rgba(196,154,42,0.75)">T2</text>
+              <rect x="62" y="18" width="22" height="16" rx="1.5" fill="rgba(100,200,100,0.12)" stroke="rgba(100,200,100,0.4)"/><text x="73" y="28" text-anchor="middle" font-family="DM Sans" font-size="5" fill="rgba(100,200,100,0.7)">T3 ●</text>
+              <rect x="88" y="18" width="22" height="16" rx="1.5"/><text x="99" y="28" text-anchor="middle" font-family="DM Sans" font-size="5" fill="rgba(196,154,42,0.75)">T4</text>
+              <rect x="114" y="18" width="22" height="16" rx="1.5" fill="rgba(100,200,100,0.12)" stroke="rgba(100,200,100,0.4)"/><text x="125" y="28" text-anchor="middle" font-family="DM Sans" font-size="5" fill="rgba(100,200,100,0.7)">T5 ●</text>
+              <rect x="10" y="40" width="22" height="16" rx="1.5" fill="rgba(220,60,60,0.08)" stroke="rgba(220,60,60,0.3)"/><text x="21" y="50" text-anchor="middle" font-family="DM Sans" font-size="5" fill="rgba(220,60,60,0.65)">T6 !</text>
+              <rect x="36" y="40" width="22" height="16" rx="1.5"/><text x="47" y="50" text-anchor="middle" font-family="DM Sans" font-size="5" fill="rgba(196,154,42,0.75)">T7</text>
+              <rect x="62" y="40" width="22" height="16" rx="1.5"/><text x="73" y="50" text-anchor="middle" font-family="DM Sans" font-size="5" fill="rgba(196,154,42,0.75)">T8</text>
+              <rect x="88" y="40" width="22" height="16" rx="1.5" fill="rgba(100,200,100,0.12)" stroke="rgba(100,200,100,0.4)"/><text x="99" y="50" text-anchor="middle" font-family="DM Sans" font-size="5" fill="rgba(100,200,100,0.7)">T9 ●</text>
+              <rect x="114" y="40" width="22" height="16" rx="1.5"/><text x="125" y="50" text-anchor="middle" font-family="DM Sans" font-size="5" fill="rgba(196,154,42,0.75)">T10</text>
+            </g>
+            <text x="70" y="66" text-anchor="middle" font-family="DM Sans" font-size="4.5" fill="rgba(196,154,42,0.35)">● ACTIVE ORDER  ! ATTENTION NEEDED</text>
+          </svg>
+        </div>
+        <div class="cd-title">Table &amp; QR Management</div>
+        <div class="cd-body">Assign QR codes to tables, manage table status in real time, generate printable QR code cards, and view a live table map showing active orders, pending attention, and open bills.</div>
+        <div class="cd-tags"><span class="cd-tag">QR Generation</span><span class="cd-tag">Table Status</span><span class="cd-tag">Live Map</span></div>
+      </div>
+
+      <div class="cd-card">
+        <div class="cd-art">
+          <svg viewBox="0 0 140 70" xmlns="http://www.w3.org/2000/svg">
+            <rect x="5" y="8" width="130" height="54" rx="2" fill="rgba(196,154,42,0.05)" stroke="rgba(196,154,42,0.25)" stroke-width="0.8"/>
+            <rect x="5" y="8" width="130" height="12" rx="2" fill="rgba(196,154,42,0.1)"/>
+            <text x="70" y="17" text-anchor="middle" font-family="DM Sans" font-size="5" fill="rgba(196,154,42,0.8)">Kitchen Display · Live</text>
+            <rect x="10" y="24" width="55" height="34" rx="1.5" fill="rgba(196,154,42,0.1)" stroke="rgba(196,154,42,0.35)" stroke-width="0.7"/>
+            <text x="37" y="35" text-anchor="middle" font-family="DM Sans" font-size="5.5" fill="rgba(196,154,42,0.8)">Table 12</text>
+            <text x="37" y="44" text-anchor="middle" font-family="DM Sans" font-size="4.5" fill="rgba(196,154,42,0.55)">× 1 Margherita</text>
+            <text x="37" y="52" text-anchor="middle" font-family="DM Sans" font-size="4.5" fill="rgba(196,154,42,0.5)">× 2 Paulaner</text>
+            <rect x="75" y="24" width="55" height="34" rx="1.5" fill="rgba(196,154,42,0.07)" stroke="rgba(196,154,42,0.22)" stroke-width="0.7"/>
+            <text x="102" y="35" text-anchor="middle" font-family="DM Sans" font-size="5.5" fill="rgba(196,154,42,0.65)">Table 7</text>
+            <text x="102" y="44" text-anchor="middle" font-family="DM Sans" font-size="4.5" fill="rgba(196,154,42,0.45)">× 2 Schnitzel</text>
+            <text x="102" y="52" text-anchor="middle" font-family="DM Sans" font-size="4.5" fill="rgba(196,154,42,0.4)">× 1 Riesling</text>
+          </svg>
+        </div>
+        <div class="cd-title">Kitchen Display System</div>
+        <div class="cd-body">Orders appear instantly on the kitchen display screen — any browser on any screen or tablet. Table number, items, quantities, and special instructions displayed clearly. Mark orders complete with one tap.</div>
+        <div class="cd-tags"><span class="cd-tag">Any Browser</span><span class="cd-tag">Real-Time</span><span class="cd-tag">No Hardware</span></div>
+      </div>
+
+      <div class="cd-card">
+        <div class="cd-art">
+          <svg viewBox="0 0 140 70" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="25" cy="35" r="14" fill="rgba(196,154,42,0.08)" stroke="rgba(196,154,42,0.35)" stroke-width="1"/>
+            <text x="25" y="32" text-anchor="middle" font-family="DM Sans" font-size="5" fill="rgba(196,154,42,0.7)">Apple</text>
+            <text x="25" y="41" text-anchor="middle" font-family="DM Sans" font-size="5" fill="rgba(196,154,42,0.7)">Pay</text>
+            <path class="flow-in" d="M39 35 Q55 35 68 35" fill="none" stroke="rgba(196,154,42,0.5)" stroke-width="1.2"/>
+            <rect x="68" y="22" width="32" height="26" rx="2" fill="rgba(196,154,42,0.12)" stroke="rgba(196,154,42,0.5)" stroke-width="1"/>
+            <text x="84" y="33" text-anchor="middle" font-family="DM Sans" font-size="5.5" fill="rgba(196,154,42,0.85)">Stripe</text>
+            <text x="84" y="43" text-anchor="middle" font-family="DM Sans" font-size="4.5" fill="rgba(196,154,42,0.55)">PCI-DSS</text>
+            <path class="flow-in" d="M100 35 Q112 35 120 35" fill="none" stroke="rgba(196,154,42,0.4)" stroke-width="1.2"/>
+            <rect x="120" y="22" width="16" height="26" rx="1.5" fill="rgba(196,154,42,0.08)" stroke="rgba(196,154,42,0.3)" stroke-width="0.8"/>
+            <text x="128" y="33" text-anchor="middle" font-family="DM Sans" font-size="4.5" fill="rgba(196,154,42,0.65)">Venue</text>
+            <text x="128" y="42" text-anchor="middle" font-family="DM Sans" font-size="4.5" fill="rgba(196,154,42,0.55)">Bank</text>
+          </svg>
+        </div>
+        <div class="cd-title">Payment Integration</div>
+        <div class="cd-body">Stripe integration for card, Apple Pay, and Google Pay — PCI-DSS compliant, no card data stored. Funds settle to venue bank account within 2 business days. Full transaction history in admin dashboard.</div>
+        <div class="cd-tags"><span class="cd-tag">Stripe</span><span class="cd-tag">Apple Pay</span><span class="cd-tag">Google Pay</span><span class="cd-tag">PCI-DSS</span></div>
+      </div>
+
+      <div class="cd-card">
+        <div class="cd-art">
+          <svg viewBox="0 0 140 70" xmlns="http://www.w3.org/2000/svg">
+            <rect x="5" y="8" width="130" height="54" rx="2" fill="rgba(196,154,42,0.04)" stroke="rgba(196,154,42,0.2)" stroke-width="0.7"/>
+            <text x="70" y="20" text-anchor="middle" font-family="DM Sans" font-size="5.5" fill="rgba(196,154,42,0.5)">Revenue Analytics</text>
+            <polyline points="15,55 28,45 41,48 54,38 67,42 80,32 93,36 106,26 119,30 130,22"
+              fill="none" stroke="rgba(196,154,42,0.7)" stroke-width="1.5" stroke-linejoin="round"/>
+            <polyline points="15,55 28,45 41,48 54,38 67,42 80,32 93,36 106,26 119,30 130,22 130,58 15,58"
+              fill="rgba(196,154,42,0.06)" stroke="none"/>
+            <text x="15" y="65" font-family="DM Sans" font-size="4.5" fill="rgba(196,154,42,0.35)">Today: €3,315 · Best item: Margherita · Peak: 12–14h</text>
+          </svg>
+        </div>
+        <div class="cd-title">Sales Analytics</div>
+        <div class="cd-body">Real-time revenue dashboard — daily, weekly, and monthly sales totals, best-selling items, peak ordering hours, average order value, and table performance. Export to PDF or CSV.</div>
+        <div class="cd-tags"><span class="cd-tag">Revenue Tracking</span><span class="cd-tag">Item Analytics</span><span class="cd-tag">PDF Export</span></div>
+      </div>
+
+      <div class="cd-card">
+        <div class="cd-art">
+          <svg viewBox="0 0 140 70" xmlns="http://www.w3.org/2000/svg">
+            <rect x="5" y="15" width="36" height="30" rx="2" fill="rgba(196,154,42,0.08)" stroke="rgba(196,154,42,0.32)" stroke-width="0.8"/>
+            <text x="23" y="28" text-anchor="middle" font-family="DM Sans" font-size="4.5" fill="rgba(196,154,42,0.7)">Venue A</text>
+            <text x="23" y="37" text-anchor="middle" font-family="DM Sans" font-size="4.5" fill="rgba(196,154,42,0.5)">Berlin</text>
+            <rect x="52" y="15" width="36" height="30" rx="2" fill="rgba(196,154,42,0.08)" stroke="rgba(196,154,42,0.32)" stroke-width="0.8"/>
+            <text x="70" y="28" text-anchor="middle" font-family="DM Sans" font-size="4.5" fill="rgba(196,154,42,0.7)">Venue B</text>
+            <text x="70" y="37" text-anchor="middle" font-family="DM Sans" font-size="4.5" fill="rgba(196,154,42,0.5)">Hamburg</text>
+            <rect x="99" y="15" width="36" height="30" rx="2" fill="rgba(196,154,42,0.08)" stroke="rgba(196,154,42,0.32)" stroke-width="0.8"/>
+            <text x="117" y="28" text-anchor="middle" font-family="DM Sans" font-size="4.5" fill="rgba(196,154,42,0.7)">Venue C</text>
+            <text x="117" y="37" text-anchor="middle" font-family="DM Sans" font-size="4.5" fill="rgba(196,154,42,0.5)">Düsseldorf</text>
+            <g stroke="rgba(196,154,42,0.25)" stroke-width="0.8">
+              <line x1="23" y1="45" x2="70" y2="55"/><line x1="70" y1="45" x2="70" y2="55"/><line x1="117" y1="45" x2="70" y2="55"/>
+            </g>
+            <rect x="45" y="55" width="50" height="12" rx="1.5" fill="rgba(196,154,42,0.1)" stroke="rgba(196,154,42,0.35)" stroke-width="0.7"/>
+            <text x="70" y="63.5" text-anchor="middle" font-family="DM Sans" font-size="4.5" fill="rgba(196,154,42,0.75)">Unified Dashboard</text>
+          </svg>
+        </div>
+        <div class="cd-title">Multi-Venue Management</div>
+        <div class="cd-body">Manage multiple venue locations from a single admin account — separate menus, QR codes, and analytics per venue, with consolidated revenue reporting across the entire estate.</div>
+        <div class="cd-tags"><span class="cd-tag">Multi-Location</span><span class="cd-tag">Per-Venue Menus</span><span class="cd-tag">Consolidated View</span></div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- VENUE TYPES -->
+<div class="venue-section">
+  <div class="inner">
+    <div class="s-label light">Who It's For</div>
+    <h2 class="s-title light">Venues that <em>benefit</em></h2>
+    <p class="s-desc light">Any venue that takes food or beverage orders from guests — whether one table or one hundred.</p>
+    <div class="venue-grid">
+      <div class="venue-cell">
+        <div class="vc-art">
+          <svg viewBox="0 0 100 60" xmlns="http://www.w3.org/2000/svg">
+            <rect x="10" y="15" width="80" height="35" rx="2" fill="rgba(196,154,42,0.06)" stroke="rgba(196,154,42,0.22)" stroke-width="0.8"/>
+            <text x="50" y="30" text-anchor="middle" font-family="DM Sans" font-size="7" fill="rgba(196,154,42,0.6)">🍽</text>
+            <text x="50" y="42" text-anchor="middle" font-family="DM Sans" font-size="5.5" fill="rgba(196,154,42,0.55)">Restaurant</text>
+          </svg>
+        </div>
+        <div class="vc-title">Restaurants</div>
+        <div class="vc-body">Full-service dining — tableside ordering replaces paper menus and reduces waiter trips. Guests order at their own pace, reorder drinks without flagging down staff, and pay at table when ready.</div>
+        <div class="vc-tags"><span class="vc-tag">Full Service</span><span class="vc-tag">Tableside</span><span class="vc-tag">Reorder</span></div>
+      </div>
+      <div class="venue-cell">
+        <div class="vc-art">
+          <svg viewBox="0 0 100 60" xmlns="http://www.w3.org/2000/svg">
+            <rect x="10" y="15" width="80" height="35" rx="2" fill="rgba(196,154,42,0.06)" stroke="rgba(196,154,42,0.22)" stroke-width="0.8"/>
+            <text x="50" y="30" text-anchor="middle" font-family="DM Sans" font-size="7" fill="rgba(196,154,42,0.6)">☕</text>
+            <text x="50" y="42" text-anchor="middle" font-family="DM Sans" font-size="5.5" fill="rgba(196,154,42,0.55)">Café / Bar</text>
+          </svg>
+        </div>
+        <div class="vc-title">Cafés &amp; Bars</div>
+        <div class="vc-body">Counter-service venues benefit from reduced queue pressure — guests scan, order, and pay from their seat. Barista or bar team sees the order instantly on kitchen display without guests queueing.</div>
+        <div class="vc-tags"><span class="vc-tag">Counter Service</span><span class="vc-tag">Reduce Queues</span><span class="vc-tag">Takeaway</span></div>
+      </div>
+      <div class="venue-cell">
+        <div class="vc-art">
+          <svg viewBox="0 0 100 60" xmlns="http://www.w3.org/2000/svg">
+            <rect x="10" y="15" width="80" height="35" rx="2" fill="rgba(196,154,42,0.06)" stroke="rgba(196,154,42,0.22)" stroke-width="0.8"/>
+            <text x="50" y="30" text-anchor="middle" font-family="DM Sans" font-size="7" fill="rgba(196,154,42,0.6)">🏨</text>
+            <text x="50" y="42" text-anchor="middle" font-family="DM Sans" font-size="5.5" fill="rgba(196,154,42,0.55)">Hotel / Hostel</text>
+          </svg>
+        </div>
+        <div class="vc-title">Hotels &amp; Hostels</div>
+        <div class="vc-body">Room service and poolside ordering — guests scan a QR in their room or at a sunbed and order from the restaurant or bar. Works across multiple service areas with separate QR codes per zone.</div>
+        <div class="vc-tags"><span class="vc-tag">Room Service</span><span class="vc-tag">Multi-Zone</span><span class="vc-tag">Poolside</span></div>
+      </div>
+      <div class="venue-cell">
+        <div class="vc-art">
+          <svg viewBox="0 0 100 60" xmlns="http://www.w3.org/2000/svg">
+            <rect x="10" y="15" width="80" height="35" rx="2" fill="rgba(196,154,42,0.06)" stroke="rgba(196,154,42,0.22)" stroke-width="0.8"/>
+            <text x="50" y="30" text-anchor="middle" font-family="DM Sans" font-size="7" fill="rgba(196,154,42,0.6)">🎪</text>
+            <text x="50" y="42" text-anchor="middle" font-family="DM Sans" font-size="5.5" fill="rgba(196,154,42,0.55)">Events &amp; Festivals</text>
+          </svg>
+        </div>
+        <div class="vc-title">Events &amp; Festivals</div>
+        <div class="vc-body">Temporary or pop-up venues — QR codes printed and placed anywhere, menus created and activated in minutes. No hardware to set up or take down. Ideal for markets, festivals, and corporate events.</div>
+        <div class="vc-tags"><span class="vc-tag">Pop-Up</span><span class="vc-tag">Fast Setup</span><span class="vc-tag">No Hardware</span></div>
+      </div>
+      <div class="venue-cell">
+        <div class="vc-art">
+          <svg viewBox="0 0 100 60" xmlns="http://www.w3.org/2000/svg">
+            <rect x="10" y="15" width="80" height="35" rx="2" fill="rgba(196,154,42,0.06)" stroke="rgba(196,154,42,0.22)" stroke-width="0.8"/>
+            <text x="50" y="30" text-anchor="middle" font-family="DM Sans" font-size="7" fill="rgba(196,154,42,0.6)">🛒</text>
+            <text x="50" y="42" text-anchor="middle" font-family="DM Sans" font-size="5.5" fill="rgba(196,154,42,0.55)">Food Retail</text>
+          </svg>
+        </div>
+        <div class="vc-title">Food Retail &amp; Delis</div>
+        <div class="vc-body">Click-and-collect for delis and food shops — customers scan, order prepared items, and pay. Pick up when ready without queueing. Reduces counter pressure during peak lunch periods.</div>
+        <div class="vc-tags"><span class="vc-tag">Click &amp; Collect</span><span class="vc-tag">Deli Orders</span><span class="vc-tag">Peak Hours</span></div>
+      </div>
+      <div class="venue-cell">
+        <div class="vc-art">
+          <svg viewBox="0 0 100 60" xmlns="http://www.w3.org/2000/svg">
+            <rect x="10" y="15" width="80" height="35" rx="2" fill="rgba(196,154,42,0.06)" stroke="rgba(196,154,42,0.22)" stroke-width="0.8"/>
+            <text x="50" y="30" text-anchor="middle" font-family="DM Sans" font-size="7" fill="rgba(196,154,42,0.6)">🍔</text>
+            <text x="50" y="42" text-anchor="middle" font-family="DM Sans" font-size="5.5" fill="rgba(196,154,42,0.55)">Quick Service</text>
+          </svg>
+        </div>
+        <div class="vc-title">Quick Service &amp; Takeaway</div>
+        <div class="vc-body">Fast casual and takeaway venues — QR code at counter or collection point, customers pre-order and pay from their phone while waiting or before arrival. Reduces staff pressure at peak times.</div>
+        <div class="vc-tags"><span class="vc-tag">Pre-Order</span><span class="vc-tag">Takeaway</span><span class="vc-tag">Fast Casual</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PRICING -->
+<div class="pricing-section">
+  <div class="inner">
+    <div class="s-label light">Pricing</div>
+    <h2 class="s-title light">Simple, <em>transparent</em> pricing</h2>
+    <p class="s-desc light">Monthly SaaS subscription — no setup fees, no per-order commissions, no hardware costs. Cancel anytime.</p>
+    <div class="pricing-grid">
+      <div class="price-card">
+        <div class="price-badge">Starter</div>
+        <div class="price-tier">Starter</div>
+        <div class="price-amount">€49</div>
+        <div class="price-period">per month · 1 venue</div>
+        <ul class="price-features">
+          <li>1 venue · Up to 20 tables</li>
+          <li>Unlimited QR codes</li>
+          <li>Live menu management</li>
+          <li>Kitchen display (browser-based)</li>
+          <li>Basic sales analytics</li>
+          <li>Stripe payment integration</li>
+          <li>Email support</li>
+        </ul>
+        <a href="contact.html" class="btn-outline-light" style="display:block;text-align:center;">Get Started</a>
+      </div>
+      <div class="price-card featured">
+        <div class="price-badge">Most Popular</div>
+        <div class="price-tier">Professional</div>
+        <div class="price-amount">€99</div>
+        <div class="price-period">per month · 1 venue</div>
+        <ul class="price-features">
+          <li>1 venue · Unlimited tables</li>
+          <li>Unlimited QR codes</li>
+          <li>Live menu with photos &amp; allergens</li>
+          <li>Kitchen display system</li>
+          <li>Full sales analytics &amp; PDF reports</li>
+          <li>Stripe · Apple Pay · Google Pay</li>
+          <li>Daily specials &amp; scheduling</li>
+          <li>Priority support</li>
+        </ul>
+        <a href="contact.html" class="btn-gold" style="display:block;text-align:center;">Get Started</a>
+      </div>
+      <div class="price-card">
+        <div class="price-badge">Multi-Venue</div>
+        <div class="price-tier">Enterprise</div>
+        <div class="price-amount">€199</div>
+        <div class="price-period">per month · Up to 5 venues</div>
+        <ul class="price-features">
+          <li>Up to 5 venue locations</li>
+          <li>Separate menus per venue</li>
+          <li>Consolidated analytics dashboard</li>
+          <li>Multi-user admin accounts</li>
+          <li>Custom branding per venue</li>
+          <li>API access for POS integration</li>
+          <li>Dedicated account manager</li>
+          <li>Phone &amp; priority support</li>
+        </ul>
+        <a href="contact.html" class="btn-outline-light" style="display:block;text-align:center;">Contact Us</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TECH STACK -->
+<div class="tech-stack">
+  <div class="inner">
+    <div class="s-label light">Technology Stack</div>
+    <h2 class="s-title light">Built on <em>enterprise</em> foundations</h2>
+    <p class="s-desc light">A scalable, reliable SaaS platform built with the same enterprise Java and cloud infrastructure used across Adroit Solutions' mission-critical delivery work.</p>
+    <div class="stack-grid">
+      <div class="stack-cell">
+        <div class="sc-layer">Backend</div>
+        <div class="sc-tech">Java 21 · Spring Boot 3</div>
+        <div class="sc-detail">Spring Boot 3.x, Spring Security, REST API, WebSocket for real-time kitchen display updates</div>
+      </div>
+      <div class="stack-cell">
+        <div class="sc-layer">Frontend</div>
+        <div class="sc-tech">React.js · TypeScript</div>
+        <div class="sc-detail">React 18, TypeScript, mobile-first responsive design, PWA-ready for home screen installation</div>
+      </div>
+      <div class="stack-cell">
+        <div class="sc-layer">QR Engine</div>
+        <div class="sc-tech">Dynamic QR Generation</div>
+        <div class="sc-detail">Server-side QR code generation with table-specific deep links, printable PDF card export</div>
+      </div>
+      <div class="stack-cell">
+        <div class="sc-layer">Payments</div>
+        <div class="sc-tech">Stripe · PCI-DSS</div>
+        <div class="sc-detail">Stripe Checkout, Apple Pay, Google Pay — PCI-DSS compliant, no card data stored on our servers</div>
+      </div>
+      <div class="stack-cell">
+        <div class="sc-layer">Database</div>
+        <div class="sc-tech">PostgreSQL · Redis</div>
+        <div class="sc-detail">PostgreSQL for order and menu data, Redis for real-time order state and kitchen display pub/sub</div>
+      </div>
+      <div class="stack-cell">
+        <div class="sc-layer">Infrastructure</div>
+        <div class="sc-tech">AWS eu-central-1</div>
+        <div class="sc-detail">ECS Fargate, RDS PostgreSQL, ElastiCache Redis, CloudFront CDN — all hosted in Frankfurt for GDPR compliance</div>
+      </div>
+      <div class="stack-cell">
+        <div class="sc-layer">Multi-Tenancy</div>
+        <div class="sc-tech">Tenant Isolation</div>
+        <div class="sc-detail">Each venue operates in an isolated data environment — menus, orders, and analytics fully separated per tenant</div>
+      </div>
+      <div class="stack-cell">
+        <div class="sc-layer">Compliance</div>
+        <div class="sc-tech">GDPR · German Law</div>
+        <div class="sc-detail">Data residency in EU (Frankfurt), GDPR-compliant guest data handling, GmbH-invoiced with German VAT</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ONBOARDING -->
+<div class="onboard-section">
+  <div class="s-label">Getting Started</div>
+  <h2 class="s-title" style="color:var(--white);">Live in under <em>30 minutes</em></h2>
+  <p class="s-desc">The fastest venue onboarding in the market — from account creation to first live QR code on a table in under half an hour.</p>
+  <div class="onboard-grid">
+    <div class="ob-card">
+      <div class="ob-step">01</div>
+      <div class="ob-title">Create Your Account</div>
+      <div class="ob-body">Sign up with your venue name, email, and billing details. Select your plan. Account activated immediately — no waiting for approval or sales call required.</div>
+    </div>
+    <div class="ob-card">
+      <div class="ob-step">02</div>
+      <div class="ob-title">Build Your Menu</div>
+      <div class="ob-body">Add your menu categories and items using the admin dashboard — name, description, price, photo, and allergen tags. Import from a CSV or build manually. Takes 15–20 minutes for a typical menu.</div>
+    </div>
+    <div class="ob-card">
+      <div class="ob-step">03</div>
+      <div class="ob-title">Generate QR Codes</div>
+      <div class="ob-body">Create table entries and generate QR codes — download as printable PDF cards, ready to print and place on tables. QR codes are table-specific so orders automatically show the right table number.</div>
+    </div>
+    <div class="ob-card">
+      <div class="ob-step">04</div>
+      <div class="ob-title">Connect Stripe &amp; Go Live</div>
+      <div class="ob-body">Connect your Stripe account (takes 5 minutes), open the kitchen display on any screen with a browser, and place QR codes on tables. You are live — guests can order and pay from their phones.</div>
+    </div>
+  </div>
+</div>
+
+<!-- SERVICE NAV -->
+<div class="svc-nav-bar">
+  <div class="inner">
+    <a href="pcb-procurement.html" class="snb-prev">
+      <svg viewBox="0 0 12 12"><line x1="12" y1="6" x2="2" y2="6"/><polyline points="6,2 2,6 6,10"/></svg>
+      <span><span class="snb-label">Previous</span>PCB Trading &amp; Procurement</span>
+    </a>
+    <a href="services.html" class="snb-all">All Practice Areas</a>
+    <a href="services.html" class="snb-next">
+      <span><span class="snb-label">All Services</span>View All Practice Areas</span>
+      <svg viewBox="0 0 12 12"><line x1="0" y1="6" x2="10" y2="6"/><polyline points="6,2 10,6 6,10"/></svg>
+    </a>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="svc-cta-band">
+  <h2>Ready to go <em>digital</em>?</h2>
+  <p>Start a free trial or contact us to discuss a custom deployment for your venue group — we can have you live within the hour.</p>
+  <div class="btn-row">
+    <a href="contact.html" class="btn-gold">Start Free Trial</a>
+    <a href="services.html" class="btn-outline">All Practice Areas</a>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-left">
+    <a href="index.html"><img src="adroit-logo.png" alt="Adroit Solutions GmbH"/></a>
+    <p class="footer-tagline">Electronics &middot; IoT &middot; Digital Solutions &middot; Düsseldorf</p>
+  </div>
+  <div class="footer-legal">
+    <p>&copy; 2026 Adroit Solutions GmbH</p>
+    <p><a href="impressum.html">Impressum</a> &nbsp;&middot;&nbsp; <a href="datenschutz.html">Datenschutz</a></p>
+  </div>
+</footer>
+
+<script>
+// Scroll progress
+const bar = document.getElementById('scrollProgress');
+window.addEventListener('scroll', () => {
+  const s = document.documentElement;
+  bar.style.width = (s.scrollTop / (s.scrollHeight - s.clientHeight) * 100) + '%';
+});
+
+// Mobile nav toggle
+const menuBtn = document.getElementById('menuBtn');
+const navLinks = document.getElementById('navLinks');
+menuBtn.addEventListener('click', () => navLinks.classList.toggle('open'));
+document.addEventListener('click', e => {
+  if (!menuBtn.contains(e.target) && !navLinks.contains(e.target)) {
+    navLinks.classList.remove('open');
+  }
+});
+</script>
+
+</body>
+</html>
