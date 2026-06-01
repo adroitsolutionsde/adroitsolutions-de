@@ -267,6 +267,7 @@ section.alt { background: #1c1c1c !important; }
   padding: 2.5rem; border-right: 1px solid var(--border);
   border-bottom: 1px solid var(--border); background: #1c1c1c;
   position: relative; overflow: hidden; transition: background 0.3s;
+  text-decoration: none; color: inherit; display: block;
 }
 .service-card::after {
   content: ''; position: absolute; bottom: 0; left: 0;
@@ -666,60 +667,60 @@ html[data-mode="light"] .service-card:nth-child(6) {
   <div data-lang="en"><h2 class="section-title reveal">What we deliver.</h2><p class="section-body">From SAP BTP engineering to IoT platform development — specialist engineering capacity without the overhead.</p></div>
 
   <div class="services-grid stagger">
-    <div class="service-card">
+    <a class="service-card" href="/services.html#sap-btp">
       <div class="service-num">01</div>
       <div class="service-name">SAP BTP Engineering</div>
       <div class="service-desc">
         <span data-lang="de">Side-by-Side-Erweiterungen für SAP S/4HANA. CAP- und RAP-Entwicklung, Fiori/UI5, HANA Cloud, Integration Suite und BTP Cloud Foundry/Kyma-Deployments.</span>
         <span data-lang="en">Side-by-side extensions for SAP S/4HANA. CAP and RAP development, Fiori/UI5, HANA Cloud, Integration Suite, and BTP Cloud Foundry/Kyma deployments.</span>
       </div>
-      <div class="service-tags"><a class="tag" href="/services.html#sap-btp">SAP CAP</a><a class="tag" href="/services.html#sap-btp">RAP</a><a class="tag" href="/services.html#sap-btp">Fiori</a><a class="tag" href="/services.html#sap-btp">HANA Cloud</a></div>
-    </div>
-    <div class="service-card">
+      <div class="service-tags"><span class="tag">SAP CAP</span><span class="tag">RAP</span><span class="tag">Fiori</span><span class="tag">HANA Cloud</span></div>
+    </a>
+    <a class="service-card" href="/services.html#it-architecture">
       <div class="service-num">02</div>
       <div class="service-name"><span data-lang="de">Enterprise IT-Architektur</span><span data-lang="en">Enterprise IT Architecture</span></div>
       <div class="service-desc">
         <span data-lang="de">15+ Jahre Erfahrung in der Entwicklung geschäftskritischer Systeme für British Airways, Aer Lingus, Virgin Australia und SITA. Java 21, Spring Boot 3.x, Microservices.</span>
         <span data-lang="en">15+ years designing mission-critical systems for British Airways, Aer Lingus, Virgin Australia, and SITA. Java 21, Spring Boot 3.x, microservices, cloud-native.</span>
       </div>
-      <div class="service-tags"><a class="tag" href="/services.html#it-architecture">Java 21</a><a class="tag" href="/services.html#it-architecture">Spring Boot</a><a class="tag" href="/services.html#it-architecture">Microservices</a><a class="tag" href="/services.html#it-architecture">AWS</a></div>
-    </div>
-    <div class="service-card">
+      <div class="service-tags"><span class="tag">Java 21</span><span class="tag">Spring Boot</span><span class="tag">Microservices</span><span class="tag">AWS</span></div>
+    </a>
+    <a class="service-card" href="/services.html#embedded">
       <div class="service-num">03</div>
       <div class="service-name"><span data-lang="de">Embedded Systems & IoT</span><span data-lang="en">Embedded Systems & IoT</span></div>
       <div class="service-desc">
         <span data-lang="de">ESP32/ESP32-S3 Firmware in C/C++ mit ESP-IDF. ADROIT SENSE™ IoT SaaS-Plattform auf DSGVO-konformer deutscher Cloud-Infrastruktur.</span>
         <span data-lang="en">ESP32/ESP32-S3 firmware in C/C++ with ESP-IDF. ADROIT SENSE™ IoT SaaS platform on GDPR-compliant German cloud infrastructure.</span>
       </div>
-      <div class="service-tags"><a class="tag" href="/embedded-systems.html">ESP32</a><a class="tag" href="/embedded-systems.html">C/C++</a><a class="tag" href="/embedded-systems.html">Node-RED</a><a class="tag" href="/embedded-systems.html">Hetzner</a></div>
-    </div>
-    <div class="service-card">
+      <div class="service-tags"><span class="tag">ESP32</span><span class="tag">C/C++</span><span class="tag">Node-RED</span><span class="tag">Hetzner</span></div>
+    </a>
+    <a class="service-card" href="/services.html#pcb">
       <div class="service-num">04</div>
       <div class="service-name"><span data-lang="de">PCB-Handel & Komponentenbeschaffung</span><span data-lang="en">PCB Trading & Component Sourcing</span></div>
       <div class="service-desc">
         <span data-lang="de">Grenzüberschreitende Komponentenbeschaffung über Samim Electronics Ltd (Malta). Spezialist für eMMC, NOR Flash, LPDDR4 PSRAM für europäische Hersteller.</span>
         <span data-lang="en">Cross-border component procurement via Samim Electronics Ltd (Malta). Specialist in eMMC, NOR Flash, LPDDR4 PSRAM for European manufacturers.</span>
       </div>
-      <div class="service-tags"><a class="tag" href="/services.html#pcb">eMMC</a><a class="tag" href="/services.html#pcb">NOR Flash</a><a class="tag" href="/services.html#pcb">EU Supply Chain</a></div>
-    </div>
-    <div class="service-card">
+      <div class="service-tags"><span class="tag">eMMC</span><span class="tag">NOR Flash</span><span class="tag">EU Supply Chain</span></div>
+    </a>
+    <a class="service-card" href="/case-studies/pcb-vision-qa-automation/">
       <div class="service-num">05</div>
       <div class="service-name"><span data-lang="de">Computer Vision QA</span><span data-lang="en">Computer Vision QA</span></div>
       <div class="service-desc">
         <span data-lang="de">KI-gestützte PCB-Inspektionssysteme. Automatisierte Fehlererkennung, Lötstellen-Analyse und Qualitätssicherung für Produktionslinien.</span>
         <span data-lang="en">AI-driven PCB inspection systems. Automated defect detection, solder joint analysis, and production line quality assurance using ML pipelines.</span>
       </div>
-      <div class="service-tags"><a class="tag" href="/case-studies/pcb-vision-qa-automation/">Computer Vision</a><a class="tag" href="/case-studies/pcb-vision-qa-automation/">PCB Inspection</a><a class="tag" href="/case-studies/pcb-vision-qa-automation/">ML</a></div>
-    </div>
-    <div class="service-card">
+      <div class="service-tags"><span class="tag">Computer Vision</span><span class="tag">PCB Inspection</span><span class="tag">ML</span></div>
+    </a>
+    <a class="service-card" href="/services.html#digital">
       <div class="service-num">06</div>
       <div class="service-name"><span data-lang="de">Digital- & SaaS-Lösungen</span><span data-lang="en">Digital & SaaS Solutions</span></div>
       <div class="service-desc">
         <span data-lang="de">QR-basiertes Bestell-SaaS für Gastronomie und Einzelhandel. DOOH-Werbenetzwerk-Design. React.js TypeScript Frontend mit Java Spring Boot Backend.</span>
         <span data-lang="en">QR-based ordering SaaS for hospitality and retail. DOOH advertising network design. React.js TypeScript frontend with Java Spring Boot backends.</span>
       </div>
-      <div class="service-tags"><a class="tag" href="/qr-ordering.html">React.js</a><a class="tag" href="/qr-ordering.html">SaaS</a><a class="tag" href="/services.html#dooh">DOOH</a></div>
-    </div>
+      <div class="service-tags"><span class="tag">React.js</span><span class="tag">SaaS</span><span class="tag">DOOH</span></div>
+    </a>
   </div>
 </section>
 
