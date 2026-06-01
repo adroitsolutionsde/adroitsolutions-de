@@ -282,26 +282,6 @@ section.alt { background: #1c1c1c !important; }
 .tag { font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); border: 1px solid rgba(201,168,76,0.3); padding: 0.2rem 0.6rem; text-decoration: none; transition: background 0.2s, border-color 0.2s; }
 .tag:hover { background: rgba(201,168,76,0.1); border-color: var(--gold); }
 
-/* BLOG PREVIEW */
-.blog-strip { padding: 6rem 4rem; background: #111; }
-.blog-strip-header { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 3rem; flex-wrap: wrap; gap: 1rem; }
-.blog-strip-header h2 { font-family: 'DM Serif Display', serif; font-size: clamp(1.6rem, 3vw, 2.2rem); color: #f5f4f0; }
-.blog-strip-header h2 em { font-style: italic; color: var(--gold); }
-.blog-strip-link { font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); text-decoration: none; border-bottom: 1px solid rgba(201,168,76,0.3); padding-bottom: 2px; transition: border-color 0.2s; }
-.blog-strip-link:hover { border-color: var(--gold); }
-.blog-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
-.blog-card { border: 1px solid var(--border); padding: 2rem; display: flex; flex-direction: column; gap: 1rem; transition: border-color 0.3s, transform 0.3s; text-decoration: none; color: inherit; }
-.blog-card:hover { border-color: var(--gold); transform: translateY(-3px); }
-.blog-card-cat { font-size: 0.62rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); }
-.blog-card-title { font-family: 'DM Serif Display', serif; font-size: 1.1rem; color: #f5f4f0; line-height: 1.3; flex: 1; }
-.blog-card-meta { font-size: 0.75rem; color: rgba(245,244,240,0.4); }
-html[data-mode="light"] .blog-strip { background: #ede9e0 !important; }
-html[data-mode="light"] .blog-strip-header h2 { color: #0a0a0a !important; }
-html[data-mode="light"] .blog-card { border-color: rgba(201,168,76,0.2) !important; }
-html[data-mode="light"] .blog-card-title { color: #0a0a0a !important; }
-html[data-mode="light"] .blog-card-meta { color: rgba(10,10,10,0.45) !important; }
-@media (max-width: 900px) { .blog-strip { padding: 4rem 1.5rem; } }
-
 /* WHY */
 .why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; margin-top: 4rem; align-items: start; }
 .why-points { display: flex; flex-direction: column; gap: 2rem; }
@@ -621,7 +601,6 @@ html[data-mode="light"] .service-card:nth-child(6) {
       <li><a href="about.html"><span data-lang="de">Über uns</span><span data-lang="en">About</span></a></li>
       <li><a href="services.html"><span data-lang="de">Leistungen</span><span data-lang="en">Services</span></a></li>
       <li><a href="cases.html"><span data-lang="de">Referenzen</span><span data-lang="en">Case Studies</span></a></li>
-      <li><a href="/blog"><span data-lang="de">Blog</span><span data-lang="en">Blog</span></a></li>
       <li><a href="careers.html"><span data-lang="de">Karriere</span><span data-lang="en">Careers</span></a></li>
       <li><a href="contact.html"><span data-lang="de">Kontakt</span><span data-lang="en">Contact</span></a></li>
     </ul>
@@ -720,28 +699,6 @@ html[data-mode="light"] .service-card:nth-child(6) {
         <span data-lang="en">QR-based ordering SaaS for hospitality and retail. DOOH advertising network design. React.js TypeScript frontend with Java Spring Boot backends.</span>
       </div>
       <div class="service-tags"><span class="tag">React.js</span><span class="tag">SaaS</span><span class="tag">DOOH</span></div>
-    </a>
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<!-- BLOG PREVIEW -->
-<section class="blog-strip">
-  <div class="blog-strip-header reveal">
-    <h2><span data-lang="de">Aus unserem <em>Blog.</em></span><span data-lang="en">From our <em>blog.</em></span></h2>
-    <a href="/blog" class="blog-strip-link"><span data-lang="de">Alle Beiträge →</span><span data-lang="en">All posts →</span></a>
-  </div>
-  <div class="blog-cards stagger">
-    <a href="/blog/esp32-cold-chain-mqtt-monitoring/" class="blog-card">
-      <div class="blog-card-cat">IoT / Embedded Systems</div>
-      <div class="blog-card-title"><span data-lang="de">ESP32-S3 Cold Chain Monitoring mit MQTT — Technischer Deep Dive</span><span data-lang="en">ESP32-S3 Cold Chain Monitoring with MQTT — Technical Deep Dive</span></div>
-      <div class="blog-card-meta"><span data-lang="de">12. Mai 2026 · 10 Min. Lesezeit</span><span data-lang="en">May 12, 2026 · 10 min read</span></div>
-    </a>
-    <a href="/blog/nis2-iot-compliance-germany-2025/" class="blog-card">
-      <div class="blog-card-cat">Compliance / IoT</div>
-      <div class="blog-card-title"><span data-lang="de">NIS2 & IoT: Was deutsche Betreiber jetzt tun müssen</span><span data-lang="en">NIS2 & IoT: What German Operators Must Do Now</span></div>
-      <div class="blog-card-meta"><span data-lang="de">3. März 2026 · 12 Min. Lesezeit</span><span data-lang="en">March 3, 2026 · 12 min read</span></div>
     </a>
   </div>
 </section>
