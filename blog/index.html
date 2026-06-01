@@ -34,6 +34,17 @@ html, body { background: #0a0a0a !important; color: #f5f4f0 !important; margin: 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 :root { --black: #0a0a0a; --white: #f5f4f0; --gold: #c9a84c; --gold-light: #e8c97a; --mid: #1c1c1c; --border: rgba(201,168,76,0.2); }
 html { scroll-behavior: smooth; }
+
+/* LANG display logic */
+[data-lang="en"] { display: none; opacity: 0; }
+[data-lang="de"] { display: block; opacity: 1; }
+span[data-lang="en"] { display: none; opacity: 0; }
+span[data-lang="de"] { display: inline; opacity: 1; }
+body.lang-en [data-lang="en"] { display: block; opacity: 1; }
+body.lang-en [data-lang="de"] { display: none; opacity: 0; }
+body.lang-en span[data-lang="en"] { display: inline; opacity: 1; }
+body.lang-en span[data-lang="de"] { display: none; opacity: 0; }
+
 .scroll-progress { position: fixed; top: 0; left: 0; z-index: 200; height: 2px; width: 0%; background: linear-gradient(90deg, var(--gold), var(--gold-light)); transition: width 0.1s linear; }
 nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0.75rem 4rem; background: rgba(10,10,10,0.95) !important; backdrop-filter: blur(16px); border-bottom: 1px solid var(--border); transition: padding 0.3s; }
 .nav-logo img { height: 140px; filter: brightness(0) invert(1); display: block; }
@@ -164,6 +175,24 @@ html[data-mode="light"] .post-date, html[data-mode="light"] .post-read { color: 
 <div class="divider"></div>
 
 <section>
+  <a class="post-card reveal" href="/blog/esp32-cold-chain-mqtt-monitoring/">
+    <div>
+      <div class="post-meta">
+        <span class="post-date"><span data-lang="de">12. Mai 2026</span><span data-lang="en">May 12, 2026</span></span>
+        <span class="post-read">&middot; <span data-lang="de">10 Min. Lesezeit</span><span data-lang="en">10 min read</span></span>
+      </div>
+      <h2 class="post-title"><span data-lang="de">ESP32-S3 Cold Chain Monitoring mit MQTT — Technischer Deep Dive</span><span data-lang="en">ESP32-S3 Cold Chain Monitoring with MQTT — Technical Deep Dive</span></h2>
+      <p class="post-excerpt"><span data-lang="de">Wie wir mit ESP32-S3, MQTT und InfluxDB ein lückenloses Temperaturmonitoring für Kühlketten aufgebaut haben — inklusive NIS2-konformer Alerting-Architektur.</span><span data-lang="en">How we built continuous cold chain temperature monitoring using ESP32-S3, MQTT and InfluxDB — including NIS2-compliant alerting architecture.</span></p>
+      <div class="post-tags">
+        <span class="tag">ESP32-S3</span>
+        <span class="tag">MQTT</span>
+        <span class="tag">HACCP</span>
+        <span class="tag">InfluxDB</span>
+        <span class="tag">NIS2</span>
+      </div>
+    </div>
+    <span class="post-arrow">→</span>
+  </a>
   <a class="post-card reveal" href="/blog/nis2-iot-compliance-germany-2025/">
     <div>
       <div class="post-meta">
