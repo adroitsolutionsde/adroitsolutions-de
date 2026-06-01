@@ -509,9 +509,9 @@ html[data-mode="light"] .form-note { color: rgba(10,10,10,0.4) !important; }
           <span data-lang="de">Ihre Angaben werden ausschließlich zur Bearbeitung Ihrer Anfrage verwendet (Rechtsgrundlage: Art.&nbsp;6 Abs.&nbsp;1 lit.&nbsp;b DSGVO). Wir speichern Ihre Daten für maximal 6&nbsp;Monate nach Abschluss des Kontaktvorgangs. Keine Weitergabe an Dritte. <a href="/datenschutz.html" style="color:var(--gold);text-decoration:underline">Datenschutzerklärung</a></span>
           <span data-lang="en">Your data is processed solely to handle your enquiry (legal basis: Art.&nbsp;6(1)(b) GDPR). We retain it for up to 6&nbsp;months after the end of the contact process. No disclosure to third parties. <a href="/datenschutz.html" style="color:var(--gold);text-decoration:underline">Privacy Policy</a></span>
         </p>
-        <a id="submitBtn" href="#" class="btn-primary" onclick="submitForm(event)">
+        <button type="button" id="submitBtn" class="btn-primary" onclick="submitForm(event)">
           <span data-lang="de">Nachricht senden</span><span data-lang="en">Send Message</span>
-        </a>
+        </button>
       </div>
     </div>
   </div>
@@ -597,28 +597,52 @@ function submitForm(e) {
   }
 
   var name = (first + ' ' + last).trim();
-  var subject = encodeURIComponent((isEn ? 'Enquiry: ' : 'Anfrage: ') + (type || 'Adroit Solutions') + ' — ' + (company || name));
-  var bodyLines = [
-    'Name: ' + name,
-    (isEn ? 'Company: ' : 'Unternehmen: ') + company,
-    (isEn ? 'Job Title: ' : 'Position: ') + jobTitle,
-    'E-Mail: ' + email,
-    (isEn ? 'Phone: ' : 'Telefon: ') + (phone || '—'),
-    (isEn ? 'Enquiry Type: ' : 'Art der Anfrage: ') + (type || '—'),
-    '',
-    (isEn ? 'Message:' : 'Nachricht:'),
-    msg
-  ];
-  window.location.href = 'mailto:info@adroitsolutions.de?subject=' + subject + '&body=' + encodeURIComponent(bodyLines.join('\n'));
+  var btn = document.getElementById('submitBtn');
+  btn.disabled = true;
+  btn.textContent = isEn ? 'Sending…' : 'Sende…';
 
-  var form = document.getElementById('contactForm');
-  setTimeout(function(){
-    form.innerHTML = '<div style="text-align:center;padding:3rem 1rem">' +
-      '<svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="#c9a84c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin:0 auto 1.2rem;display:block"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>' +
-      '<h3 style="color:#c9a84c;margin-bottom:0.6rem">' + (isEn ? 'Message sent!' : 'Nachricht gesendet!') + '</h3>' +
-      '<p style="opacity:0.65;max-width:340px;margin:0 auto">' + (isEn ? 'Thank you for your enquiry. We will be in touch within 1–2 business days.' : 'Vielen Dank für Ihre Anfrage. Wir melden uns innerhalb von 1–2 Werktagen.') + '</p>' +
-    '</div>';
-  }, 800);
+  fetch('https://formspree.io/f/YOUR_FORM_ID', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+    body: JSON.stringify({
+      name: name,
+      email: email,
+      company: company,
+      jobTitle: jobTitle,
+      phone: phone,
+      enquiryType: type,
+      message: msg,
+      _subject: (isEn ? 'Enquiry: ' : 'Anfrage: ') + (type || 'General') + ' — ' + (company || name)
+    })
+  })
+  .then(function(r){ return r.json().then(function(d){ return {ok: r.ok, data: d}; }); })
+  .then(function(res) {
+    btn.disabled = false;
+    btn.innerHTML = isEn ? 'Send Message' : 'Nachricht senden';
+    if (res.ok) {
+      var form = document.getElementById('contactForm');
+      form.innerHTML = '<div style="text-align:center;padding:3rem 1rem">' +
+        '<svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="#c9a84c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin:0 auto 1.2rem;display:block"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>' +
+        '<h3 style="color:#c9a84c;margin-bottom:0.6rem">' + (isEn ? 'Message sent!' : 'Nachricht gesendet!') + '</h3>' +
+        '<p style="opacity:0.65;max-width:340px;margin:0 auto">' + (isEn ? 'Thank you. We will be in touch within 1–2 business days.' : 'Vielen Dank. Wir melden uns innerhalb von 1–2 Werktagen.') + '</p>' +
+        '</div>';
+    } else {
+      var p = document.createElement('p');
+      p.id = 'formError';
+      p.style.cssText = 'color:#e04444;font-size:0.85rem;margin:0;';
+      p.textContent = isEn ? 'Something went wrong. Please email us at info@adroitsolutions.de' : 'Fehler beim Senden. Bitte schreiben Sie uns an info@adroitsolutions.de';
+      document.querySelector('.form-submit').prepend(p);
+    }
+  })
+  .catch(function() {
+    btn.disabled = false;
+    btn.innerHTML = isEn ? 'Send Message' : 'Nachricht senden';
+    var p = document.createElement('p');
+    p.id = 'formError';
+    p.style.cssText = 'color:#e04444;font-size:0.85rem;margin:0;';
+    p.textContent = isEn ? 'Network error. Please email info@adroitsolutions.de directly.' : 'Netzwerkfehler. Bitte schreiben Sie uns direkt an info@adroitsolutions.de';
+    document.querySelector('.form-submit').prepend(p);
+  });
 }
 
 // Mobile menu toggle
