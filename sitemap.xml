@@ -94,6 +94,13 @@
   </url>
 
   <url>
+    <loc>https://adroitsolutions.de/blog/esp32-cold-chain-mqtt-monitoring</loc>
+    <lastmod>2026-05-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
     <loc>https://adroitsolutions.de/blog/nis2-iot-compliance-germany-2025</loc>
     <lastmod>2025-06-01</lastmod>
     <changefreq>monthly</changefreq>
