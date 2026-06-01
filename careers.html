@@ -263,6 +263,7 @@ html[data-mode="light"] .divider { background: linear-gradient(90deg, transparen
   gap: 2rem; align-items: center;
   transition: background 0.3s;
   text-decoration: none; color: inherit;
+  cursor: pointer;
 }
 .role-card:last-child { border-bottom: none; }
 .role-card:hover { background: rgba(201,168,76,0.04); }
@@ -379,6 +380,14 @@ html[data-mode="light"] .perk-desc { color: rgba(10,10,10,0.65) !important; }
 html[data-mode="light"] .open-app { background: rgba(201,168,76,0.05) !important; }
 html[data-mode="light"] .open-app h3 { color: #0a0a0a !important; }
 html[data-mode="light"] .open-app p { color: rgba(10,10,10,0.65) !important; }
+.form-field { display: flex; flex-direction: column; gap: 0.4rem; }
+.form-field label { font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(245,244,240,0.4); }
+.form-field input, .form-field select { background: rgba(255,255,255,0.04); border: 1px solid var(--border); color: #f5f4f0; padding: 0.9rem 1.1rem; font-family: 'DM Sans', sans-serif; font-size: 0.95rem; outline: none; transition: border-color 0.2s, background 0.2s; width: 100%; }
+.form-field input:focus { border-color: var(--gold); background: rgba(201,168,76,0.03); }
+.form-field.error input, .form-field.error textarea { border-color: #e04444 !important; }
+html[data-mode="light"] .form-field label { color: rgba(10,10,10,0.45) !important; }
+html[data-mode="light"] .form-field input, html[data-mode="light"] .form-field textarea { background: rgba(0,0,0,0.04) !important; color: #0a0a0a !important; border-color: rgba(201,168,76,0.3) !important; }
+@media (max-width: 600px) { #applyForm > div > div:first-child { grid-template-columns: 1fr !important; } }
 html[data-mode="light"] .cta-band h2 { color: #0a0a0a !important; }
 html[data-mode="light"] .cta-band p { color: rgba(10,10,10,0.65) !important; }
 html[data-mode="light"] .btn-outline { border-color: rgba(10,10,10,0.3) !important; color: #0a0a0a !important; }
@@ -472,7 +481,7 @@ html[data-mode="light"] .cta-band { background: linear-gradient(135deg, rgba(237
 
   <div class="roles-grid">
 
-    <a href="mailto:info@adroitsolutions.de?subject=Bewerbung: SAP BTP Engineer" class="role-card reveal">
+    <div class="role-card reveal" onclick="applyFor('SAP BTP Engineer')">
       <div class="role-info">
         <div class="role-badge"><span data-lang="de">Offen</span><span data-lang="en">Open</span></div>
         <div class="role-title">SAP BTP Engineer</div>
@@ -484,9 +493,9 @@ html[data-mode="light"] .cta-band { background: linear-gradient(135deg, rgba(237
         <div class="role-desc"><span data-lang="de">Zertifizierter SAP BTP Engineer gesucht für Subcontracting-Einsätze bei Tier-1 System Integratoren in NRW. Mindestens 3 Jahre CAP/RAP-Erfahrung.</span><span data-lang="en">Certified SAP BTP engineer sought for subcontracting engagements with Tier-1 System Integrators in NRW. Minimum 3 years CAP/RAP experience.</span></div>
       </div>
       <div class="role-arrow">→</div>
-    </a>
+    </div>
 
-    <a href="mailto:info@adroitsolutions.de?subject=Bewerbung: Enterprise Java Architect" class="role-card reveal">
+    <div class="role-card reveal" onclick="applyFor('Enterprise Java Architect')">
       <div class="role-info">
         <div class="role-badge"><span data-lang="de">Offen</span><span data-lang="en">Open</span></div>
         <div class="role-title"><span data-lang="de">Enterprise Java Architect</span><span data-lang="en">Enterprise Java Architect</span></div>
@@ -498,9 +507,9 @@ html[data-mode="light"] .cta-band { background: linear-gradient(135deg, rgba(237
         <div class="role-desc"><span data-lang="de">Senior Java Architect für Enterprise-Projekte bei deutschen und internationalen Kunden. Microservices, Cloud-native, Event-driven Architecture.</span><span data-lang="en">Senior Java architect for enterprise projects with German and international clients. Microservices, cloud-native, event-driven architecture.</span></div>
       </div>
       <div class="role-arrow">→</div>
-    </a>
+    </div>
 
-    <a href="mailto:info@adroitsolutions.de?subject=Bewerbung: Embedded Systems Engineer" class="role-card reveal">
+    <div class="role-card reveal" onclick="applyFor('Embedded Systems Engineer')">
       <div class="role-info">
         <div class="role-badge"><span data-lang="de">Offen</span><span data-lang="en">Open</span></div>
         <div class="role-title"><span data-lang="de">Embedded Systems Engineer</span><span data-lang="en">Embedded Systems Engineer</span></div>
@@ -512,9 +521,9 @@ html[data-mode="light"] .cta-band { background: linear-gradient(135deg, rgba(237
         <div class="role-desc"><span data-lang="de">Embedded Engineer für ADROIT SENSE™ IoT-Plattform und Kundenprojekte. ESP32/ESP32-S3, ESP-IDF, MQTT, Node-RED-Integration.</span><span data-lang="en">Embedded engineer for ADROIT SENSE™ IoT platform and client projects. ESP32/ESP32-S3, ESP-IDF, MQTT, Node-RED integration.</span></div>
       </div>
       <div class="role-arrow">→</div>
-    </a>
+    </div>
 
-    <a href="mailto:info@adroitsolutions.de?subject=Bewerbung: Business Development" class="role-card reveal">
+    <div class="role-card reveal" onclick="applyFor('Business Development Manager')">
       <div class="role-info">
         <div class="role-badge"><span data-lang="de">Offen</span><span data-lang="en">Open</span></div>
         <div class="role-title"><span data-lang="de">Business Development Manager</span><span data-lang="en">Business Development Manager</span></div>
@@ -526,7 +535,7 @@ html[data-mode="light"] .cta-band { background: linear-gradient(135deg, rgba(237
         <div class="role-desc"><span data-lang="de">BD Manager für den Aufbau unserer SI-Partnerschaften und das Enterprise-Consulting-Geschäft in Deutschland. Netzwerk in der DACH-IT-Branche erforderlich.</span><span data-lang="en">BD Manager to build our SI partnerships and enterprise consulting pipeline in Germany. Network in DACH IT industry required.</span></div>
       </div>
       <div class="role-arrow">→</div>
-    </a>
+    </div>
 
   </div>
 
@@ -542,9 +551,58 @@ html[data-mode="light"] .cta-band { background: linear-gradient(135deg, rgba(237
         <p>We are open to exceptional profiles even when we have no matching role posted. Send us a speculative application — we will be in touch when we see a fit.</p>
       </div>
     </div>
-    <a href="mailto:info@adroitsolutions.de?subject=Initiativbewerbung" class="btn-primary">
+    <button class="btn-primary" onclick="applyFor('Initiativbewerbung / Speculative')">
       <span data-lang="de">Initiativbewerbung</span><span data-lang="en">Speculative Application</span>
-    </a>
+    </button>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- APPLICATION FORM -->
+<section class="alt" id="apply">
+  <p class="section-label reveal"><span data-lang="de">Bewerbung</span><span data-lang="en">Application</span></p>
+  <div data-lang="de" class="reveal"><h2 class="section-title">Jetzt bewerben.</h2><p class="section-body">Füllen Sie das Formular aus — wir melden uns innerhalb von 48 Stunden.</p></div>
+  <div data-lang="en" class="reveal"><h2 class="section-title">Apply now.</h2><p class="section-body">Fill in the form and we will be in touch within 48 hours.</p></div>
+
+  <div class="apply-form reveal-right" id="applyForm" style="max-width:680px;margin-top:2rem">
+    <div style="display:flex;flex-direction:column;gap:1.25rem">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.25rem">
+        <div class="form-field">
+          <label><span data-lang="de">Vorname</span><span data-lang="en">First Name</span> *</label>
+          <input type="text" id="applyFirst" placeholder="Max"/>
+        </div>
+        <div class="form-field">
+          <label><span data-lang="de">Nachname</span><span data-lang="en">Last Name</span></label>
+          <input type="text" id="applyLast" placeholder="Mustermann"/>
+        </div>
+      </div>
+      <div class="form-field">
+        <label>E-Mail *</label>
+        <input type="email" id="applyEmail" placeholder="max@example.com"/>
+      </div>
+      <div class="form-field">
+        <label><span data-lang="de">Position</span><span data-lang="en">Role</span></label>
+        <input type="text" id="applyRole" placeholder="SAP BTP Engineer" readonly style="background:rgba(201,168,76,0.06);cursor:default"/>
+      </div>
+      <div class="form-field">
+        <label><span data-lang="de">LinkedIn / Portfolio (optional)</span><span data-lang="en">LinkedIn / Portfolio (optional)</span></label>
+        <input type="url" id="applyLink" placeholder="https://linkedin.com/in/..."/>
+      </div>
+      <div class="form-field">
+        <label><span data-lang="de">Nachricht</span><span data-lang="en">Cover note</span> *</label>
+        <textarea id="applyMsg" style="resize:vertical;min-height:130px;background:rgba(255,255,255,0.04);border:1px solid var(--border);color:#f5f4f0;padding:0.9rem 1.1rem;font-family:'DM Sans',sans-serif;font-size:0.95rem;outline:none;width:100%;transition:border-color 0.2s" placeholder="Kurze Vorstellung, Erfahrung, Verfügbarkeit..."></textarea>
+      </div>
+      <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem">
+        <p class="form-note" id="applyError" style="color:rgba(245,244,240,0.35);font-size:0.78rem;margin:0">
+          <span data-lang="de">* Pflichtfelder. Daten werden nur zur Bearbeitung Ihrer Bewerbung verwendet (Art. 6 Abs. 1 lit. b DSGVO).</span>
+          <span data-lang="en">* Required fields. Data used solely to process your application (Art. 6(1)(b) GDPR).</span>
+        </p>
+        <button type="button" id="applyBtn" class="btn-primary" onclick="submitApplication()">
+          <span data-lang="de">Bewerbung senden</span><span data-lang="en">Send Application</span>
+        </button>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -596,9 +654,9 @@ html[data-mode="light"] .cta-band { background: linear-gradient(135deg, rgba(237
     <div data-lang="en"><h2>Ready to join Adroit?</h2><p>Send us your application — we respond within 48 hours.</p></div>
   </div>
   <div class="cta-actions">
-    <a href="mailto:info@adroitsolutions.de?subject=Bewerbung Adroit Solutions GmbH" class="btn-primary">
+    <button class="btn-primary" onclick="applyFor('')">
       <span data-lang="de">Jetzt bewerben</span><span data-lang="en">Apply now</span>
-    </a>
+    </button>
     <a href="about.html" class="btn-outline">
       <span data-lang="de">Über uns</span><span data-lang="en">About us</span>
     </a>
@@ -655,6 +713,77 @@ function applyTimeMode() {
 applyTimeMode();
 setInterval(applyTimeMode, 3600000);
 
+
+function applyFor(role) {
+  var roleInput = document.getElementById('applyRole');
+  if (roleInput && role) roleInput.value = role;
+  var section = document.getElementById('apply');
+  if (section) window.scrollTo({top: section.getBoundingClientRect().top + window.scrollY - 100, behavior: 'smooth'});
+  setTimeout(function(){ var f = document.getElementById('applyFirst'); if(f) f.focus(); }, 600);
+}
+
+function submitApplication() {
+  var isEn = document.body.classList.contains('lang-en');
+  var first = document.getElementById('applyFirst').value.trim();
+  var last = document.getElementById('applyLast').value.trim();
+  var email = document.getElementById('applyEmail').value.trim();
+  var role = document.getElementById('applyRole').value.trim();
+  var link = document.getElementById('applyLink').value.trim();
+  var msg = document.getElementById('applyMsg').value.trim();
+  var errEl = document.getElementById('applyError');
+
+  document.querySelectorAll('#applyForm .form-field').forEach(function(f){ f.classList.remove('error'); });
+
+  var hasErr = false;
+  if (!first) { document.getElementById('applyFirst').closest('.form-field').classList.add('error'); hasErr = true; }
+  if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { document.getElementById('applyEmail').closest('.form-field').classList.add('error'); hasErr = true; }
+  if (!msg) { document.getElementById('applyMsg').closest('.form-field').classList.add('error'); hasErr = true; }
+  if (hasErr) {
+    errEl.style.color = '#e04444';
+    errEl.querySelector('[data-lang="de"]').textContent = 'Bitte alle Pflichtfelder (*) ausfüllen.';
+    errEl.querySelector('[data-lang="en"]').textContent = 'Please fill in all required fields (*).';
+    return;
+  }
+
+  var btn = document.getElementById('applyBtn');
+  btn.disabled = true;
+  btn.textContent = isEn ? 'Sending…' : 'Sende…';
+
+  fetch('https://formspree.io/f/YOUR_FORM_ID', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+    body: JSON.stringify({
+      name: (first + ' ' + last).trim(),
+      email: email,
+      role: role || 'Initiativbewerbung',
+      portfolio: link,
+      message: msg,
+      _subject: 'Karriere-Bewerbung: ' + (role || 'Initiativbewerbung') + ' — ' + (first + ' ' + last).trim()
+    })
+  })
+  .then(function(r){ return r.json().then(function(d){ return {ok: r.ok, data: d}; }); })
+  .then(function(res) {
+    btn.disabled = false;
+    btn.innerHTML = isEn ? 'Send Application' : 'Bewerbung senden';
+    if (res.ok) {
+      document.getElementById('applyForm').innerHTML =
+        '<div style="text-align:center;padding:3rem 1rem">' +
+        '<svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="#c9a84c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin:0 auto 1.2rem;display:block"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>' +
+        '<h3 style="color:#c9a84c;margin-bottom:0.6rem">' + (isEn ? 'Application sent!' : 'Bewerbung gesendet!') + '</h3>' +
+        '<p style="opacity:0.65;max-width:340px;margin:0 auto">' + (isEn ? 'Thank you. We will review your application and be in touch within 48 hours.' : 'Vielen Dank. Wir melden uns innerhalb von 48 Stunden.') + '</p>' +
+        '</div>';
+    } else {
+      errEl.style.color = '#e04444';
+      errEl.textContent = isEn ? 'Something went wrong. Please email careers@adroitsolutions.de' : 'Fehler. Bitte schreiben Sie uns an careers@adroitsolutions.de';
+    }
+  })
+  .catch(function() {
+    btn.disabled = false;
+    btn.innerHTML = isEn ? 'Send Application' : 'Bewerbung senden';
+    errEl.style.color = '#e04444';
+    errEl.textContent = isEn ? 'Network error. Please email careers@adroitsolutions.de directly.' : 'Netzwerkfehler. Bitte schreiben Sie uns direkt an careers@adroitsolutions.de';
+  });
+}
 
 // Mobile menu toggle
 (function(){
