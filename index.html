@@ -276,9 +276,10 @@ section.alt { background: #1c1c1c !important; }
 .service-card:hover::after { width: 100%; }
 .service-num { font-family: 'DM Serif Display', serif; font-size: 3rem; color: rgba(201,168,76,0.15); line-height: 1; margin-bottom: 1rem; }
 .service-name { font-size: 1rem; font-weight: 600; letter-spacing: 0.05em; margin-bottom: 0.75rem; color: #f5f4f0; }
-.service-desc { font-size: 0.88rem; color: rgba(245,244,240,0.5); line-height: 1.65; }
+.service-desc { font-size: 0.88rem; color: rgba(245,244,240,0.65); line-height: 1.65; }
 .service-tags { margin-top: 1.25rem; display: flex; flex-wrap: wrap; gap: 0.4rem; }
-.tag { font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); border: 1px solid rgba(201,168,76,0.3); padding: 0.2rem 0.6rem; }
+.tag { font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); border: 1px solid rgba(201,168,76,0.3); padding: 0.2rem 0.6rem; text-decoration: none; transition: background 0.2s, border-color 0.2s; }
+.tag:hover { background: rgba(201,168,76,0.1); border-color: var(--gold); }
 
 /* WHY */
 .why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; margin-top: 4rem; align-items: start; }
@@ -286,12 +287,12 @@ section.alt { background: #1c1c1c !important; }
 .why-point { display: flex; gap: 1.25rem; align-items: flex-start; }
 .why-icon { width: 36px; height: 36px; flex-shrink: 0; border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; color: var(--gold); font-size: 0.9rem; }
 .why-point h4 { font-size: 0.95rem; font-weight: 600; margin-bottom: 0.3rem; color: #f5f4f0; }
-.why-point p { font-size: 0.875rem; color: rgba(245,244,240,0.5); line-height: 1.65; }
+.why-point p { font-size: 0.875rem; color: rgba(245,244,240,0.65); line-height: 1.65; }
 .why-stat-box { border: 1px solid var(--border); padding: 3rem; display: flex; flex-direction: column; gap: 2.5rem; }
 .stat { border-bottom: 1px solid var(--border); padding-bottom: 2rem; }
 .stat:last-child { border-bottom: none; padding-bottom: 0; }
 .stat-num { font-family: 'DM Serif Display', serif; font-size: 3.5rem; color: var(--gold); line-height: 1; }
-.stat-label { font-size: 0.8rem; color: rgba(245,244,240,0.45); letter-spacing: 0.05em; margin-top: 0.3rem; }
+.stat-label { font-size: 0.8rem; color: rgba(245,244,240,0.6); letter-spacing: 0.05em; margin-top: 0.3rem; }
 
 /* SECTORS */
 .sectors-list { margin-top: 3rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; }
@@ -300,7 +301,7 @@ section.alt { background: #1c1c1c !important; }
 .sector-item::before { content: '▸'; color: var(--gold); font-size: 0.7rem; flex-shrink: 0; transition: transform 0.2s; }
 .sector-item.open { border-color: var(--gold); color: #f5f4f0; flex-direction: column; align-items: flex-start; }
 .sector-item.open::before { content: '▾'; }
-.sector-body { display: none; font-size: 0.78rem; line-height: 1.65; color: rgba(245,244,240,0.5); margin-top: 0.65rem; padding-top: 0.65rem; border-top: 1px solid rgba(201,168,76,0.18); letter-spacing: 0; font-weight: 400; }
+.sector-body { display: none; font-size: 0.78rem; line-height: 1.65; color: rgba(245,244,240,0.65); margin-top: 0.65rem; padding-top: 0.65rem; border-top: 1px solid rgba(201,168,76,0.18); letter-spacing: 0; font-weight: 400; }
 .sector-item.open .sector-body { display: block; }
 
 /* CONTACT */
@@ -312,7 +313,7 @@ section.alt { background: #1c1c1c !important; }
 .contact-form { display: flex; flex-direction: column; gap: 1rem; }
 .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
 .form-field { display: flex; flex-direction: column; gap: 0.4rem; }
-.form-field label { font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(245,244,240,0.4); }
+.form-field label { font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(245,244,240,0.55); }
 .form-field input, .form-field textarea, .form-field select {
   background: rgba(255,255,255,0.05); border: 1px solid var(--border);
   color: #f5f4f0; padding: 0.85rem 1rem;
@@ -341,9 +342,9 @@ footer {
 }
 .footer-logo { display: flex; flex-direction: column; gap: 0.3rem; }
 .footer-logo img { height: 110px; filter: brightness(0) invert(1); background: none; display: block; }
-.footer-tagline { font-size: 0.8rem; color: rgba(245,244,240,0.35); margin-top: 0; line-height: 1.2; }
-.footer-legal { font-size: 0.75rem; color: rgba(245,244,240,0.3); text-align: right; line-height: 1.8; }
-.footer-legal a { color: rgba(245,244,240,0.4); text-decoration: none; }
+.footer-tagline { font-size: 0.8rem; color: rgba(245,244,240,0.5); margin-top: 0; line-height: 1.2; }
+.footer-legal { font-size: 0.75rem; color: rgba(245,244,240,0.5); text-align: right; line-height: 1.8; }
+.footer-legal a { color: rgba(245,244,240,0.6); text-decoration: none; }
 .footer-legal a:hover { color: var(--gold); }
 
 
@@ -594,7 +595,7 @@ html[data-mode="light"] .service-card:nth-child(6) {
     <img src="adroit-logo.png" alt="Adroit Solutions GmbH"/>
   </div>
   <div class="nav-right">
-    <ul class="nav-links">
+    <ul class="nav-links" id="navMenu">
       <li><a href="index.html" class="active"><span data-lang="de">Startseite</span><span data-lang="en">Home</span></a></li>
       <li><a href="about.html"><span data-lang="de">Über uns</span><span data-lang="en">About</span></a></li>
       <li><a href="services.html"><span data-lang="de">Leistungen</span><span data-lang="en">Services</span></a></li>
@@ -607,7 +608,7 @@ html[data-mode="light"] .service-card:nth-child(6) {
       <button class="lang-btn active" id="btn-de" onclick="setLang('de')">DE</button>
       <button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button>
     </div>
-        <button class="menu-btn" id="menuBtn" aria-label="Toggle menu">
+        <button class="menu-btn" id="menuBtn" aria-label="Toggle menu" aria-controls="navMenu" aria-expanded="false">
           <span></span><span></span><span></span>
         </button>
   </div>
@@ -652,7 +653,7 @@ html[data-mode="light"] .service-card:nth-child(6) {
         <span data-lang="de">Side-by-Side-Erweiterungen für SAP S/4HANA. CAP- und RAP-Entwicklung, Fiori/UI5, HANA Cloud, Integration Suite und BTP Cloud Foundry/Kyma-Deployments.</span>
         <span data-lang="en">Side-by-side extensions for SAP S/4HANA. CAP and RAP development, Fiori/UI5, HANA Cloud, Integration Suite, and BTP Cloud Foundry/Kyma deployments.</span>
       </div>
-      <div class="service-tags"><span class="tag">SAP CAP</span><span class="tag">RAP</span><span class="tag">Fiori</span><span class="tag">HANA Cloud</span></div>
+      <div class="service-tags"><a class="tag" href="/services.html#sap-btp">SAP CAP</a><a class="tag" href="/services.html#sap-btp">RAP</a><a class="tag" href="/services.html#sap-btp">Fiori</a><a class="tag" href="/services.html#sap-btp">HANA Cloud</a></div>
     </div>
     <div class="service-card">
       <div class="service-num">02</div>
@@ -661,7 +662,7 @@ html[data-mode="light"] .service-card:nth-child(6) {
         <span data-lang="de">15+ Jahre Erfahrung in der Entwicklung geschäftskritischer Systeme für British Airways, Aer Lingus, Virgin Australia und SITA. Java 21, Spring Boot 3.x, Microservices.</span>
         <span data-lang="en">15+ years designing mission-critical systems for British Airways, Aer Lingus, Virgin Australia, and SITA. Java 21, Spring Boot 3.x, microservices, cloud-native.</span>
       </div>
-      <div class="service-tags"><span class="tag">Java 21</span><span class="tag">Spring Boot</span><span class="tag">Microservices</span><span class="tag">AWS</span></div>
+      <div class="service-tags"><a class="tag" href="/services.html#it-architecture">Java 21</a><a class="tag" href="/services.html#it-architecture">Spring Boot</a><a class="tag" href="/services.html#it-architecture">Microservices</a><a class="tag" href="/services.html#it-architecture">AWS</a></div>
     </div>
     <div class="service-card">
       <div class="service-num">03</div>
@@ -670,7 +671,7 @@ html[data-mode="light"] .service-card:nth-child(6) {
         <span data-lang="de">ESP32/ESP32-S3 Firmware in C/C++ mit ESP-IDF. ADROIT SENSE™ IoT SaaS-Plattform auf DSGVO-konformer deutscher Cloud-Infrastruktur.</span>
         <span data-lang="en">ESP32/ESP32-S3 firmware in C/C++ with ESP-IDF. ADROIT SENSE™ IoT SaaS platform on GDPR-compliant German cloud infrastructure.</span>
       </div>
-      <div class="service-tags"><span class="tag">ESP32</span><span class="tag">C/C++</span><span class="tag">Node-RED</span><span class="tag">Hetzner</span></div>
+      <div class="service-tags"><a class="tag" href="/embedded-systems.html">ESP32</a><a class="tag" href="/embedded-systems.html">C/C++</a><a class="tag" href="/embedded-systems.html">Node-RED</a><a class="tag" href="/embedded-systems.html">Hetzner</a></div>
     </div>
     <div class="service-card">
       <div class="service-num">04</div>
@@ -679,7 +680,7 @@ html[data-mode="light"] .service-card:nth-child(6) {
         <span data-lang="de">Grenzüberschreitende Komponentenbeschaffung über Samim Electronics Ltd (Malta). Spezialist für eMMC, NOR Flash, LPDDR4 PSRAM für europäische Hersteller.</span>
         <span data-lang="en">Cross-border component procurement via Samim Electronics Ltd (Malta). Specialist in eMMC, NOR Flash, LPDDR4 PSRAM for European manufacturers.</span>
       </div>
-      <div class="service-tags"><span class="tag">eMMC</span><span class="tag">NOR Flash</span><span class="tag">EU Supply Chain</span></div>
+      <div class="service-tags"><a class="tag" href="/services.html#pcb">eMMC</a><a class="tag" href="/services.html#pcb">NOR Flash</a><a class="tag" href="/services.html#pcb">EU Supply Chain</a></div>
     </div>
     <div class="service-card">
       <div class="service-num">05</div>
@@ -688,7 +689,7 @@ html[data-mode="light"] .service-card:nth-child(6) {
         <span data-lang="de">KI-gestützte PCB-Inspektionssysteme. Automatisierte Fehlererkennung, Lötstellen-Analyse und Qualitätssicherung für Produktionslinien.</span>
         <span data-lang="en">AI-driven PCB inspection systems. Automated defect detection, solder joint analysis, and production line quality assurance using ML pipelines.</span>
       </div>
-      <div class="service-tags"><span class="tag">Computer Vision</span><span class="tag">PCB Inspection</span><span class="tag">ML</span></div>
+      <div class="service-tags"><a class="tag" href="/case-studies/pcb-vision-qa-automation/">Computer Vision</a><a class="tag" href="/case-studies/pcb-vision-qa-automation/">PCB Inspection</a><a class="tag" href="/case-studies/pcb-vision-qa-automation/">ML</a></div>
     </div>
     <div class="service-card">
       <div class="service-num">06</div>
@@ -697,7 +698,7 @@ html[data-mode="light"] .service-card:nth-child(6) {
         <span data-lang="de">QR-basiertes Bestell-SaaS für Gastronomie und Einzelhandel. DOOH-Werbenetzwerk-Design. React.js TypeScript Frontend mit Java Spring Boot Backend.</span>
         <span data-lang="en">QR-based ordering SaaS for hospitality and retail. DOOH advertising network design. React.js TypeScript frontend with Java Spring Boot backends.</span>
       </div>
-      <div class="service-tags"><span class="tag">React.js</span><span class="tag">SaaS</span><span class="tag">DOOH</span></div>
+      <div class="service-tags"><a class="tag" href="/qr-ordering.html">React.js</a><a class="tag" href="/qr-ordering.html">SaaS</a><a class="tag" href="/services.html#dooh">DOOH</a></div>
     </div>
   </div>
 </section>
