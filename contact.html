@@ -585,12 +585,13 @@ function submitForm(e) {
   var hasErr = false;
   if (!first) { document.getElementById('firstName').closest('.form-field').classList.add('error'); hasErr = true; }
   if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { document.getElementById('email').closest('.form-field').classList.add('error'); hasErr = true; }
-  if (!msg) { document.getElementById('message').closest('.form-field').classList.add('error'); hasErr = true; }
+  if (phone && !/^[\d\s\+\-\(\)\.]{7,20}$/.test(phone)) { document.getElementById('phone').closest('.form-field').classList.add('error'); hasErr = true; }
+  if (!msg || msg.length < 10) { document.getElementById('message').closest('.form-field').classList.add('error'); hasErr = true; }
   if (hasErr) {
     var p = document.createElement('p');
     p.id = 'formError';
     p.style.cssText = 'color:#e04444;font-size:0.85rem;margin:0;';
-    p.textContent = isEn ? 'Please fill in all required fields (*).' : 'Bitte alle Pflichtfelder (*) ausfüllen.';
+    p.textContent = isEn ? 'Please fill in all required fields correctly (*).' : 'Bitte alle Pflichtfelder (*) korrekt ausfüllen.';
     document.querySelector('.form-submit').prepend(p);
     document.querySelector('.contact-form .form-field.error').scrollIntoView({behavior:'smooth', block:'center'});
     return;
@@ -601,25 +602,27 @@ function submitForm(e) {
   btn.disabled = true;
   btn.textContent = isEn ? 'Sending…' : 'Sende…';
 
-  fetch('https://formspree.io/f/YOUR_FORM_ID', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-    body: JSON.stringify({
-      name: name,
-      email: email,
-      company: company,
-      jobTitle: jobTitle,
-      phone: phone,
-      enquiryType: type,
-      message: msg,
-      _subject: (isEn ? 'Enquiry: ' : 'Anfrage: ') + (type || 'General') + ' — ' + (company || name)
-    })
-  })
-  .then(function(r){ return r.json().then(function(d){ return {ok: r.ok, data: d}; }); })
+  var fd = new FormData();
+  fd.append('access_key', 'YOUR_WEB3FORMS_KEY');
+  fd.append('from_name', name);
+  fd.append('replyto', email);
+  fd.append('subject', (isEn ? 'Enquiry: ' : 'Anfrage: ') + (type || 'General') + ' — ' + (company || name));
+  fd.append('Name', name);
+  fd.append('Email', email);
+  fd.append('Company', company || '—');
+  fd.append('Job Title', jobTitle || '—');
+  fd.append('Phone', phone || '—');
+  fd.append('Enquiry Type', type || '—');
+  fd.append('Message', msg);
+
+  fetch('https://api.web3forms.com/submit', { method: 'POST', body: fd })
+  .then(function(r){ return r.json(); })
   .then(function(res) {
     btn.disabled = false;
-    btn.innerHTML = isEn ? 'Send Message' : 'Nachricht senden';
-    if (res.ok) {
+    btn.innerHTML = isEn
+      ? '<span data-lang="en">Send Message</span><span data-lang="de" style="display:none">Nachricht senden</span>'
+      : '<span data-lang="de">Nachricht senden</span><span data-lang="en" style="display:none">Send Message</span>';
+    if (res.success) {
       var form = document.getElementById('contactForm');
       form.innerHTML = '<div style="text-align:center;padding:3rem 1rem">' +
         '<svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="#c9a84c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin:0 auto 1.2rem;display:block"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>' +
@@ -630,13 +633,15 @@ function submitForm(e) {
       var p = document.createElement('p');
       p.id = 'formError';
       p.style.cssText = 'color:#e04444;font-size:0.85rem;margin:0;';
-      p.textContent = isEn ? 'Something went wrong. Please email us at info@adroitsolutions.de' : 'Fehler beim Senden. Bitte schreiben Sie uns an info@adroitsolutions.de';
+      p.textContent = isEn ? 'Something went wrong. Please email info@adroitsolutions.de directly.' : 'Fehler. Bitte schreiben Sie uns direkt an info@adroitsolutions.de';
       document.querySelector('.form-submit').prepend(p);
     }
   })
   .catch(function() {
     btn.disabled = false;
-    btn.innerHTML = isEn ? 'Send Message' : 'Nachricht senden';
+    btn.innerHTML = isEn
+      ? '<span data-lang="en">Send Message</span><span data-lang="de" style="display:none">Nachricht senden</span>'
+      : '<span data-lang="de">Nachricht senden</span><span data-lang="en" style="display:none">Send Message</span>';
     var p = document.createElement('p');
     p.id = 'formError';
     p.style.cssText = 'color:#e04444;font-size:0.85rem;margin:0;';
