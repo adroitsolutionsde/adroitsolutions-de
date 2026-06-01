@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en" style="background:#0a0a0a !important">
+<head>
+<meta charset="UTF-8"/>
+<meta name="color-scheme" content="dark"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>ESP32-S3 Cold Chain Monitoring mit MQTT | Adroit Solutions Blog</title>
+<meta name="description" content="Wie wir mit ESP32-S3, MQTT und InfluxDB ein lückenloses Temperaturmonitoring für Kühlketten aufgebaut haben — inklusive NIS2-konformer Alerting-Architektur."/>
+<link rel="canonical" href="https://adroitsolutions.de/blog/esp32-cold-chain-mqtt-monitoring/"/>
+<meta property="og:type" content="article"/>
+<meta property="og:url" content="https://adroitsolutions.de/blog/esp32-cold-chain-mqtt-monitoring/"/>
+<meta property="og:site_name" content="Adroit Solutions GmbH"/>
+<meta property="og:title" content="ESP32-S3 Cold Chain Monitoring mit MQTT — Technischer Deep Dive"/>
+<meta property="og:description" content="How we built continuous cold chain temperature monitoring using ESP32-S3, MQTT and InfluxDB — including NIS2-compliant alerting architecture."/>
+<meta property="og:image" content="https://adroitsolutions.de/adroit-logo.png"/>
+<link rel="stylesheet" href="/fonts/fonts.css"/>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "ESP32-S3 Cold Chain Monitoring mit MQTT — Technischer Deep Dive",
+  "datePublished": "2026-05-12",
+  "dateModified": "2026-05-12",
+  "author": {"@type": "Person", "name": "Gulam 'Enkay' Samdani"},
+  "publisher": {"@id": "https://adroitsolutions.de/#organization"},
+  "url": "https://adroitsolutions.de/blog/esp32-cold-chain-mqtt-monitoring/",
+  "inLanguage": ["de", "en"],
+  "keywords": ["ESP32-S3", "MQTT", "Cold Chain Monitoring", "IoT", "HACCP", "NIS2", "InfluxDB", "Grafana"],
+  "breadcrumb": {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://adroitsolutions.de/"},
+      {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://adroitsolutions.de/blog/"},
+      {"@type": "ListItem", "position": 3, "name": "ESP32 Cold Chain", "item": "https://adroitsolutions.de/blog/esp32-cold-chain-mqtt-monitoring/"}
+    ]
+  }
+}
+</script>
+<style>
+html, body { background: #0a0a0a !important; color: #f5f4f0 !important; margin: 0 !important; padding: 0 !important; font-family: 'DM Sans', sans-serif !important; font-weight: 300; line-height: 1.7; overflow-x: hidden; }
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root { --black: #0a0a0a; --white: #f5f4f0; --gold: #c9a84c; --gold-light: #e8c97a; --mid: #1c1c1c; --border: rgba(201,168,76,0.2); }
+html { scroll-behavior: smooth; }
+
+/* LANG display logic */
+[data-lang="en"] { display: none; opacity: 0; }
+[data-lang="de"] { display: block; opacity: 1; }
+span[data-lang="en"] { display: none; opacity: 0; }
+span[data-lang="de"] { display: inline; opacity: 1; }
+body.lang-en [data-lang="en"] { display: block; opacity: 1; }
+body.lang-en [data-lang="de"] { display: none; opacity: 0; }
+body.lang-en span[data-lang="en"] { display: inline; opacity: 1; }
+body.lang-en span[data-lang="de"] { display: none; opacity: 0; }
+
+.scroll-progress { position: fixed; top: 0; left: 0; z-index: 200; height: 2px; width: 0%; background: linear-gradient(90deg, var(--gold), var(--gold-light)); transition: width 0.1s linear; }
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0.75rem 4rem; background: rgba(10,10,10,0.95) !important; backdrop-filter: blur(16px); border-bottom: 1px solid var(--border); transition: padding 0.3s; }
+.nav-logo img { height: 140px; filter: brightness(0) invert(1); display: block; }
+.nav-right { display: flex; align-items: center; gap: 2rem; }
+.nav-links { display: flex; gap: 2rem; list-style: none; }
+.nav-links a { color: rgba(245,244,240,0.6); text-decoration: none; font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; position: relative; transition: color 0.2s; }
+.nav-links a::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 1px; background: var(--gold); transition: width 0.3s; }
+.nav-links a:hover, .nav-links a.active { color: var(--gold); }
+.nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
+.lang-switcher { display: flex; gap: 0.4rem; }
+.lang-btn { background: none; border: 1px solid rgba(201,168,76,0.4); color: rgba(245,244,240,0.6); font-family: 'DM Sans', sans-serif; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; padding: 0.35rem 0.8rem; cursor: pointer; transition: all 0.25s; }
+.lang-btn.active { background: var(--gold); border-color: var(--gold); color: #0a0a0a; font-weight: 700; }
+.lang-btn:hover { border-color: var(--gold); color: var(--gold); }
+.menu-btn { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; }
+.menu-btn span { display: block; width: 22px; height: 2px; background: rgba(245,244,240,0.75); border-radius: 1px; transition: all 0.25s; }
+.menu-btn.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.menu-btn.open span:nth-child(2) { opacity: 0; }
+.menu-btn.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+.breadcrumb { padding: 9rem 4rem 0; display: flex; align-items: center; gap: 0.5rem; font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(245,244,240,0.4); flex-wrap: wrap; }
+.breadcrumb a { color: rgba(245,244,240,0.4); text-decoration: none; transition: color 0.2s; }
+.breadcrumb a:hover { color: var(--gold); }
+.breadcrumb span.current { color: var(--gold); }
+.divider { width: calc(100% - 8rem); height: 1px; background: linear-gradient(90deg, transparent, var(--border), transparent); margin: 0 4rem; }
+.btn-primary { background: var(--gold); color: #0a0a0a; padding: 0.9rem 2.2rem; border: none; cursor: pointer; font-family: 'DM Sans', sans-serif; font-size: 0.85rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none; display: inline-block; transition: background 0.2s, transform 0.2s; }
+.btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); }
+.reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.8s cubic-bezier(0.22,1,0.36,1), transform 0.8s cubic-bezier(0.22,1,0.36,1); }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+footer { background: #1c1c1c; border-top: 1px solid var(--border); padding: 3rem 4rem; display: grid; grid-template-columns: 1fr auto; gap: 2rem; align-items: start; }
+.footer-left { display: flex; flex-direction: column; gap: 0.2rem; }
+.footer-left img { height: 110px; filter: brightness(0) invert(1); display: block; }
+.footer-tagline { font-size: 0.8rem; color: rgba(245,244,240,0.35); }
+.footer-legal { font-size: 0.75rem; color: rgba(245,244,240,0.3); text-align: right; line-height: 1.8; }
+.footer-legal a { color: rgba(245,244,240,0.4); text-decoration: none; }
+.footer-legal a:hover { color: var(--gold); }
+.tag { font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); border: 1px solid rgba(201,168,76,0.3); padding: 0.2rem 0.6rem; display: inline-block; }
+
+/* Article layout */
+.article-header { padding: 7rem 4rem 4rem; background: #0a0a0a; max-width: 1200px; }
+.article-eyebrow { font-size: 0.65rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.5rem; }
+.article-title { font-family: 'DM Serif Display', serif; font-size: clamp(2rem, 4vw, 3.2rem); line-height: 1.1; color: #f5f4f0; max-width: 800px; margin-bottom: 1.5rem; }
+.article-meta { display: flex; align-items: center; gap: 1.5rem; margin-bottom: 1.5rem; flex-wrap: wrap; }
+.meta-item { font-size: 0.78rem; color: rgba(245,244,240,0.4); }
+.meta-separator { color: rgba(201,168,76,0.3); }
+.article-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+
+/* Main content grid */
+.article-body { display: grid; grid-template-columns: 1fr 280px; gap: 4rem; padding: 0 4rem 6rem; align-items: start; max-width: 1200px; margin: 0 auto; }
+.article-content { min-width: 0; }
+
+/* Prose styles */
+.prose { }
+.prose p { color: rgba(245,244,240,0.7); margin-bottom: 1.4rem; font-size: 1rem; line-height: 1.9; }
+.prose h2 { font-family: 'DM Serif Display', serif; font-size: clamp(1.4rem, 2.5vw, 1.9rem); color: #f5f4f0; margin: 3rem 0 1rem; line-height: 1.2; }
+.prose h3 { font-family: 'DM Serif Display', serif; font-size: 1.25rem; color: #f5f4f0; margin: 2rem 0 0.75rem; }
+.prose ul, .prose ol { color: rgba(245,244,240,0.65); padding-left: 1.5rem; margin-bottom: 1.4rem; }
+.prose ul li, .prose ol li { margin-bottom: 0.5rem; font-size: 0.97rem; line-height: 1.75; }
+.prose strong { color: #f5f4f0; font-weight: 600; }
+.prose a { color: var(--gold); text-decoration: none; }
+.prose a:hover { text-decoration: underline; }
+.prose code { font-family: 'Courier New', monospace; font-size: 0.85em; background: #1a1a1a; border: 1px solid rgba(201,168,76,0.2); color: var(--gold-light); padding: 0.15em 0.4em; border-radius: 2px; }
+.prose pre { background: #111; border: 1px solid rgba(201,168,76,0.15); border-left: 3px solid var(--gold); padding: 1.5rem; margin: 1.5rem 0; overflow-x: auto; }
+.prose pre code { background: none; border: none; padding: 0; font-size: 0.83rem; color: rgba(245,244,240,0.75); line-height: 1.6; }
+.prose blockquote { border-left: 3px solid var(--gold); padding: 1rem 1.5rem; margin: 1.5rem 0; background: rgba(201,168,76,0.04); }
+.prose blockquote p { color: rgba(245,244,240,0.6); font-style: italic; margin: 0; }
+
+/* Data table */
+.data-table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: 0.88rem; }
+.data-table th { text-align: left; padding: 0.7rem 1rem; font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(245,244,240,0.4); border-bottom: 1px solid var(--border); font-weight: 500; background: rgba(201,168,76,0.04); }
+.data-table td { padding: 0.8rem 1rem; border-bottom: 1px solid rgba(201,168,76,0.07); color: rgba(245,244,240,0.65); vertical-align: top; }
+.data-table tr:last-child td { border-bottom: none; }
+.data-table .highlight { color: var(--gold); font-weight: 500; }
+
+/* Sidebar */
+.article-sidebar { position: sticky; top: 8rem; }
+.sidebar-box { background: #111; border: 1px solid var(--border); padding: 1.5rem; margin-bottom: 1.5rem; }
+.sidebar-title { font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; }
+.sidebar-toc { list-style: none; }
+.sidebar-toc li { padding: 0.3rem 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+.sidebar-toc li:last-child { border-bottom: none; }
+.sidebar-toc a { font-size: 0.78rem; color: rgba(245,244,240,0.5); text-decoration: none; transition: color 0.2s; line-height: 1.4; display: block; }
+.sidebar-toc a:hover { color: var(--gold); }
+.sidebar-cta { background: rgba(201,168,76,0.08); border: 1px solid var(--border); padding: 1.5rem; text-align: center; }
+.sidebar-cta h3 { font-family: 'DM Serif Display', serif; font-size: 1.1rem; color: #f5f4f0; margin-bottom: 0.75rem; }
+.sidebar-cta p { font-size: 0.8rem; color: rgba(245,244,240,0.5); margin-bottom: 1.2rem; line-height: 1.6; }
+.sidebar-cta .btn-primary { font-size: 0.75rem; padding: 0.7rem 1.2rem; }
+
+/* Callout */
+.callout { background: rgba(201,168,76,0.06); border: 1px solid rgba(201,168,76,0.25); border-left: 3px solid var(--gold); padding: 1.2rem 1.5rem; margin: 1.5rem 0; }
+.callout-label { font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.5rem; }
+.callout p { color: rgba(245,244,240,0.65); font-size: 0.92rem; margin: 0; line-height: 1.7; }
+
+/* Stat strip */
+.stat-strip { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 1px; border: 1px solid var(--border); margin: 2rem 0; background: var(--border); }
+.stat-cell { background: #111; padding: 1.5rem; text-align: center; }
+.stat-num { font-family: 'DM Serif Display', serif; font-size: 2.2rem; color: var(--gold); line-height: 1; }
+.stat-label { font-size: 0.72rem; color: rgba(245,244,240,0.45); margin-top: 0.35rem; letter-spacing: 0.04em; line-height: 1.4; }
+
+/* Author bio */
+.author-bio { background: #111; border: 1px solid var(--border); padding: 2rem; margin-top: 3rem; display: flex; gap: 1.5rem; align-items: flex-start; }
+.author-info h4 { font-weight: 600; color: #f5f4f0; margin-bottom: 0.2rem; font-size: 0.95rem; }
+.author-info p { font-size: 0.82rem; color: rgba(245,244,240,0.45); margin: 0; line-height: 1.6; }
+
+@media (max-width: 1100px) {
+  .article-body { grid-template-columns: 1fr; }
+  .article-sidebar { position: static; }
+}
+@media (max-width: 900px) {
+  nav { padding: 0.5rem 1.5rem !important; }
+  .nav-logo img { height: 72px; }
+  .menu-btn { display: flex; }
+  .nav-links { display: none; position: absolute; top: 100%; left: 0; right: 0; z-index: 99; background: rgba(10,10,10,0.98); border-top: 1px solid var(--border); flex-direction: column; padding: 0.5rem 0; gap: 0; }
+  .nav-links.open { display: flex; }
+  .nav-links li { border-bottom: 1px solid rgba(255,255,255,0.06); }
+  .nav-links a { padding: 0.9rem 1.5rem !important; display: block; }
+  .nav-links a::after { display: none !important; }
+  .article-header { padding: 7rem 1.5rem 3rem; }
+  .breadcrumb { padding: 7rem 1.5rem 0; }
+  .article-body { padding: 0 1.5rem 4rem; }
+  footer { grid-template-columns: 1fr; }
+  .footer-legal { text-align: left; }
+  .divider { margin: 0 1.5rem; width: calc(100% - 3rem); }
+  .data-table { font-size: 0.8rem; }
+  .data-table th, .data-table td { padding: 0.6rem 0.5rem; }
+}
+html[data-mode="light"] body { background: #f5f2eb !important; color: #0a0a0a !important; }
+html[data-mode="light"] nav { background: rgba(245,242,235,0.97) !important; }
+html[data-mode="light"] .article-header { background: #f5f2eb !important; }
+html[data-mode="light"] .article-title { color: #0a0a0a !important; }
+html[data-mode="light"] footer { background: #ede9e0 !important; }
+html[data-mode="light"] nav img, html[data-mode="light"] footer img { filter: brightness(0) !important; }
+html[data-mode="light"] .lang-btn { color: rgba(10,10,10,0.6) !important; border-color: rgba(10,10,10,0.25) !important; }
+html[data-mode="light"] .nav-links a { color: rgba(10,10,10,0.65) !important; }
+html[data-mode="light"] .prose p, html[data-mode="light"] .prose ul, html[data-mode="light"] .prose ol { color: rgba(10,10,10,0.7) !important; }
+html[data-mode="light"] .prose h2, html[data-mode="light"] .prose h3 { color: #0a0a0a; }
+html[data-mode="light"] .prose code { background: #ede9e0; color: #6b5a2a; }
+html[data-mode="light"] .prose pre { background: #ede9e0; }
+html[data-mode="light"] .sidebar-box { background: #fff; }
+html[data-mode="light"] .sidebar-cta { background: rgba(201,168,76,0.06); }
+html[data-mode="light"] .sidebar-cta h3 { color: #0a0a0a; }
+html[data-mode="light"] .author-bio { background: #fff; }
+html[data-mode="light"] .author-info h4 { color: #0a0a0a; }
+html[data-mode="light"] .data-table td { color: rgba(10,10,10,0.7); }
+html[data-mode="light"] .stat-cell { background: #ede9e0; }
+html[data-mode="light"] .stat-label { color: rgba(10,10,10,0.45); }
+</style>
+</head>
+<body>
+<div class="scroll-progress" id="scrollProgress"></div>
+<nav id="mainNav">
+  <div class="nav-logo">
+    <a href="/"><img src="/adroit-logo.png" alt="Adroit Solutions GmbH"/></a>
+  </div>
+  <div class="nav-right">
+    <ul class="nav-links">
+      <li><a href="/"><span data-lang="de">Startseite</span><span data-lang="en">Home</span></a></li>
+      <li><a href="/about.html"><span data-lang="de">Über uns</span><span data-lang="en">About</span></a></li>
+      <li><a href="/services.html"><span data-lang="de">Leistungen</span><span data-lang="en">Services</span></a></li>
+      <li><a href="/case-studies"><span data-lang="de">Referenzen</span><span data-lang="en">Case Studies</span></a></li>
+      <li><a href="/blog" class="active"><span data-lang="de">Blog</span><span data-lang="en">Blog</span></a></li>
+      <li><a href="/careers.html"><span data-lang="de">Karriere</span><span data-lang="en">Careers</span></a></li>
+      <li><a href="/contact.html"><span data-lang="de">Kontakt</span><span data-lang="en">Contact</span></a></li>
+    </ul>
+    <div class="lang-switcher">
+      <button class="lang-btn active" id="btn-de" onclick="setLang('de')">DE</button>
+      <button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button>
+    </div>
+    <button class="menu-btn" id="menuBtn" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="breadcrumb">
+  <a href="/">Home</a>
+  <span>&rsaquo;</span>
+  <a href="/blog/">Blog</a>
+  <span>&rsaquo;</span>
+  <span class="current">ESP32 Cold Chain</span>
+</div>
+
+<div class="article-header reveal">
+  <p class="article-eyebrow">IoT / Embedded Systems</p>
+  <h1 class="article-title">
+    <span data-lang="de">ESP32-S3 Cold Chain Monitoring mit MQTT — Technischer Deep Dive</span>
+    <span data-lang="en">ESP32-S3 Cold Chain Monitoring with MQTT — Technical Deep Dive</span>
+  </h1>
+  <div class="article-meta">
+    <span class="meta-item">Gulam 'Enkay' Samdani</span>
+    <span class="meta-separator">&middot;</span>
+    <span class="meta-item"><span data-lang="de">12. Mai 2026</span><span data-lang="en">May 12, 2026</span></span>
+    <span class="meta-separator">&middot;</span>
+    <span class="meta-item"><span data-lang="de">10 Min. Lesezeit</span><span data-lang="en">10 min read</span></span>
+  </div>
+  <div class="article-tags">
+    <span class="tag">ESP32-S3</span>
+    <span class="tag">MQTT</span>
+    <span class="tag">HACCP</span>
+    <span class="tag">InfluxDB</span>
+    <span class="tag">NIS2</span>
+  </div>
+</div>
+
+<div class="article-body">
+  <article class="article-content prose reveal">
+
+    <!-- Section 1: Das Problem / The Problem -->
+    <div data-lang="de">
+      <p>Kühlketten sind eine der fehleranfälligsten Stellen in der Lebensmittel- und Pharmalogistik. Eine einzige Temperaturüberschreitung — oft unbemerkt — kann einen gesamten Lagerbestand vernichten. HACCP-Anforderungen verlangen lückenlose Aufzeichnung; die NIS2-Richtlinie stuft Kühlketten-Betreiber in kritischen Sektoren als wesentliche Einrichtungen ein. Manuelle Kontrollen und einfache Datenlogger erfüllen diese Anforderungen nicht mehr.</p>
+    </div>
+    <div data-lang="en">
+      <p>Cold chains are one of the most failure-prone points in food and pharmaceutical logistics. A single undetected temperature excursion can destroy an entire inventory batch. HACCP requirements demand continuous records; NIS2 classifies cold chain operators in critical sectors as essential entities. Manual checks and simple data loggers no longer meet these requirements.</p>
+    </div>
+
+    <div class="callout">
+      <p class="callout-label"><span data-lang="de">Hintergrund</span><span data-lang="en">Context</span></p>
+      <p>
+        <span data-lang="de">Dieser Artikel dokumentiert die technische Architektur eines realen ADROIT SENSE™-Pilotprojekts. Alle Leistungsdaten stammen aus einer 4-wöchigen Produktivbereitstellung bei einem Lebensmittellogistik-Betreiber in NRW.</span>
+        <span data-lang="en">This article documents the technical architecture of a real ADROIT SENSE™ pilot deployment. All performance figures are drawn from a 4-week production deployment at a food logistics operator in NRW.</span>
+      </p>
+    </div>
+
+    <h2 id="hardware">
+      <span data-lang="de">Die Hardware-Architektur</span>
+      <span data-lang="en">Hardware Architecture</span>
+    </h2>
+
+    <div data-lang="de">
+      <p>Die Wahl des Mikrocontrollers war entscheidend. Der <strong>ESP32-S3</strong> überzeugt gegenüber dem klassischen ESP32 durch seinen dualen Xtensa LX7-Core mit bis zu 240 MHz, integriertem USB-OTG-Anschluss für die Firmware-Entwicklung ohne externen UART-Adapter sowie deutlich mehr SRAM (512 KB on-chip statt 520 KB, aber mit besserem AI-Coprocessor-Zugang). Im Dauerbetrieb bei 0 °C bis −25 °C ist die höhere Temperaturstabilität des S3-Gehäuses ebenfalls ein Faktor.</p>
+      <p>Für die Sensorik setzen wir auf zwei komplementäre Bauelemente: den <strong>SHT40</strong> von Sensirion (±0,1 °C Genauigkeit, I²C-Interface, kalibriert ab Werk) für Luft-Temperatur und Luftfeuchte im Kühlraum sowie den <strong>DS18B20</strong> in wasserdichter Sonde für direkten Kontakt mit Kühlgut und Verdampfer. Ein <strong>LiPo-Akku</strong> (3,7 V / 3000 mAh) kombiniert mit einem TP4056-Laderegler ermöglicht kabellosen Betrieb. Die Gehäuse sind nach IP67 geschützt — unabdingbar in feuchten Kühlumgebungen, wo Kondensation alltäglich ist.</p>
+    </div>
+    <div data-lang="en">
+      <p>The choice of microcontroller was pivotal. The <strong>ESP32-S3</strong> wins out over the classic ESP32 through its dual Xtensa LX7 core running up to 240 MHz, built-in USB-OTG for firmware development without an external UART adapter, and significantly better SRAM headroom (512 KB on-chip with improved AI coprocessor access). For continuous operation at 0 °C to −25 °C, the S3 package's improved temperature stability is also a factor.</p>
+      <p>For sensing we use two complementary components: the <strong>SHT40</strong> from Sensirion (±0.1 °C accuracy, I²C interface, factory-calibrated) for ambient air temperature and humidity inside the cold store, and the <strong>DS18B20</strong> in a waterproof probe for direct contact with stock and evaporators. A <strong>LiPo battery</strong> (3.7 V / 3000 mAh) paired with a TP4056 charge controller enables wireless deployment. Enclosures are rated IP67 — essential in wet cold environments where condensation is a daily constant.</p>
+    </div>
+
+    <pre><code>[SHT40 / DS18B20] → [ESP32-S3] → [MQTT Broker (Hetzner)] → [Node-RED] → [InfluxDB] → [Grafana]
+                                        ↓
+                                  [Alert Engine] → [Email / SMS]</code></pre>
+
+    <div data-lang="de">
+      <p>Die gesamte Infrastruktur läuft auf einem dedizierten Hetzner-Server in Deutschland (FSN1-Rechenzentrum, Falkenstein). Damit ist DSGVO-Konformität für die gespeicherten Sensordaten ohne zusätzliche vertragliche Maßnahmen gegeben.</p>
+    </div>
+    <div data-lang="en">
+      <p>All infrastructure runs on a dedicated Hetzner server in Germany (FSN1 data centre, Falkenstein). This means GDPR compliance for stored sensor data is achieved without additional contractual measures.</p>
+    </div>
+
+    <h2 id="mqtt">
+      <span data-lang="de">MQTT Topic-Struktur</span>
+      <span data-lang="en">MQTT Topic Structure</span>
+    </h2>
+
+    <div data-lang="de">
+      <p>Eine durchdachte Topic-Hierarchie ist die Grundlage für skalierbare IoT-Deployments. Unsere Struktur erlaubt es, Standorte, Geräte und Messwerttypen sauber zu trennen und auf allen Ebenen zu subscriben:</p>
+    </div>
+    <div data-lang="en">
+      <p>A well-designed topic hierarchy is the foundation for scalable IoT deployments. Our structure separates sites, devices, and measurement types cleanly, allowing subscriptions at any granularity:</p>
+    </div>
+
+    <pre><code>adroit/sense/{site_id}/{device_id}/temperature
+adroit/sense/{site_id}/{device_id}/humidity
+adroit/sense/{site_id}/{device_id}/status
+adroit/sense/{site_id}/{device_id}/alert</code></pre>
+
+    <div data-lang="de">
+      <p><strong>QoS-Level-Strategie:</strong> Sensor-Messwerte (Temperatur, Feuchte) werden mit <strong>QoS 1</strong> übertragen (at least once). Bei kurzen Übertragungsunterbrechungen kommt es zu Duplikaten, die serverseitig idempotent verarbeitet werden — kein Problem für eine Zeitreihendatenbank. Alerts hingegen laufen mit <strong>QoS 2</strong> (exactly once). Eine doppelte Alert-Auslösung würde Betriebspersonal unnötig alarmieren und das Vertrauen in das System beschädigen. Retained Messages auf dem Status-Topic stellen sicher, dass ein neu verbundener Subscriber sofort den letzten bekannten Gerätestatus erhält. Die gesamte Broker-Kommunikation erfolgt über <strong>Port 8883 mit TLS 1.3</strong> — unverschlüsseltes MQTT auf Port 1883 ist in der Produktivumgebung nicht geöffnet.</p>
+    </div>
+    <div data-lang="en">
+      <p><strong>QoS level strategy:</strong> Sensor readings (temperature, humidity) are published at <strong>QoS 1</strong> (at least once). Brief transmission interruptions may produce duplicates, which are handled idempotently server-side — no problem for a time-series database. Alerts, however, run at <strong>QoS 2</strong> (exactly once). Duplicate alert delivery would unnecessarily alarm operations staff and erode trust in the system. Retained messages on the status topic ensure that a freshly-connected subscriber immediately receives the last known device state. All broker communication runs over <strong>port 8883 with TLS 1.3</strong> — unencrypted MQTT on port 1883 is not open in the production environment.</p>
+    </div>
+
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Topic</th>
+          <th>QoS</th>
+          <th>Retained</th>
+          <th><span data-lang="de">Beschreibung</span><span data-lang="en">Description</span></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="highlight">…/temperature</td>
+          <td>1</td>
+          <td><span data-lang="de">Nein</span><span data-lang="en">No</span></td>
+          <td><span data-lang="de">°C-Wert alle 30 s</span><span data-lang="en">°C reading every 30 s</span></td>
+        </tr>
+        <tr>
+          <td class="highlight">…/humidity</td>
+          <td>1</td>
+          <td><span data-lang="de">Nein</span><span data-lang="en">No</span></td>
+          <td><span data-lang="de">%RH-Wert alle 30 s</span><span data-lang="en">%RH reading every 30 s</span></td>
+        </tr>
+        <tr>
+          <td class="highlight">…/status</td>
+          <td>1</td>
+          <td><span data-lang="de">Ja</span><span data-lang="en">Yes</span></td>
+          <td><span data-lang="de">Akku, RSSI, Uptime (Heartbeat)</span><span data-lang="en">Battery, RSSI, uptime (heartbeat)</span></td>
+        </tr>
+        <tr>
+          <td class="highlight">…/alert</td>
+          <td>2</td>
+          <td><span data-lang="de">Nein</span><span data-lang="en">No</span></td>
+          <td><span data-lang="de">Schwellwertüberschreitung, exakt einmal</span><span data-lang="en">Threshold breach, exactly once</span></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2 id="firmware">
+      <span data-lang="de">Firmware-Architektur</span>
+      <span data-lang="en">Firmware Architecture</span>
+    </h2>
+
+    <div data-lang="de">
+      <p>Die Firmware ist in C mit dem <strong>ESP-IDF Framework</strong> (v5.2) entwickelt. Wir nutzen FreeRTOS direkt — nicht das Arduino-HAL-Layer — um volle Kontrolle über Task-Prioritäten, Watchdog-Konfiguration und den Deep-Sleep-Zyklus zu behalten.</p>
+    </div>
+    <div data-lang="en">
+      <p>The firmware is written in C using the <strong>ESP-IDF framework</strong> (v5.2). We use FreeRTOS directly — not the Arduino HAL layer — to retain full control over task priorities, watchdog configuration, and the deep-sleep cycle.</p>
+    </div>
+
+    <pre><code>// Task priorities
+#define SENSOR_TASK_PRIORITY    5
+#define MQTT_TASK_PRIORITY      4
+#define WATCHDOG_TASK_PRIORITY  6
+
+void sensor_task(void *pvParameters) {
+    TickType_t xLastWakeTime = xTaskGetTickCount();
+    while (1) {
+        float temp, humidity;
+        if (sht40_read(&amp;temp, &amp;humidity) == ESP_OK) {
+            mqtt_publish_reading(temp, humidity);
+        }
+        vTaskDelayUntil(&amp;xLastWakeTime, pdMS_TO_TICKS(30000)); // 30s interval
+    }
+}</code></pre>
+
+    <div data-lang="de">
+      <p>Der <strong>Watchdog-Task</strong> (Priorität 6, höchste) überwacht alle anderen Tasks via Task-Notification. Antwortet ein Task innerhalb des konfigurierten Fensters nicht, löst der Watchdog einen kontrollierten Neustart aus — ohne Datenverlust, weil nicht bestätigte MQTT-Nachrichten im Persistent Session Cache des Brokers verbleiben.</p>
+      <p>Für batteriebetriebene Knoten aktivieren wir <strong>Deep Sleep</strong> zwischen den 30-Sekunden-Messintervallen. Die ESP32-S3 Deep-Sleep-Stromaufnahme liegt bei ca. 10 µA, was bei einem 3000-mAh-Akku eine Betriebsdauer von über 6 Monaten ohne Nachladung ermöglicht — sofern kein kontinuierliches WLAN-Scanning aktiv ist. Gerätekonfiguration (SSID, MQTT-Credentials, Schwellwerte) wird im <strong>NVS-Flash</strong> (Non-Volatile Storage) gespeichert und übersteht Neustarts und OTA-Updates. OTA-Updates selbst erfolgen über einen HTTPS-Endpunkt auf unserem Hetzner-Server mit signierter Firmware-Verifikation.</p>
+    </div>
+    <div data-lang="en">
+      <p>The <strong>watchdog task</strong> (priority 6, highest) monitors all other tasks via task notifications. If a task fails to respond within the configured window, the watchdog triggers a controlled restart — without data loss, because unacknowledged MQTT messages remain in the broker's persistent session cache.</p>
+      <p>For battery-operated nodes we activate <strong>deep sleep</strong> between the 30-second measurement intervals. ESP32-S3 deep-sleep current draw is approximately 10 µA, enabling over 6 months of operation from a 3000 mAh battery — provided continuous Wi-Fi scanning is not active. Device configuration (SSID, MQTT credentials, thresholds) is stored in <strong>NVS flash</strong> (Non-Volatile Storage), surviving restarts and OTA updates. OTA updates themselves are delivered via an HTTPS endpoint on our Hetzner server with signed firmware verification.</p>
+    </div>
+
+    <h2 id="alerting">
+      <span data-lang="de">Alerting &amp; Compliance</span>
+      <span data-lang="en">Alerting &amp; Compliance</span>
+    </h2>
+
+    <div data-lang="de">
+      <p>Die Alert-Engine läuft in <strong>Node-RED</strong> und ist damit für Betreiber ohne tiefe Programmierkenntnisse anpassbar. Schwellwert-Regeln werden als JSON-Konfiguration verwaltet — ein typisches Beispiel: eine Temperatur über +8 °C für mehr als 90 Sekunden löst einen Alert aus. Die 90-Sekunden-Hysterese verhindert Fehlalarme durch kurze Türöffnungen beim Warenein- und -ausgang.</p>
+      <p><strong>Alert-Deduplizierung:</strong> Innerhalb eines 15-Minuten-Fensters wird kein zweiter Alert für dieselbe Regel an dasselbe Gerät gesendet. Bleibt die Temperatur dauerhaft überhöht, folgt nach 15 Minuten eine Eskalation mit erhöhter Dringlichkeit. Dies verhindert SMS- und E-Mail-Fluten, die in der Praxis dazu führen, dass Betriebspersonal Alerting-Kanäle stumm schaltet.</p>
+      <p>Für die <strong>HACCP-Konformität</strong> exportiert das System auf Anforderung Messprotokolle als PDF und CSV — mit digitaler Signatur, Gerätekennzeichnung und Zeitstempeln nach ISO 8601. Der vollständige Audit-Trail wird in <strong>InfluxDB</strong> mit einer 2-Jahres-Retention-Policy gespeichert, was den DSGVO-Anforderungen auf Hetzner-Deutschland-Infrastruktur entspricht.</p>
+      <p>Der NIS2-Artikel 21-Punkt „Erkennung und Meldung von Sicherheitsvorfällen" ist durch diese Pipeline direkt adressiert: Jede anomale Messwertabweichung, jede unerwartete Geräteverbindung und jeder Verbindungsabriss werden protokolliert und können innerhalb der 72-Stunden-Meldefrist des §35 NIS2UmsuCG vollständig dokumentiert werden.</p>
+    </div>
+    <div data-lang="en">
+      <p>The alert engine runs in <strong>Node-RED</strong>, making it configurable by operators without deep programming knowledge. Threshold rules are managed as JSON configuration — a typical example: a temperature above +8 °C sustained for more than 90 seconds triggers an alert. The 90-second hysteresis prevents false alarms from brief door openings during stock loading and unloading.</p>
+      <p><strong>Alert deduplication:</strong> Within a 15-minute window, no second alert is sent for the same rule on the same device. If the temperature remains persistently elevated, an escalation with higher urgency follows after 15 minutes. This prevents SMS and email floods that in practice cause operations staff to silence alerting channels entirely.</p>
+      <p>For <strong>HACCP compliance</strong>, the system exports measurement records on demand as PDF and CSV — with digital signatures, device identifiers, and ISO 8601 timestamps. The complete audit trail is stored in <strong>InfluxDB</strong> with a 2-year retention policy, meeting GDPR requirements on Hetzner Germany infrastructure.</p>
+      <p>The NIS2 Article 21 requirement for incident detection and reporting is directly addressed by this pipeline: every anomalous reading deviation, every unexpected device connection, and every connection drop is logged and can be fully documented within the 72-hour reporting deadline of §35 NIS2UmsuCG.</p>
+    </div>
+
+    <h2 id="results">
+      <span data-lang="de">Ergebnisse aus dem Pilotprojekt</span>
+      <span data-lang="en">Results from the Pilot</span>
+    </h2>
+
+    <div data-lang="de">
+      <p>Nach vier Wochen Produktivbetrieb in einem Kühllogistikzentrum in NRW sprechen die Zahlen für sich:</p>
+    </div>
+    <div data-lang="en">
+      <p>After four weeks of production operation at a cold logistics centre in NRW, the numbers speak for themselves:</p>
+    </div>
+
+    <div class="stat-strip">
+      <div class="stat-cell">
+        <div class="stat-num">€240K</div>
+        <div class="stat-label"><span data-lang="de">Warenverlust verhindert in den ersten 3 Monaten</span><span data-lang="en">Stock loss prevented in first 3 months</span></div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-num">90 s</div>
+        <div class="stat-label"><span data-lang="de">Alert-Reaktionszeit (vorher: mehrere Stunden)</span><span data-lang="en">Alert response time (was: several hours)</span></div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-num">100%</div>
+        <div class="stat-label"><span data-lang="de">HACCP-Audit-Bestehensquote seit Deployment</span><span data-lang="en">HACCP audit pass rate since deployment</span></div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-num">0</div>
+        <div class="stat-label"><span data-lang="de">Unentdeckte Temperaturüberschreitungen seit Go-Live</span><span data-lang="en">Missed temperature excursions since go-live</span></div>
+      </div>
+    </div>
+
+    <div data-lang="de">
+      <p>Besonders bemerkenswert: Die einzige Temperaturüberschreitung im Beobachtungszeitraum wurde innerhalb von 43 Sekunden nach Überschreiten des Schwellwertes eskaliert. Das Wartungsteam konnte den betroffenen Kompressor innerhalb von 12 Minuten abschalten und die Ware in ein Ausweichkühllager verlagern. Ohne das System wäre der Ausfall erst bei der nächsten Routinekontrolle 4 Stunden später entdeckt worden.</p>
+    </div>
+    <div data-lang="en">
+      <p>Most notably: the single temperature excursion in the observation period was escalated within 43 seconds of the threshold being crossed. The maintenance team was able to shut down the affected compressor within 12 minutes and relocate the stock to a backup cold store. Without the system, the failure would have been discovered only at the next routine check 4 hours later.</p>
+    </div>
+
+    <h2 id="pilot">
+      <span data-lang="de">ADROIT SENSE™ Pilotprogramm</span>
+      <span data-lang="en">ADROIT SENSE™ Pilot Programme</span>
+    </h2>
+
+    <div data-lang="de">
+      <p>Wir nehmen aktuell Bewerbungen für das <strong>ADROIT SENSE™ Pilotprogramm</strong> entgegen — drei qualifizierte Betreiber in NRW erhalten eine vollständig ausgestattete 8-Wochen-Pilotbereitstellung zum Festpreis. Das Programm umfasst Hardware (ESP32-S3-Knoten, Sensoren, Montage), Broker-Infrastruktur auf Hetzner Deutschland, Node-RED-Alert-Konfiguration nach Ihren HACCP-Schwellwerten, Grafana-Dashboard sowie einen abschließenden Compliance-Report mit HACCP- und NIS2-Nachweisdokumentation.</p>
+      <p>Sprechen Sie uns an — das Pilotprojekt kostet Sie nichts außer vier Wochen Daten und Feedback.</p>
+    </div>
+    <div data-lang="en">
+      <p>We are currently accepting applications for the <strong>ADROIT SENSE™ Pilot Programme</strong> — three qualifying operators in NRW will receive a fully-equipped 8-week pilot deployment at a fixed price. The programme includes hardware (ESP32-S3 nodes, sensors, mounting), broker infrastructure on Hetzner Germany, Node-RED alert configuration to your HACCP thresholds, a Grafana dashboard, and a concluding compliance report with HACCP and NIS2 audit documentation.</p>
+      <p>Get in touch — the pilot costs you nothing except four weeks of data and feedback.</p>
+    </div>
+
+    <div style="margin-top:3rem; background:#1c1c1c; border:1px solid var(--border); padding:2.5rem; text-align:center;">
+      <p style="font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:0.8rem;">ADROIT SENSE™</p>
+      <h3 style="font-family:'DM Serif Display',serif;font-size:1.6rem;color:#f5f4f0;margin-bottom:1rem;">
+        <span data-lang="de">Bereit für Ihr Kühlketten-Pilotprojekt?</span>
+        <span data-lang="en">Ready to pilot cold chain monitoring?</span>
+      </h3>
+      <p style="color:rgba(245,244,240,0.5);max-width:48ch;margin:0 auto 1.8rem;font-size:0.92rem;">
+        <span data-lang="de">Sprechen Sie uns an — wir konfigurieren das System auf Ihre spezifischen HACCP-Schwellwerte und liefern einen vollständigen NIS2-Compliance-Nachweis.</span>
+        <span data-lang="en">Get in touch — we'll configure the system to your specific HACCP thresholds and deliver a full NIS2 compliance evidence package.</span>
+      </p>
+      <a href="/contact.html" class="btn-primary">
+        <span data-lang="de">Pilotprojekt anfragen</span>
+        <span data-lang="en">Enquire about a pilot</span>
+      </a>
+    </div>
+
+    <div class="author-bio">
+      <div class="author-info">
+        <h4>Gulam 'Enkay' Samdani</h4>
+        <p>
+          <span data-lang="de">Senior IT Systems &amp; Embedded Solutions Architect bei Adroit Solutions GmbH, Düsseldorf. 15+ Jahre in Enterprise-IT-Architektur und Embedded Systems, mit Delivery-Erfahrung in Aviation, Pharmalogistik und Elektronikfertigung. Spezialisiert auf IoT-Sicherheitsarchitektur und OT/IT-Integration für regulierte Umgebungen.</span>
+          <span data-lang="en">Senior IT Systems &amp; Embedded Solutions Architect at Adroit Solutions GmbH, Düsseldorf. 15+ years in enterprise IT architecture and embedded systems, with delivery experience spanning aviation, pharmaceutical logistics, and industrial electronics manufacturing. Specialises in IoT security architecture and OT/IT integration for regulated environments.</span>
+        </p>
+      </div>
+    </div>
+
+  </article>
+
+  <aside class="article-sidebar">
+    <div class="sidebar-box">
+      <p class="sidebar-title">
+        <span data-lang="de">In diesem Artikel</span>
+        <span data-lang="en">In this article</span>
+      </p>
+      <ul class="sidebar-toc">
+        <li><a href="#hardware"><span data-lang="de">Hardware-Architektur</span><span data-lang="en">Hardware Architecture</span></a></li>
+        <li><a href="#mqtt"><span data-lang="de">MQTT Topic-Struktur</span><span data-lang="en">MQTT Topic Structure</span></a></li>
+        <li><a href="#firmware"><span data-lang="de">Firmware-Architektur</span><span data-lang="en">Firmware Architecture</span></a></li>
+        <li><a href="#alerting"><span data-lang="de">Alerting &amp; Compliance</span><span data-lang="en">Alerting &amp; Compliance</span></a></li>
+        <li><a href="#results"><span data-lang="de">Ergebnisse</span><span data-lang="en">Results</span></a></li>
+        <li><a href="#pilot"><span data-lang="de">Pilotprogramm</span><span data-lang="en">Pilot Programme</span></a></li>
+      </ul>
+    </div>
+    <div class="sidebar-cta">
+      <h3>
+        <span data-lang="de">Pilot anfragen</span>
+        <span data-lang="en">Request a Pilot</span>
+      </h3>
+      <p>
+        <span data-lang="de">ADROIT SENSE™ Pilotprogramm für qualifizierte Betreiber in NRW. 8 Wochen, Festpreis, vollständig betreut.</span>
+        <span data-lang="en">ADROIT SENSE™ pilot programme for qualifying operators in NRW. 8 weeks, fixed price, fully supported.</span>
+      </p>
+      <a href="/contact.html" class="btn-primary">
+        <span data-lang="de">Jetzt anfragen</span>
+        <span data-lang="en">Get in touch</span>
+      </a>
+    </div>
+    <div class="sidebar-box" style="margin-top:1.5rem;">
+      <p class="sidebar-title">
+        <span data-lang="de">Verwandte Artikel</span>
+        <span data-lang="en">Related</span>
+      </p>
+      <ul class="sidebar-toc">
+        <li><a href="/blog/nis2-iot-compliance-germany-2025/">NIS2 &amp; IoT: German Compliance</a></li>
+        <li><a href="/services.html">IoT / Embedded Services</a></li>
+        <li><a href="/case-studies/">Case Studies</a></li>
+      </ul>
+    </div>
+  </aside>
+</div>
+
+<footer>
+  <div class="footer-left">
+    <a href="/"><img src="/adroit-logo.png" alt="Adroit Solutions GmbH"/></a>
+    <p class="footer-tagline">Electronics &middot; IoT &middot; Digital Solutions &middot; Düsseldorf</p>
+  </div>
+  <div class="footer-legal">
+    <p>&copy; 2026 Adroit Solutions GmbH</p>
+    <p><a href="/impressum.html">Impressum</a> &nbsp;&middot;&nbsp; <a href="/datenschutz.html">Datenschutz</a></p>
+  </div>
+</footer>
+
+<script>
+function setLang(lang) {
+  const isEn = lang === 'en';
+  document.body.classList.toggle('lang-en', isEn);
+  document.getElementById('btn-de').className = 'lang-btn' + (!isEn ? ' active' : '');
+  document.getElementById('btn-en').className = 'lang-btn' + (isEn ? ' active' : '');
+  sessionStorage.setItem('adroit-lang', lang);
+}
+const savedLang = sessionStorage.getItem('adroit-lang') || 'de';
+setLang(savedLang);
+window.addEventListener('scroll', () => {
+  const prog = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+  document.getElementById('scrollProgress').style.width = prog + '%';
+  const nav = document.getElementById('mainNav');
+  if (nav) nav.style.padding = window.scrollY > 50 ? '0.4rem 4rem' : '0.75rem 4rem';
+}, {passive: true});
+const obs = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+}, {threshold: 0.1, rootMargin: '0px 0px -50px 0px'});
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+function applyTimeMode() {
+  const hour = new Date().getHours();
+  const isDark = hour >= 19 || hour < 7;
+  document.documentElement.setAttribute('data-mode', isDark ? 'dark' : 'light');
+  document.body.style.background = isDark ? '#0a0a0a' : '#f5f2eb';
+  document.body.style.color = isDark ? '#f5f4f0' : '#0a0a0a';
+}
+applyTimeMode();
+setInterval(applyTimeMode, 3600000);
+(function(){
+  var btn = document.getElementById('menuBtn');
+  var nav = document.querySelector('.nav-links');
+  if (!btn || !nav) return;
+  btn.addEventListener('click', function(){
+    var open = nav.classList.toggle('open');
+    btn.classList.toggle('open', open);
+  });
+  nav.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){
+      nav.classList.remove('open');
+      btn.classList.remove('open');
+    });
+  });
+})();
+</script>
+<script src="/cookie-consent.js"></script>
+</body>
+</html>
