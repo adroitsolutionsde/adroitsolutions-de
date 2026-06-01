@@ -388,6 +388,23 @@ html[data-mode="light"] .open-app p { color: rgba(10,10,10,0.65) !important; }
 html[data-mode="light"] .form-field label { color: rgba(10,10,10,0.45) !important; }
 html[data-mode="light"] .form-field input, html[data-mode="light"] .form-field textarea { background: rgba(0,0,0,0.04) !important; color: #0a0a0a !important; border-color: rgba(201,168,76,0.3) !important; }
 @media (max-width: 600px) { #applyForm > div > div:first-child { grid-template-columns: 1fr !important; } }
+.file-upload-wrap {
+  position: relative; border: 1px dashed rgba(201,168,76,0.4);
+  background: rgba(255,255,255,0.02); transition: border-color 0.2s, background 0.2s;
+  min-height: 56px;
+}
+.file-upload-wrap:hover { border-color: var(--gold); background: rgba(201,168,76,0.03); }
+.file-upload-wrap.has-file { border-style: solid; border-color: var(--gold); background: rgba(201,168,76,0.06); }
+.file-upload-label {
+  display: flex; align-items: center; gap: 0.75rem;
+  padding: 0.9rem 1.1rem; color: rgba(245,244,240,0.5);
+  font-size: 0.9rem; pointer-events: none;
+}
+.file-upload-wrap.has-file .file-upload-label { color: #f5f4f0; }
+#cvField.error .file-upload-wrap { border-color: #e04444 !important; }
+html[data-mode="light"] .file-upload-wrap { background: rgba(0,0,0,0.03) !important; }
+html[data-mode="light"] .file-upload-label { color: rgba(10,10,10,0.45) !important; }
+html[data-mode="light"] .file-upload-wrap.has-file .file-upload-label { color: #0a0a0a !important; }
 html[data-mode="light"] .cta-band h2 { color: #0a0a0a !important; }
 html[data-mode="light"] .cta-band p { color: rgba(10,10,10,0.65) !important; }
 html[data-mode="light"] .btn-outline { border-color: rgba(10,10,10,0.3) !important; color: #0a0a0a !important; }
@@ -589,8 +606,18 @@ html[data-mode="light"] .cta-band { background: linear-gradient(135deg, rgba(237
         <label><span data-lang="de">LinkedIn / Portfolio (optional)</span><span data-lang="en">LinkedIn / Portfolio (optional)</span></label>
         <input type="url" id="applyLink" placeholder="https://linkedin.com/in/..."/>
       </div>
+      <div class="form-field" id="cvField">
+        <label><span data-lang="de">Lebenslauf / CV</span><span data-lang="en">CV / Resume</span> * <span style="font-size:0.6rem;color:rgba(245,244,240,0.3);text-transform:none;letter-spacing:0">(PDF, DOC, DOCX — max 5 MB)</span></label>
+        <div class="file-upload-wrap" id="fileWrap">
+          <input type="file" id="applyCV" accept=".pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document" style="position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%"/>
+          <div class="file-upload-label" id="fileLabel">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+            <span id="fileLabelText"><span data-lang="de">Datei auswählen oder hierher ziehen</span><span data-lang="en">Choose file or drag here</span></span>
+          </div>
+        </div>
+      </div>
       <div class="form-field">
-        <label><span data-lang="de">Nachricht</span><span data-lang="en">Cover note</span> *</label>
+        <label><span data-lang="de">Anschreiben / Nachricht</span><span data-lang="en">Cover note / Message</span> *</label>
         <textarea id="applyMsg" style="resize:vertical;min-height:130px;background:rgba(255,255,255,0.04);border:1px solid var(--border);color:#f5f4f0;padding:0.9rem 1.1rem;font-family:'DM Sans',sans-serif;font-size:0.95rem;outline:none;width:100%;transition:border-color 0.2s" placeholder="Kurze Vorstellung, Erfahrung, Verfügbarkeit..."></textarea>
       </div>
       <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem">
@@ -714,6 +741,28 @@ applyTimeMode();
 setInterval(applyTimeMode, 3600000);
 
 
+// File upload label update
+document.addEventListener('DOMContentLoaded', function() {
+  var cvInput = document.getElementById('applyCV');
+  if (!cvInput) return;
+  cvInput.addEventListener('change', function() {
+    var wrap = document.getElementById('fileWrap');
+    var labelText = document.getElementById('fileLabelText');
+    if (cvInput.files && cvInput.files[0]) {
+      var f = cvInput.files[0];
+      wrap.classList.add('has-file');
+      labelText.textContent = f.name + ' (' + (f.size / 1024).toFixed(0) + ' KB)';
+    } else {
+      wrap.classList.remove('has-file');
+      labelText.innerHTML = '<span data-lang="de">Datei auswählen oder hierher ziehen</span><span data-lang="en">Choose file or drag here</span>';
+      var lang = document.body.classList.contains('lang-en');
+      labelText.querySelectorAll('[data-lang]').forEach(function(el){
+        el.style.display = (el.getAttribute('data-lang') === (lang ? 'en' : 'de')) ? '' : 'none';
+      });
+    }
+  });
+});
+
 function applyFor(role) {
   var roleInput = document.getElementById('applyRole');
   if (roleInput && role) roleInput.value = role;
@@ -730,42 +779,58 @@ function submitApplication() {
   var role = document.getElementById('applyRole').value.trim();
   var link = document.getElementById('applyLink').value.trim();
   var msg = document.getElementById('applyMsg').value.trim();
+  var cvInput = document.getElementById('applyCV');
+  var cvFile = cvInput && cvInput.files && cvInput.files[0];
   var errEl = document.getElementById('applyError');
 
   document.querySelectorAll('#applyForm .form-field').forEach(function(f){ f.classList.remove('error'); });
+  errEl.style.color = 'rgba(245,244,240,0.35)';
+  errEl.querySelector('[data-lang="de"]').textContent = '* Pflichtfelder. Daten werden nur zur Bearbeitung Ihrer Bewerbung verwendet (Art. 6 Abs. 1 lit. b DSGVO).';
+  errEl.querySelector('[data-lang="en"]').textContent = '* Required fields. Data used solely to process your application (Art. 6(1)(b) GDPR).';
 
   var hasErr = false;
   if (!first) { document.getElementById('applyFirst').closest('.form-field').classList.add('error'); hasErr = true; }
   if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { document.getElementById('applyEmail').closest('.form-field').classList.add('error'); hasErr = true; }
-  if (!msg) { document.getElementById('applyMsg').closest('.form-field').classList.add('error'); hasErr = true; }
+  if (!cvFile) { document.getElementById('cvField').classList.add('error'); hasErr = true; }
+  if (cvFile && cvFile.size > 5 * 1024 * 1024) {
+    document.getElementById('cvField').classList.add('error');
+    errEl.style.color = '#e04444';
+    errEl.querySelector('[data-lang="de"]').textContent = 'CV-Datei ist zu groß (max. 5 MB).';
+    errEl.querySelector('[data-lang="en"]').textContent = 'CV file is too large (max 5 MB).';
+    return;
+  }
+  if (!msg || msg.length < 10) { document.getElementById('applyMsg').closest('.form-field').classList.add('error'); hasErr = true; }
   if (hasErr) {
     errEl.style.color = '#e04444';
-    errEl.querySelector('[data-lang="de"]').textContent = 'Bitte alle Pflichtfelder (*) ausfüllen.';
-    errEl.querySelector('[data-lang="en"]').textContent = 'Please fill in all required fields (*).';
+    errEl.querySelector('[data-lang="de"]').textContent = 'Bitte alle Pflichtfelder (*) korrekt ausfüllen.';
+    errEl.querySelector('[data-lang="en"]').textContent = 'Please fill in all required fields correctly (*).';
+    document.querySelector('#applyForm .form-field.error').scrollIntoView({behavior:'smooth', block:'center'});
     return;
   }
 
+  var name = (first + ' ' + last).trim();
   var btn = document.getElementById('applyBtn');
   btn.disabled = true;
   btn.textContent = isEn ? 'Sending…' : 'Sende…';
 
-  fetch('https://formspree.io/f/YOUR_FORM_ID', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-    body: JSON.stringify({
-      name: (first + ' ' + last).trim(),
-      email: email,
-      role: role || 'Initiativbewerbung',
-      portfolio: link,
-      message: msg,
-      _subject: 'Karriere-Bewerbung: ' + (role || 'Initiativbewerbung') + ' — ' + (first + ' ' + last).trim()
-    })
-  })
-  .then(function(r){ return r.json().then(function(d){ return {ok: r.ok, data: d}; }); })
+  var fd = new FormData();
+  fd.append('access_key', 'e065deaf-d1d6-40bc-9d75-e54e26158241');
+  fd.append('from_name', name);
+  fd.append('replyto', email);
+  fd.append('subject', 'Karriere-Bewerbung: ' + (role || 'Initiativbewerbung') + ' — ' + name);
+  fd.append('Name', name);
+  fd.append('Email', email);
+  fd.append('Role', role || 'Initiativbewerbung');
+  fd.append('LinkedIn / Portfolio', link || '—');
+  fd.append('Cover Note', msg);
+  if (cvFile) fd.append('attachment', cvFile, cvFile.name);
+
+  fetch('https://api.web3forms.com/submit', { method: 'POST', body: fd })
+  .then(function(r){ return r.json(); })
   .then(function(res) {
     btn.disabled = false;
-    btn.innerHTML = isEn ? 'Send Application' : 'Bewerbung senden';
-    if (res.ok) {
+    btn.innerHTML = '<span data-lang="de">Bewerbung senden</span><span data-lang="en">Send Application</span>';
+    if (res.success) {
       document.getElementById('applyForm').innerHTML =
         '<div style="text-align:center;padding:3rem 1rem">' +
         '<svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="#c9a84c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin:0 auto 1.2rem;display:block"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>' +
@@ -774,14 +839,16 @@ function submitApplication() {
         '</div>';
     } else {
       errEl.style.color = '#e04444';
-      errEl.textContent = isEn ? 'Something went wrong. Please email careers@adroitsolutions.de' : 'Fehler. Bitte schreiben Sie uns an careers@adroitsolutions.de';
+      errEl.querySelector('[data-lang="de"]').textContent = 'Fehler. Bitte schreiben Sie uns direkt an info@adroitsolutions.de';
+      errEl.querySelector('[data-lang="en"]').textContent = 'Something went wrong. Please email info@adroitsolutions.de directly.';
     }
   })
   .catch(function() {
     btn.disabled = false;
-    btn.innerHTML = isEn ? 'Send Application' : 'Bewerbung senden';
+    btn.innerHTML = '<span data-lang="de">Bewerbung senden</span><span data-lang="en">Send Application</span>';
     errEl.style.color = '#e04444';
-    errEl.textContent = isEn ? 'Network error. Please email careers@adroitsolutions.de directly.' : 'Netzwerkfehler. Bitte schreiben Sie uns direkt an careers@adroitsolutions.de';
+    errEl.querySelector('[data-lang="de"]').textContent = 'Netzwerkfehler. Bitte schreiben Sie uns direkt an info@adroitsolutions.de';
+    errEl.querySelector('[data-lang="en"]').textContent = 'Network error. Please email info@adroitsolutions.de directly.';
   });
 }
 
