@@ -1,451 +1,499 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" style="background:#0a0a0a !important">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NIS2 and IoT: What German Manufacturers Must Know Before the Deadline — Adroit Solutions</title>
-  <meta name="description" content="NIS2 is now German law under NIS2UmsuCG. If your facility uses IoT devices, you are almost certainly in scope. Here is what that means, what it requires, and how to comply — technically and operationally.">
-  <meta property="og:title" content="NIS2 and IoT: What German Manufacturers Must Know Before the Deadline">
-  <meta property="og:description" content="29,000+ German companies are now NIS2-obligated. If your facility uses IoT, here's what compliance actually requires — and how to achieve it.">
-  <link rel="canonical" href="https://adroitsolutions.de/blog/nis2-iot-compliance-germany-2025">
-
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "BlogPosting",
-    "headline": "NIS2 and IoT: What German Manufacturers Must Know Before the Deadline",
-    "description": "NIS2 is now German law under NIS2UmsuCG. If your facility uses IoT devices — sensors, gateways, SCADA systems, smart meters — you are almost certainly in scope. Here is what that means technically and operationally.",
-    "author": {
-      "@type": "Person",
-      "name": "Gulam 'Enkay' Samdani",
-      "jobTitle": "Senior IT Systems & Embedded Solutions Architect",
-      "worksFor": { "@id": "https://adroitsolutions.de/#organization" }
-    },
-    "publisher": { "@id": "https://adroitsolutions.de/#organization" },
-    "datePublished": "2025-06-01",
-    "dateModified": "2025-06-01",
-    "url": "https://adroitsolutions.de/blog/nis2-iot-compliance-germany-2025",
-    "keywords": ["NIS2", "IoT Security", "NIS2UmsuCG", "Germany Compliance", "Industrial IoT", "OT Security", "Mittelstand"],
-    "articleSection": "Technical Blog",
-    "image": "https://adroitsolutions.de/assets/blog/nis2-iot-cover.jpg",
-    "inLanguage": "en-GB"
+<meta charset="UTF-8"/>
+<meta name="color-scheme" content="dark"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>NIS2 and IoT: What German Manufacturers Must Know – Adroit Solutions GmbH</title>
+<meta name="description" content="NIS2UmsuCG is law. 29,000+ German companies are in scope. IoT devices are the biggest compliance gap. A practical guide for Mittelstand manufacturers on Article 21 obligations, BSI registration, and a 90-day remediation roadmap."/>
+<link rel="canonical" href="https://adroitsolutions.de/blog/nis2-iot-compliance-germany-2025/"/>
+<meta property="og:type" content="article"/>
+<meta property="og:url" content="https://adroitsolutions.de/blog/nis2-iot-compliance-germany-2025/"/>
+<meta property="og:site_name" content="Adroit Solutions GmbH"/>
+<meta property="og:title" content="NIS2 and IoT: What German Manufacturers Must Know Before the Deadline"/>
+<meta property="og:description" content="NIS2UmsuCG fines reach €10M. IoT is the top compliance gap. A 90-day roadmap for German manufacturers."/>
+<meta property="og:image" content="https://adroitsolutions.de/adroit-logo.png"/>
+<link rel="stylesheet" href="/fonts/fonts.css"/>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "NIS2 and IoT: What German Manufacturers Must Know Before the Deadline",
+  "description": "NIS2UmsuCG is law, BSI enforces, €10M or 2% fines. 29,000+ German companies obligated. IoT devices are the highest-risk compliance gap.",
+  "author": {
+    "@type": "Person",
+    "name": "Gulam 'Enkay' Samdani",
+    "jobTitle": "Senior IT Systems & Embedded Solutions Architect"
+  },
+  "publisher": {"@type": "Organization", "name": "Adroit Solutions GmbH", "url": "https://adroitsolutions.de"},
+  "datePublished": "2025-06-01",
+  "url": "https://adroitsolutions.de/blog/nis2-iot-compliance-germany-2025/",
+  "keywords": ["NIS2", "IoT Security", "OT Security", "German Compliance", "Mittelstand", "NIS2UmsuCG", "BSI"],
+  "breadcrumb": {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://adroitsolutions.de/"},
+      {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://adroitsolutions.de/blog/"},
+      {"@type": "ListItem", "position": 3, "name": "NIS2 & IoT", "item": "https://adroitsolutions.de/blog/nis2-iot-compliance-germany-2025/"}
+    ]
   }
-  </script>
+}
+</script>
+<style>
+html, body { background: #0a0a0a !important; color: #f5f4f0 !important; margin: 0 !important; padding: 0 !important; font-family: 'DM Sans', sans-serif !important; font-weight: 300; line-height: 1.7; overflow-x: hidden; }
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root { --black: #0a0a0a; --white: #f5f4f0; --gold: #c9a84c; --gold-light: #e8c97a; --mid: #1c1c1c; --border: rgba(201,168,76,0.2); }
+html { scroll-behavior: smooth; }
+.scroll-progress { position: fixed; top: 0; left: 0; z-index: 200; height: 2px; width: 0%; background: linear-gradient(90deg, var(--gold), var(--gold-light)); transition: width 0.1s linear; }
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0.75rem 4rem; background: rgba(10,10,10,0.95) !important; backdrop-filter: blur(16px); border-bottom: 1px solid var(--border); transition: padding 0.3s; }
+.nav-logo img { height: 140px; filter: brightness(0) invert(1); display: block; }
+.nav-right { display: flex; align-items: center; gap: 2rem; }
+.nav-links { display: flex; gap: 2rem; list-style: none; }
+.nav-links a { color: rgba(245,244,240,0.6); text-decoration: none; font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; position: relative; transition: color 0.2s; }
+.nav-links a::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 1px; background: var(--gold); transition: width 0.3s; }
+.nav-links a:hover, .nav-links a.active { color: var(--gold); }
+.nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
+.lang-switcher { display: flex; gap: 0.4rem; }
+.lang-btn { background: none; border: 1px solid rgba(201,168,76,0.4); color: rgba(245,244,240,0.6); font-family: 'DM Sans', sans-serif; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; padding: 0.35rem 0.8rem; cursor: pointer; transition: all 0.25s; }
+.lang-btn.active { background: var(--gold); border-color: var(--gold); color: #0a0a0a; font-weight: 700; }
+.lang-btn:hover { border-color: var(--gold); color: var(--gold); }
+.menu-btn { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; }
+.menu-btn span { display: block; width: 22px; height: 2px; background: rgba(245,244,240,0.75); border-radius: 1px; transition: all 0.25s; }
+.menu-btn.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.menu-btn.open span:nth-child(2) { opacity: 0; }
+.menu-btn.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+.breadcrumb { padding: 9rem 4rem 0; display: flex; align-items: center; gap: 0.5rem; font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(245,244,240,0.4); flex-wrap: wrap; }
+.breadcrumb a { color: rgba(245,244,240,0.4); text-decoration: none; transition: color 0.2s; }
+.breadcrumb a:hover { color: var(--gold); }
+.breadcrumb span.current { color: var(--gold); }
+.divider { width: calc(100% - 8rem); height: 1px; background: linear-gradient(90deg, transparent, var(--border), transparent); margin: 0 4rem; }
+.btn-primary { background: var(--gold); color: #0a0a0a; padding: 0.9rem 2.2rem; border: none; cursor: pointer; font-family: 'DM Sans', sans-serif; font-size: 0.85rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none; display: inline-block; transition: background 0.2s, transform 0.2s; }
+.btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); }
+.reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.8s cubic-bezier(0.22,1,0.36,1), transform 0.8s cubic-bezier(0.22,1,0.36,1); }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+footer { background: #1c1c1c; border-top: 1px solid var(--border); padding: 3rem 4rem; display: grid; grid-template-columns: 1fr auto; gap: 2rem; align-items: start; }
+.footer-left { display: flex; flex-direction: column; gap: 0.2rem; }
+.footer-left img { height: 110px; filter: brightness(0) invert(1); display: block; }
+.footer-tagline { font-size: 0.8rem; color: rgba(245,244,240,0.35); }
+.footer-legal { font-size: 0.75rem; color: rgba(245,244,240,0.3); text-align: right; line-height: 1.8; }
+.footer-legal a { color: rgba(245,244,240,0.4); text-decoration: none; }
+.footer-legal a:hover { color: var(--gold); }
+.tag { font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); border: 1px solid rgba(201,168,76,0.3); padding: 0.2rem 0.6rem; display: inline-block; }
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Outfit:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+/* Article layout */
+.article-header { padding: 7rem 4rem 4rem; background: #0a0a0a; max-width: 1200px; }
+.article-eyebrow { font-size: 0.65rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.5rem; }
+.article-title { font-family: 'DM Serif Display', serif; font-size: clamp(2rem, 4vw, 3.2rem); line-height: 1.1; color: #f5f4f0; max-width: 800px; margin-bottom: 1.5rem; }
+.article-meta { display: flex; align-items: center; gap: 1.5rem; margin-bottom: 1.5rem; flex-wrap: wrap; }
+.meta-item { font-size: 0.78rem; color: rgba(245,244,240,0.4); }
+.meta-separator { color: rgba(201,168,76,0.3); }
+.article-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
 
-  <style>
-    :root {
-      --ink: #1A1A1A;
-      --gold: #C8A84B;
-      --red: #CC2936;
-      --cream: #F5F0E8;
-      --white: #FFFFFF;
-      --muted: #6B6B6B;
-      --code-bg: #1E1E2E;
-    }
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: 'Outfit', sans-serif; background: var(--white); color: var(--ink); line-height: 1.8; }
+/* Main content grid */
+.article-body { display: grid; grid-template-columns: 1fr 280px; gap: 4rem; padding: 0 4rem 6rem; align-items: start; max-width: 1200px; margin: 0 auto; }
+.article-content { min-width: 0; }
 
-    nav { display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 4rem; border-bottom: 1px solid #E5E0D8; }
-    .nav-logo { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.2rem; text-decoration: none; color: var(--ink); }
-    .nav-logo span { color: var(--gold); }
-    .nav-links { display: flex; gap: 2rem; list-style: none; }
-    .nav-links a { text-decoration: none; color: var(--muted); font-size: 0.9rem; }
-    .nav-links a:hover { color: var(--gold); }
+/* Prose styles */
+.prose { }
+.prose p { color: rgba(245,244,240,0.7); margin-bottom: 1.4rem; font-size: 1rem; line-height: 1.9; }
+.prose h2 { font-family: 'DM Serif Display', serif; font-size: clamp(1.4rem, 2.5vw, 1.9rem); color: #f5f4f0; margin: 3rem 0 1rem; line-height: 1.2; }
+.prose h3 { font-family: 'DM Serif Display', serif; font-size: 1.25rem; color: #f5f4f0; margin: 2rem 0 0.75rem; }
+.prose ul, .prose ol { color: rgba(245,244,240,0.65); padding-left: 1.5rem; margin-bottom: 1.4rem; }
+.prose ul li, .prose ol li { margin-bottom: 0.5rem; font-size: 0.97rem; line-height: 1.75; }
+.prose strong { color: #f5f4f0; font-weight: 600; }
+.prose a { color: var(--gold); text-decoration: none; }
+.prose a:hover { text-decoration: underline; }
+.prose code { font-family: 'Courier New', monospace; font-size: 0.85em; background: #1a1a1a; border: 1px solid rgba(201,168,76,0.2); color: var(--gold-light); padding: 0.15em 0.4em; border-radius: 2px; }
+.prose pre { background: #111; border: 1px solid rgba(201,168,76,0.15); border-left: 3px solid var(--gold); padding: 1.5rem; margin: 1.5rem 0; overflow-x: auto; }
+.prose pre code { background: none; border: none; padding: 0; font-size: 0.83rem; color: rgba(245,244,240,0.75); line-height: 1.6; }
+.prose blockquote { border-left: 3px solid var(--gold); padding: 1rem 1.5rem; margin: 1.5rem 0; background: rgba(201,168,76,0.04); }
+.prose blockquote p { color: rgba(245,244,240,0.6); font-style: italic; margin: 0; }
 
-    /* ARTICLE HEADER */
-    .article-header {
-      max-width: 780px;
-      margin: 0 auto;
-      padding: 4rem 2rem 2rem;
-    }
-    .breadcrumb { font-size: 0.8rem; color: var(--gold); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 1.5rem; }
-    .breadcrumb a { color: var(--gold); text-decoration: none; }
-    .tag-row { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
-    .tag {
-      background: var(--ink);
-      color: var(--white);
-      font-family: 'Syne', sans-serif;
-      font-size: 0.72rem;
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      padding: 0.25rem 0.7rem;
-    }
-    .tag.gold { background: var(--gold); color: var(--ink); }
-    h1 {
-      font-family: 'Syne', sans-serif;
-      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
-      font-weight: 800;
-      line-height: 1.2;
-      margin-bottom: 1.25rem;
-    }
-    .article-meta {
-      display: flex;
-      gap: 2rem;
-      align-items: center;
-      flex-wrap: wrap;
-      padding: 1.25rem 0;
-      border-top: 1px solid #E5E0D8;
-      border-bottom: 1px solid #E5E0D8;
-      margin-bottom: 3rem;
-    }
-    .author { display: flex; align-items: center; gap: 0.75rem; }
-    .author-avatar {
-      width: 40px; height: 40px;
-      background: var(--gold);
-      border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      font-family: 'Syne', sans-serif;
-      font-weight: 800;
-      font-size: 0.9rem;
-      color: var(--ink);
-    }
-    .author-info strong { display: block; font-size: 0.9rem; font-weight: 600; }
-    .author-info span { font-size: 0.8rem; color: var(--muted); }
-    .meta-right { font-size: 0.85rem; color: var(--muted); }
-    .read-time { background: var(--cream); padding: 0.25rem 0.75rem; font-size: 0.8rem; }
+/* Data table */
+.data-table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: 0.88rem; }
+.data-table th { text-align: left; padding: 0.7rem 1rem; font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(245,244,240,0.4); border-bottom: 1px solid var(--border); font-weight: 500; background: rgba(201,168,76,0.04); }
+.data-table td { padding: 0.8rem 1rem; border-bottom: 1px solid rgba(201,168,76,0.07); color: rgba(245,244,240,0.65); vertical-align: top; }
+.data-table tr:last-child td { border-bottom: none; }
+.data-table .highlight { color: var(--gold); font-weight: 500; }
 
-    /* ARTICLE BODY */
-    .article-body {
-      max-width: 720px;
-      margin: 0 auto;
-      padding: 0 2rem 5rem;
-    }
-    .article-body p { margin-bottom: 1.5rem; font-size: 1.05rem; color: #2A2A2A; }
-    .article-body h2 {
-      font-family: 'Syne', sans-serif;
-      font-size: 1.6rem;
-      font-weight: 700;
-      margin: 3rem 0 1rem;
-      padding-top: 1rem;
-      border-top: 2px solid var(--gold);
-      display: inline-block;
-    }
-    .article-body h3 {
-      font-family: 'Syne', sans-serif;
-      font-size: 1.15rem;
-      font-weight: 700;
-      margin: 2rem 0 0.75rem;
-    }
-    .callout {
-      border-left: 3px solid var(--gold);
-      background: var(--cream);
-      padding: 1.25rem 1.75rem;
-      margin: 2rem 0;
-      font-size: 1rem;
-    }
-    .callout strong { display: block; font-family: 'Syne', sans-serif; font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.5rem; }
-    .warning-box {
-      border: 2px solid var(--red);
-      padding: 1.25rem 1.75rem;
-      margin: 2rem 0;
-      background: #FFF5F5;
-    }
-    .warning-box strong { display: block; font-family: 'Syne', sans-serif; font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--red); margin-bottom: 0.5rem; }
-    code {
-      font-family: 'JetBrains Mono', monospace;
-      background: #F0EDE8;
-      padding: 0.15rem 0.4rem;
-      font-size: 0.88em;
-    }
-    pre {
-      background: var(--code-bg);
-      color: #CDD6F4;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.85rem;
-      padding: 1.5rem;
-      overflow-x: auto;
-      margin: 1.5rem 0;
-      line-height: 1.6;
-    }
-    pre .comment { color: #6C7086; }
-    pre .string { color: #A6E3A1; }
-    pre .keyword { color: #CBA6F7; }
+/* Sidebar */
+.article-sidebar { position: sticky; top: 8rem; }
+.sidebar-box { background: #111; border: 1px solid var(--border); padding: 1.5rem; margin-bottom: 1.5rem; }
+.sidebar-title { font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; }
+.sidebar-toc { list-style: none; }
+.sidebar-toc li { padding: 0.3rem 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+.sidebar-toc li:last-child { border-bottom: none; }
+.sidebar-toc a { font-size: 0.78rem; color: rgba(245,244,240,0.5); text-decoration: none; transition: color 0.2s; line-height: 1.4; display: block; }
+.sidebar-toc a:hover { color: var(--gold); }
+.sidebar-cta { background: rgba(201,168,76,0.08); border: 1px solid var(--border); padding: 1.5rem; text-align: center; }
+.sidebar-cta h3 { font-family: 'DM Serif Display', serif; font-size: 1.1rem; color: #f5f4f0; margin-bottom: 0.75rem; }
+.sidebar-cta p { font-size: 0.8rem; color: rgba(245,244,240,0.5); margin-bottom: 1.2rem; line-height: 1.6; }
+.sidebar-cta .btn-primary { font-size: 0.75rem; padding: 0.7rem 1.2rem; }
 
-    .checklist { list-style: none; margin: 1.5rem 0; }
-    .checklist li { padding: 0.6rem 0; padding-left: 2rem; position: relative; border-bottom: 1px solid #F0EDE8; font-size: 1rem; }
-    .checklist li::before { content: '□'; position: absolute; left: 0; color: var(--gold); font-size: 1.2rem; }
-    .checklist li.done::before { content: '✓'; color: #1A7A4A; }
+/* Checklist */
+.checklist { list-style: none; padding: 0; }
+.checklist li { padding: 0.5rem 0 0.5rem 1.8rem; position: relative; border-bottom: 1px solid rgba(255,255,255,0.04); color: rgba(245,244,240,0.65); font-size: 0.95rem; }
+.checklist li:last-child { border-bottom: none; }
+.checklist li::before { content: '□'; position: absolute; left: 0; color: var(--gold); font-size: 0.85rem; }
 
-    .scope-table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; }
-    .scope-table th { background: var(--ink); color: var(--white); font-family: 'Syne', sans-serif; padding: 0.75rem 1rem; text-align: left; font-size: 0.83rem; }
-    .scope-table td { padding: 0.75rem 1rem; border-bottom: 1px solid #E5E0D8; font-size: 0.95rem; }
-    .scope-table tr:nth-child(even) td { background: #F9F7F4; }
-    .in-scope { color: var(--red); font-weight: 600; }
-    .out-scope { color: #888; }
+/* Warning box */
+.callout { background: rgba(201,168,76,0.06); border: 1px solid rgba(201,168,76,0.25); border-left: 3px solid var(--gold); padding: 1.2rem 1.5rem; margin: 1.5rem 0; }
+.callout-label { font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.5rem; }
+.callout p { color: rgba(245,244,240,0.65); font-size: 0.92rem; margin: 0; line-height: 1.7; }
 
-    /* AUTHOR BIO */
-    .author-bio {
-      border: 1px solid #E5E0D8;
-      padding: 2rem;
-      margin: 3rem 0;
-      display: grid;
-      grid-template-columns: 60px 1fr;
-      gap: 1.5rem;
-      align-items: start;
-    }
-    .bio-avatar {
-      width: 60px; height: 60px;
-      background: var(--gold);
-      border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      font-family: 'Syne', sans-serif;
-      font-weight: 800;
-      font-size: 1.2rem;
-      color: var(--ink);
-    }
-    .bio-text strong { font-family: 'Syne', sans-serif; font-size: 1rem; display: block; margin-bottom: 0.25rem; }
-    .bio-text span { font-size: 0.85rem; color: var(--gold); display: block; margin-bottom: 0.75rem; }
-    .bio-text p { font-size: 0.9rem; margin-bottom: 0; color: #555; }
+/* Author bio */
+.author-bio { background: #111; border: 1px solid var(--border); padding: 2rem; margin-top: 3rem; display: flex; gap: 1.5rem; align-items: flex-start; }
+.author-info h4 { font-weight: 600; color: #f5f4f0; margin-bottom: 0.2rem; font-size: 0.95rem; }
+.author-info p { font-size: 0.82rem; color: rgba(245,244,240,0.45); margin: 0; line-height: 1.6; }
 
-    /* CTA */
-    .article-cta { background: var(--ink); color: var(--white); padding: 3rem 2rem; text-align: center; margin: 3rem 0; }
-    .article-cta h2 { font-family: 'Syne', sans-serif; font-size: 1.6rem; margin-bottom: 0.75rem; }
-    .article-cta p { color: #BBB; max-width: 480px; margin: 0 auto 1.5rem; font-size: 0.95rem; }
-    .btn-gold { display: inline-block; background: var(--gold); color: var(--ink); font-family: 'Syne', sans-serif; font-weight: 700; font-size: 0.85rem; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.9rem 2rem; text-decoration: none; }
-
-    @media (max-width: 768px) {
-      nav { padding: 1rem 1.5rem; }
-      .article-header, .article-body { padding-left: 1.25rem; padding-right: 1.25rem; }
-      .author-bio { grid-template-columns: 1fr; }
-    }
-  </style>
+@media (max-width: 1100px) {
+  .article-body { grid-template-columns: 1fr; }
+  .article-sidebar { position: static; }
+}
+@media (max-width: 900px) {
+  nav { padding: 0.5rem 1.5rem !important; }
+  .nav-logo img { height: 72px; }
+  .menu-btn { display: flex; }
+  .nav-links { display: none; position: absolute; top: 100%; left: 0; right: 0; z-index: 99; background: rgba(10,10,10,0.98); border-top: 1px solid var(--border); flex-direction: column; padding: 0.5rem 0; gap: 0; }
+  .nav-links.open { display: flex; }
+  .nav-links li { border-bottom: 1px solid rgba(255,255,255,0.06); }
+  .nav-links a { padding: 0.9rem 1.5rem !important; display: block; }
+  .nav-links a::after { display: none !important; }
+  .article-header { padding: 7rem 1.5rem 3rem; }
+  .breadcrumb { padding: 7rem 1.5rem 0; }
+  .article-body { padding: 0 1.5rem 4rem; }
+  footer { grid-template-columns: 1fr; }
+  .footer-legal { text-align: left; }
+  .divider { margin: 0 1.5rem; width: calc(100% - 3rem); }
+  .data-table { font-size: 0.8rem; }
+  .data-table th, .data-table td { padding: 0.6rem 0.5rem; }
+}
+html[data-mode="light"] body { background: #f5f2eb !important; color: #0a0a0a !important; }
+html[data-mode="light"] nav { background: rgba(245,242,235,0.97) !important; }
+html[data-mode="light"] .article-header { background: #f5f2eb !important; }
+html[data-mode="light"] .article-title { color: #0a0a0a !important; }
+html[data-mode="light"] footer { background: #ede9e0 !important; }
+html[data-mode="light"] nav img, html[data-mode="light"] footer img { filter: brightness(0) !important; }
+html[data-mode="light"] .lang-btn { color: rgba(10,10,10,0.6) !important; border-color: rgba(10,10,10,0.25) !important; }
+html[data-mode="light"] .nav-links a { color: rgba(10,10,10,0.65) !important; }
+html[data-mode="light"] .prose p, html[data-mode="light"] .prose ul, html[data-mode="light"] .prose ol { color: rgba(10,10,10,0.7) !important; }
+html[data-mode="light"] .prose h2, html[data-mode="light"] .prose h3 { color: #0a0a0a; }
+html[data-mode="light"] .prose code { background: #ede9e0; color: #6b5a2a; }
+html[data-mode="light"] .prose pre { background: #ede9e0; }
+html[data-mode="light"] .sidebar-box { background: #fff; }
+html[data-mode="light"] .sidebar-cta { background: rgba(201,168,76,0.06); }
+html[data-mode="light"] .sidebar-cta h3 { color: #0a0a0a; }
+html[data-mode="light"] .author-bio { background: #fff; }
+html[data-mode="light"] .author-info h4 { color: #0a0a0a; }
+html[data-mode="light"] .data-table td { color: rgba(10,10,10,0.7); }
+html[data-mode="light"] .checklist li { color: rgba(10,10,10,0.7); }
+</style>
 </head>
 <body>
-
-<nav>
-  <a href="https://adroitsolutions.de" class="nav-logo">Adroit <span>Solutions</span></a>
-  <ul class="nav-links">
-    <li><a href="/services">Services</a></li>
-    <li><a href="/adroit-sense">ADROIT SENSE™</a></li>
-    <li><a href="/case-studies">Case Studies</a></li>
-    <li><a href="/contact">Contact</a></li>
-  </ul>
+<div class="scroll-progress" id="scrollProgress"></div>
+<nav id="mainNav">
+  <div class="nav-logo">
+    <a href="/"><img src="/adroit-logo.png" alt="Adroit Solutions GmbH"/></a>
+  </div>
+  <div class="nav-right">
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/about.html">About</a></li>
+      <li><a href="/services.html">Services</a></li>
+      <li><a href="/adroit-sense.html">ADROIT SENSE™</a></li>
+      <li><a href="/case-studies">Case Studies</a></li>
+      <li><a href="/blog" class="active">Blog</a></li>
+      <li><a href="/contact.html">Contact</a></li>
+    </ul>
+    <div class="lang-switcher">
+      <button class="lang-btn active" id="btn-de" onclick="setLang('de')">DE</button>
+      <button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button>
+    </div>
+    <button class="menu-btn" id="menuBtn" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
 </nav>
 
-<article>
+<div class="breadcrumb">
+  <a href="/">Home</a>
+  <span>&rsaquo;</span>
+  <a href="/blog/">Blog</a>
+  <span>&rsaquo;</span>
+  <span class="current">NIS2 &amp; IoT</span>
+</div>
 
-<header class="article-header">
-  <p class="breadcrumb"><a href="/blog">← Blog</a> / NIS2 & IoT Security</p>
-  <div class="tag-row">
-    <span class="tag gold">NIS2</span>
+<div class="article-header reveal">
+  <p class="article-eyebrow">Security &middot; Compliance &middot; IoT</p>
+  <h1 class="article-title">NIS2 and IoT: What German Manufacturers Must Know Before the Deadline</h1>
+  <div class="article-meta">
+    <span class="meta-item">Gulam 'Enkay' Samdani</span>
+    <span class="meta-separator">&middot;</span>
+    <span class="meta-item">1 June 2025</span>
+    <span class="meta-separator">&middot;</span>
+    <span class="meta-item">12 min read</span>
+  </div>
+  <div class="article-tags">
+    <span class="tag">NIS2</span>
     <span class="tag">IoT Security</span>
     <span class="tag">OT Security</span>
     <span class="tag">German Compliance</span>
     <span class="tag">Mittelstand</span>
   </div>
-  <h1>NIS2 and IoT: What German Manufacturers Must Know Before the Deadline</h1>
-
-  <div class="article-meta">
-    <div class="author">
-      <div class="author-avatar">GS</div>
-      <div class="author-info">
-        <strong>Gulam 'Enkay' Samdani</strong>
-        <span>Senior IT Systems & Embedded Solutions Architect, Adroit Solutions GmbH</span>
-      </div>
-    </div>
-    <div class="meta-right">
-      <span>1 June 2025</span> &nbsp;·&nbsp;
-      <span class="read-time">12 min read</span>
-    </div>
-  </div>
-</header>
+</div>
 
 <div class="article-body">
+  <article class="article-content prose reveal">
 
-  <p>
-    NIS2 is no longer a Brussels directive on a timeline. Since October 2024, it is German federal law under <code>NIS2UmsuCG</code> — the NIS2 Implementation and Cybersecurity Strengthening Act. The BSI (Bundesamt für Sicherheit in der Informationstechnik) is the enforcement authority. Fines run to €10 million or 2% of global annual revenue — whichever is higher.
-  </p>
-  <p>
-    An estimated 29,000+ German companies are now obligated. The majority are Mittelstand operators who have not yet acted. If your facility uses network-connected devices — sensors, gateways, PLCs, SCADA systems, smart meters, HVAC controls, IP cameras — you are almost certainly in scope.
-  </p>
-  <p>
-    This article cuts through the regulatory language and gives you a technically precise picture of what NIS2 means for IoT infrastructure, what the minimum compliant posture looks like, and where most companies are currently failing.
-  </p>
+    <p>The NIS2 Directive has been German law since October 2024. The <strong>NIS2UmsuCG</strong> (NIS2-Umsetzungs- und Cybersicherheitsstärkungsgesetz) transposes the EU directive into national legislation, with the BSI (Bundesamt für Sicherheit in der Informationstechnik) as the enforcement authority. Fines reach <strong>€10 million or 2% of global annual turnover</strong> — whichever is higher — for Essential Entities. That is not a regulatory nuisance. That is an existential risk for mid-sized manufacturers.</p>
 
-  <div class="warning-box">
-    <strong>⚠ This is not legal advice</strong>
-    This is a technical practitioner's guide. For formal compliance determination, engage a qualified Datenschutz/IT-Recht firm. But read this first — it will save you significant consulting time and help you ask the right questions.
-  </div>
+    <p>An estimated <strong>29,000+ German companies</strong> are now in scope. Most of them are not ready. And the biggest gap — the one that shows up in every assessment we run — is IoT and OT device security.</p>
 
-  <h2>Are You In Scope? The Two-Threshold Test</h2>
-
-  <p>NIS2 applies to entities in critical or important sectors that meet both of the following criteria:</p>
-
-  <table class="scope-table">
-    <thead>
-      <tr>
-        <th>Entity Type</th>
-        <th>Employees</th>
-        <th>Revenue OR Balance Sheet</th>
-        <th>Classification</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>Essential Entity</td>
-        <td class="in-scope">≥ 250</td>
-        <td class="in-scope">≥ €50M revenue OR ≥ €43M balance</td>
-        <td class="in-scope">Wesentliche Einrichtung</td>
-      </tr>
-      <tr>
-        <td>Important Entity</td>
-        <td class="in-scope">≥ 50</td>
-        <td class="in-scope">≥ €10M revenue OR ≥ €10M balance</td>
-        <td class="in-scope">Wichtige Einrichtung</td>
-      </tr>
-      <tr>
-        <td>Below threshold</td>
-        <td class="out-scope">< 50</td>
-        <td class="out-scope">< €10M revenue</td>
-        <td class="out-scope">Generally exempt*</td>
-      </tr>
-    </tbody>
-  </table>
-
-  <p style="font-size:0.85rem; color:#888;">* Exceptions exist for critical infrastructure sectors regardless of size. DNS providers, domain registrars, and certain supply chain entities may be obligated even below threshold.</p>
-
-  <p>The relevant sectors for most of our readership include: manufacturing (critical products), food production and distribution, digital infrastructure, waste management, energy, transport/logistics, health, and water supply. If you are a contract manufacturer, logistics provider, or distributor in these areas — you are almost certainly in scope.
-  </p>
-
-  <h2>Why IoT Is the Highest-Risk Compliance Gap</h2>
-
-  <p>
-    Traditional IT security programs cover laptops, servers, and network infrastructure. Most have never touched operational technology (OT) or IoT device security — because historically these devices were air-gapped or irrelevant from a regulatory standpoint.
-  </p>
-  <p>
-    NIS2 changes this entirely. The regulation is technology-neutral and defines your obligation by function and risk, not device type. A temperature sensor that connects to your network and feeds into a system that affects your operational continuity is in scope. A SCADA system managing your production line is absolutely in scope.
-  </p>
-
-  <div class="callout">
-    <strong>The Practitioner Reality</strong>
-    In 90% of facility walkthroughs I have conducted, the OT/IoT device inventory is either incomplete or non-existent. Companies cannot secure assets they cannot see. The inventory is Step Zero — and it is missing in almost every site.
-  </div>
-
-  <p>The specific IoT attack vectors NIS2 forces you to address include:</p>
-
-  <ul style="margin: 1rem 0 1.5rem 1.5rem; color: #333;">
-    <li style="margin-bottom:0.5rem;"><strong>Unencrypted telemetry</strong> — sensors transmitting over plaintext MQTT, HTTP, or Modbus without TLS</li>
-    <li style="margin-bottom:0.5rem;"><strong>Default credentials</strong> — devices shipped with manufacturer-default usernames/passwords that are never changed</li>
-    <li style="margin-bottom:0.5rem;"><strong>No firmware update path</strong> — devices that cannot receive security patches and accumulate CVEs over time</li>
-    <li style="margin-bottom:0.5rem;"><strong>Flat network topology</strong> — IoT devices on the same network segment as IT systems, enabling lateral movement</li>
-    <li style="margin-bottom:0.5rem;"><strong>No monitoring/alerting</strong> — no visibility into anomalous device behaviour or communication patterns</li>
-  </ul>
-
-  <h2>What NIS2 Article 21 Actually Requires — Technically</h2>
-
-  <p>Article 21 of NIS2 (transposed into §30 NIS2UmsuCG) mandates "appropriate and proportionate technical and organisational measures." For IoT infrastructure, this translates to the following minimum technical controls:</p>
-
-  <h3>1. Asset Inventory — § 30 Abs. 2 Nr. 1</h3>
-  <p>You must be able to enumerate every network-connected device, its function, its firmware version, and its network location. This sounds basic. It is not present at most sites we assess.</p>
-  <pre><code><span class="comment"># Minimal network discovery — run from management subnet</span>
-<span class="comment"># Nmap with OS detection and version scanning</span>
-nmap -sV -O --open 192.168.0.0/24 -oX iot_inventory.xml
-
-<span class="comment"># For MQTT broker device enumeration</span>
-mosquitto_sub -h broker.local -t '#' -v | <span class="keyword">grep</span> <span class="string">"telemetry"</span></code></pre>
-
-  <h3>2. Encryption in Transit — § 30 Abs. 2 Nr. 4</h3>
-  <p>All device telemetry must be encrypted. TLS 1.2 minimum; TLS 1.3 recommended. If you are running MQTT, it must be MQTTS (port 8883) with mutual TLS — device certificate authentication, not just username/password.</p>
-
-  <h3>3. Supply Chain Security — § 30 Abs. 2 Nr. 3</h3>
-  <p>You must assess the security posture of your IoT device vendors and managed service providers. A Chinese-manufactured sensor that phones home to undisclosed cloud endpoints is a supply chain risk that is now your documented obligation to assess.</p>
-
-  <h3>4. Incident Detection & Reporting — § 30 Abs. 2 Nr. 2 + §32</h3>
-  <p>
-    Significant incidents must be reported to BSI within <strong>24 hours</strong> of detection (early warning), with a full incident notification within <strong>72 hours</strong>. You cannot report what you cannot detect. If you have no security monitoring on your OT/IoT network, you are not compliant — even if nothing has happened yet.
-  </p>
-
-  <h3>5. Business Continuity — § 30 Abs. 2 Nr. 6</h3>
-  <p>You must have a documented and tested plan for operating if your IoT infrastructure is compromised. "We would call our IT provider" is not a plan.</p>
-
-  <h2>A Practical NIS2 IoT Compliance Roadmap</h2>
-
-  <p>Based on our experience deploying IoT systems for industrial clients in the Rhine-Ruhr region, here is the 90-day minimum viable compliance path for a Mittelstand manufacturer:</p>
-
-  <ul class="checklist">
-    <li><strong>Week 1–2:</strong> Network discovery and IoT asset inventory. Document every device, firmware version, communication protocol, and data destination.</li>
-    <li><strong>Week 3–4:</strong> Network segmentation. Move all OT/IoT devices onto a dedicated VLAN with firewall rules restricting lateral movement to IT systems.</li>
-    <li><strong>Week 5–6:</strong> Encryption audit. Identify all devices transmitting plaintext. Replace or configure TLS. Where devices cannot support TLS, document the compensating control (e.g., encrypted tunnel at the gateway level).</li>
-    <li><strong>Week 7–8:</strong> Credential remediation. Change all default credentials. Implement certificate-based auth where possible. Document credential management procedure.</li>
-    <li><strong>Week 9–10:</strong> Monitoring deployment. Deploy a basic SIEM or OT-aware monitoring tool. Configure alerts for anomalous device behaviour, unexpected outbound connections, and protocol violations.</li>
-    <li><strong>Week 11–12:</strong> Policy documentation and incident response plan. Written policies for access control, patching, incident reporting. Test the BSI reporting pathway before you need it.</li>
-  </ul>
-
-  <h2>Where We See Companies Failing</h2>
-
-  <p>The most common NIS2 IoT compliance failures we observe are not exotic. They are mundane and fixable:</p>
-
-  <p><strong>Failure 1: The IoT audit stops at the firewall.</strong> Companies assume that if the device is "behind the firewall" it is safe. NIS2 is about resilience — an attacker who gains access to your network via a phishing email immediately inherits access to every unprotected IoT device on the same VLAN.</p>
-
-  <p><strong>Failure 2: MQTT running without authentication.</strong> We still find production MQTT brokers with anonymous access enabled. Anyone on the network can subscribe to all topics and read all sensor data — or publish false readings to manipulate process control decisions.</p>
-
-  <p><strong>Failure 3: No firmware update process for IoT devices.</strong> A device that shipped with a CVE in 2022 and has never been updated is a permanent liability. NIS2 requires a documented vulnerability management process — which means you need a firmware update path for every device you operate.</p>
-
-  <div class="callout">
-    <strong>The ADROIT SENSE™ Design Choice</strong>
-    Every device in our platform is built for NIS2 compliance from the ground up: MQTT over TLS 1.3 with mutual certificate authentication, OTA firmware update capability, encrypted local storage, anomaly detection at the edge, and BSI-aligned incident logging. We designed compliance in — not retrofitted it.
-  </div>
-
-  <h2>The BSI Registration Requirement You May Have Missed</h2>
-
-  <p>
-    Under §33 NIS2UmsuCG, essential and important entities must <strong>register with the BSI</strong> within three months of falling in scope. This is not a notification — it is a formal registration with entity name, sector classification, contact details for the security point of contact, and the IP address ranges of critical systems. The registration portal is at <code>bsi.bund.de</code>.
-  </p>
-  <p>
-    Most affected companies have not done this. BSI has indicated enforcement will begin in 2025 — starting with failure to register, which is the most easily verifiable violation.
-  </p>
-
-  <h2>Summary: The Five Things To Do This Week</h2>
-
-  <ol style="margin: 1rem 0 1.5rem 1.5rem; color: #333; line-height: 2;">
-    <li>Run a network scan and document every connected device you operate.</li>
-    <li>Check whether you are above the NIS2 thresholds (employees + revenue).</li>
-    <li>If in scope: register with BSI at bsi.bund.de within three months of threshold breach.</li>
-    <li>Identify your MQTT or IoT broker and verify whether it requires authentication and encrypts traffic.</li>
-    <li>Appoint a named NIS2 security point of contact (this person does not have to be internal).</li>
-  </ol>
-
-  <p>
-    NIS2 is not going away. The enforcement posture is tightening. The companies that act now — even imperfectly — are dramatically better positioned than those who wait for a BSI inquiry.
-  </p>
-
-  <!-- AUTHOR BIO -->
-  <div class="author-bio">
-    <div class="bio-avatar">GS</div>
-    <div class="bio-text">
-      <strong>Gulam 'Enkay' Samdani</strong>
-      <span>Senior IT Systems & Embedded Solutions Architect · Adroit Solutions GmbH</span>
-      <p>15+ years enterprise IT and embedded systems experience. Heritage clients include British Airways, Aer Lingus, and SITA. Specialises in IoT architecture, NIS2-compliant embedded systems, and industrial automation for German Mittelstand. Based in Düsseldorf.</p>
+    <div class="callout">
+      <p class="callout-label">Key Point</p>
+      <p>NIS2 is technology-neutral. It applies to your connected sensors, PLCs, HMIs, edge gateways, and SCADA systems just as much as it applies to your ERP servers. If a device touches a network and is part of your operational infrastructure, it is in scope.</p>
     </div>
-  </div>
 
-  <div class="article-cta">
-    <h2>Is Your IoT Infrastructure NIS2-Ready?</h2>
-    <p>We offer a 90-minute remote NIS2 IoT gap assessment — identifying your highest-risk exposure and a prioritised remediation roadmap.</p>
-    <a href="/contact" class="btn-gold">Book a Free NIS2 Gap Assessment</a>
-  </div>
+    <h2 id="scope">Are You In Scope? The Two-Threshold Test</h2>
 
+    <p>NIS2UmsuCG distinguishes between two entity categories. Your category determines your obligations and the maximum fine applicable to you. The test is size-first: sector classification only matters once you cross the size threshold.</p>
+
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Category</th>
+          <th>Staff</th>
+          <th>Annual Turnover</th>
+          <th>Max Fine</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="highlight">Essential Entity (§28)</td>
+          <td>≥ 250</td>
+          <td>≥ €50M</td>
+          <td>€10M or 2% global turnover</td>
+        </tr>
+        <tr>
+          <td class="highlight">Important Entity (§29)</td>
+          <td>≥ 50</td>
+          <td>≥ €10M</td>
+          <td>€7M or 1.4% global turnover</td>
+        </tr>
+        <tr>
+          <td>Below threshold</td>
+          <td>&lt; 50</td>
+          <td>&lt; €10M</td>
+          <td>Exempt (exceptions apply to critical infrastructure)</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>Sectors explicitly named in Annex I (Essential) include energy, transport, banking, health, digital infrastructure, and manufacturing of critical products — including vehicles, medical devices, and certain electrical equipment. Annex II (Important) adds postal services, waste management, chemicals, food, and general manufacturing.</p>
+
+    <p>If you supply into automotive, aerospace, pharmaceutical, or medical device supply chains and have more than 50 employees, there is a high probability you are an Important Entity. If you operate industrial processes with networked control systems and have more than 250 employees, you are almost certainly an Essential Entity.</p>
+
+    <p><strong>The practical implication:</strong> many Tier-2 and Tier-3 suppliers who have never engaged with IT security regulation at this level are now directly obligated — not indirectly via their customers' TISAX requirements, but directly, by law, to the BSI.</p>
+
+    <h2 id="iot-risk">Why IoT Is the Highest-Risk Compliance Gap</h2>
+
+    <p>Traditional IT security (firewalls, EDR, patch management, access control) is reasonably well understood in manufacturing. The CISO function, where it exists, handles these. IoT and OT security is different — and it's different in ways that make it disproportionately dangerous under NIS2.</p>
+
+    <p>OT/IoT devices were designed for function, not security. A temperature sensor installed in 2017 was spec'd for accuracy, power consumption, and MTBF. Nobody asked whether it ran an authenticated MQTT broker, whether its firmware could be updated over the air, or whether its default credentials had ever been changed. In most factories, the honest answer to all three questions is: no, no, and no.</p>
+
+    <p>NIS2 is technology-neutral. It does not exempt legacy devices. The attack surface your IoT fleet represents includes:</p>
+
+    <ul>
+      <li><strong>Unencrypted telemetry</strong> — MQTT on port 1883 without TLS, plain HTTP REST callbacks, Modbus TCP in clear text across production VLANs</li>
+      <li><strong>Default credentials</strong> — factory-default admin/admin on web interfaces that have never been rotated because "it's on the internal network"</li>
+      <li><strong>No firmware update path</strong> — devices that cannot receive security patches, either because the vendor no longer supports them or because the update process requires physical access and has never been scheduled</li>
+      <li><strong>Flat network topology</strong> — IT and OT on the same Layer 3 broadcast domain, meaning a compromised office workstation has direct network access to PLCs and HMIs</li>
+      <li><strong>No monitoring</strong> — no SIEM coverage of OT traffic, no anomaly detection on industrial protocols, no visibility into what is communicating with what</li>
+    </ul>
+
+    <p>In a recent assessment of a mid-sized Rhineland parts manufacturer, we found 47 networked devices — sensors, cameras, gateways, a CNC controller, and several legacy HMIs — that had never appeared in any asset inventory. The IT team knew about 12 of them. NIS2 requires you to know about all of them.</p>
+
+    <h2 id="article21">What NIS2 Article 21 Actually Requires</h2>
+
+    <p>Article 21 of the NIS2 Directive (implemented in <strong>§30 NIS2UmsuCG</strong>) sets out the minimum cybersecurity risk management measures. In plain language, these are:</p>
+
+    <h3>1. Asset inventory</h3>
+
+    <p>You must know what you have. This sounds obvious. It is routinely absent for OT/IoT assets. A compliant asset inventory for a manufacturing facility needs to cover every networked device — including those on the shop floor, in logistics, and in building management systems.</p>
+
+    <p>A practical starting point is passive network discovery. Tools like nmap can help map your current state:</p>
+
+    <pre><code># Discover devices on production VLAN without sending probes that could disrupt OT devices
+nmap -sn -T2 --script=broadcast-arp-scan 192.168.10.0/24
+
+# Identify open ports and service versions on discovered hosts
+nmap -sV -p 80,443,1883,8883,502,47808 --script=banner 192.168.10.0/24 -oN ot-inventory.txt</code></pre>
+
+    <p>Use <code>-T2</code> (polite timing) on OT networks. Aggressive scans can crash older PLCs and HMI controllers. The output feeds your asset register, which must be maintained and kept current.</p>
+
+    <h3>2. Encryption in transit</h3>
+
+    <p>All IoT telemetry must be encrypted in transit. For MQTT-based devices, this means migrating from port 1883 (plain text) to port <strong>8883 (MQTT over TLS 1.3)</strong>. For HTTP-based REST integrations, TLS 1.2 minimum, TLS 1.3 preferred. Modbus TCP and legacy industrial protocols require network-level segmentation and encryption at the gateway layer if the protocol itself cannot be secured.</p>
+
+    <h3>3. Supply chain security</h3>
+
+    <p>NIS2 Article 21(2)(d) explicitly requires security in supply chain relationships, including with suppliers and service providers. For IoT, this means: reviewing the security posture of device vendors, verifying firmware signing, and assessing whether vendors provide documented vulnerability disclosure and patch release processes.</p>
+
+    <h3>4. Incident detection and notification</h3>
+
+    <p>§35 NIS2UmsuCG requires a <strong>24-hour early warning</strong> to the BSI after becoming aware of a significant incident, and a <strong>72-hour full notification</strong>. You cannot meet these timelines without monitoring. A significant incident involving an IoT device — a compromised sensor that becomes a pivot point into your OT network, for example — triggers these obligations. Without logging and anomaly detection on your IoT fleet, you will not know an incident has occurred until it is too late to meet the reporting window.</p>
+
+    <h3>5. Business continuity</h3>
+
+    <p>You must be able to demonstrate continuity plans that account for cybersecurity incidents. For IoT-dependent processes — cold chain monitoring, production line sensors, quality control systems — this means documented fallback procedures for sensor failure, communication loss, and data integrity loss scenarios.</p>
+
+    <h2 id="roadmap">A Practical 90-Day Roadmap</h2>
+
+    <p>For manufacturers starting from a typical baseline — reasonable IT security, limited OT visibility, ad-hoc IoT deployments — here is a realistic 12-week compliance approach:</p>
+
+    <ul class="checklist">
+      <li><strong>Weeks 1–2:</strong> Asset discovery — passive network scan across all VLANs including OT segments. Build your device register. Identify firmware versions, protocols, and communication paths.</li>
+      <li><strong>Weeks 3–4:</strong> Network segmentation assessment — map the boundary between IT and OT networks. Identify and document any flat segments where office and production devices share the same broadcast domain.</li>
+      <li><strong>Weeks 5–6:</strong> Encryption audit — inventory all MQTT, HTTP, and industrial protocol connections. Flag everything running without TLS. Plan migration for MQTT devices to port 8883 with TLS 1.3.</li>
+      <li><strong>Weeks 6–7:</strong> Credential review — audit default and shared credentials across all IoT and OT devices. Rotate factory defaults. Implement password management for device credentials where the device supports it.</li>
+      <li><strong>Weeks 8–10:</strong> Monitoring and detection — implement network-level logging for OT/IoT traffic. Configure anomaly alerts for unusual communication patterns. Establish SIEM coverage for device events where feasible.</li>
+      <li><strong>Weeks 10–12:</strong> Policy and documentation — produce written incident response procedures including the 24h/72h BSI notification workflow. Document business continuity plans for critical IoT-dependent processes.</li>
+    </ul>
+
+    <h2 id="failures">Where Companies Are Failing</h2>
+
+    <p>In the assessments we have completed since NIS2UmsuCG came into force, three failure patterns repeat consistently:</p>
+
+    <p><strong>1. Assuming IT security covers OT.</strong> The IT team has CrowdStrike on every endpoint, a SOC contract, and a mature patch process. None of that touches the ESP32 gateway on the production line, the IP camera network that never got a VLAN, or the old Siemens HMI that runs Windows XP and cannot be patched without a six-month vendor engagement.</p>
+
+    <p><strong>2. Treating NIS2 as a documentation exercise.</strong> Gap analysis reports, policy documents, and risk registers are necessary but not sufficient. The BSI can and will test technical controls. A policy that says "all MQTT connections shall use TLS" while port 1883 is open and trafficked is not compliance — it is liability.</p>
+
+    <p><strong>3. Missing the supply chain obligation.</strong> Buying a device from a vendor does not transfer your NIS2 obligation to them. If a device in your facility cannot receive security patches, that is your risk to manage. Vendor contracts should now include documented patch SLAs, CVE disclosure timelines, and end-of-security-support dates.</p>
+
+    <h2 id="registration">BSI Registration Requirement</h2>
+
+    <p>Many manufacturers are unaware of §33 NIS2UmsuCG: Essential and Important Entities must <strong>register with the BSI within 3 months of becoming obligated</strong>. The BSI registration portal opened in early 2025. Registration requires basic entity information, sector classification, and contact details for security incident notification.</p>
+
+    <p>Failure to register is itself a regulatory violation — separate from any substantive security failure. If you have not registered, this should be your first action.</p>
+
+    <div class="callout">
+      <p class="callout-label">Action Required</p>
+      <p>BSI registration is mandatory and has a 3-month deadline from the date your organisation becomes obligated. Registration is separate from technical compliance. Both are required. Check your registration status at <strong>meldung.bsi.de</strong>.</p>
+    </div>
+
+    <h2 id="summary">Summary: Five Things To Do This Week</h2>
+
+    <ol>
+      <li><strong>Determine your entity classification.</strong> Are you Essential (≥250 staff, ≥€50M turnover) or Important (≥50 staff, ≥€10M turnover)? If uncertain, assume Important and proceed accordingly.</li>
+      <li><strong>Check your BSI registration status.</strong> If you are obligated and not registered, register now. The portal is at meldung.bsi.de.</li>
+      <li><strong>Run a basic asset discovery on your OT/IoT network.</strong> You cannot manage what you cannot see. Use passive scanning on production VLANs.</li>
+      <li><strong>Identify any MQTT connections on port 1883 or unencrypted HTTP IoT endpoints.</strong> These are your highest-priority remediation items under Article 21's encryption requirement.</li>
+      <li><strong>Document your incident notification workflow.</strong> Who, in your organisation, is responsible for deciding that a cybersecurity event is "significant"? How does that trigger the 24h BSI early warning? Write it down before you need it.</li>
+    </ol>
+
+    <p>NIS2 compliance is not a one-time project. It is an ongoing operational posture. The companies that treat it that way — building monitoring, maintaining inventories, running regular audits — will find compliance manageable. The companies that treat it as a checkbox exercise will face audit findings, enforcement action, and, eventually, an incident that demonstrates exactly what they failed to prevent.</p>
+
+    <div class="author-bio">
+      <div class="author-info">
+        <h4>Gulam 'Enkay' Samdani</h4>
+        <p>Senior IT Systems &amp; Embedded Solutions Architect at Adroit Solutions GmbH, Düsseldorf. 15+ years in enterprise IT architecture and embedded systems, with delivery experience spanning aviation, pharmaceutical logistics, and industrial electronics manufacturing. Specialises in IoT security architecture and OT/IT integration for regulated environments.</p>
+      </div>
+    </div>
+
+    <div style="margin-top:3rem; background:#1c1c1c; border:1px solid var(--border); padding:2.5rem; text-align:center;">
+      <p style="font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:0.8rem;">Free NIS2 Assessment</p>
+      <h3 style="font-family:'DM Serif Display',serif;font-size:1.6rem;color:#f5f4f0;margin-bottom:1rem;">We offer a complimentary NIS2 Gap Assessment for qualifying manufacturers.</h3>
+      <p style="color:rgba(245,244,240,0.5);max-width:45ch;margin:0 auto 1.8rem;font-size:0.92rem;">We'll review your current IoT/OT asset inventory, network topology, and security controls — and deliver a prioritised remediation report within 5 working days.</p>
+      <a href="/contact.html" class="btn-primary">Book a NIS2 Gap Assessment</a>
+    </div>
+
+  </article>
+
+  <aside class="article-sidebar">
+    <div class="sidebar-box">
+      <p class="sidebar-title">In this article</p>
+      <ul class="sidebar-toc">
+        <li><a href="#scope">Are You In Scope?</a></li>
+        <li><a href="#iot-risk">Why IoT Is the Highest-Risk Gap</a></li>
+        <li><a href="#article21">What Article 21 Requires</a></li>
+        <li><a href="#roadmap">90-Day Roadmap</a></li>
+        <li><a href="#failures">Where Companies Are Failing</a></li>
+        <li><a href="#registration">BSI Registration</a></li>
+        <li><a href="#summary">Five Things To Do This Week</a></li>
+      </ul>
+    </div>
+    <div class="sidebar-cta">
+      <h3>NIS2 Gap Assessment</h3>
+      <p>Free for qualifying manufacturers in NRW. Prioritised IoT/OT remediation report delivered in 5 working days.</p>
+      <a href="/contact.html" class="btn-primary">Book Assessment</a>
+    </div>
+    <div class="sidebar-box" style="margin-top:1.5rem;">
+      <p class="sidebar-title">Related</p>
+      <ul class="sidebar-toc">
+        <li><a href="/case-studies/iot-cold-chain-monitoring/">IoT Cold Chain Case Study</a></li>
+        <li><a href="/adroit-sense.html">ADROIT SENSE™ IoT Platform</a></li>
+        <li><a href="/services.html">IoT Security Services</a></li>
+      </ul>
+    </div>
+  </aside>
 </div>
-</article>
 
-<!-- RELATED POSTS -->
-<section style="max-width:720px; margin: 0 auto; padding: 0 2rem 5rem;">
-  <h2 style="font-family:'Syne',sans-serif; font-size:1.3rem; font-weight:700; margin-bottom:1.5rem; color:var(--ink);">Related Reading</h2>
-  <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem;">
-    <a href="/case-studies/iot-cold-chain-monitoring" style="text-decoration:none; border:1px solid #E5E0D8; padding:1.25rem; display:block; color:var(--ink);">
-      <span style="font-size:0.75rem; color:var(--gold); font-family:'Syne',sans-serif; letter-spacing:0.1em; text-transform:uppercase; display:block; margin-bottom:0.5rem;">Case Study</span>
-      <strong style="font-family:'Syne',sans-serif; font-size:0.95rem;">IoT Cold Chain Monitoring: Preventing €240K in Stock Loss</strong>
-    </a>
-    <a href="/adroit-sense" style="text-decoration:none; border:1px solid #E5E0D8; padding:1.25rem; display:block; color:var(--ink);">
-      <span style="font-size:0.75rem; color:var(--gold); font-family:'Syne',sans-serif; letter-spacing:0.1em; text-transform:uppercase; display:block; margin-bottom:0.5rem;">Product</span>
-      <strong style="font-family:'Syne',sans-serif; font-size:0.95rem;">ADROIT SENSE™ — AI-Powered IoT Intelligence Platform</strong>
-    </a>
+<footer>
+  <div class="footer-left">
+    <a href="/"><img src="/adroit-logo.png" alt="Adroit Solutions GmbH"/></a>
+    <p class="footer-tagline">Electronics &middot; IoT &middot; Digital Solutions &middot; Düsseldorf</p>
   </div>
-</section>
+  <div class="footer-legal">
+    <p>&copy; 2026 Adroit Solutions GmbH</p>
+    <p><a href="/impressum.html">Impressum</a> &nbsp;&middot;&nbsp; <a href="/datenschutz.html">Datenschutz</a></p>
+  </div>
+</footer>
 
+<script>
+function setLang(lang) {
+  const isEn = lang === 'en';
+  document.body.classList.toggle('lang-en', isEn);
+  document.getElementById('btn-de').className = 'lang-btn' + (!isEn ? ' active' : '');
+  document.getElementById('btn-en').className = 'lang-btn' + (isEn ? ' active' : '');
+  sessionStorage.setItem('adroit-lang', lang);
+}
+const savedLang = sessionStorage.getItem('adroit-lang') || 'de';
+setLang(savedLang);
+window.addEventListener('scroll', () => {
+  const prog = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+  document.getElementById('scrollProgress').style.width = prog + '%';
+  const nav = document.getElementById('mainNav');
+  if (nav) nav.style.padding = window.scrollY > 50 ? '0.4rem 4rem' : '0.75rem 4rem';
+}, {passive: true});
+const obs = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+}, {threshold: 0.1, rootMargin: '0px 0px -50px 0px'});
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+function applyTimeMode() {
+  const hour = new Date().getHours();
+  const isDark = hour >= 19 || hour < 7;
+  document.documentElement.setAttribute('data-mode', isDark ? 'dark' : 'light');
+  document.body.style.background = isDark ? '#0a0a0a' : '#f5f2eb';
+  document.body.style.color = isDark ? '#f5f4f0' : '#0a0a0a';
+}
+applyTimeMode();
+setInterval(applyTimeMode, 3600000);
+(function(){
+  var btn = document.getElementById('menuBtn');
+  var nav = document.querySelector('.nav-links');
+  if (!btn || !nav) return;
+  btn.addEventListener('click', function(){
+    var open = nav.classList.toggle('open');
+    btn.classList.toggle('open', open);
+  });
+  nav.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){
+      nav.classList.remove('open');
+      btn.classList.remove('open');
+    });
+  });
+})();
+</script>
+<script src="/cookie-consent.js"></script>
 </body>
 </html>
