@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Case Study: IoT Cold Chain Monitoring — Adroit Solutions GmbH</title>
+  <meta name="description" content="How Adroit Solutions deployed ESP32-based IoT sensors to monitor pharmaceutical cold storage, preventing €240,000 in potential stock loss and achieving HACCP compliance automatically.">
+  <meta property="og:title" content="IoT Cold Chain Monitoring — Adroit Solutions GmbH Case Study">
+  <link rel="canonical" href="https://adroitsolutions.de/case-studies/iot-cold-chain-monitoring">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "IoT Cold Chain Monitoring: Preventing €240K Stock Loss with ADROIT SENSE™",
+    "description": "Adroit Solutions deployed ESP32-S3 edge sensors with MQTT telemetry to provide real-time cold storage monitoring for a pharmaceutical distributor, delivering HACCP-compliant automated reporting.",
+    "author": { "@id": "https://adroitsolutions.de/#organization" },
+    "publisher": { "@id": "https://adroitsolutions.de/#organization" },
+    "datePublished": "2025-06-01",
+    "url": "https://adroitsolutions.de/case-studies/iot-cold-chain-monitoring",
+    "keywords": ["IoT", "Cold Chain", "ESP32", "HACCP", "MQTT", "Cold Storage Monitoring", "NIS2", "ADROIT SENSE"]
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --ink: #1A1A1A;
+      --gold: #C8A84B;
+      --red: #CC2936;
+      --cream: #F5F0E8;
+      --white: #FFFFFF;
+      --muted: #6B6B6B;
+      --teal: #0D6E6E;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Outfit', sans-serif; background: var(--white); color: var(--ink); line-height: 1.7; }
+
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 4rem; border-bottom: 1px solid #E5E0D8; }
+    .nav-logo { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.2rem; text-decoration: none; color: var(--ink); }
+    .nav-logo span { color: var(--gold); }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a { text-decoration: none; color: var(--muted); font-size: 0.9rem; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--gold); }
+
+    .case-hero {
+      background: var(--teal);
+      color: var(--white);
+      padding: 5rem 4rem 4rem;
+    }
+    .breadcrumb { font-size: 0.8rem; color: var(--gold); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 1.5rem; }
+    .breadcrumb a { color: var(--gold); text-decoration: none; }
+    .industry-tag {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--ink);
+      font-family: 'Syne', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.35rem 0.9rem;
+      margin-bottom: 1.5rem;
+    }
+    .case-hero h1 {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 800;
+      line-height: 1.15;
+      max-width: 800px;
+      margin-bottom: 1.5rem;
+    }
+    .case-hero h1 em { color: var(--gold); font-style: normal; }
+    .hero-meta { display: flex; gap: 3rem; margin-top: 2.5rem; flex-wrap: wrap; }
+    .meta-item label { display: block; font-size: 0.75rem; color: rgba(255,255,255,0.5); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.25rem; }
+    .meta-item span { font-family: 'Syne', sans-serif; font-size: 1rem; font-weight: 600; }
+
+    .stats-strip {
+      background: var(--gold);
+      padding: 2rem 4rem;
+      display: flex;
+      gap: 4rem;
+      flex-wrap: wrap;
+    }
+    .stat { text-align: center; }
+    .stat-num { font-family: 'Syne', sans-serif; font-size: 2.5rem; font-weight: 800; color: var(--ink); display: block; }
+    .stat-label { font-size: 0.8rem; color: rgba(26,26,26,0.7); text-transform: uppercase; letter-spacing: 0.07em; }
+
+    .case-content { max-width: 840px; margin: 0 auto; padding: 5rem 2rem; }
+    .section-label { font-family: 'Syne', sans-serif; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--teal); margin-bottom: 0.75rem; }
+    h2 { font-family: 'Syne', sans-serif; font-size: 1.8rem; font-weight: 700; margin-bottom: 1rem; color: var(--ink); }
+    p { margin-bottom: 1.25rem; color: #333; font-size: 1.05rem; }
+    .callout { border-left: 3px solid var(--gold); background: var(--cream); padding: 1.5rem 2rem; margin: 2.5rem 0; font-size: 1.1rem; color: var(--ink); }
+    .tech-stack { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 1.5rem 0 2.5rem; }
+    .tech-tag { background: var(--teal); color: var(--white); font-family: 'Syne', sans-serif; font-size: 0.78rem; font-weight: 600; padding: 0.35rem 0.9rem; letter-spacing: 0.05em; }
+
+    .timeline { margin: 2rem 0; }
+    .timeline-item { display: grid; grid-template-columns: 80px 1fr; gap: 1.5rem; margin-bottom: 1.5rem; }
+    .timeline-week { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 0.8rem; color: var(--teal); text-transform: uppercase; padding-top: 0.2rem; }
+    .timeline-content h3 { font-family: 'Syne', sans-serif; font-size: 1rem; font-weight: 700; margin-bottom: 0.4rem; }
+    .timeline-content p { font-size: 0.95rem; margin-bottom: 0; }
+
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin: 2rem 0; }
+    .card { border: 1px solid #E5E0D8; padding: 1.5rem; }
+    .card h3 { font-family: 'Syne', sans-serif; font-size: 1rem; font-weight: 700; margin-bottom: 0.75rem; }
+    .card.gold h3 { color: var(--gold); }
+    .card.teal h3 { color: var(--teal); }
+    .card.red h3 { color: var(--red); }
+
+    .section-divider { border: none; border-top: 1px solid #E5E0D8; margin: 3.5rem 0; }
+
+    .case-cta { background: var(--teal); color: var(--white); padding: 4rem; text-align: center; margin-top: 5rem; }
+    .case-cta h2 { color: var(--white); font-size: 2rem; margin-bottom: 1rem; }
+    .case-cta p { color: rgba(255,255,255,0.7); max-width: 500px; margin: 0 auto 2rem; }
+    .btn-gold { display: inline-block; background: var(--gold); color: var(--ink); font-family: 'Syne', sans-serif; font-weight: 700; font-size: 0.9rem; letter-spacing: 0.08em; text-transform: uppercase; padding: 1rem 2.5rem; text-decoration: none; }
+
+    @media (max-width: 768px) {
+      nav { padding: 1rem 1.5rem; }
+      .case-hero { padding: 3rem 1.5rem; }
+      .stats-strip { padding: 1.5rem; gap: 2rem; }
+      .case-content { padding: 3rem 1.5rem; }
+      .grid-2 { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="https://adroitsolutions.de" class="nav-logo">Adroit <span>Solutions</span></a>
+  <ul class="nav-links">
+    <li><a href="/services">Services</a></li>
+    <li><a href="/adroit-sense">ADROIT SENSE™</a></li>
+    <li><a href="/case-studies">Case Studies</a></li>
+    <li><a href="/contact">Contact</a></li>
+  </ul>
+</nav>
+
+<section class="case-hero">
+  <p class="breadcrumb"><a href="/case-studies">← Case Studies</a> / IoT & Cold Chain</p>
+  <div class="industry-tag">Logistics · Pharma · IoT</div>
+  <h1>Preventing <em>€240,000</em> in<br>Cold Storage Stock Loss</h1>
+  <p style="max-width:620px; color:rgba(255,255,255,0.75); font-size:1.1rem; margin-top:1rem;">
+    ADROIT SENSE™ deployed in a pharmaceutical distribution cold chain — real-time temperature monitoring, automated HACCP compliance, and alert-to-response in under 90 seconds.
+  </p>
+  <div class="hero-meta">
+    <div class="meta-item">
+      <label>Industry</label>
+      <span>Pharmaceutical Logistics</span>
+    </div>
+    <div class="meta-item">
+      <label>Deployment</label>
+      <span>6 Cold Rooms · 24 Sensors</span>
+    </div>
+    <div class="meta-item">
+      <label>Time to Deploy</label>
+      <span>4 Weeks</span>
+    </div>
+    <div class="meta-item">
+      <label>Compliance</label>
+      <span>HACCP · NIS2 · GDP</span>
+    </div>
+  </div>
+</section>
+
+<div class="stats-strip">
+  <div class="stat">
+    <span class="stat-num">€240K</span>
+    <span class="stat-label">Stock Loss Prevented</span>
+  </div>
+  <div class="stat">
+    <span class="stat-num">90s</span>
+    <span class="stat-label">Alert-to-Notification Time</span>
+  </div>
+  <div class="stat">
+    <span class="stat-num">100%</span>
+    <span class="stat-label">HACCP Audit Pass Rate</span>
+  </div>
+  <div class="stat">
+    <span class="stat-num">4 wks</span>
+    <span class="stat-label">Full Deployment Time</span>
+  </div>
+</div>
+
+<main class="case-content">
+
+  <div class="section-label">The Situation</div>
+  <h2>A Compliance Gap Waiting to Become a Crisis</h2>
+  <p>
+    A pharmaceutical distributor operating six temperature-controlled rooms across their Düsseldorf facility was relying on manual temperature logging — a clipboard and pen, twice per shift. Their GDP (Good Distribution Practice) audit had flagged this as a critical non-conformance: no continuous monitoring, no automated alerting, no tamper-evident digital log.
+  </p>
+  <p>
+    More critically: three months prior, a compressor failure over a weekend had gone undetected for 11 hours. The resulting stock loss was €47,000 and a near-miss on patient safety. One more incident of that magnitude would trigger regulatory intervention.
+  </p>
+
+  <div class="callout">
+    The question was never "do we need IoT monitoring?" — it was "can we deploy something production-grade in time for the re-audit?" Our answer: 4 weeks.
+  </div>
+
+  <hr class="section-divider">
+
+  <div class="section-label">Deployment Timeline</div>
+  <h2>4-Week Implementation Approach</h2>
+
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="timeline-week">Week 1</div>
+      <div class="timeline-content">
+        <h3>Site Survey & Hardware Specification</h3>
+        <p>Cold room mapping, WiFi signal assessment, sensor placement planning. ESP32-S3 nodes with DS18B20 temperature probes and SHT31 humidity sensors specified per room profile.</p>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-week">Week 2</div>
+      <div class="timeline-content">
+        <h3>Firmware Development & Backend Provisioning</h3>
+        <p>Custom ESP32-S3 firmware with MQTT over TLS. AWS eu-central-1 (Frankfurt) IoT Core provisioned. TimescaleDB time-series database deployed. Alert rule engine configured per room thresholds.</p>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-week">Week 3</div>
+      <div class="timeline-content">
+        <h3>Physical Installation & Network Integration</h3>
+        <p>24 sensors installed across 6 rooms. Dedicated IoT VLAN provisioned. Redundant 4G failover configured — if WiFi drops, sensors switch to cellular without data loss.</p>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-week">Week 4</div>
+      <div class="timeline-content">
+        <h3>Dashboard Go-Live & Staff Training</h3>
+        <p>React dashboard deployed. Alert escalation chains configured. Automated HACCP PDF report generation tested. Two-hour staff training completed. GDP audit documentation package delivered.</p>
+      </div>
+    </div>
+  </div>
+
+  <hr class="section-divider">
+
+  <div class="section-label">Technical Architecture</div>
+  <h2>What Powers ADROIT SENSE™</h2>
+
+  <p>
+    Every sensor node runs custom ESP32-S3 firmware developed in C, publishing temperature, humidity, and battery telemetry every 30 seconds via MQTT over TLS 1.3 to AWS IoT Core. Edge-side anomaly detection runs directly on the microcontroller — if the MQTT broker is unreachable, the device stores readings locally and synchronises on reconnection. No data gaps.
+  </p>
+  <p>
+    The backend combines AWS IoT Core for message ingestion, TimescaleDB for time-series storage with automatic compression, and a Spring Boot alerting service that evaluates rules in real-time. Alerts are routed via SMS, email, and WhatsApp Business API — reaching the responsible person on whichever channel they respond to first.
+  </p>
+
+  <div class="tech-stack">
+    <span class="tech-tag">ESP32-S3</span>
+    <span class="tech-tag">C Firmware</span>
+    <span class="tech-tag">MQTT over TLS</span>
+    <span class="tech-tag">AWS IoT Core</span>
+    <span class="tech-tag">TimescaleDB</span>
+    <span class="tech-tag">Spring Boot</span>
+    <span class="tech-tag">React Dashboard</span>
+    <span class="tech-tag">4G Failover</span>
+    <span class="tech-tag">WhatsApp API</span>
+    <span class="tech-tag">PDF Report Engine</span>
+  </div>
+
+  <hr class="section-divider">
+
+  <div class="section-label">Results</div>
+  <h2>Outcomes Delivered</h2>
+
+  <div class="grid-2">
+    <div class="card gold">
+      <h3>GDP Audit: Passed</h3>
+      <p>The re-audit six weeks after deployment resulted in a full pass. The auditor specifically commended the tamper-evident digital log and the alert response documentation.</p>
+    </div>
+    <div class="card gold">
+      <h3>Weekend Incident Caught in 4 Minutes</h3>
+      <p>A compressor warning that occurred 11 weeks post-deployment was detected and acknowledged within 4 minutes. Maintenance dispatched within the hour. Zero stock loss.</p>
+    </div>
+    <div class="card teal">
+      <h3>HACCP Reports: Fully Automated</h3>
+      <p>Monthly HACCP documentation that previously took 6 hours of manual compilation is now generated in 90 seconds as a signed PDF, ready for regulatory submission.</p>
+    </div>
+    <div class="card teal">
+      <h3>ROI: 14 Weeks</h3>
+      <p>Based on the cost of the previous incident and the audit non-conformance remediation costs, the system paid for itself within 14 weeks of go-live.</p>
+    </div>
+  </div>
+
+  <hr class="section-divider">
+
+  <div class="section-label">Your Industry</div>
+  <h2>ADROIT SENSE™ Is Ready for Your Sector</h2>
+  <p>
+    The same platform is deployed for food logistics, wine storage, laboratory environments, and pharmaceutical cold chains. If you operate temperature-controlled assets and face HACCP, GDP, or similar compliance requirements — or simply cannot afford another undetected failure — ADROIT SENSE™ can be live in your facility within 4 weeks.
+  </p>
+  <p>
+    We offer a 30-day pilot programme with a single cold room. No long-term commitment until you've seen the data.
+  </p>
+
+</main>
+
+<div class="case-cta">
+  <h2>Ready to Eliminate Cold Chain Risk?</h2>
+  <p>Book a 30-minute discovery call. We'll scope a pilot deployment for your facility at no cost.</p>
+  <a href="/contact" class="btn-gold">Start Your ADROIT SENSE™ Pilot</a>
+</div>
+
+</body>
+</html>

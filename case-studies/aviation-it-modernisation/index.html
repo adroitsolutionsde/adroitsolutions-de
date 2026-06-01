@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Case Study: Aviation IT Modernisation — Adroit Solutions GmbH</title>
+  <meta name="description" content="How Adroit Solutions architected a mission-critical check-in and departure control system for a global airline, handling 40M+ passengers annually. IT architecture consulting, Java, AWS.">
+  <meta property="og:title" content="Aviation IT Modernisation — Adroit Solutions GmbH Case Study">
+  <meta property="og:description" content="Architecting check-in and departure control for 40M+ annual passengers. Mission-critical Java/AWS systems for global aviation.">
+  <meta property="og:url" content="https://adroitsolutions.de/case-studies/aviation-it-modernisation">
+  <link rel="canonical" href="https://adroitsolutions.de/case-studies/aviation-it-modernisation">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Aviation IT Modernisation: Check-In & Departure Control Systems at Scale",
+    "description": "Adroit Solutions architected and delivered mission-critical departure control systems for global airline operations handling 40M+ passengers annually.",
+    "author": { "@id": "https://adroitsolutions.de/#organization" },
+    "publisher": { "@id": "https://adroitsolutions.de/#organization" },
+    "datePublished": "2025-06-01",
+    "url": "https://adroitsolutions.de/case-studies/aviation-it-modernisation",
+    "articleSection": "Case Study",
+    "keywords": ["IT Architecture", "Aviation IT", "Java Enterprise", "AWS", "Departure Control System", "Check-in Systems"]
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --ink: #1A1A1A;
+      --gold: #C8A84B;
+      --red: #CC2936;
+      --cream: #F5F0E8;
+      --white: #FFFFFF;
+      --muted: #6B6B6B;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Outfit', sans-serif; background: var(--white); color: var(--ink); line-height: 1.7; }
+
+    /* NAV */
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 4rem; border-bottom: 1px solid #E5E0D8; }
+    .nav-logo { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.2rem; text-decoration: none; color: var(--ink); }
+    .nav-logo span { color: var(--gold); }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a { text-decoration: none; color: var(--muted); font-size: 0.9rem; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--gold); }
+
+    /* HERO */
+    .case-hero {
+      background: var(--ink);
+      color: var(--white);
+      padding: 5rem 4rem 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .case-hero::before {
+      content: '';
+      position: absolute;
+      top: 0; right: 0;
+      width: 40%;
+      height: 100%;
+      background: linear-gradient(135deg, transparent, rgba(200,168,75,0.08));
+    }
+    .breadcrumb { font-size: 0.8rem; color: var(--gold); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 1.5rem; }
+    .breadcrumb a { color: var(--gold); text-decoration: none; }
+    .industry-tag {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--ink);
+      font-family: 'Syne', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.35rem 0.9rem;
+      margin-bottom: 1.5rem;
+    }
+    .case-hero h1 {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      font-weight: 800;
+      line-height: 1.15;
+      max-width: 800px;
+      margin-bottom: 1.5rem;
+    }
+    .case-hero h1 em { color: var(--gold); font-style: normal; }
+    .hero-meta { display: flex; gap: 3rem; margin-top: 2.5rem; flex-wrap: wrap; }
+    .meta-item label { display: block; font-size: 0.75rem; color: #AAA; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.25rem; }
+    .meta-item span { font-family: 'Syne', sans-serif; font-size: 1rem; font-weight: 600; }
+
+    /* STATS STRIP */
+    .stats-strip {
+      background: var(--gold);
+      padding: 2rem 4rem;
+      display: flex;
+      gap: 4rem;
+      flex-wrap: wrap;
+    }
+    .stat { text-align: center; }
+    .stat-num {
+      font-family: 'Syne', sans-serif;
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: var(--ink);
+      display: block;
+    }
+    .stat-label { font-size: 0.8rem; color: rgba(26,26,26,0.7); text-transform: uppercase; letter-spacing: 0.07em; }
+
+    /* CONTENT */
+    .case-content { max-width: 840px; margin: 0 auto; padding: 5rem 2rem; }
+    .section-label {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.75rem;
+    }
+    h2 {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: var(--ink);
+    }
+    p { margin-bottom: 1.25rem; color: #333; font-size: 1.05rem; }
+    .callout {
+      border-left: 3px solid var(--gold);
+      background: var(--cream);
+      padding: 1.5rem 2rem;
+      margin: 2.5rem 0;
+      font-style: italic;
+      font-size: 1.1rem;
+      color: var(--ink);
+    }
+    .tech-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin: 1.5rem 0 2.5rem;
+    }
+    .tech-tag {
+      background: var(--ink);
+      color: var(--white);
+      font-family: 'Syne', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 600;
+      padding: 0.35rem 0.9rem;
+      letter-spacing: 0.05em;
+    }
+    .challenge-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+    .challenge-card {
+      border: 1px solid #E5E0D8;
+      padding: 1.5rem;
+    }
+    .challenge-card h3 {
+      font-family: 'Syne', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+      color: var(--red);
+    }
+    .outcome-card {
+      border: 1px solid #E5E0D8;
+      padding: 1.5rem;
+    }
+    .outcome-card h3 {
+      font-family: 'Syne', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+      color: var(--gold);
+    }
+    .section-divider { border: none; border-top: 1px solid #E5E0D8; margin: 3.5rem 0; }
+
+    /* CTA */
+    .case-cta {
+      background: var(--ink);
+      color: var(--white);
+      padding: 4rem;
+      text-align: center;
+      margin-top: 5rem;
+    }
+    .case-cta h2 { color: var(--white); font-size: 2rem; margin-bottom: 1rem; }
+    .case-cta p { color: #BBB; max-width: 500px; margin: 0 auto 2rem; }
+    .btn-gold {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--ink);
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 0.9rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 1rem 2.5rem;
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+    .btn-gold:hover { opacity: 0.85; }
+
+    @media (max-width: 768px) {
+      nav { padding: 1rem 1.5rem; }
+      .case-hero { padding: 3rem 1.5rem; }
+      .stats-strip { padding: 1.5rem; gap: 2rem; }
+      .case-content { padding: 3rem 1.5rem; }
+      .challenge-grid { grid-template-columns: 1fr; }
+      .hero-meta { gap: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="https://adroitsolutions.de" class="nav-logo">Adroit <span>Solutions</span></a>
+  <ul class="nav-links">
+    <li><a href="/services">Services</a></li>
+    <li><a href="/adroit-sense">ADROIT SENSE™</a></li>
+    <li><a href="/case-studies">Case Studies</a></li>
+    <li><a href="/contact">Contact</a></li>
+  </ul>
+</nav>
+
+<section class="case-hero">
+  <p class="breadcrumb"><a href="/case-studies">← Case Studies</a> / Aviation IT</p>
+  <div class="industry-tag">Aviation · Enterprise IT</div>
+  <h1>Check-In & Departure Control<br>at <em>Global Scale</em></h1>
+  <p style="max-width:600px; color:#CCC; font-size:1.1rem; margin-top:1rem;">
+    Architecting mission-critical passenger processing systems for one of the world's largest airline networks — 40M+ passengers, zero tolerance for downtime.
+  </p>
+  <div class="hero-meta">
+    <div class="meta-item">
+      <label>Industry</label>
+      <span>Commercial Aviation</span>
+    </div>
+    <div class="meta-item">
+      <label>Engagement Type</label>
+      <span>IT Architecture & Delivery</span>
+    </div>
+    <div class="meta-item">
+      <label>Scale</label>
+      <span>40M+ Passengers/Year</span>
+    </div>
+    <div class="meta-item">
+      <label>Heritage Clients</label>
+      <span>British Airways · Aer Lingus · SITA</span>
+    </div>
+  </div>
+</section>
+
+<div class="stats-strip">
+  <div class="stat">
+    <span class="stat-num">40M+</span>
+    <span class="stat-label">Passengers Processed Annually</span>
+  </div>
+  <div class="stat">
+    <span class="stat-num">99.99%</span>
+    <span class="stat-label">System Uptime SLA Achieved</span>
+  </div>
+  <div class="stat">
+    <span class="stat-num">3</span>
+    <span class="stat-label">Global Airline Clients</span>
+  </div>
+  <div class="stat">
+    <span class="stat-num">15+</span>
+    <span class="stat-label">Years Aviation IT Experience</span>
+  </div>
+</div>
+
+<main class="case-content">
+
+  <div class="section-label">Background</div>
+  <h2>The Challenge: Airline IT That Cannot Fail</h2>
+  <p>
+    Global airlines operate on margins measured in seconds. A check-in system that drops for 10 minutes during peak departure blocks does not create inconvenience — it creates operational chaos: misconnected bags, gate hold delays, passenger compensation claims, and regulatory scrutiny. The architecture must hold at peak load, across continents, while staying synchronised with DCS (Departure Control Systems), GDS networks, and government border control APIs.
+  </p>
+  <p>
+    Adroit's senior architect was embedded directly into the core engineering teams at British Airways, Aer Lingus, and SITA — the global IT backbone powering hundreds of airlines. The mandate: redesign aging Java EE monolith architectures into resilient, horizontally scalable systems capable of surviving the post-COVID passenger surge.
+  </p>
+
+  <div class="callout">
+    "Mission-critical aviation systems have no margin for elegant failure. The architecture must eliminate single points of failure before the first line of code is written."
+  </div>
+
+  <hr class="section-divider">
+
+  <div class="section-label">Technical Challenges</div>
+  <h2>Four Problems That Could Ground Flights</h2>
+
+  <div class="challenge-grid">
+    <div class="challenge-card">
+      <h3>01 — Legacy Monolith Load Limits</h3>
+      <p>Java EE monoliths designed for pre-2010 passenger volumes unable to handle surge events (school holidays, bank holidays) without database connection pool exhaustion.</p>
+    </div>
+    <div class="challenge-card">
+      <h3>02 — GDS Integration Brittleness</h3>
+      <p>Hard-coded synchronous calls to Amadeus and Sabre GDS systems creating cascading timeouts when upstream APIs degraded, taking check-in offline with them.</p>
+    </div>
+    <div class="challenge-card">
+      <h3>03 — Zero-Downtime Deployment</h3>
+      <p>24/7 operations with no maintenance windows. Any deployment risked passenger data mid-transaction. Blue-green deployment strategy had to be retrofitted to legacy architecture.</p>
+    </div>
+    <div class="challenge-card">
+      <h3>04 — Multi-Jurisdiction Data Compliance</h3>
+      <p>GDPR, US TSA data requirements, Australian border force APIs — passenger data handling rules that changed per route, per jurisdiction, per aircraft type.</p>
+    </div>
+  </div>
+
+  <hr class="section-divider">
+
+  <div class="section-label">Solution Architecture</div>
+  <h2>What We Built</h2>
+
+  <p>
+    The architecture decision was to introduce an async messaging layer between the check-in frontend and the DCS backend — decoupling user-facing availability from backend processing. Apache Kafka served as the event backbone, with Spring Boot microservices replacing domain slices of the legacy monolith incrementally (strangler fig pattern).
+  </p>
+  <p>
+    GDS integrations were wrapped in circuit breaker patterns (Resilience4j) with local caching fallbacks — if Amadeus degraded, agents could still process check-ins from the last-known state with automatic reconciliation on recovery. This alone eliminated the most common cause of check-in outages.
+  </p>
+  <p>
+    Data jurisdiction rules were externalised into a rules engine, allowing per-route configuration without code changes — a critical enabler for adding new routes without engineering involvement.
+  </p>
+
+  <div class="tech-stack">
+    <span class="tech-tag">Java 17</span>
+    <span class="tech-tag">Spring Boot</span>
+    <span class="tech-tag">Apache Kafka</span>
+    <span class="tech-tag">Resilience4j</span>
+    <span class="tech-tag">PostgreSQL</span>
+    <span class="tech-tag">AWS EKS</span>
+    <span class="tech-tag">Kubernetes</span>
+    <span class="tech-tag">Amadeus API</span>
+    <span class="tech-tag">Sabre GDS</span>
+    <span class="tech-tag">Redis Cache</span>
+    <span class="tech-tag">Terraform IaC</span>
+  </div>
+
+  <hr class="section-divider">
+
+  <div class="section-label">Outcomes</div>
+  <h2>Results Delivered</h2>
+
+  <div class="challenge-grid">
+    <div class="outcome-card">
+      <h3>99.99% Uptime Achieved</h3>
+      <p>System availability across two consecutive IATA peak seasons, including Christmas and August school holiday surges — the hardest load test real operations provides.</p>
+    </div>
+    <div class="outcome-card">
+      <h3>GDS Outage Immunity</h3>
+      <p>Circuit breaker implementation meant three major Amadeus degradation events had zero impact on check-in availability — a first in the airline's operational history.</p>
+    </div>
+    <div class="outcome-card">
+      <h3>Deployment Frequency 10×</h3>
+      <p>Blue-green deployment pipeline enabled production releases without maintenance windows, increasing release cadence from monthly to weekly.</p>
+    </div>
+    <div class="outcome-card">
+      <h3>Compliance Automation</h3>
+      <p>Rules engine eliminated manual compliance configuration for new routes — reducing time-to-new-route from 3 weeks to 2 days.</p>
+    </div>
+  </div>
+
+  <hr class="section-divider">
+
+  <div class="section-label">Relevance for German Enterprise</div>
+  <h2>What This Means for Your Business</h2>
+  <p>
+    The architectural patterns proven in aviation — async event processing, circuit breakers, infrastructure as code, compliance rule externalisation — are directly applicable to German Mittelstand systems operating under NIS2 obligations. If your ERP, MES, or customer-facing system cannot absorb a third-party API outage gracefully, you are running the same risks our aviation clients faced.
+  </p>
+  <p>
+    Adroit Solutions brings enterprise-grade resilience architecture to companies that don't have in-house architects with this depth of proven production experience. We speak the language of risk, uptime, and compliance — not just technology.
+  </p>
+
+</main>
+
+<div class="case-cta">
+  <h2>Facing Similar Challenges?</h2>
+  <p>Let's discuss your architecture. No obligation — just a senior conversation with someone who has solved this before.</p>
+  <a href="/contact" class="btn-gold">Book a Free Architecture Review</a>
+</div>
+
+<!-- Schema for this Case Study -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://adroitsolutions.de"},
+    {"@type": "ListItem", "position": 2, "name": "Case Studies", "item": "https://adroitsolutions.de/case-studies"},
+    {"@type": "ListItem", "position": 3, "name": "Aviation IT Modernisation", "item": "https://adroitsolutions.de/case-studies/aviation-it-modernisation"}
+  ]
+}
+</script>
+
+</body>
+</html>
