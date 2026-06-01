@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Case Studies — Adroit Solutions GmbH</title>
+  <meta name="description" content="Real-world results from Adroit Solutions GmbH — aviation IT modernisation, IoT cold chain monitoring, and PCB computer vision QA. Enterprise IT consulting from Düsseldorf.">
+  <meta property="og:title" content="Case Studies — Adroit Solutions GmbH">
+  <meta property="og:description" content="Aviation IT at scale. IoT cold chain monitoring. AI-powered PCB QA. Proven delivery from Adroit Solutions GmbH, Düsseldorf.">
+  <meta property="og:url" content="https://adroitsolutions.de/case-studies">
+  <link rel="canonical" href="https://adroitsolutions.de/case-studies">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "Case Studies — Adroit Solutions GmbH",
+    "description": "Case studies from Adroit Solutions GmbH covering enterprise IT architecture, IoT monitoring, and AI-powered manufacturing QA.",
+    "url": "https://adroitsolutions.de/case-studies",
+    "publisher": { "@id": "https://adroitsolutions.de/#organization" }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --ink: #1A1A1A;
+      --gold: #C8A84B;
+      --red: #CC2936;
+      --cream: #F5F0E8;
+      --white: #FFFFFF;
+      --muted: #6B6B6B;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Outfit', sans-serif; background: var(--white); color: var(--ink); line-height: 1.7; }
+
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 4rem; border-bottom: 1px solid #E5E0D8; }
+    .nav-logo { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.2rem; text-decoration: none; color: var(--ink); }
+    .nav-logo span { color: var(--gold); }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a { text-decoration: none; color: var(--muted); font-size: 0.9rem; transition: color 0.2s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--gold); }
+
+    .page-hero {
+      background: var(--ink);
+      color: var(--white);
+      padding: 5rem 4rem 4rem;
+    }
+    .breadcrumb { font-size: 0.8rem; color: var(--gold); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 1.5rem; }
+    .breadcrumb a { color: var(--gold); text-decoration: none; }
+    .page-hero h1 {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 1rem;
+    }
+    .page-hero h1 em { color: var(--gold); font-style: normal; }
+    .page-hero p { color: rgba(255,255,255,0.65); font-size: 1.1rem; max-width: 560px; }
+
+    .cases-section { padding: 5rem 4rem; }
+    .cases-section h2 {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 3rem;
+    }
+
+    .case-card {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      border: 1px solid #E5E0D8;
+      margin-bottom: 2rem;
+      transition: border-color 0.25s;
+      text-decoration: none;
+      color: inherit;
+    }
+    .case-card:hover { border-color: var(--gold); }
+    .case-card-left {
+      background: var(--ink);
+      padding: 2.5rem 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 220px;
+    }
+    .case-sector {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--ink);
+      font-family: 'Syne', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.25rem 0.7rem;
+      width: fit-content;
+    }
+    .case-stat-big {
+      font-family: 'Syne', sans-serif;
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: var(--gold);
+      line-height: 1;
+    }
+    .case-stat-label { font-size: 0.75rem; color: rgba(255,255,255,0.5); margin-top: 0.25rem; }
+    .case-card-right { padding: 2.5rem; }
+    .case-card-right h3 {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+      line-height: 1.2;
+    }
+    .case-card-right p { color: var(--muted); font-size: 0.95rem; margin-bottom: 1.5rem; }
+    .case-tags { display: flex; gap: 0.4rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+    .tag { font-size: 0.72rem; letter-spacing: 0.07em; text-transform: uppercase; border: 1px solid #E5E0D8; padding: 0.2rem 0.6rem; color: var(--muted); }
+    .case-link {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--gold);
+      text-decoration: none;
+    }
+    .case-link::after { content: ' →'; }
+
+    .cta-band {
+      background: var(--gold);
+      padding: 4rem;
+      text-align: center;
+    }
+    .cta-band h2 {
+      font-family: 'Syne', sans-serif;
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--ink);
+      margin-bottom: 0.75rem;
+    }
+    .cta-band p { color: rgba(26,26,26,0.7); max-width: 500px; margin: 0 auto 2rem; }
+    .btn-dark { display: inline-block; background: var(--ink); color: var(--white); font-family: 'Syne', sans-serif; font-weight: 700; font-size: 0.9rem; letter-spacing: 0.08em; text-transform: uppercase; padding: 1rem 2.5rem; text-decoration: none; }
+
+    footer { background: var(--ink); padding: 2.5rem 4rem; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid rgba(255,255,255,0.08); }
+    .footer-logo { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1rem; color: var(--white); text-decoration: none; }
+    .footer-logo span { color: var(--gold); }
+    .footer-legal { font-size: 0.8rem; color: rgba(255,255,255,0.35); }
+    .footer-legal a { color: rgba(255,255,255,0.45); text-decoration: none; margin-left: 1.5rem; }
+    .footer-legal a:hover { color: var(--gold); }
+
+    @media (max-width: 900px) {
+      nav { padding: 1rem 1.5rem; }
+      .page-hero { padding: 3rem 1.5rem; }
+      .cases-section { padding: 3rem 1.5rem; }
+      .case-card { grid-template-columns: 1fr; }
+      .case-card-left { min-height: auto; }
+      .cta-band { padding: 3rem 1.5rem; }
+      footer { padding: 2rem 1.5rem; flex-direction: column; gap: 1rem; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="https://adroitsolutions.de" class="nav-logo">Adroit <span>Solutions</span></a>
+  <ul class="nav-links">
+    <li><a href="/services.html">Services</a></li>
+    <li><a href="/adroit-sense.html">ADROIT SENSE™</a></li>
+    <li><a href="/case-studies" class="active">Case Studies</a></li>
+    <li><a href="/blog">Blog</a></li>
+    <li><a href="/contact.html">Contact</a></li>
+  </ul>
+</nav>
+
+<section class="page-hero">
+  <p class="breadcrumb"><a href="https://adroitsolutions.de">Home</a> / Case Studies</p>
+  <h1>Results That Speak<br>for <em>Themselves.</em></h1>
+  <p>From mission-critical aviation IT to industrial IoT and AI-powered manufacturing QA — real projects, real outcomes, real numbers.</p>
+</section>
+
+<section class="cases-section">
+  <h2>Selected Projects</h2>
+
+  <a href="/case-studies/aviation-it-modernisation" class="case-card">
+    <div class="case-card-left">
+      <span class="case-sector">Aviation · Enterprise IT</span>
+      <div>
+        <div class="case-stat-big">40M+</div>
+        <div class="case-stat-label">Passengers Processed Annually</div>
+      </div>
+    </div>
+    <div class="case-card-right">
+      <h3>Check-In & Departure Control at Global Scale</h3>
+      <p>Architecting mission-critical passenger processing systems for one of the world's largest airline networks. Java/AWS modernisation for British Airways, Aer Lingus, and SITA — 99.99% uptime SLA achieved.</p>
+      <div class="case-tags">
+        <span class="tag">IT Architecture</span>
+        <span class="tag">Java 17</span>
+        <span class="tag">Apache Kafka</span>
+        <span class="tag">AWS EKS</span>
+        <span class="tag">Resilience4j</span>
+      </div>
+      <span class="case-link">Read Case Study</span>
+    </div>
+  </a>
+
+  <a href="/case-studies/iot-cold-chain-monitoring" class="case-card">
+    <div class="case-card-left">
+      <span class="case-sector">IoT · Pharma · Logistics</span>
+      <div>
+        <div class="case-stat-big">€240K</div>
+        <div class="case-stat-label">Stock Loss Prevented</div>
+      </div>
+    </div>
+    <div class="case-card-right">
+      <h3>Preventing €240,000 in Cold Storage Stock Loss</h3>
+      <p>ADROIT SENSE™ deployed in a pharmaceutical distribution cold chain — real-time temperature monitoring across 6 rooms, automated HACCP compliance, and alert-to-response in under 90 seconds. GDP audit: passed.</p>
+      <div class="case-tags">
+        <span class="tag">ESP32-S3</span>
+        <span class="tag">MQTT / TLS</span>
+        <span class="tag">AWS IoT Core</span>
+        <span class="tag">HACCP</span>
+        <span class="tag">NIS2</span>
+      </div>
+      <span class="case-link">Read Case Study</span>
+    </div>
+  </a>
+
+  <a href="/case-studies/pcb-vision-qa-automation" class="case-card">
+    <div class="case-card-left">
+      <span class="case-sector">Electronics · Computer Vision</span>
+      <div>
+        <div class="case-stat-big">97%</div>
+        <div class="case-stat-label">Defect Escape Reduction</div>
+      </div>
+    </div>
+    <div class="case-card-right">
+      <h3>PCB Defect Escape Rate: 2.3% → 0.08%</h3>
+      <p>AI-powered visual inspection replacing manual QA on a PCB assembly line. YOLOv8 model detecting 23 defect classes at 8 seconds per board — saving €180,000 per year in rework and warranty costs.</p>
+      <div class="case-tags">
+        <span class="tag">YOLOv8</span>
+        <span class="tag">Computer Vision</span>
+        <span class="tag">NVIDIA Jetson</span>
+        <span class="tag">Python</span>
+        <span class="tag">ISO 9001</span>
+      </div>
+      <span class="case-link">Read Case Study</span>
+    </div>
+  </a>
+
+</section>
+
+<div class="cta-band">
+  <h2>Your Project Could Be Next.</h2>
+  <p>Let's talk about your architecture, your compliance obligations, or your quality challenges. No obligation — just a senior conversation.</p>
+  <a href="/contact.html" class="btn-dark">Start a Conversation →</a>
+</div>
+
+<footer>
+  <a href="https://adroitsolutions.de" class="footer-logo">Adroit <span>Solutions</span> GmbH</a>
+  <div class="footer-legal">
+    &copy; 2026 Adroit Solutions GmbH &nbsp;·&nbsp;
+    <a href="/impressum.html">Impressum</a>
+    <a href="/datenschutz.html">Datenschutz</a>
+  </div>
+</footer>
+
+</body>
+</html>

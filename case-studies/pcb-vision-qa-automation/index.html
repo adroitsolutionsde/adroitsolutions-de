@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Case Study: PCB Computer Vision QA — Adroit Solutions GmbH</title>
+  <meta name="description" content="How Adroit Solutions built an AI-powered computer vision QA system that reduced PCB defect escape rate from 2.3% to 0.08%, saving €180,000/year in rework and warranty costs.">
+  <link rel="canonical" href="https://adroitsolutions.de/case-studies/pcb-vision-qa-automation">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "PCB Computer Vision QA: From 2.3% to 0.08% Defect Escape Rate",
+    "description": "Adroit Solutions built a real-time AI visual inspection system for PCB manufacturing, cutting defect escapes by 97% and eliminating manual inspection bottlenecks.",
+    "author": { "@id": "https://adroitsolutions.de/#organization" },
+    "publisher": { "@id": "https://adroitsolutions.de/#organization" },
+    "datePublished": "2025-06-01",
+    "url": "https://adroitsolutions.de/case-studies/pcb-vision-qa-automation",
+    "keywords": ["Computer Vision", "PCB QA", "Machine Learning", "Industrial AI", "Automated Optical Inspection", "Manufacturing QA"]
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --ink: #1A1A1A;
+      --gold: #C8A84B;
+      --red: #CC2936;
+      --cream: #F5F0E8;
+      --white: #FFFFFF;
+      --muted: #6B6B6B;
+      --dark-blue: #1A2744;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Outfit', sans-serif; background: var(--white); color: var(--ink); line-height: 1.7; }
+
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 4rem; border-bottom: 1px solid #E5E0D8; }
+    .nav-logo { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.2rem; text-decoration: none; color: var(--ink); }
+    .nav-logo span { color: var(--gold); }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a { text-decoration: none; color: var(--muted); font-size: 0.9rem; }
+    .nav-links a:hover { color: var(--gold); }
+
+    .case-hero { background: var(--dark-blue); color: var(--white); padding: 5rem 4rem 4rem; }
+    .breadcrumb { font-size: 0.8rem; color: var(--gold); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 1.5rem; }
+    .breadcrumb a { color: var(--gold); text-decoration: none; }
+    .industry-tag { display: inline-block; background: var(--gold); color: var(--ink); font-family: 'Syne', sans-serif; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.35rem 0.9rem; margin-bottom: 1.5rem; }
+    .case-hero h1 { font-family: 'Syne', sans-serif; font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 800; line-height: 1.15; max-width: 800px; margin-bottom: 1.5rem; }
+    .case-hero h1 em { color: var(--gold); font-style: normal; }
+    .hero-meta { display: flex; gap: 3rem; margin-top: 2.5rem; flex-wrap: wrap; }
+    .meta-item label { display: block; font-size: 0.75rem; color: rgba(255,255,255,0.5); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.25rem; }
+    .meta-item span { font-family: 'Syne', sans-serif; font-size: 1rem; font-weight: 600; }
+
+    .stats-strip { background: var(--gold); padding: 2rem 4rem; display: flex; gap: 4rem; flex-wrap: wrap; }
+    .stat { text-align: center; }
+    .stat-num { font-family: 'Syne', sans-serif; font-size: 2.5rem; font-weight: 800; color: var(--ink); display: block; }
+    .stat-label { font-size: 0.8rem; color: rgba(26,26,26,0.7); text-transform: uppercase; letter-spacing: 0.07em; }
+
+    .case-content { max-width: 840px; margin: 0 auto; padding: 5rem 2rem; }
+    .section-label { font-family: 'Syne', sans-serif; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--dark-blue); margin-bottom: 0.75rem; }
+    h2 { font-family: 'Syne', sans-serif; font-size: 1.8rem; font-weight: 700; margin-bottom: 1rem; }
+    p { margin-bottom: 1.25rem; color: #333; font-size: 1.05rem; }
+    .callout { border-left: 3px solid var(--gold); background: var(--cream); padding: 1.5rem 2rem; margin: 2.5rem 0; font-size: 1.1rem; }
+    .tech-stack { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 1.5rem 0 2.5rem; }
+    .tech-tag { background: var(--dark-blue); color: var(--white); font-family: 'Syne', sans-serif; font-size: 0.78rem; font-weight: 600; padding: 0.35rem 0.9rem; }
+
+    .comparison-table { width: 100%; border-collapse: collapse; margin: 2rem 0; }
+    .comparison-table th { background: var(--dark-blue); color: var(--white); font-family: 'Syne', sans-serif; padding: 1rem; text-align: left; font-size: 0.85rem; }
+    .comparison-table td { padding: 0.9rem 1rem; border-bottom: 1px solid #E5E0D8; font-size: 0.95rem; }
+    .comparison-table tr:nth-child(even) td { background: #F9F7F4; }
+    .bad { color: var(--red); font-weight: 600; }
+    .good { color: #1A7A4A; font-weight: 600; }
+
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin: 2rem 0; }
+    .card { border: 1px solid #E5E0D8; padding: 1.5rem; }
+    .card h3 { font-family: 'Syne', sans-serif; font-size: 1rem; font-weight: 700; margin-bottom: 0.75rem; }
+    .card.gold h3 { color: var(--gold); }
+
+    .section-divider { border: none; border-top: 1px solid #E5E0D8; margin: 3.5rem 0; }
+    .case-cta { background: var(--dark-blue); color: var(--white); padding: 4rem; text-align: center; margin-top: 5rem; }
+    .case-cta h2 { color: var(--white); font-size: 2rem; margin-bottom: 1rem; }
+    .case-cta p { color: rgba(255,255,255,0.7); max-width: 500px; margin: 0 auto 2rem; }
+    .btn-gold { display: inline-block; background: var(--gold); color: var(--ink); font-family: 'Syne', sans-serif; font-weight: 700; font-size: 0.9rem; letter-spacing: 0.08em; text-transform: uppercase; padding: 1rem 2.5rem; text-decoration: none; }
+
+    @media (max-width: 768px) {
+      nav { padding: 1rem 1.5rem; }
+      .case-hero { padding: 3rem 1.5rem; }
+      .stats-strip { padding: 1.5rem; gap: 2rem; }
+      .case-content { padding: 3rem 1.5rem; }
+      .grid-2 { grid-template-columns: 1fr; }
+      .comparison-table { font-size: 0.85rem; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="https://adroitsolutions.de" class="nav-logo">Adroit <span>Solutions</span></a>
+  <ul class="nav-links">
+    <li><a href="/services">Services</a></li>
+    <li><a href="/adroit-sense">ADROIT SENSE™</a></li>
+    <li><a href="/case-studies">Case Studies</a></li>
+    <li><a href="/contact">Contact</a></li>
+  </ul>
+</nav>
+
+<section class="case-hero">
+  <p class="breadcrumb"><a href="/case-studies">← Case Studies</a> / Manufacturing AI</p>
+  <div class="industry-tag">Electronics Manufacturing · Computer Vision</div>
+  <h1>PCB Defect Escape Rate:<br><em>2.3% → 0.08%</em></h1>
+  <p style="max-width:620px; color:rgba(255,255,255,0.75); font-size:1.1rem; margin-top:1rem;">
+    AI-powered visual inspection replacing manual QA on a PCB assembly line — 97% reduction in defect escapes, 8-second inspection cycle, and elimination of the end-of-line inspection bottleneck.
+  </p>
+  <div class="hero-meta">
+    <div class="meta-item">
+      <label>Industry</label>
+      <span>Electronics Manufacturing</span>
+    </div>
+    <div class="meta-item">
+      <label>Line Speed</label>
+      <span>8 Seconds/Board</span>
+    </div>
+    <div class="meta-item">
+      <label>Defect Classes</label>
+      <span>23 Defect Types Detected</span>
+    </div>
+    <div class="meta-item">
+      <label>ROI Period</label>
+      <span>11 Months</span>
+    </div>
+  </div>
+</section>
+
+<div class="stats-strip">
+  <div class="stat">
+    <span class="stat-num">97%</span>
+    <span class="stat-label">Defect Escape Reduction</span>
+  </div>
+  <div class="stat">
+    <span class="stat-num">€180K</span>
+    <span class="stat-label">Annual Savings (Year 1)</span>
+  </div>
+  <div class="stat">
+    <span class="stat-num">8s</span>
+    <span class="stat-label">Inspection Cycle Time</span>
+  </div>
+  <div class="stat">
+    <span class="stat-num">23</span>
+    <span class="stat-label">Defect Classes Detected</span>
+  </div>
+</div>
+
+<main class="case-content">
+
+  <div class="section-label">The Problem</div>
+  <h2>Manual Inspection: Fast, Cheap, and Dangerously Unreliable</h2>
+  <p>
+    A PCB contract manufacturer in the Rhine-Ruhr region was running a manual inspection station at the end of their SMT assembly line. Four operators, one per shift, inspecting boards visually with a loupe and reference card. Cycle time: 12–18 seconds per board. Defect escape rate: 2.3%.
+  </p>
+  <p>
+    At 2.3%, approximately 1 in 43 boards with a latent defect was shipping to customers. For consumer electronics, this meant warranty claims. For industrial clients, it meant field failures in environments where the board could not easily be serviced. One automotive Tier-2 customer had issued a formal supplier quality warning after three field returns in six months.
+  </p>
+
+  <div class="callout">
+    The human eye fatigues. After 90 minutes of inspection, miss rate climbs by 40%. The most dangerous shift is the last hour before break — when boards are shipping fastest and attention is lowest.
+  </div>
+
+  <hr class="section-divider">
+
+  <div class="section-label">Before vs After</div>
+  <h2>What Changed</h2>
+
+  <table class="comparison-table">
+    <thead>
+      <tr>
+        <th>Metric</th>
+        <th>Before (Manual)</th>
+        <th>After (ADROIT CV QA)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Defect Escape Rate</td>
+        <td class="bad">2.3%</td>
+        <td class="good">0.08%</td>
+      </tr>
+      <tr>
+        <td>Inspection Cycle Time</td>
+        <td class="bad">12–18 seconds</td>
+        <td class="good">8 seconds (consistent)</td>
+      </tr>
+      <tr>
+        <td>Throughput Bottleneck</td>
+        <td class="bad">Yes — inspection gates line speed</td>
+        <td class="good">No — runs at line speed</td>
+      </tr>
+      <tr>
+        <td>Fatigue Effect</td>
+        <td class="bad">+40% miss rate end-of-shift</td>
+        <td class="good">Zero — consistent 24/7</td>
+      </tr>
+      <tr>
+        <td>Defect Traceability</td>
+        <td class="bad">Manual logbook (paper)</td>
+        <td class="good">Full digital record, image archive, per-board serial</td>
+      </tr>
+      <tr>
+        <td>Inspector Headcount</td>
+        <td>4 (one per shift)</td>
+        <td>1 (QA review role, reduced load)</td>
+      </tr>
+      <tr>
+        <td>Customer Warranty Claims</td>
+        <td class="bad">€180K/year average</td>
+        <td class="good">€12K/year (year 1 post-deploy)</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <hr class="section-divider">
+
+  <div class="section-label">Technical Implementation</div>
+  <h2>The Architecture</h2>
+
+  <p>
+    The system uses a fixed 4K camera array mounted above the conveyor inspection point, triggered by a photoelectric sensor as each board enters the inspection zone. Images are captured at four angles for solder joint depth analysis.
+  </p>
+  <p>
+    A YOLOv8-based detection model, fine-tuned on 14,000 labelled images from the customer's own production history, runs inference on an NVIDIA Jetson Orin NX edge device — no cloud dependency, sub-100ms inference per frame. The model detects 23 defect classes including solder bridges, tombstoning, missing components, lifted pins, and polarity errors.
+  </p>
+  <p>
+    A Python-based QA management application integrates with the customer's ERP for board serialisation, stores all inspection images and results in a PostgreSQL database, and generates ISO 9001-aligned quality records automatically. A web dashboard gives the quality manager real-time line health visibility.
+  </p>
+
+  <div class="tech-stack">
+    <span class="tech-tag">YOLOv8</span>
+    <span class="tech-tag">Python</span>
+    <span class="tech-tag">OpenCV</span>
+    <span class="tech-tag">NVIDIA Jetson Orin</span>
+    <span class="tech-tag">4K Camera Array</span>
+    <span class="tech-tag">PostgreSQL</span>
+    <span class="tech-tag">React Dashboard</span>
+    <span class="tech-tag">ERP Integration</span>
+    <span class="tech-tag">ISO 9001 Reporting</span>
+  </div>
+
+  <hr class="section-divider">
+
+  <div class="section-label">Value Created</div>
+  <h2>Business Outcomes</h2>
+
+  <div class="grid-2">
+    <div class="card gold">
+      <h3>Automotive Supplier Warning Closed</h3>
+      <p>The Tier-2 automotive customer issued a formal quality improvement confirmation after two consecutive zero-defect shipment quarters.</p>
+    </div>
+    <div class="card gold">
+      <h3>ISO 9001 Audit Ready</h3>
+      <p>Full digital quality record for every board produced eliminates document preparation time for certification audits — records are always current.</p>
+    </div>
+    <div class="card gold">
+      <h3>Line Speed Increased 18%</h3>
+      <p>Removing the inspection bottleneck allowed SMT line speed to be increased, recovering capacity without additional capital investment.</p>
+    </div>
+    <div class="card gold">
+      <h3>Early Defect Pattern Detection</h3>
+      <p>Trend analysis caught a solder paste printer calibration drift 6 days before it would have caused a field failure rate increase. Predictive — not reactive.</p>
+    </div>
+  </div>
+
+  <hr class="section-divider">
+
+  <div class="section-label">Your Operation</div>
+  <h2>Is Manual Inspection Your Hidden Cost Centre?</h2>
+  <p>
+    If you operate an SMT or through-hole assembly line, your inspection station is likely your most expensive quality compromise: slow, subjective, non-traceable, and unavoidably fatigable. The AI inspection system Adroit Solutions built can be adapted to your board types in 6–8 weeks, starting with a model training phase on your own production images.
+  </p>
+  <p>
+    We can also integrate computer vision QA into non-PCB manufacturing contexts — mechanical assembly verification, label inspection, weld bead quality assessment. The underlying architecture is transferable.
+  </p>
+
+</main>
+
+<div class="case-cta">
+  <h2>What Is Your Defect Escape Rate Costing You?</h2>
+  <p>We'll scope a vision QA system for your line — including model accuracy projections before you commit to anything.</p>
+  <a href="/contact" class="btn-gold">Request a QA System Assessment</a>
+</div>
+
+</body>
+</html>
