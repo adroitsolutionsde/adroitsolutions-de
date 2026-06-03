@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en" style="background:#0a0a0a !important">
+<head>
+<meta charset="UTF-8"/>
+<meta name="color-scheme" content="dark"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>ADROIT SENSE™ — Live Dashboard | Adroit Solutions GmbH</title>
+<meta name="description" content="ADROIT SENSE™ real-time cold chain monitoring dashboard. Live temperature, humidity and alert data."/>
+<link rel="canonical" href="https://adroitsolutions.de/adroit-sense-dashboard.html"/>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<link rel="stylesheet" href="/fonts/fonts.css"/>
+<style>
+html, body { background: #0a0a0a !important; color: #f5f4f0 !important; margin: 0 !important; padding: 0 !important; font-family: 'DM Sans', sans-serif !important; font-weight: 300; line-height: 1.7; overflow-x: hidden; }
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --black:      #0a0a0a;
+  --black2:     #111111;
+  --black3:     #1a1a1a;
+  --white:      #f5f4f0;
+  --gold:       #c9a84c;
+  --gold-light: #e8c97a;
+  --gold-dim:   rgba(201,168,76,0.15);
+  --gold-border:rgba(201,168,76,0.25);
+  --mid:        #1c1c1c;
+  --border:     rgba(201,168,76,0.2);
+  --muted:      rgba(245,244,240,0.45);
+  --red:        #cc2936;
+  --green:      #4ade80;
+}
+html { scroll-behavior: smooth; }
+
+/* ── SCROLL PROGRESS ── */
+.scroll-progress { position: fixed; top: 0; left: 0; z-index: 200; height: 2px; width: 0%; background: linear-gradient(90deg, var(--gold), var(--gold-light)); transition: width 0.1s linear; }
+
+/* ── NAV ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0.75rem 4rem;
+  background: rgba(10,10,10,0.97) !important;
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
+  transition: padding 0.3s ease;
+}
+.nav-logo img { height: 140px; filter: brightness(0) invert(1); display: block; }
+.nav-right { display: flex; align-items: center; gap: 2rem; }
+.nav-links { display: flex; gap: 2rem; list-style: none; }
+.nav-links a { color: rgba(245,244,240,0.6); text-decoration: none; font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; position: relative; transition: color 0.2s; }
+.nav-links a::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 1px; background: var(--gold); transition: width 0.3s; }
+.nav-links a:hover, .nav-links a.active { color: var(--gold); }
+.nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
+.lang-switcher { display: flex; gap: 0.4rem; }
+.lang-btn { background: none; border: 1px solid rgba(201,168,76,0.4); color: rgba(245,244,240,0.6); font-family: 'DM Sans', sans-serif; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; padding: 0.35rem 0.8rem; cursor: pointer; transition: all 0.25s; }
+.lang-btn.active { background: var(--gold); border-color: var(--gold); color: #0a0a0a; font-weight: 700; }
+.lang-btn:hover { border-color: var(--gold); color: var(--gold); }
+.menu-btn { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; }
+.menu-btn span { display: block; width: 22px; height: 2px; background: rgba(245,244,240,0.75); border-radius: 1px; transition: all 0.25s; }
+.menu-btn.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.menu-btn.open span:nth-child(2) { opacity: 0; }
+.menu-btn.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* ── BREADCRUMB ── */
+.breadcrumb { padding: 9rem 4rem 0; display: flex; align-items: center; gap: 0.5rem; font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(245,244,240,0.4); }
+.breadcrumb a { color: rgba(245,244,240,0.4); text-decoration: none; transition: color 0.2s; }
+.breadcrumb a:hover { color: var(--gold); }
+.breadcrumb span.active { color: var(--gold); }
+
+/* ── MAIN ── */
+.main { padding-bottom: 0; }
+
+/* ── HERO STRIP ── */
+.dash-hero {
+  background: var(--black2);
+  border-bottom: 1px solid var(--border);
+  padding: 2rem 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  overflow: hidden;
+  margin-top: 1.5rem;
+}
+.dash-hero::after {
+  content: '';
+  position: absolute; top: 0; right: 0;
+  width: 50%; height: 100%;
+  background:
+    repeating-linear-gradient(0deg, transparent, transparent 28px, rgba(201,168,76,0.025) 28px, rgba(201,168,76,0.025) 29px),
+    repeating-linear-gradient(90deg, transparent, transparent 28px, rgba(201,168,76,0.025) 28px, rgba(201,168,76,0.025) 29px);
+  pointer-events: none;
+}
+.dash-hero-left h2 { font-family: 'DM Serif Display', serif; font-size: clamp(1.6rem, 3vw, 2.4rem); font-weight: 400; color: var(--white); line-height: 1.15; }
+.dash-hero-left h2 em { font-style: italic; color: var(--gold-light); }
+.dash-hero-left p { font-size: 0.75rem; color: var(--muted); margin-top: 0.4rem; letter-spacing: 0.08em; text-transform: uppercase; }
+.dash-hero-right { display: flex; align-items: center; gap: 1.25rem; z-index: 1; }
+.client-tag { text-align: right; border-right: 2px solid var(--gold); padding-right: 1rem; }
+.client-tag strong { display: block; font-size: 0.875rem; color: var(--white); font-weight: 600; letter-spacing: 0.03em; }
+.client-tag span { font-size: 0.72rem; color: var(--muted); letter-spacing: 0.06em; }
+.live-badge {
+  border: 1px solid var(--red);
+  color: var(--red);
+  font-size: 0.65rem; font-weight: 700;
+  padding: 0.4rem 0.8rem;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  animation: badge-pulse 1.5s infinite;
+  white-space: nowrap;
+}
+@keyframes badge-pulse { 0%,100%{opacity:1} 50%{opacity:0.45} }
+
+.live-indicator { display: flex; align-items: center; gap: 0.5rem; font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
+.live-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--green); box-shadow: 0 0 8px var(--green); animation: dot-pulse 2s infinite; }
+@keyframes dot-pulse { 0%,100%{opacity:1} 50%{opacity:0.35} }
+
+/* ── GOLD DIVIDER ── */
+.gold-line { height: 1px; background: linear-gradient(90deg, transparent, var(--gold) 30%, var(--gold) 70%, transparent); opacity: 0.15; }
+
+/* ── METRICS ── */
+.metrics-row { display: grid; grid-template-columns: repeat(4, 1fr); border-bottom: 1px solid var(--border); }
+.metric { padding: 2rem; border-right: 1px solid var(--border); position: relative; overflow: hidden; }
+.metric:last-child { border-right: none; }
+.metric::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 2px; background: var(--gold); transform: scaleX(0); transform-origin: left; transition: transform 0.6s ease; }
+.metric.flash::before { transform: scaleX(1); }
+.metric-label { font-size: 0.65rem; color: var(--muted); letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 0.9rem; }
+.metric-value { font-family: 'DM Serif Display', serif; font-size: 3rem; font-weight: 400; color: var(--white); line-height: 1; transition: color 0.4s; }
+.metric-value .unit { font-size: 1.1rem; color: var(--muted); font-weight: 300; font-family: 'DM Sans', sans-serif; }
+.metric-value.c-gold { color: var(--gold); }
+.metric-value.c-red { color: var(--red); }
+.metric-value.c-green { color: var(--green); }
+.metric-status { font-size: 0.78rem; color: var(--muted); margin-top: 0.6rem; letter-spacing: 0.02em; }
+.metric-status.ok { color: var(--green); }
+.metric-status.warn { color: var(--red); }
+
+/* ── CHARTS ── */
+.charts-row { display: grid; grid-template-columns: 3fr 2fr; border-bottom: 1px solid var(--border); }
+.chart-panel { padding: 2rem; border-right: 1px solid var(--border); }
+.chart-panel:last-child { border-right: none; }
+.panel-title { font-size: 0.65rem; color: var(--gold); letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 1.25rem; display: flex; align-items: center; gap: 0.75rem; }
+.panel-title::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+/* ── ALERT LOG ── */
+.alert-log { padding: 2rem; border-bottom: 1px solid var(--border); }
+.alert-item { display: flex; align-items: flex-start; gap: 1rem; padding: 0.75rem 0; border-bottom: 1px solid var(--border); animation: fadeIn 0.4s ease; }
+@keyframes fadeIn { from{opacity:0;transform:translateY(-4px)} to{opacity:1;transform:translateY(0)} }
+.alert-time { font-family: monospace; font-size: 0.72rem; color: var(--muted); min-width: 72px; padding-top: 3px; }
+.alert-dot { width: 6px; height: 6px; border-radius: 50%; margin-top: 6px; flex-shrink: 0; }
+.alert-dot.warn { background: var(--red); box-shadow: 0 0 6px var(--red); }
+.alert-dot.info { background: var(--gold); }
+.alert-text { font-size: 0.875rem; color: var(--white); line-height: 1.5; }
+.alert-sub { font-size: 0.72rem; color: var(--muted); margin-top: 2px; font-family: monospace; }
+.no-alerts { color: var(--muted); font-size: 0.8rem; padding: 1rem 0; display: flex; align-items: center; gap: 0.6rem; letter-spacing: 0.03em; }
+
+/* ── FOOTER ── */
+footer {
+  background: var(--mid); border-top: 1px solid var(--border);
+  padding: 3rem 4rem;
+  display: grid; grid-template-columns: 1fr auto; gap: 2rem; align-items: start;
+}
+.footer-left { display: flex; flex-direction: column; gap: 0.2rem; }
+.footer-left img { height: 110px; filter: brightness(0) invert(1); display: block; }
+.footer-tagline { font-size: 0.8rem; color: rgba(245,244,240,0.35); }
+.footer-legal { font-size: 0.75rem; color: rgba(245,244,240,0.3); text-align: right; line-height: 1.8; }
+.footer-legal a { color: rgba(245,244,240,0.4); text-decoration: none; }
+.footer-legal a:hover { color: var(--gold); }
+.footer-ts { font-family: monospace; font-size: 0.72rem; color: var(--muted); margin-top: 0.5rem; }
+
+/* ── LIGHT MODE ── */
+html[data-mode="light"] body { background: #f5f2eb !important; color: #0a0a0a !important; }
+html[data-mode="light"] nav { background: rgba(245,242,235,0.97) !important; }
+html[data-mode="light"] nav img, html[data-mode="light"] footer img { filter: brightness(0) !important; }
+html[data-mode="light"] .nav-links a { color: rgba(10,10,10,0.65) !important; }
+html[data-mode="light"] .lang-btn { color: rgba(10,10,10,0.6) !important; border-color: rgba(10,10,10,0.25) !important; }
+html[data-mode="light"] .dash-hero { background: #ede9e0 !important; }
+html[data-mode="light"] .dash-hero-left h2 { color: #0a0a0a !important; }
+html[data-mode="light"] .metrics-row, html[data-mode="light"] .charts-row, html[data-mode="light"] .alert-log { background: #f5f2eb !important; }
+html[data-mode="light"] .metric-value { color: #0a0a0a !important; }
+html[data-mode="light"] .alert-text { color: #0a0a0a !important; }
+html[data-mode="light"] footer { background: #ede9e0 !important; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  nav { padding: 0.5rem 1.5rem !important; position: relative; }
+  .nav-logo img { height: 72px; }
+  .menu-btn { display: flex; }
+  .nav-links { display: none; position: absolute; top: 100%; left: 0; right: 0; z-index: 99; background: rgba(10,10,10,0.98); border-top: 1px solid var(--border); flex-direction: column; padding: 0.5rem 0; gap: 0; }
+  .nav-links.open { display: flex; }
+  .nav-links li { border-bottom: 1px solid rgba(255,255,255,0.06); }
+  .nav-links a { padding: 0.9rem 1.5rem !important; display: block; }
+  .nav-links a::after { display: none !important; }
+  .breadcrumb { padding-left: 1.5rem; padding-right: 1.5rem; }
+  .dash-hero { flex-direction: column; gap: 1rem; align-items: flex-start; padding: 1.5rem; }
+  .metrics-row { grid-template-columns: repeat(2, 1fr); }
+  .charts-row { grid-template-columns: 1fr; }
+  .chart-panel { border-right: none; border-bottom: 1px solid var(--border); }
+  .alert-log { padding: 1.5rem; }
+  footer { grid-template-columns: 1fr; padding: 2rem 1.5rem; }
+  .footer-legal { text-align: left; }
+}
+@media (max-width: 480px) {
+  .metrics-row { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<!-- NAV -->
+<nav id="mainNav">
+  <div class="nav-logo">
+    <a href="/"><img src="/adroit-logo.png" alt="Adroit Solutions GmbH"/></a>
+  </div>
+  <div class="nav-right">
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/about.html">About</a></li>
+      <li><a href="/services.html">Services</a></li>
+      <li><a href="/adroit-sense.html" class="active">ADROIT SENSE™</a></li>
+      <li><a href="/case-studies/">Case Studies</a></li>
+      <li><a href="/contact.html">Contact</a></li>
+    </ul>
+    <div class="lang-switcher">
+      <button class="lang-btn active" id="btn-de" onclick="setLang('de')">DE</button>
+      <button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button>
+    </div>
+    <button class="menu-btn" id="menuBtn" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- BREADCRUMB -->
+<div class="breadcrumb">
+  <a href="/">Adroit Solutions</a>
+  <span>›</span>
+  <a href="/adroit-sense.html">ADROIT SENSE™</a>
+  <span>›</span>
+  <span class="active">Live Dashboard</span>
+</div>
+
+<div class="main">
+
+  <!-- HERO STRIP -->
+  <div class="dash-hero">
+    <div class="dash-hero-left">
+      <h2>Cold Chain <em>Intelligence</em> Dashboard</h2>
+      <p>Real-time monitoring · Frankfurt Cloud · adroit-sense-001</p>
+    </div>
+    <div class="dash-hero-right">
+      <div class="live-indicator">
+        <div class="live-dot" id="liveDot"></div>
+        <span id="liveText">Live</span>
+      </div>
+      <div class="client-tag">
+        <strong>Bidi GmbH</strong>
+        <span>Hilden Facility · Cold Storage Zone A</span>
+      </div>
+      <div class="live-badge">● Live</div>
+    </div>
+  </div>
+
+  <div class="gold-line"></div>
+
+  <!-- METRICS -->
+  <div class="metrics-row">
+    <div class="metric" id="mTemp">
+      <div class="metric-label">Temperature</div>
+      <div class="metric-value c-gold" id="tempVal">--<span class="unit"> °C</span></div>
+      <div class="metric-status" id="tempSt">Initialising…</div>
+    </div>
+    <div class="metric" id="mHum">
+      <div class="metric-label">Humidity</div>
+      <div class="metric-value" id="humVal">--<span class="unit"> %</span></div>
+      <div class="metric-status" id="humSt">Relative humidity</div>
+    </div>
+    <div class="metric" id="mAlert">
+      <div class="metric-label">Alert Status</div>
+      <div class="metric-value" id="alertVal" style="font-size:1.6rem;padding-top:0.6rem;font-family:'DM Sans',sans-serif;font-weight:600;">--</div>
+      <div class="metric-status" id="alertSt">Monitoring active</div>
+    </div>
+    <div class="metric" id="mTime">
+      <div class="metric-label">Last Reading</div>
+      <div class="metric-value" id="timeVal" style="font-size:1.1rem;padding-top:0.75rem;font-family:monospace;color:var(--muted);font-weight:400;">--:--:--</div>
+      <div class="metric-status" id="timeSt">adroit-sense-001</div>
+    </div>
+  </div>
+
+  <div class="gold-line"></div>
+
+  <!-- CHARTS -->
+  <div class="charts-row">
+    <div class="chart-panel">
+      <div class="panel-title">Temperature — Last 20 Readings (°C)</div>
+      <canvas id="tempChart" height="90"></canvas>
+    </div>
+    <div class="chart-panel">
+      <div class="panel-title">Humidity (%)</div>
+      <canvas id="humChart" height="90"></canvas>
+    </div>
+  </div>
+
+  <div class="gold-line"></div>
+
+  <!-- ALERT LOG -->
+  <div class="alert-log">
+    <div class="panel-title">Alert Log</div>
+    <div id="alertLog">
+      <div class="no-alerts">
+        <span style="color:var(--green);font-size:0.5rem;">●</span>
+        No alerts — all zones operating within defined parameters
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-left">
+    <a href="/"><img src="/adroit-logo.png" alt="Adroit Solutions GmbH"/></a>
+    <p class="footer-tagline">Electronics &middot; IoT &middot; Digital Solutions &middot; Düsseldorf</p>
+    <p class="footer-ts" id="footerTime">--</p>
+  </div>
+  <div class="footer-legal">
+    <p>&copy; 2026 Adroit Solutions GmbH</p>
+    <p><a href="/impressum.html">Impressum</a> &nbsp;&middot;&nbsp; <a href="/datenschutz.html">Datenschutz</a></p>
+  </div>
+</footer>
+
+<script>
+/* ── Dashboard logic ── */
+const MAX = 20;
+const TEMP_MAX = 8.0;
+const TEMP_MIN = -25.0;
+let tempData = [], humData = [], labels = [];
+let alertCount = 0;
+let count = 0;
+
+Chart.defaults.color = 'rgba(245,244,240,0.35)';
+Chart.defaults.font.family = "'DM Sans', sans-serif";
+Chart.defaults.font.size = 10;
+
+const tCtx = document.getElementById('tempChart').getContext('2d');
+const hCtx = document.getElementById('humChart').getContext('2d');
+
+const tempChart = new Chart(tCtx, {
+  type: 'line',
+  data: {
+    labels: [],
+    datasets: [
+      {
+        label: 'Temp °C',
+        data: [],
+        borderColor: '#c9a84c',
+        backgroundColor: 'rgba(201,168,76,0.07)',
+        borderWidth: 1.5,
+        pointRadius: 2.5,
+        pointBackgroundColor: '#c9a84c',
+        pointBorderColor: 'transparent',
+        tension: 0.4,
+        fill: true
+      },
+      {
+        label: 'Max +8°C',
+        data: Array(MAX).fill(8),
+        borderColor: 'rgba(204,41,54,0.35)',
+        borderWidth: 1,
+        borderDash: [4,4],
+        pointRadius: 0,
+        fill: false
+      },
+      {
+        label: 'Min −25°C',
+        data: Array(MAX).fill(-25),
+        borderColor: 'rgba(201,168,76,0.25)',
+        borderWidth: 1,
+        borderDash: [4,4],
+        pointRadius: 0,
+        fill: false
+      }
+    ]
+  },
+  options: {
+    responsive: true,
+    animation: false,
+    plugins: {
+      legend: { labels: { color: 'rgba(245,244,240,0.4)', font: { size: 10 }, boxWidth: 16, padding: 12 } }
+    },
+    scales: {
+      x: { ticks: { color: 'rgba(245,244,240,0.25)', maxRotation: 0, font: { size: 9 } }, grid: { color: 'rgba(201,168,76,0.06)' } },
+      y: { ticks: { color: 'rgba(245,244,240,0.25)' }, grid: { color: 'rgba(201,168,76,0.06)' } }
+    }
+  }
+});
+
+const humChart = new Chart(hCtx, {
+  type: 'bar',
+  data: {
+    labels: [],
+    datasets: [{
+      label: 'Humidity %',
+      data: [],
+      backgroundColor: 'rgba(201,168,76,0.2)',
+      borderColor: 'rgba(201,168,76,0.6)',
+      borderWidth: 1,
+      borderRadius: 2
+    }]
+  },
+  options: {
+    responsive: true,
+    animation: false,
+    plugins: {
+      legend: { labels: { color: 'rgba(245,244,240,0.4)', font: { size: 10 }, boxWidth: 16 } }
+    },
+    scales: {
+      x: { ticks: { color: 'rgba(245,244,240,0.25)', font: { size: 9 } }, grid: { color: 'rgba(201,168,76,0.06)' } },
+      y: { ticks: { color: 'rgba(245,244,240,0.25)' }, grid: { color: 'rgba(201,168,76,0.06)' }, min: 60, max: 100 }
+    }
+  }
+});
+
+function flash(id) {
+  const el = document.getElementById(id);
+  el.classList.add('flash');
+  setTimeout(() => el.classList.remove('flash'), 700);
+}
+
+function addAlert(msg, type='warn') {
+  const log = document.getElementById('alertLog');
+  const na = log.querySelector('.no-alerts');
+  if (na) na.remove();
+  const time = new Date().toLocaleTimeString('de-DE');
+  const div = document.createElement('div');
+  div.className = 'alert-item';
+  div.innerHTML = `
+    <span class="alert-time">${time}</span>
+    <div class="alert-dot ${type}"></div>
+    <div class="alert-text">${msg}
+      <div class="alert-sub">adroit-sense-001 · Bidi GmbH Hilden · Zone A</div>
+    </div>`;
+  log.insertBefore(div, log.firstChild);
+  if (log.children.length > 8) log.removeChild(log.lastChild);
+}
+
+function update(data) {
+  const t = data.temperature;
+  const h = data.humidity;
+  const time = new Date().toLocaleTimeString('de-DE');
+
+  const tEl = document.getElementById('tempVal');
+  tEl.innerHTML = `${t.toFixed(1)}<span class="unit"> °C</span>`;
+  const tSt = document.getElementById('tempSt');
+
+  if (t > TEMP_MAX) {
+    tEl.className = 'metric-value c-red';
+    tSt.className = 'metric-status warn';
+    tSt.textContent = '⚠ Above maximum threshold';
+    addAlert(`Temperature breach — ${t.toFixed(1)}°C exceeds +8°C maximum limit`);
+    alertCount++;
+  } else if (t < TEMP_MIN) {
+    tEl.className = 'metric-value c-red';
+    tSt.className = 'metric-status warn';
+    tSt.textContent = '⚠ Below minimum threshold';
+    addAlert(`Temperature breach — ${t.toFixed(1)}°C below −25°C minimum limit`);
+    alertCount++;
+  } else {
+    tEl.className = 'metric-value c-gold';
+    tSt.className = 'metric-status ok';
+    tSt.textContent = '✓ Within normal range';
+  }
+
+  document.getElementById('humVal').innerHTML = `${h.toFixed(1)}<span class="unit"> %</span>`;
+
+  const aEl = document.getElementById('alertVal');
+  const aSt = document.getElementById('alertSt');
+  if (t > TEMP_MAX || t < TEMP_MIN) {
+    aEl.innerHTML = '<span style="color:var(--red)">⚠ BREACH</span>';
+    aSt.className = 'metric-status warn';
+    aSt.textContent = `${alertCount} alert${alertCount !== 1 ? 's' : ''} logged`;
+  } else {
+    aEl.innerHTML = '<span style="color:var(--green)">✓ NORMAL</span>';
+    aSt.className = 'metric-status ok';
+    aSt.textContent = 'All parameters within limits';
+  }
+
+  document.getElementById('timeVal').textContent = time;
+
+  labels.push(time); tempData.push(t); humData.push(h);
+  if (labels.length > MAX) { labels.shift(); tempData.shift(); humData.shift(); }
+  tempChart.data.labels = labels;
+  tempChart.data.datasets[0].data = [...tempData];
+  tempChart.update();
+  humChart.data.labels = labels;
+  humChart.data.datasets[0].data = [...humData];
+  humChart.update();
+
+  flash('mTemp'); flash('mHum');
+  document.getElementById('footerTime').textContent = `Last updated: ${new Date().toLocaleString('de-DE')}`;
+}
+
+function runDemo() {
+  count++;
+  let t = -18.5 + (Math.random() * 3 - 1.5);
+  let h = 84 + (Math.random() * 6 - 3);
+  if (count % 12 === 0) t = 9.2;
+  update({ device: 'adroit-sense-001', temperature: t, humidity: h });
+}
+
+runDemo();
+setInterval(runDemo, 5000);
+
+/* ── Site nav / lang / theme ── */
+function setLang(lang) {
+  const isEn = lang === 'en';
+  document.body.classList.toggle('lang-en', isEn);
+  document.getElementById('btn-de').className = 'lang-btn' + (!isEn ? ' active' : '');
+  document.getElementById('btn-en').className = 'lang-btn' + (isEn ? ' active' : '');
+  sessionStorage.setItem('adroit-lang', lang);
+}
+const savedLang = sessionStorage.getItem('adroit-lang') || 'de';
+setLang(savedLang);
+
+window.addEventListener('scroll', () => {
+  const prog = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+  document.getElementById('scrollProgress').style.width = prog + '%';
+  const nav = document.getElementById('mainNav');
+  if (nav) nav.style.padding = window.scrollY > 50 ? '0.4rem 4rem' : '0.75rem 4rem';
+}, { passive: true });
+
+function applyTimeMode() {
+  const hour = new Date().getHours();
+  const isDark = hour >= 19 || hour < 7;
+  document.documentElement.setAttribute('data-mode', isDark ? 'dark' : 'light');
+  document.body.style.background = isDark ? '#0a0a0a' : '#f5f2eb';
+  document.body.style.color = isDark ? '#f5f4f0' : '#0a0a0a';
+}
+applyTimeMode();
+setInterval(applyTimeMode, 3600000);
+
+(function () {
+  var btn = document.getElementById('menuBtn');
+  var navLinks = document.querySelector('.nav-links');
+  if (!btn || !navLinks) return;
+  btn.addEventListener('click', function () {
+    var open = navLinks.classList.toggle('open');
+    btn.classList.toggle('open', open);
+  });
+  navLinks.querySelectorAll('a').forEach(function (a) {
+    a.addEventListener('click', function () {
+      navLinks.classList.remove('open');
+      btn.classList.remove('open');
+    });
+  });
+})();
+</script>
+<script src="/cookie-consent.js"></script>
+</body>
+</html>
