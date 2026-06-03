@@ -32,41 +32,49 @@ html { scroll-behavior: smooth; }
 /* ── SCROLL PROGRESS ── */
 .scroll-progress { position: fixed; top: 0; left: 0; z-index: 200; height: 2px; width: 0%; background: linear-gradient(90deg, var(--gold), var(--gold-light)); transition: width 0.1s linear; }
 
-/* ── NAV ── */
-nav {
+/* ── HEADER ── */
+header {
   position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 0.75rem 4rem;
-  background: rgba(10,10,10,0.97) !important;
+  height: 72px;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(10,10,10,0.97);
   backdrop-filter: blur(16px);
   border-bottom: 1px solid var(--border);
-  transition: padding 0.3s ease;
 }
-.nav-logo img { height: 140px; filter: brightness(0) invert(1); display: block; }
-.nav-right { display: flex; align-items: center; gap: 2rem; }
-.nav-links { display: flex; gap: 2rem; list-style: none; }
-.nav-links a { color: rgba(245,244,240,0.6); text-decoration: none; font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; position: relative; transition: color 0.2s; }
-.nav-links a::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 1px; background: var(--gold); transition: width 0.3s; }
-.nav-links a:hover, .nav-links a.active { color: var(--gold); }
-.nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
-.lang-switcher { display: flex; gap: 0.4rem; }
-.lang-btn { background: none; border: 1px solid rgba(201,168,76,0.4); color: rgba(245,244,240,0.6); font-family: 'DM Sans', sans-serif; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; padding: 0.35rem 0.8rem; cursor: pointer; transition: all 0.25s; }
-.lang-btn.active { background: var(--gold); border-color: var(--gold); color: #0a0a0a; font-weight: 700; }
-.lang-btn:hover { border-color: var(--gold); color: var(--gold); }
-.menu-btn { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; }
-.menu-btn span { display: block; width: 22px; height: 2px; background: rgba(245,244,240,0.75); border-radius: 1px; transition: all 0.25s; }
-.menu-btn.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-.menu-btn.open span:nth-child(2) { opacity: 0; }
-.menu-btn.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+.header-logo-link {
+  display: flex; align-items: center; gap: 14px;
+  text-decoration: none;
+}
+.header-logo-svg { height: 38px; width: auto; flex-shrink: 0; }
+.header-divider { width: 1px; height: 36px; background: var(--border); }
+.header-brand { display: flex; flex-direction: column; align-items: flex-start; }
+.header-brand-name {
+  font-family: 'DM Serif Display', serif;
+  font-style: italic;
+  font-size: 1.35rem;
+  color: var(--gold);
+  letter-spacing: 0.04em;
+  line-height: 1;
+}
+.header-brand-sub {
+  font-size: 0.62rem;
+  color: var(--muted);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-top: 4px;
+}
+.header-live { display: flex; align-items: center; gap: 0.5rem; margin-left: 2rem; font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); }
+.live-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--green); box-shadow: 0 0 8px var(--green); animation: dot-pulse 2s infinite; }
+@keyframes dot-pulse { 0%,100%{opacity:1} 50%{opacity:0.35} }
 
 /* ── BREADCRUMB ── */
-.breadcrumb { padding: 9rem 4rem 0; display: flex; align-items: center; gap: 0.5rem; font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(245,244,240,0.4); }
+.breadcrumb { padding: 5rem 4rem 0; display: flex; align-items: center; gap: 0.5rem; font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(245,244,240,0.4); }
 .breadcrumb a { color: rgba(245,244,240,0.4); text-decoration: none; transition: color 0.2s; }
 .breadcrumb a:hover { color: var(--gold); }
 .breadcrumb span.active { color: var(--gold); }
 
 /* ── MAIN ── */
-.main { padding-bottom: 0; }
+.main { padding-top: 72px; padding-bottom: 0; }
 
 /* ── HERO STRIP ── */
 .dash-hero {
@@ -107,9 +115,6 @@ nav {
 }
 @keyframes badge-pulse { 0%,100%{opacity:1} 50%{opacity:0.45} }
 
-.live-indicator { display: flex; align-items: center; gap: 0.5rem; font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
-.live-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--green); box-shadow: 0 0 8px var(--green); animation: dot-pulse 2s infinite; }
-@keyframes dot-pulse { 0%,100%{opacity:1} 50%{opacity:0.35} }
 
 /* ── GOLD DIVIDER ── */
 .gold-line { height: 1px; background: linear-gradient(90deg, transparent, var(--gold) 30%, var(--gold) 70%, transparent); opacity: 0.15; }
@@ -178,15 +183,8 @@ html[data-mode="light"] footer { background: #ede9e0 !important; }
 
 /* ── RESPONSIVE ── */
 @media (max-width: 900px) {
-  nav { padding: 0.5rem 1.5rem !important; position: relative; }
-  .nav-logo img { height: 72px; }
-  .menu-btn { display: flex; }
-  .nav-links { display: none; position: absolute; top: 100%; left: 0; right: 0; z-index: 99; background: rgba(10,10,10,0.98); border-top: 1px solid var(--border); flex-direction: column; padding: 0.5rem 0; gap: 0; }
-  .nav-links.open { display: flex; }
-  .nav-links li { border-bottom: 1px solid rgba(255,255,255,0.06); }
-  .nav-links a { padding: 0.9rem 1.5rem !important; display: block; }
-  .nav-links a::after { display: none !important; }
-  .breadcrumb { padding-left: 1.5rem; padding-right: 1.5rem; }
+  .header-brand-name { font-size: 1.1rem; }
+  .breadcrumb { padding-left: 1.5rem; padding-right: 1.5rem; padding-top: 5rem; }
   .dash-hero { flex-direction: column; gap: 1rem; align-items: flex-start; padding: 1.5rem; }
   .metrics-row { grid-template-columns: repeat(2, 1fr); }
   .charts-row { grid-template-columns: 1fr; }
@@ -204,38 +202,26 @@ html[data-mode="light"] footer { background: #ede9e0 !important; }
 
 <div class="scroll-progress" id="scrollProgress"></div>
 
-<!-- NAV -->
-<nav id="mainNav">
-  <div class="nav-logo">
-    <a href="/"><img src="/adroit-logo.png" alt="Adroit Solutions GmbH"/></a>
-  </div>
-  <div class="nav-right">
-    <ul class="nav-links">
-      <li><a href="/">Home</a></li>
-      <li><a href="/about.html">About</a></li>
-      <li><a href="/services.html">Services</a></li>
-      <li><a href="/adroit-sense.html" class="active">ADROIT SENSE™</a></li>
-      <li><a href="/case-studies/">Case Studies</a></li>
-      <li><a href="/contact.html">Contact</a></li>
-    </ul>
-    <div class="lang-switcher">
-      <button class="lang-btn active" id="btn-de" onclick="setLang('de')">DE</button>
-      <button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button>
+<!-- HEADER -->
+<header>
+  <a class="header-logo-link" href="https://adroitsolutions.de">
+    <!-- Adroit Solutions logo mark -->
+    <svg class="header-logo-svg" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="2" y="2" width="40" height="40" stroke="#c9a84c" stroke-width="2.5" fill="none"/>
+      <path d="M10 36 L24 12 L38 36" stroke="#c9a84c" stroke-width="2.5" fill="none" stroke-linejoin="round" stroke-linecap="round"/>
+      <path d="M15 28 L33 28" stroke="#c9a84c" stroke-width="2" fill="none"/>
+    </svg>
+    <div class="header-divider"></div>
+    <div class="header-brand">
+      <span class="header-brand-name">ADROIT SENSE™</span>
+      <span class="header-brand-sub">Cold Chain Intelligence</span>
     </div>
-    <button class="menu-btn" id="menuBtn" aria-label="Toggle menu">
-      <span></span><span></span><span></span>
-    </button>
+  </a>
+  <div class="header-live">
+    <div class="live-dot" id="liveDot"></div>
+    <span id="liveText">Live</span>
   </div>
-</nav>
-
-<!-- BREADCRUMB -->
-<div class="breadcrumb">
-  <a href="/">Adroit Solutions</a>
-  <span>›</span>
-  <a href="/adroit-sense.html">ADROIT SENSE™</a>
-  <span>›</span>
-  <span class="active">Live Dashboard</span>
-</div>
+</header>
 
 <div class="main">
 
@@ -246,10 +232,6 @@ html[data-mode="light"] footer { background: #ede9e0 !important; }
       <p>Real-time monitoring · Frankfurt Cloud · adroit-sense-001</p>
     </div>
     <div class="dash-hero-right">
-      <div class="live-indicator">
-        <div class="live-dot" id="liveDot"></div>
-        <span id="liveText">Live</span>
-      </div>
       <div class="client-tag">
         <strong>Bidi GmbH</strong>
         <span>Hilden Facility · Cold Storage Zone A</span>
@@ -508,49 +490,11 @@ function runDemo() {
 runDemo();
 setInterval(runDemo, 5000);
 
-/* ── Site nav / lang / theme ── */
-function setLang(lang) {
-  const isEn = lang === 'en';
-  document.body.classList.toggle('lang-en', isEn);
-  document.getElementById('btn-de').className = 'lang-btn' + (!isEn ? ' active' : '');
-  document.getElementById('btn-en').className = 'lang-btn' + (isEn ? ' active' : '');
-  sessionStorage.setItem('adroit-lang', lang);
-}
-const savedLang = sessionStorage.getItem('adroit-lang') || 'de';
-setLang(savedLang);
-
+/* ── Scroll progress ── */
 window.addEventListener('scroll', () => {
   const prog = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
   document.getElementById('scrollProgress').style.width = prog + '%';
-  const nav = document.getElementById('mainNav');
-  if (nav) nav.style.padding = window.scrollY > 50 ? '0.4rem 4rem' : '0.75rem 4rem';
 }, { passive: true });
-
-function applyTimeMode() {
-  const hour = new Date().getHours();
-  const isDark = hour >= 19 || hour < 7;
-  document.documentElement.setAttribute('data-mode', isDark ? 'dark' : 'light');
-  document.body.style.background = isDark ? '#0a0a0a' : '#f5f2eb';
-  document.body.style.color = isDark ? '#f5f4f0' : '#0a0a0a';
-}
-applyTimeMode();
-setInterval(applyTimeMode, 3600000);
-
-(function () {
-  var btn = document.getElementById('menuBtn');
-  var navLinks = document.querySelector('.nav-links');
-  if (!btn || !navLinks) return;
-  btn.addEventListener('click', function () {
-    var open = navLinks.classList.toggle('open');
-    btn.classList.toggle('open', open);
-  });
-  navLinks.querySelectorAll('a').forEach(function (a) {
-    a.addEventListener('click', function () {
-      navLinks.classList.remove('open');
-      btn.classList.remove('open');
-    });
-  });
-})();
 </script>
 <script src="/cookie-consent.js"></script>
 </body>
