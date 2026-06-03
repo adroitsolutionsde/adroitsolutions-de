@@ -45,7 +45,7 @@ header {
   display: flex; align-items: center; gap: 14px;
   text-decoration: none;
 }
-.header-logo-svg { height: 38px; width: auto; flex-shrink: 0; }
+.header-logo-img { height: 48px; width: auto; flex-shrink: 0; filter: brightness(0) invert(1); }
 .header-divider { width: 1px; height: 36px; background: var(--border); }
 .header-brand { display: flex; flex-direction: column; align-items: flex-start; }
 .header-brand-name {
@@ -205,12 +205,7 @@ html[data-mode="light"] footer { background: #ede9e0 !important; }
 <!-- HEADER -->
 <header>
   <a class="header-logo-link" href="https://adroitsolutions.de">
-    <!-- Adroit Solutions logo mark -->
-    <svg class="header-logo-svg" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <rect x="2" y="2" width="40" height="40" stroke="#c9a84c" stroke-width="2.5" fill="none"/>
-      <path d="M10 36 L24 12 L38 36" stroke="#c9a84c" stroke-width="2.5" fill="none" stroke-linejoin="round" stroke-linecap="round"/>
-      <path d="M15 28 L33 28" stroke="#c9a84c" stroke-width="2" fill="none"/>
-    </svg>
+    <img class="header-logo-img" src="/adroit-logo.png" alt="Adroit Solutions GmbH"/>
     <div class="header-divider"></div>
     <div class="header-brand">
       <span class="header-brand-name">ADROIT SENSE™</span>
