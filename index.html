@@ -171,6 +171,56 @@ h1 em { font-style: italic; color: var(--gold-light); }
 /* ── ABOUT ── */
 .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
 .about-stats { display: flex; gap: 2.5rem; flex-wrap: wrap; margin-top: 2rem; padding-top: 2rem; border-top: 1px solid var(--border-sub); }
+.about-circuit { width: 100%; max-width: 380px; opacity: .85; }
+.vs-strip > svg { flex-shrink: 0; }
+
+/* ── LIGHT MODE ── */
+html[data-mode="light"] .nav-links a { color: rgba(10,10,10,0.65) !important; }
+html[data-mode="light"] nav img,
+html[data-mode="light"] footer img { filter: brightness(0) !important; }
+html[data-mode="light"] footer { background: #ede9e0 !important; }
+html[data-mode="light"] .footer-tagline { color: rgba(10,10,10,0.4) !important; }
+html[data-mode="light"] .footer-legal { color: rgba(10,10,10,0.35) !important; }
+html[data-mode="light"] .footer-legal a { color: rgba(10,10,10,0.45) !important; }
+html[data-mode="light"] .divider { background: linear-gradient(90deg, transparent, rgba(201,168,76,0.25), transparent) !important; }
+html[data-mode="light"] .hero { background: #f5f2eb !important; }
+html[data-mode="light"] .hero-grid-lines { background-image: linear-gradient(rgba(201,168,76,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(201,168,76,0.06) 1px, transparent 1px) !important; }
+html[data-mode="light"] h1 { color: #0a0a0a !important; }
+html[data-mode="light"] .hero-desc { color: rgba(10,10,10,0.55) !important; }
+html[data-mode="light"] .hero-stats { border-top-color: rgba(10,10,10,0.1) !important; }
+html[data-mode="light"] .stat-n { color: #0a0a0a !important; }
+html[data-mode="light"] .stat-l { color: rgba(10,10,10,0.4) !important; }
+html[data-mode="light"] .hero-tag { color: var(--gold-dim) !important; }
+html[data-mode="light"] .section { background: #f5f2eb !important; }
+html[data-mode="light"] .section.alt { background: #ede9e0 !important; }
+html[data-mode="light"] .s-title { color: #0a0a0a !important; }
+html[data-mode="light"] .s-desc { color: rgba(10,10,10,0.65) !important; }
+html[data-mode="light"] .terminal { background: #e8e3d8 !important; border-color: rgba(201,168,76,0.35) !important; }
+html[data-mode="light"] .term-header { background: #ddd8cc !important; }
+html[data-mode="light"] .sensor-strip { background: #e0dbd0 !important; }
+html[data-mode="light"] .sc { background: #ede9e0 !important; border-color: rgba(10,10,10,0.1) !important; }
+html[data-mode="light"] .cost-card { background: #ede9e0 !important; }
+html[data-mode="light"] .cost-name { color: rgba(10,10,10,0.65) !important; }
+html[data-mode="light"] .cost-amt { color: #0a0a0a !important; }
+html[data-mode="light"] .check-item { color: rgba(10,10,10,0.65) !important; }
+html[data-mode="light"] .arch-card { background: #ede9e0 !important; }
+html[data-mode="light"] .chips { background: rgba(0,0,0,0.05) !important; border-color: rgba(10,10,10,0.1) !important; }
+html[data-mode="light"] .feat-item { background: #ede9e0 !important; border-color: rgba(10,10,10,0.1) !important; }
+html[data-mode="light"] .feat-copy span { color: rgba(10,10,10,0.6) !important; }
+html[data-mode="light"] .step { background: #ede9e0 !important; }
+html[data-mode="light"] .step h3 { color: #0a0a0a !important; }
+html[data-mode="light"] .step p { color: rgba(10,10,10,0.6) !important; }
+html[data-mode="light"] .vert-card { background: #f5f2eb !important; }
+html[data-mode="light"] .vert-card:hover { background: #ede9e0 !important; }
+html[data-mode="light"] .vert-card h3 { color: #0a0a0a !important; }
+html[data-mode="light"] .vert-card p { color: rgba(10,10,10,0.6) !important; }
+html[data-mode="light"] .about-grid .s-title { color: #0a0a0a !important; }
+html[data-mode="light"] .about-grid .s-desc { color: rgba(10,10,10,0.65) !important; }
+html[data-mode="light"] .cta-section { background: #f5f2eb !important; border-top-color: rgba(201,168,76,0.25) !important; }
+html[data-mode="light"] .cta-section h2 { color: #0a0a0a !important; }
+html[data-mode="light"] .cta-section p { color: rgba(10,10,10,0.6) !important; }
+html[data-mode="light"] .pf-item { color: rgba(10,10,10,0.65) !important; }
+html[data-mode="light"] .btn-outline { border-color: rgba(10,10,10,0.3) !important; color: #0a0a0a !important; }
 
 /* ── RESPONSIVE ADDITIONS ── */
 @media (max-width: 1100px) { .hero-inner { grid-template-columns: 1fr; } .hero-visual { max-width: 500px; margin: 0 auto; } }
@@ -264,7 +314,7 @@ h1 em { font-style: italic; color: var(--gold-light); }
     </div>
     <!-- LIVE TERMINAL -->
     <div class="hero-visual">
-      <div class="terminal" style="aspect-ratio:unset">
+      <div class="terminal">
         <div class="term-header">
           <div class="term-dots"><span></span><span></span><span></span></div>
           <div class="term-title">adroit-sense — live telemetry</div>
@@ -332,7 +382,7 @@ h1 em { font-style: italic; color: var(--gold-light); }
             <span class="cost-total-val">€100,000</span>
           </div>
           <div class="vs-strip">
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" style="flex-shrink:0"><circle cx="10" cy="10" r="9" stroke="#00C97A" stroke-width="1.2"/><path d="M10 6v4l2.5 2.5" stroke="#00C97A" stroke-width="1.5" stroke-linecap="round"/></svg>
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="#00C97A" stroke-width="1.2"/><path d="M10 6v4l2.5 2.5" stroke="#00C97A" stroke-width="1.5" stroke-linecap="round"/></svg>
             <p>ADROIT SENSE™ detects the same failure in <strong>under 60 seconds</strong> — before a single unit of product is compromised.</p>
           </div>
         </div>
@@ -629,7 +679,7 @@ h1 em { font-style: italic; color: var(--gold-light); }
         </div>
       </div>
       <div class="reveal-right">
-        <svg viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:380px;opacity:.85">
+        <svg viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg" class="about-circuit">
           <rect x="80" y="80" width="240" height="240" stroke="rgba(201,168,76,0.15)" stroke-width="1"/>
           <path d="M200 80V40M200 360v40M80 200H40M360 200h40" stroke="rgba(201,168,76,0.1)" stroke-width="1"/>
           <rect x="140" y="140" width="120" height="120" rx="4" stroke="rgba(201,168,76,0.5)" stroke-width="1.5" fill="rgba(201,168,76,0.03)"/>
