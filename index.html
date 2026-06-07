@@ -1,1170 +1,1005 @@
 <!DOCTYPE html>
-<html lang="de" style="background:#0a0a0a !important">
+<html lang="en" data-mode="auto">
 <head>
 <meta charset="UTF-8"/>
-<meta name="color-scheme" content="dark"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Adroit Solutions GmbH – IT Consulting · SAP BTP · IoT · Embedded Systems · Düsseldorf</title>
-<meta name="description" content="Adroit Solutions GmbH – IT-Beratung aus Düsseldorf. Spezialisiert auf SAP BTP Engineering, Enterprise-Architektur, IoT und Embedded Systems. Subcontracting für System Integratoren in Deutschland und DACH."/>
-<link rel="canonical" href="https://adroitsolutions.de/"/>
-<link rel="alternate" hreflang="de" href="https://adroitsolutions.de/"/>
-<link rel="alternate" hreflang="en" href="https://adroitsolutions.de/"/>
-<link rel="alternate" hreflang="x-default" href="https://adroitsolutions.de/"/>
-<meta property="og:type" content="website"/>
-<meta property="og:url" content="https://adroitsolutions.de/"/>
-<meta property="og:site_name" content="Adroit Solutions GmbH"/>
-<meta property="og:title" content="Adroit Solutions GmbH – IT Consulting · SAP BTP · IoT · Embedded Systems · Düsseldorf"/>
-<meta property="og:description" content="SAP BTP specialists, enterprise IT architects and embedded systems engineers based in Düsseldorf — available for project-based engagements across Germany and DACH."/>
-<meta property="og:image" content="https://adroitsolutions.de/adroit-logo.png"/>
-<meta property="og:locale" content="de_DE"/>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  "@id": "https://adroitsolutions.de/#organization",
-  "name": "Adroit Solutions GmbH",
-  "legalName": "Adroit Solutions GmbH",
-  "url": "https://adroitsolutions.de",
-  "logo": {
-    "@type": "ImageObject",
-    "url": "https://adroitsolutions.de/adroit-logo.png",
-    "width": 300,
-    "height": 80
-  },
-  "description": "Adroit Solutions GmbH is a Düsseldorf-based technology company specialising in IT Architecture Consulting, Embedded Systems Engineering (ESP32/IoT), PCB Trading & Procurement, DOOH Advertising Networks, and the ADROIT SENSE™ AI-powered cold chain monitoring platform.",
-  "foundingDate": "2025",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "Königsallee 27",
-    "addressLocality": "Düsseldorf",
-    "postalCode": "40212",
-    "addressRegion": "Nordrhein-Westfalen",
-    "addressCountry": "DE"
-  },
-  "contactPoint": [
-    {
-      "@type": "ContactPoint",
-      "contactType": "sales",
-      "telephone": "+4921123855465",
-      "email": "samdani.gulam@adroitsolutions.de",
-      "availableLanguage": ["English", "German"],
-      "areaServed": ["DE", "EU"]
-    }
-  ],
-  "sameAs": [
-    "https://www.linkedin.com/company/adroit-solutions-gmbh"
-  ],
-  "hasOfferCatalog": {
-    "@type": "OfferCatalog",
-    "name": "Adroit Solutions Services",
-    "itemListElement": [
-      {"@type":"Offer","itemOffered":{"@type":"Service","name":"IT Architecture Consulting","description":"Senior-level IT architecture design, AWS cloud migration, enterprise system integration for German Mittelstand."}},
-      {"@type":"Offer","itemOffered":{"@type":"Service","name":"Embedded Systems Engineering","description":"ESP32/C/C++ firmware development, MQTT IoT protocols, edge computing solutions for industrial applications."}},
-      {"@type":"Offer","itemOffered":{"@type":"Service","name":"ADROIT SENSE™ IoT Platform","description":"AI-powered cold storage and logistics monitoring platform. Real-time alerts, compliance reporting, NIS2-ready."}},
-      {"@type":"Offer","itemOffered":{"@type":"Service","name":"PCB Trading & Procurement","description":"eMMC, NOR Flash, LPDDR4 component sourcing and cross-border EU supply chain management."}},
-      {"@type":"Offer","itemOffered":{"@type":"Service","name":"Computer Vision QA","description":"Automated PCB visual inspection systems using AI/ML, reducing defect escape rate for electronics manufacturers."}},
-      {"@type":"Offer","itemOffered":{"@type":"Service","name":"DOOH Advertising Networks","description":"Digital out-of-home LED advertising network management and deployment in Düsseldorf and NRW."}}
-    ]
-  },
-  "knowsAbout": ["IoT Architecture","Embedded Systems","ESP32","MQTT","AWS Cloud","NIS2 Compliance","PCB Procurement","Cold Chain Monitoring","DOOH Advertising","IT Consulting Germany"],
-  "taxID": "HRB 127959"
-}
-</script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "LocalBusiness",
-  "@id": "https://adroitsolutions.de/#localbusiness",
-  "name": "Adroit Solutions GmbH",
-  "url": "https://adroitsolutions.de",
-  "telephone": "+4921123855465",
-  "email": "samdani.gulam@adroitsolutions.de",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "Königsallee 27",
-    "addressLocality": "Düsseldorf",
-    "postalCode": "40212",
-    "addressRegion": "Nordrhein-Westfalen",
-    "addressCountry": "DE"
-  },
-  "geo": {
-    "@type": "GeoCoordinates",
-    "latitude": 51.2217,
-    "longitude": 6.7762
-  },
-  "openingHoursSpecification": [
-    {
-      "@type": "OpeningHoursSpecification",
-      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
-      "opens": "09:00",
-      "closes": "18:00"
-    }
-  ],
-  "priceRange": "€€€",
-  "currenciesAccepted": "EUR",
-  "paymentAccepted": "Invoice, SEPA transfer",
-  "areaServed": ["Düsseldorf","Köln","Frankfurt","Deutschland","EU"],
-  "hasMap": "https://maps.google.com/?q=Königsallee+27,+40212+Düsseldorf"
-}
-</script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebSite",
-  "@id": "https://adroitsolutions.de/#website",
-  "url": "https://adroitsolutions.de",
-  "name": "Adroit Solutions GmbH",
-  "description": "IT Architecture, IoT Engineering & Embedded Systems Consulting in Düsseldorf",
-  "publisher": { "@id": "https://adroitsolutions.de/#organization" },
-  "inLanguage": "en-GB"
-}
-</script>
-  <link rel="stylesheet" href="/fonts/fonts.css"/>
+<title>Adroit Solutions GmbH — Industrial Intelligence. Edge to Cloud.</title>
+<meta name="description" content="Adroit Solutions GmbH builds proprietary IoT platforms and embedded intelligence for German Mittelstand. ADROIT SENSE™ — real-time cold chain monitoring. Düsseldorf, Germany."/>
+<meta property="og:title" content="Adroit Solutions GmbH — Industrial Intelligence"/>
+<meta property="og:description" content="ADROIT SENSE™ detects cold chain failures before they cost you. Real-time edge intelligence for German Mittelstand."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Serif+Display:ital@0;1&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet"/>
 <style>
-html, body {
-  background: #0a0a0a !important;
-  color: #f5f4f0 !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  font-family: 'DM Sans', sans-serif !important;
-  font-weight: 300;
-  line-height: 1.7;
-  overflow-x: hidden;
-}
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-:root {
-  --black: #0a0a0a;
-  --white: #f5f4f0;
-  --gold: #c9a84c;
-  --gold-light: #e8c97a;
-  --mid: #1c1c1c;
-  --border: rgba(201,168,76,0.2);
-}
-html { scroll-behavior: smooth; }
+/* ============================================================
+   Adroit Solutions — Master Stylesheet + Homepage
+   Design system: gold/dark, DM Sans + DM Serif Display
+   ============================================================ */
 
-/* LANG SWITCHER */
-.lang-switcher {
-  display: flex; gap: 0.4rem; align-items: center;
-}
-.lang-btn {
-  background: none;
-  border: 1px solid rgba(201,168,76,0.4);
-  color: rgba(245,244,240,0.6);
-  font-family: 'DM Sans', sans-serif;
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  padding: 0.35rem 0.8rem;
-  cursor: pointer;
-  transition: all 0.25s;
-}
-.lang-btn.active {
-  background: var(--gold);
-  border-color: var(--gold);
-  color: #0a0a0a;
-  font-weight: 700;
-}
-.lang-btn:hover { border-color: var(--gold); color: var(--gold); }
-.lang-btn.active:hover { background: var(--gold-light); color: #0a0a0a; }
+html,body{background:#0a0a0a!important;color:#f5f4f0!important;margin:0!important;padding:0!important;font-family:'DM Sans',sans-serif!important;font-weight:300;line-height:1.7;overflow-x:hidden}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 
-/* [lang] display logic with fade */
-[data-lang="en"] { display: none; opacity: 0; }
-[data-lang="de"] { display: block; opacity: 1; animation: fadeIn 0.4s ease; }
-span[data-lang="en"] { display: none; opacity: 0; }
-span[data-lang="de"] { display: inline; opacity: 1; }
-body.lang-en [data-lang="en"] { display: block; opacity: 1; animation: fadeIn 0.4s ease; }
-body.lang-en [data-lang="de"] { display: none; opacity: 0; }
-body.lang-en span[data-lang="en"] { display: inline; opacity: 1; }
-body.lang-en span[data-lang="de"] { display: none; opacity: 0; }
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(8px); }
-  to { opacity: 1; transform: translateY(0); }
+:root{
+  --black:#0a0a0a;
+  --white:#f5f4f0;
+  --gold:#c9a84c;
+  --gold-light:#e8c97a;
+  --gold-dim:#8a6e28;
+  --gold-glow:rgba(201,168,76,0.12);
+  --mid:#1c1c1c;
+  --mid2:#161616;
+  --border:rgba(201,168,76,0.2);
+  --border-sub:rgba(245,244,240,0.08);
+  --muted:rgba(245,244,240,0.5);
+  --muted2:rgba(245,244,240,0.25);
+  --muted3:rgba(245,244,240,0.12);
+  --green:#00C97A;
+  --green-dim:rgba(0,201,122,0.1);
+  --amber:#E8A020;
+  --amber-dim:rgba(232,160,32,0.1);
+  --red:#E84040;
+  --blue:#4080FF;
+  --blue-dim:rgba(64,128,255,0.1);
+  --font-body:'DM Sans',sans-serif;
+  --font-serif:'DM Serif Display',serif;
+  --font-mono:'JetBrains Mono',monospace;
+  --max:1200px;
+  --ease:cubic-bezier(0.22,1,0.36,1);
 }
 
-/* NAV */
-nav {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 0.75rem 4rem;
-  background: rgba(10,10,10,0.95) !important;
-  backdrop-filter: blur(16px);
-  border-bottom: 1px solid var(--border);
-}
-.nav-logo img { height: 140px; filter: brightness(0) invert(1); background: none; display: block; }
-.nav-right { display: flex; align-items: center; gap: 2.5rem; }
-.nav-links { display: flex; gap: 2.5rem; list-style: none; }
-.nav-links a {
-  color: rgba(245,244,240,0.6);
-  text-decoration: none; font-size: 0.8rem;
-  letter-spacing: 0.12em; text-transform: uppercase;
-  transition: color 0.2s;
-}
-.nav-links a:hover { color: var(--gold); }
+html{scroll-behavior:smooth;cursor:none}
 
-/* HERO */
-.hero {
-  background: #0a0a0a !important;
-  min-height: 100vh;
-  display: flex; flex-direction: column; justify-content: center;
-  padding: 8rem 4rem 5rem;
-  position: relative; overflow: hidden;
-}
-.hero::before {
-  content: '';
-  position: absolute; inset: 0;
-  background: radial-gradient(ellipse 60% 50% at 80% 50%, rgba(201,168,76,0.07) 0%, transparent 70%);
-  pointer-events: none;
-}
-.hero-eyebrow {
-  font-size: 0.7rem; letter-spacing: 0.2em;
-  text-transform: uppercase; color: var(--gold); margin-bottom: 1.5rem;
-}
-.hero h1 {
-  font-family: 'DM Serif Display', serif;
-  font-size: clamp(3rem, 7vw, 6.5rem);
-  line-height: 1.05; max-width: 14ch;
-  margin-bottom: 2rem; color: #f5f4f0;
-}
-.hero h1 em { font-style: italic; color: var(--gold); }
-.hero-sub {
-  font-size: clamp(1rem, 1.5vw, 1.2rem);
-  color: rgba(245,244,240,0.55); max-width: 52ch; margin-bottom: 3rem;
-}
-.hero-cta { display: flex; gap: 1rem; flex-wrap: wrap; }
-.btn-primary {
-  background: var(--gold); color: #0a0a0a;
-  padding: 0.9rem 2.2rem; border: none; cursor: pointer;
-  font-family: 'DM Sans', sans-serif; font-size: 0.85rem;
-  font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
-  text-decoration: none; display: inline-block;
-  transition: background 0.2s, transform 0.2s;
-}
-.btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); }
-.btn-outline {
-  border: 1px solid rgba(245,244,240,0.25); color: var(--white);
-  padding: 0.9rem 2.2rem; font-family: 'DM Sans', sans-serif;
-  font-size: 0.85rem; font-weight: 500; letter-spacing: 0.08em;
-  text-transform: uppercase; text-decoration: none; display: inline-block;
-  transition: border-color 0.2s, color 0.2s;
-}
-.btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+/* ── SCROLL PROGRESS ── */
+.scroll-progress{position:fixed;top:0;left:0;z-index:200;height:2px;width:0%;background:linear-gradient(90deg,var(--gold),var(--gold-light));transition:width .1s linear}
 
-section { padding: 6rem 4rem; background: #0a0a0a; }
-section.alt { background: #1c1c1c !important; }
-.section-label { font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; }
-.section-title { font-family: 'DM Serif Display', serif; font-size: clamp(2rem, 4vw, 3.5rem); line-height: 1.1; margin-bottom: 1.5rem; color: #f5f4f0; }
-.section-body { color: rgba(245,244,240,0.55); max-width: 58ch; font-size: 1.05rem; }
-.divider { width: calc(100% - 8rem); height: 1px; background: linear-gradient(90deg, transparent, var(--border), transparent); margin: 0 4rem; }
+/* ── CUSTOM CURSOR ── */
+.cursor{position:fixed;width:10px;height:10px;background:var(--gold);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .2s var(--ease),height .2s var(--ease),opacity .2s;mix-blend-mode:screen}
+.cursor-ring{position:fixed;width:34px;height:34px;border:1px solid rgba(201,168,76,0.4);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:all .12s var(--ease)}
+.cursor.hover{width:18px;height:18px;background:var(--gold-light)}
+.cursor-ring.hover{width:50px;height:50px;border-color:rgba(201,168,76,0.2)}
 
-/* SERVICES */
-.services-grid {
-  display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1px; margin-top: 4rem; border: 1px solid var(--border);
-}
-.service-card {
-  padding: 2.5rem; border-right: 1px solid var(--border);
-  border-bottom: 1px solid var(--border); background: #1c1c1c;
-  position: relative; overflow: hidden; transition: background 0.3s;
-  text-decoration: none; color: inherit; display: block;
-}
-.service-card::after {
-  content: ''; position: absolute; bottom: 0; left: 0;
-  width: 0; height: 2px; background: var(--gold); transition: width 0.4s ease;
-}
-.service-card:hover { background: rgba(201,168,76,0.06); }
-.service-card:hover::after { width: 100%; }
-.service-num { font-family: 'DM Serif Display', serif; font-size: 3rem; color: rgba(201,168,76,0.15); line-height: 1; margin-bottom: 1rem; }
-.service-name { font-size: 1rem; font-weight: 600; letter-spacing: 0.05em; margin-bottom: 0.75rem; color: #f5f4f0; }
-.service-desc { font-size: 0.88rem; color: rgba(245,244,240,0.65); line-height: 1.65; }
-.service-tags { margin-top: 1.25rem; display: flex; flex-wrap: wrap; gap: 0.4rem; }
-.tag { font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); border: 1px solid rgba(201,168,76,0.3); padding: 0.2rem 0.6rem; text-decoration: none; transition: background 0.2s, border-color 0.2s; }
-.tag:hover { background: rgba(201,168,76,0.1); border-color: var(--gold); }
+/* ── NOISE OVERLAY ── */
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");opacity:.5;pointer-events:none;z-index:1}
 
-/* WHY */
-.why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; margin-top: 4rem; align-items: start; }
-.why-points { display: flex; flex-direction: column; gap: 2rem; }
-.why-point { display: flex; gap: 1.25rem; align-items: flex-start; }
-.why-icon { width: 36px; height: 36px; flex-shrink: 0; border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; color: var(--gold); font-size: 0.9rem; }
-.why-point h4 { font-size: 0.95rem; font-weight: 600; margin-bottom: 0.3rem; color: #f5f4f0; }
-.why-point p { font-size: 0.875rem; color: rgba(245,244,240,0.65); line-height: 1.65; }
-.why-stat-box { border: 1px solid var(--border); padding: 3rem; display: flex; flex-direction: column; gap: 2.5rem; }
-.stat { border-bottom: 1px solid var(--border); padding-bottom: 2rem; }
-.stat:last-child { border-bottom: none; padding-bottom: 0; }
-.stat-num { font-family: 'DM Serif Display', serif; font-size: 3.5rem; color: var(--gold); line-height: 1; }
-.stat-label { font-size: 0.8rem; color: rgba(245,244,240,0.6); letter-spacing: 0.05em; margin-top: 0.3rem; }
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0.75rem 4rem;background:rgba(10,10,10,0.95)!important;backdrop-filter:blur(16px);border-bottom:1px solid var(--border);transition:padding .3s ease}
+.nav-logo{display:flex;align-items:center;gap:14px;text-decoration:none}
+.nav-logo-mark{width:38px;height:38px;border:1px solid rgba(201,168,76,0.35);border-radius:8px;display:flex;align-items:center;justify-content:center;background:rgba(201,168,76,0.06)}
+.nav-logo-mark svg{width:20px;height:20px}
+.nav-brand{font-family:var(--font-body);font-size:0.88rem;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--white)}
+.nav-brand span{color:var(--gold)}
+.nav-right{display:flex;align-items:center;gap:1.5rem}
+.nav-status{display:flex;align-items:center;gap:6px;font-family:var(--font-mono);font-size:0.68rem;color:var(--green);letter-spacing:0.06em}
+.status-dot{width:6px;height:6px;background:var(--green);border-radius:50%;animation:blink 2.5s ease-in-out infinite}
+.nav-links{display:flex;gap:1.8rem;list-style:none}
+.nav-links a{color:rgba(245,244,240,0.55);text-decoration:none;font-size:0.75rem;letter-spacing:0.12em;text-transform:uppercase;position:relative;transition:color .2s}
+.nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1px;background:var(--gold);transition:width .3s}
+.nav-links a:hover{color:var(--gold)}
+.nav-links a:hover::after{width:100%}
+.nav-cta{background:var(--gold)!important;color:#0a0a0a!important;font-size:0.75rem!important;font-weight:600!important;letter-spacing:0.1em!important;text-transform:uppercase!important;padding:0.6rem 1.4rem!important;text-decoration:none;transition:background .2s,transform .2s!important;display:inline-block}
+.nav-cta:hover{background:var(--gold-light)!important;transform:translateY(-1px)!important}
+.nav-cta::after{display:none!important}
 
-/* SECTORS */
-.sectors-list { margin-top: 3rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; }
-.sector-item { padding: 1.25rem 1.5rem; border: 1px solid var(--border); font-size: 0.85rem; letter-spacing: 0.05em; color: rgba(245,244,240,0.65); display: flex; align-items: center; gap: 0.75rem; transition: border-color 0.25s, color 0.25s; cursor: pointer; user-select: none; }
-.sector-item:hover { border-color: var(--gold); color: #f5f4f0; }
-.sector-item::before { content: '▸'; color: var(--gold); font-size: 0.7rem; flex-shrink: 0; transition: transform 0.2s; }
-.sector-item.open { border-color: var(--gold); color: #f5f4f0; flex-direction: column; align-items: flex-start; }
-.sector-item.open::before { content: '▾'; }
-.sector-body { display: none; font-size: 0.78rem; line-height: 1.65; color: rgba(245,244,240,0.65); margin-top: 0.65rem; padding-top: 0.65rem; border-top: 1px solid rgba(201,168,76,0.18); letter-spacing: 0; font-weight: 400; }
-.sector-item.open .sector-body { display: block; }
+/* ── ANIMATIONS ── */
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+@keyframes pulse{0%,100%{opacity:.3}50%{opacity:1}}
+@keyframes dash{from{stroke-dashoffset:200}to{stroke-dashoffset:0}}
+@keyframes blink{0%,90%,100%{opacity:1}95%{opacity:.2}}
+@keyframes termfade{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}
+@keyframes barfill{from{width:0}to{width:var(--w)}}
 
-/* CONTACT */
-.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; margin-top: 4rem; align-items: start; }
-.contact-info { display: flex; flex-direction: column; gap: 2rem; }
-.contact-item h5 { font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.4rem; }
-.contact-item a, .contact-item p { font-size: 1rem; color: rgba(245,244,240,0.8); text-decoration: none; }
-.contact-item a:hover { color: var(--gold); }
-.contact-form { display: flex; flex-direction: column; gap: 1rem; }
-.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-.form-field { display: flex; flex-direction: column; gap: 0.4rem; }
-.form-field label { font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(245,244,240,0.55); }
-.form-field input, .form-field textarea, .form-field select {
-  background: rgba(255,255,255,0.05); border: 1px solid var(--border);
-  color: #f5f4f0; padding: 0.85rem 1rem;
-  font-family: 'DM Sans', sans-serif; font-size: 0.9rem;
-  outline: none; transition: border-color 0.2s; width: 100%;
-}
-.form-field input:focus, .form-field textarea:focus { border-color: var(--gold); }
-.form-field textarea { resize: vertical; min-height: 110px; }
-.form-field select option { background: #1c1c1c; }
-.form-submit { display: flex; flex-direction: column; gap: 0.75rem; }
-.form-note { font-size: 0.75rem; opacity: 0.45; margin: 0; }
+/* Circuit traces */
+.trace1{animation:dash 3s linear infinite}
+.trace2{animation:dash 3s 1s linear infinite}
+.trace3{animation:dash 3s 2s linear infinite}
+.node1{animation:pulse 2s .2s ease-in-out infinite}
+.node2{animation:pulse 2s .8s ease-in-out infinite}
+.node3{animation:pulse 2s 1.4s ease-in-out infinite}
+.node4{animation:pulse 2s .5s ease-in-out infinite}
+.dot-blink{animation:blink 3s ease-in-out infinite}
 
-/* LEGAL */
-.legal-section { background: #1c1c1c; border-top: 1px solid var(--border); padding: 4rem; }
-.legal-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; }
-.legal-block h3 { font-family: 'DM Serif Display', serif; font-size: 1.5rem; margin-bottom: 1.5rem; color: var(--gold); }
-.legal-block h4 { font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(245,244,240,0.5); margin: 1.25rem 0 0.5rem; }
-.legal-block p, .legal-block address { font-size: 0.85rem; color: rgba(245,244,240,0.5); font-style: normal; line-height: 1.7; }
-.legal-block a { color: var(--gold); text-decoration: none; }
+/* ── REVEAL ── */
+.reveal{opacity:0;transform:translateY(40px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-left{opacity:0;transform:translateX(-40px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.reveal-left.visible{opacity:1;transform:translateX(0)}
+.reveal-right{opacity:0;transform:translateX(40px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.reveal-right.visible{opacity:1;transform:translateX(0)}
+.stagger>*{opacity:0;transform:translateY(30px);transition:opacity .6s var(--ease),transform .6s var(--ease)}
+.stagger.visible>*{opacity:1;transform:translateY(0)}
+.stagger.visible>*:nth-child(1){transition-delay:0s}
+.stagger.visible>*:nth-child(2){transition-delay:.08s}
+.stagger.visible>*:nth-child(3){transition-delay:.16s}
+.stagger.visible>*:nth-child(4){transition-delay:.24s}
+.stagger.visible>*:nth-child(5){transition-delay:.32s}
+.stagger.visible>*:nth-child(6){transition-delay:.40s}
+.delay-1{transition-delay:.1s!important}
+.delay-2{transition-delay:.2s!important}
+.delay-3{transition-delay:.3s!important}
 
-/* FOOTER */
-footer {
-  background: #1c1c1c; border-top: 1px solid var(--border);
-  padding: 3rem 4rem; display: grid;
-  grid-template-columns: 1fr auto; gap: 2rem; align-items: start;
-}
-.footer-logo { display: flex; flex-direction: column; gap: 0.3rem; }
-.footer-logo img { height: 110px; filter: brightness(0) invert(1); background: none; display: block; }
-.footer-tagline { font-size: 0.8rem; color: rgba(245,244,240,0.5); margin-top: 0; line-height: 1.2; }
-.footer-legal { font-size: 0.75rem; color: rgba(245,244,240,0.5); text-align: right; line-height: 1.8; }
-.footer-legal a { color: rgba(245,244,240,0.6); text-decoration: none; }
-.footer-legal a:hover { color: var(--gold); }
+/* ── LANG ── */
+[data-lang="en"]{display:none}
+[data-lang="de"]{display:block}
+span[data-lang="en"]{display:none}
+span[data-lang="de"]{display:inline}
+body.lang-en [data-lang="en"]{display:block}
+body.lang-en [data-lang="de"]{display:none}
+body.lang-en span[data-lang="en"]{display:inline}
+body.lang-en span[data-lang="de"]{display:none}
+.lang-switcher{display:flex;gap:.4rem}
+.lang-btn{background:none;border:1px solid rgba(201,168,76,0.35);color:rgba(245,244,240,.6);font-family:var(--font-body);font-size:.72rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;padding:.3rem .75rem;cursor:pointer;transition:all .25s}
+.lang-btn.active{background:var(--gold);border-color:var(--gold);color:#0a0a0a;font-weight:700}
+.lang-btn:hover{border-color:var(--gold);color:var(--gold)}
+.lang-btn.active:hover{background:var(--gold-light);color:#0a0a0a}
 
+/* ── SECTION COMMON ── */
+.section{padding:7rem 4rem;background:#0a0a0a}
+.section.alt{background:#111111}
+.s-label{font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;display:flex;align-items:center;gap:10px}
+.s-label::before{content:'';display:block;width:24px;height:1px;background:var(--gold)}
+.s-title{font-family:var(--font-serif);font-size:clamp(2rem,3.5vw,3.2rem);font-weight:400;line-height:1.15;color:#f5f4f0;margin-bottom:1.2rem}
+.s-title em{font-style:italic;color:var(--gold)}
+.s-desc{font-size:.95rem;color:var(--muted);line-height:1.9;max-width:600px}
+.divider{width:calc(100% - 8rem);height:1px;background:linear-gradient(90deg,transparent,var(--border),transparent);margin:0 4rem}
 
-/* ── HAMBURGER MENU ── */
-.menu-btn {
-  display: none;
-  flex-direction: column;
-  justify-content: center;
-  gap: 5px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 4px;
-  margin-left: 0.5rem;
-  flex-shrink: 0;
-}
-.menu-btn span {
-  display: block;
-  width: 22px;
-  height: 2px;
-  background: rgba(245,244,240,0.75);
-  border-radius: 1px;
-  transition: all 0.25s ease;
-}
-.menu-btn.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-.menu-btn.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
-.menu-btn.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-@media (max-width: 900px) {
-  nav { padding: 0.5rem 1.5rem; }
-  .nav-logo img { height: 72px; }
-  .menu-btn { display: flex; }
-  nav { position: relative; }
-  .nav-links { display: none; position: absolute; top: 100%; left: 0; right: 0; z-index: 99; background: rgba(10,10,10,0.98); border-top: 1px solid rgba(201,168,76,0.2); flex-direction: column; padding: 0.5rem 0; gap: 0; list-style: none; }
-  .nav-links.open { display: flex; }
-  .nav-links li { border-bottom: 1px solid rgba(255,255,255,0.06); }
-  .nav-links li:last-child { border-bottom: none; }
-  .nav-links a { padding: 0.9rem 1.5rem !important; display: block; }
-  .nav-links a::after { display: none !important; }
-  section { padding: 4rem 1.5rem; }
-  .hero { padding: 7rem 1.5rem 4rem; }
-  .why-grid, .contact-grid, .legal-cols { grid-template-columns: 1fr; gap: 2.5rem; }
-  footer { grid-template-columns: 1fr; }
-  .footer-legal { text-align: left; }
-  .divider { margin: 0 1.5rem; width: calc(100% - 3rem); }
-  .form-row { grid-template-columns: 1fr; }
-}
+/* ── BUTTONS ── */
+.btn-primary{background:var(--gold);color:#0a0a0a;padding:.9rem 2.2rem;border:none;cursor:pointer;font-family:var(--font-body);font-size:.82rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;display:inline-flex;align-items:center;gap:10px;transition:all .25s var(--ease)}
+.btn-primary:hover{background:var(--gold-light);transform:translateY(-2px)}
+.btn-outline{border:1px solid rgba(245,244,240,0.25);color:var(--white);padding:.9rem 2.2rem;font-family:var(--font-body);font-size:.82rem;font-weight:400;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;display:inline-flex;align-items:center;gap:10px;transition:all .25s var(--ease)}
+.btn-outline:hover{border-color:var(--gold);color:var(--gold);transform:translateY(-2px)}
 
-/* Light mode footer logo fix */
-html[data-mode="light"] footer img {
-  filter: brightness(0) !important;
-}
-html[data-mode="dark"] footer img {
-  filter: brightness(0) invert(1) !important;
-}
+/* ── HERO ── */
+.hero{min-height:100vh;display:grid;place-items:center;position:relative;overflow:hidden;background:#0a0a0a;padding:120px 4rem 80px}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 55% 55% at 68% 50%,rgba(201,168,76,0.07) 0%,transparent 70%),radial-gradient(ellipse 40% 60% at 20% 80%,rgba(201,168,76,0.04) 0%,transparent 60%)}
+.hero-grid-lines{position:absolute;inset:0;background-image:linear-gradient(rgba(201,168,76,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,0.04) 1px,transparent 1px);background-size:60px 60px;mask-image:radial-gradient(ellipse 80% 80% at 50% 50%,black 20%,transparent 100%)}
+.hero-inner{position:relative;z-index:2;max-width:var(--max);width:100%;margin:0 auto;display:grid;grid-template-columns:1fr 460px;gap:8vw;align-items:center}
+.hero-tag{display:inline-flex;align-items:center;gap:10px;font-size:.72rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-light);margin-bottom:1.6rem;animation:fadeUp .6s ease both}
+.hero-tag::before{content:'';display:block;width:28px;height:1px;background:var(--gold)}
+.hero-tag-dot{width:7px;height:7px;background:var(--green);border-radius:50%;animation:blink 2s ease-in-out infinite;margin-left:2px}
+h1{font-family:var(--font-serif);font-size:clamp(2.8rem,5.5vw,5rem);font-weight:400;line-height:1.08;color:#f5f4f0;margin-bottom:1.8rem;animation:fadeUp .6s .12s ease both}
+h1 em{font-style:italic;color:var(--gold-light)}
+.hero-desc{font-size:1rem;font-weight:300;color:rgba(245,244,240,.5);line-height:1.9;max-width:500px;margin-bottom:2.4rem;animation:fadeUp .6s .22s ease both}
+.hero-actions{display:flex;gap:1rem;flex-wrap:wrap;animation:fadeUp .6s .32s ease both}
+.hero-stats{display:flex;gap:2.5rem;padding-top:2rem;border-top:1px solid rgba(245,244,240,.08);margin-top:2rem;animation:fadeUp .6s .38s ease both}
+.stat-n{font-family:var(--font-serif);font-size:2.4rem;font-weight:400;color:#f5f4f0;line-height:1}
+.stat-n sup{font-size:1rem;color:var(--gold);vertical-align:super}
+.stat-l{font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:rgba(245,244,240,.3);margin-top:5px}
+.hero-visual{position:relative;width:100%;aspect-ratio:1;display:flex;align-items:center;justify-content:center;animation:fadeUp .8s .15s ease both}
 
-/* ── SMOOTH SCROLL & PAGE TRANSITIONS ── */
-html { scroll-behavior: smooth; }
+/* ── LIVE TERMINAL ── */
+.terminal{background:#0e0e0e;border:1px solid var(--border);border-radius:4px;overflow:hidden;box-shadow:0 32px 80px rgba(0,0,0,0.7),0 0 0 1px rgba(201,168,76,0.05) inset;width:100%}
+.term-header{background:#161616;padding:12px 18px;display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--border-sub)}
+.term-dots{display:flex;gap:6px}
+.term-dots span{width:11px;height:11px;border-radius:50%}
+.term-dots span:nth-child(1){background:#E84040}
+.term-dots span:nth-child(2){background:#E8A020}
+.term-dots span:nth-child(3){background:#00C97A}
+.term-title{font-family:var(--font-mono);font-size:.7rem;color:rgba(245,244,240,.2);flex:1;text-align:center;letter-spacing:.04em}
+.term-live{display:flex;align-items:center;gap:5px;font-family:var(--font-mono);font-size:.68rem;color:var(--green);letter-spacing:.08em}
+.term-body{padding:20px;font-family:var(--font-mono);font-size:.72rem;line-height:1.8;min-height:240px}
+.term-line{display:flex;gap:8px;margin-bottom:1px;opacity:0;animation:termfade .3s var(--ease) forwards}
+.term-line .ts{color:rgba(245,244,240,.2);user-select:none;width:62px;flex-shrink:0}
+.term-line .key{color:rgba(245,244,240,.4)}
+.term-line .val-ok{color:var(--green)}
+.term-line .val-warn{color:var(--amber)}
+.term-line .val-info{color:#7aa2f7}
+.term-tag{font-size:.6rem;padding:1px 6px;border-radius:2px;margin-left:4px}
+.tag-ok{background:rgba(0,201,122,.12);color:var(--green)}
+.tag-warn{background:rgba(232,160,32,.12);color:var(--amber)}
+.tag-pulse{background:rgba(122,162,247,.12);color:#7aa2f7}
 
-/* Scroll progress bar */
-.scroll-progress {
-  position: fixed; top: 0; left: 0; z-index: 200;
-  height: 2px; width: 0%;
-  background: linear-gradient(90deg, var(--gold), var(--gold-light));
-  transition: width 0.1s linear;
-}
+/* Sensor strip */
+.sensor-strip{margin:0;border-top:1px solid var(--border-sub);padding:16px 20px;display:grid;grid-template-columns:repeat(3,1fr);gap:10px;background:#0c0c0c}
+.sc{background:#141414;border:1px solid var(--border-sub);border-radius:3px;padding:12px}
+.sc-label{font-family:var(--font-mono);font-size:.6rem;color:rgba(245,244,240,.3);text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px}
+.sc-val{font-family:var(--font-mono);font-size:1.15rem;font-weight:500;color:#f5f4f0}
+.sc-val.ok{color:var(--green)}
+.sc-val.warn{color:var(--amber)}
+.sc-bar{height:2px;background:rgba(245,244,240,.06);border-radius:1px;margin-top:8px;overflow:hidden}
+.sc-fill{height:100%;border-radius:1px;transition:width 2s var(--ease)}
+.sc-fill.ok{background:var(--green)}
+.sc-fill.warn{background:var(--amber)}
 
-/* Reveal on scroll */
-.reveal {
-  opacity: 0;
-  transform: translateY(40px);
-  transition: opacity 0.8s cubic-bezier(0.22,1,0.36,1), transform 0.8s cubic-bezier(0.22,1,0.36,1);
-}
-.reveal.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-.reveal-left {
-  opacity: 0;
-  transform: translateX(-40px);
-  transition: opacity 0.8s cubic-bezier(0.22,1,0.36,1), transform 0.8s cubic-bezier(0.22,1,0.36,1);
-}
-.reveal-left.visible {
-  opacity: 1;
-  transform: translateX(0);
-}
-.reveal-right {
-  opacity: 0;
-  transform: translateX(40px);
-  transition: opacity 0.8s cubic-bezier(0.22,1,0.36,1), transform 0.8s cubic-bezier(0.22,1,0.36,1);
-}
-.reveal-right.visible {
-  opacity: 1;
-  transform: translateX(0);
-}
+/* ── PROBLEM SECTION ── */
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
 
-/* Stagger children */
-.stagger > * {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.6s cubic-bezier(0.22,1,0.36,1), transform 0.6s cubic-bezier(0.22,1,0.36,1);
-}
-.stagger.visible > * { opacity: 1; transform: translateY(0); }
-.stagger.visible > *:nth-child(1) { transition-delay: 0s; }
-.stagger.visible > *:nth-child(2) { transition-delay: 0.08s; }
-.stagger.visible > *:nth-child(3) { transition-delay: 0.16s; }
-.stagger.visible > *:nth-child(4) { transition-delay: 0.24s; }
-.stagger.visible > *:nth-child(5) { transition-delay: 0.32s; }
-.stagger.visible > *:nth-child(6) { transition-delay: 0.40s; }
+/* Cost viz */
+.cost-card{background:#111;border:1px solid var(--border);padding:2rem;position:relative;overflow:hidden}
+.cost-card::before{content:'';position:absolute;top:-60px;right:-60px;width:220px;height:220px;background:radial-gradient(ellipse,rgba(201,168,76,0.05),transparent 70%);pointer-events:none}
+.cost-head{font-family:var(--font-mono);font-size:.62rem;color:var(--muted2);text-transform:uppercase;letter-spacing:.1em;margin-bottom:1.6rem}
+.cost-rows{display:flex;flex-direction:column;gap:1rem}
+.cost-row{display:flex;align-items:center;gap:12px}
+.cost-name{font-size:.78rem;color:var(--muted);width:120px;flex-shrink:0}
+.cost-track{flex:1;height:5px;background:rgba(245,244,240,.05);border-radius:2px;overflow:hidden}
+.cost-fill{height:100%;border-radius:2px;width:0;transition:width 1.4s var(--ease)}
+.cost-fill.r{background:linear-gradient(90deg,#E84040,#FF7070)}
+.cost-fill.a{background:linear-gradient(90deg,#E8A020,#FFB840)}
+.cost-fill.b{background:linear-gradient(90deg,#4080FF,#80A8FF)}
+.cost-fill.g{background:linear-gradient(90deg,#00C97A,#40E8A0)}
+.cost-amt{font-family:var(--font-mono);font-size:.78rem;color:#f5f4f0;width:60px;text-align:right;flex-shrink:0}
+.cost-total{margin-top:1.6rem;padding-top:1.4rem;border-top:1px solid rgba(245,244,240,.07);display:flex;align-items:baseline;justify-content:space-between}
+.cost-total-label{font-family:var(--font-mono);font-size:.62rem;color:var(--muted2);text-transform:uppercase;letter-spacing:.1em}
+.cost-total-val{font-family:var(--font-serif);font-size:2.6rem;color:#E84040;font-style:italic}
+.vs-strip{margin-top:1rem;display:flex;align-items:center;gap:10px;padding:14px;background:rgba(0,201,122,0.06);border:1px solid rgba(0,201,122,0.18)}
+.vs-strip p{font-size:.8rem;color:rgba(245,244,240,.6);line-height:1.5}
+.vs-strip p strong{color:var(--green);font-weight:600}
 
-/* Nav link smooth underline */
-.nav-links a {
-  position: relative;
-}
-.nav-links a::after {
-  content: '';
-  position: absolute; bottom: -4px; left: 0;
-  width: 0; height: 1px;
-  background: var(--gold);
-  transition: width 0.3s ease;
-}
-.nav-links a:hover::after { width: 100%; }
+/* Checklist */
+.check-list{display:flex;flex-direction:column;gap:.9rem;margin-top:2rem}
+.check-item{display:flex;align-items:flex-start;gap:12px;font-size:.88rem;color:var(--muted)}
+.check-icon{width:20px;height:20px;border:1px solid rgba(0,201,122,.4);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}
 
-/* Smooth nav highlight on scroll */
-nav.scrolled {
-  padding-top: 0.75rem;
-  padding-bottom: 0.75rem;
-  transition: padding 0.3s ease;
-}
+/* ── PRODUCT / ARCH ── */
+.arch-card{background:#111;border:1px solid var(--border);padding:1.6rem}
+.arch-head{font-family:var(--font-mono);font-size:.62rem;color:var(--muted2);text-transform:uppercase;letter-spacing:.1em;margin-bottom:1.4rem}
+.arch-layer{margin-bottom:8px}
+.arch-layer-hd{display:flex;align-items:center;gap:10px;padding:10px 14px;font-size:.8rem;font-weight:600}
+.arch-layer-sub{font-family:var(--font-mono);font-size:.6rem;color:var(--muted2);margin-top:1px}
+.arch-layer.edge .arch-layer-hd{background:rgba(64,128,255,.08);border:1px solid rgba(64,128,255,.2);color:#7aa2f7}
+.arch-layer.connect .arch-layer-hd{background:rgba(232,160,32,.07);border:1px solid rgba(232,160,32,.2);color:var(--amber)}
+.arch-layer.cloud .arch-layer-hd{background:rgba(201,168,76,.07);border:1px solid var(--border);color:var(--gold-light)}
+.arch-layer.dash .arch-layer-hd{background:rgba(245,244,240,.03);border:1px solid var(--border-sub);color:rgba(245,244,240,.5)}
+.arch-arrow{text-align:center;color:rgba(245,244,240,.15);font-size:1rem;line-height:1;padding:2px 0}
+.chips{display:flex;flex-wrap:wrap;gap:5px;padding:8px 14px;background:rgba(0,0,0,.3);border:1px solid var(--border-sub);border-top:none}
+.chip{font-family:var(--font-mono);font-size:.6rem;padding:2px 8px;border-radius:2px;background:rgba(245,244,240,.05);color:rgba(245,244,240,.4);border:1px solid rgba(245,244,240,.07)}
+.chip.g{background:rgba(0,201,122,.08);color:var(--green);border-color:rgba(0,201,122,.2)}
+.chip.go{background:rgba(201,168,76,.08);color:var(--gold-light);border-color:var(--border)}
 
-/* Hero entrance animation */
-@keyframes heroFadeUp {
-  from { opacity: 0; transform: translateY(30px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-.hero-eyebrow { animation: heroFadeUp 0.8s 0.1s both; }
-.hero h1 { animation: heroFadeUp 0.9s 0.25s both; }
-.hero-sub { animation: heroFadeUp 0.9s 0.4s both; }
-.hero-cta { animation: heroFadeUp 0.9s 0.55s both; }
+/* ── FEATURES ── */
+.feat-list{display:flex;flex-direction:column;gap:1rem;margin-top:2.4rem}
+.feat-item{display:flex;align-items:flex-start;gap:16px;padding:1.2rem;border:1px solid var(--border-sub);background:#111;transition:border-color .2s,background .2s}
+.feat-item:hover{border-color:var(--border);background:rgba(201,168,76,.03)}
+.feat-icon{width:42px;height:42px;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;flex-shrink:0;background:rgba(201,168,76,.05)}
+.feat-icon svg{width:22px;height:22px}
+.feat-copy strong{font-size:.88rem;font-weight:600;color:#f5f4f0;display:block;margin-bottom:4px;letter-spacing:.01em}
+.feat-copy span{font-size:.8rem;color:var(--muted);line-height:1.55}
 
-/* Service card hover lift */
-.service-card {
-  transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-}
-.service-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 40px rgba(201,168,76,0.08);
-}
+/* ── HOW IT WORKS ── */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);margin-top:4rem;border:1px solid var(--border)}
+.step{padding:2.4rem 2rem;position:relative;background:#111;transition:background .2s}
+.step:hover{background:#141414}
+.step+.step{border-left:1px solid var(--border)}
+.step-num{font-family:var(--font-mono);font-size:.62rem;color:var(--muted2);letter-spacing:.1em;margin-bottom:1.8rem}
+.step-icon{width:54px;height:54px;margin-bottom:1.4rem}
+.step h3{font-family:var(--font-serif);font-size:1.2rem;font-weight:400;color:#f5f4f0;margin-bottom:.8rem}
+.step p{font-size:.82rem;color:var(--muted);line-height:1.7}
+.step-bar{position:absolute;bottom:0;left:0;width:0;height:2px;background:linear-gradient(90deg,var(--gold),var(--gold-light));transition:width .4s var(--ease)}
+.step:hover .step-bar{width:100%}
 
-/* Button hover smooth */
-.btn-primary, .btn-outline {
-  transition: all 0.25s cubic-bezier(0.22,1,0.36,1);
-}
+/* ── VERTICALS ── */
+.vert-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border-sub);margin-top:4rem}
+.vert-card{background:#0a0a0a;padding:2rem;position:relative;overflow:hidden;cursor:none;transition:background .25s}
+.vert-card::before{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--gold),var(--gold-light));transform:scaleX(0);transform-origin:left;transition:transform .3s var(--ease)}
+.vert-card:hover{background:#0e0e0e}
+.vert-card:hover::before{transform:scaleX(1)}
+.vert-num{font-family:var(--font-mono);font-size:.62rem;color:var(--muted2);letter-spacing:.1em;margin-bottom:1.4rem}
+.vert-icon{width:50px;height:50px;margin-bottom:1.2rem}
+.vert-card h3{font-family:var(--font-serif);font-size:1.1rem;font-weight:400;color:#f5f4f0;margin-bottom:.6rem}
+.vert-card p{font-size:.8rem;color:var(--muted);line-height:1.65}
+.vert-badge{display:inline-block;margin-top:1rem;font-family:var(--font-mono);font-size:.58rem;color:var(--gold);border:1px solid var(--border);padding:2px 8px;letter-spacing:.08em;text-transform:uppercase}
 
-/* Sector item smooth */
-.sector-item:not(.open):hover {
-  padding-left: 2rem;
-  border-color: var(--gold);
-  color: #f5f4f0;
-}
+/* ── PILOT / CTA ── */
+.cta-section{padding:8rem 4rem;text-align:center;background:linear-gradient(180deg,#0a0a0a 0%,#111 100%);border-top:1px solid var(--border)}
+.cta-section h2{font-family:var(--font-serif);font-size:clamp(2rem,4vw,3.5rem);font-weight:400;color:#f5f4f0;margin-bottom:1rem}
+.cta-section h2 em{font-style:italic;color:var(--gold)}
+.cta-section p{font-size:.95rem;color:var(--muted);max-width:440px;margin:0 auto 2.4rem}
+.cta-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
 
+/* Pilot spots */
+.pilot-spots{display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:2.4rem}
+.spot-dots{display:flex;gap:6px}
+.spot-dot{width:10px;height:10px;border-radius:50%;background:var(--gold)}
+.spot-dot.taken{background:transparent;border:1px solid rgba(245,244,240,.15)}
+.pilot-spots span{font-family:var(--font-mono);font-size:.72rem;color:var(--muted);letter-spacing:.04em}
+.pilot-spots strong{color:var(--gold-light)}
 
-/* ── IMAGES ── */
-.hero {
-  background:
-    linear-gradient(135deg, rgba(10,10,10,0.92) 0%, rgba(10,10,10,0.75) 50%, rgba(10,10,10,0.88) 100%),
-    url('https://images.unsplash.com/photo-1486325212027-8081e485255e?w=1800&q=80&auto=format&fit=crop') center/cover no-repeat !important;
-}
+/* Pilot features */
+.pilot-feats{display:flex;flex-direction:column;align-items:center;gap:.7rem;margin-bottom:2.4rem}
+.pf-item{display:flex;align-items:center;gap:10px;font-size:.82rem;color:var(--muted)}
+.pf-check{width:18px;height:18px;border:1px solid rgba(201,168,76,.35);display:flex;align-items:center;justify-content:center;flex-shrink:0}
 
-/* Service card subtle images */
-.service-card:nth-child(1) {
-  background-image: linear-gradient(135deg, rgba(28,28,28,0.97), rgba(28,28,28,0.92)),
-    url('https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=600&q=60&auto=format&fit=crop') center/cover no-repeat !important;
-}
-.service-card:nth-child(2) {
-  background-image: linear-gradient(135deg, rgba(28,28,28,0.97), rgba(28,28,28,0.92)),
-    url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=600&q=60&auto=format&fit=crop') center/cover no-repeat !important;
-}
-.service-card:nth-child(3) {
-  background-image: linear-gradient(135deg, rgba(28,28,28,0.97), rgba(28,28,28,0.92)),
-    url('https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&q=60&auto=format&fit=crop') center/cover no-repeat !important;
-}
-.service-card:nth-child(4) {
-  background-image: linear-gradient(135deg, rgba(28,28,28,0.97), rgba(28,28,28,0.92)),
-    url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=600&q=60&auto=format&fit=crop') center/cover no-repeat !important;
-}
-.service-card:nth-child(5) {
-  background-image: linear-gradient(135deg, rgba(28,28,28,0.97), rgba(28,28,28,0.92)),
-    url('https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=600&q=60&auto=format&fit=crop') center/cover no-repeat !important;
-}
-.service-card:nth-child(6) {
-  background-image: linear-gradient(135deg, rgba(28,28,28,0.97), rgba(28,28,28,0.92)),
-    url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&q=60&auto=format&fit=crop') center/cover no-repeat !important;
-}
+/* ── ABOUT STRIP ── */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
+.about-stats{display:flex;gap:2.5rem;flex-wrap:wrap;margin-top:2rem;padding-top:2rem;border-top:1px solid var(--border-sub)}
 
-/* Why Adroit section background */
-#why {
-  background:
-    linear-gradient(135deg, rgba(10,10,10,0.96) 0%, rgba(10,10,10,0.90) 100%),
-    url('https://images.unsplash.com/photo-1497366216548-37526070297c?w=1600&q=70&auto=format&fit=crop') center/cover no-repeat !important;
-}
+/* ── FOOTER ── */
+footer{background:var(--mid);border-top:1px solid var(--border);padding:3rem 4rem;display:grid;grid-template-columns:1.8fr 1fr 1fr 1fr;gap:2.5rem;align-items:start}
+.footer-brand p{font-size:.8rem;color:rgba(245,244,240,.3);line-height:1.8;margin-top:.8rem}
+.footer-col h4{font-family:var(--font-mono);font-size:.6rem;color:rgba(245,244,240,.25);text-transform:uppercase;letter-spacing:.12em;margin-bottom:1rem}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:.65rem}
+.footer-col a{font-size:.82rem;color:rgba(245,244,240,.4);text-decoration:none;transition:color .15s}
+.footer-col a:hover{color:var(--gold)}
+.footer-bottom{margin-top:2.4rem;padding-top:1.6rem;border-top:1px solid rgba(245,244,240,.05);display:flex;justify-content:space-between;align-items:center}
+.footer-legal{font-size:.72rem;color:rgba(245,244,240,.25);line-height:1.8}
+.footer-reg{font-family:var(--font-mono);font-size:.62rem;color:rgba(245,244,240,.15);letter-spacing:.04em}
 
-/* Contact section background */
-#contact {
-  background:
-    linear-gradient(135deg, rgba(10,10,10,0.95) 0%, rgba(10,10,10,0.90) 100%),
-    url('https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=1600&q=70&auto=format&fit=crop') center/cover no-repeat !important;
-}
+/* ── HAMBURGER ── */
+.menu-btn{display:none;flex-direction:column;justify-content:center;gap:5px;background:none;border:none;cursor:pointer;padding:4px;flex-shrink:0}
+.menu-btn span{display:block;width:22px;height:1.5px;background:rgba(245,244,240,.7);border-radius:1px;transition:all .25s ease}
+.menu-btn.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+.menu-btn.open span:nth-child(2){opacity:0;transform:scaleX(0)}
+.menu-btn.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
 
-/* Light mode image overlays - lighter tint */
-html[data-mode="light"] .hero {
-  background:
-    linear-gradient(135deg, rgba(245,242,235,0.88) 0%, rgba(245,242,235,0.75) 50%, rgba(245,242,235,0.88) 100%),
-    url('https://images.unsplash.com/photo-1486325212027-8081e485255e?w=1800&q=80&auto=format&fit=crop') center/cover no-repeat !important;
+/* ── RESPONSIVE ── */
+@media(max-width:1100px){.hero-inner{grid-template-columns:1fr}.hero-visual{max-width:500px;margin:0 auto}}
+@media(max-width:900px){
+  nav{padding:.5rem 1.5rem;position:relative}
+  .menu-btn{display:flex}
+  .nav-links{display:none;position:absolute;top:100%;left:0;right:0;z-index:99;background:rgba(10,10,10,.99);border-top:1px solid var(--border);flex-direction:column;padding:.5rem 0;gap:0;list-style:none}
+  .nav-links.open{display:flex}
+  .nav-links li{border-bottom:1px solid rgba(255,255,255,.05)}
+  .nav-links a{padding:.9rem 1.5rem!important;display:block}
+  .nav-links a::after{display:none!important}
+  .section,.cta-section{padding:4rem 1.5rem!important}
+  .hero{padding:100px 1.5rem 60px}
+  .two-col,.about-grid{grid-template-columns:1fr;gap:3rem}
+  .steps{grid-template-columns:1fr}
+  .step+.step{border-left:none;border-top:1px solid var(--border)}
+  .vert-grid{grid-template-columns:1fr 1fr}
+  footer{grid-template-columns:1fr 1fr;gap:2rem}
+  .footer-bottom{flex-direction:column;gap:.5rem;text-align:center}
+  .divider{margin:0 1.5rem;width:calc(100% - 3rem)}
+  .nav-right>.nav-status,.nav-right>.lang-switcher,.nav-right>.nav-cta{display:none}
 }
-html[data-mode="light"] #why {
-  background:
-    linear-gradient(135deg, rgba(237,233,224,0.95) 0%, rgba(237,233,224,0.90) 100%),
-    url('https://images.unsplash.com/photo-1497366216548-37526070297c?w=1600&q=70&auto=format&fit=crop') center/cover no-repeat !important;
-}
-html[data-mode="light"] #contact {
-  background:
-    linear-gradient(135deg, rgba(245,242,235,0.95) 0%, rgba(245,242,235,0.90) 100%),
-    url('https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=1600&q=70&auto=format&fit=crop') center/cover no-repeat !important;
-}
-html[data-mode="light"] .service-card:nth-child(1),
-html[data-mode="light"] .service-card:nth-child(2),
-html[data-mode="light"] .service-card:nth-child(3),
-html[data-mode="light"] .service-card:nth-child(4),
-html[data-mode="light"] .service-card:nth-child(5),
-html[data-mode="light"] .service-card:nth-child(6) {
-  background-color: #ede9e0 !important;
-  background-image: none !important;
-}
-
-.form-field.error input, .form-field.error select, .form-field.error textarea {
-  border-color: #e04444 !important;
-  box-shadow: 0 0 0 2px rgba(224,68,68,0.15) !important;
-}
-.form-field label .req { color: #c9a84c; margin-left: 2px; }
+@media(max-width:600px){.vert-grid,footer{grid-template-columns:1fr}.hero-stats{gap:1.5rem}.cta-btns{flex-direction:column;align-items:center}}
 </style>
 </head>
 <body>
 
+<!-- SCROLL PROGRESS -->
+<div class="scroll-progress" id="sp"></div>
+
+<!-- CURSOR -->
+<div class="cursor" id="cur"></div>
+<div class="cursor-ring" id="curRing"></div>
+
 <!-- NAV -->
-<div class="scroll-progress" id="scrollProgress"></div>
-<nav>
-  <div class="nav-logo">
-    <img src="adroit-logo.png" alt="Adroit Solutions GmbH"/>
-  </div>
-  <div class="nav-right">
-    <ul class="nav-links" id="navMenu">
-      <li><a href="index.html" class="active"><span data-lang="de">Startseite</span><span data-lang="en">Home</span></a></li>
-      <li><a href="about.html"><span data-lang="de">Über uns</span><span data-lang="en">About</span></a></li>
-      <li><a href="services.html"><span data-lang="de">Leistungen</span><span data-lang="en">Services</span></a></li>
-      <li><a href="cases.html"><span data-lang="de">Referenzen</span><span data-lang="en">Case Studies</span></a></li>
-      <li><a href="careers.html"><span data-lang="de">Karriere</span><span data-lang="en">Careers</span></a></li>
-      <li><a href="contact.html"><span data-lang="de">Kontakt</span><span data-lang="en">Contact</span></a></li>
-    </ul>
-    <div class="lang-switcher">
-      <button class="lang-btn active" id="btn-de" onclick="setLang('de')">DE</button>
-      <button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button>
+<nav id="navbar">
+  <a class="nav-logo" href="/">
+    <div class="nav-logo-mark">
+      <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M3 17L10 3L17 17" stroke="#c9a84c" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M5.5 12.5H14.5" stroke="#c9a84c" stroke-width="1.8" stroke-linecap="round"/>
+        <circle cx="10" cy="3" r="1.5" fill="#c9a84c"/>
+      </svg>
     </div>
-        <button class="menu-btn" id="menuBtn" aria-label="Toggle menu" aria-controls="navMenu" aria-expanded="false">
-          <span></span><span></span><span></span>
-        </button>
+    <span class="nav-brand">Adroit<span>.</span></span>
+  </a>
+  <div class="nav-right">
+    <div class="nav-status"><span class="status-dot"></span>Platform live</div>
+    <div class="lang-switcher">
+      <button class="lang-btn active" onclick="setLang('de')">DE</button>
+      <button class="lang-btn" onclick="setLang('en')">EN</button>
+    </div>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#product">ADROIT SENSE™</a></li>
+      <li><a href="#how-it-works">How it works</a></li>
+      <li><a href="#capabilities">Capabilities</a></li>
+      <li><a href="#about">About</a></li>
+    </ul>
+    <a href="mailto:samdani.gulam@adroitsolutions.de?subject=Pilot Application" class="nav-cta">Request Pilot</a>
+    <button class="menu-btn" id="menuBtn" onclick="toggleMenu()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </nav>
 
 <!-- HERO -->
-<section class="hero" id="home">
-  <p class="hero-eyebrow">Adroit Solutions GmbH &mdash; Düsseldorf, Deutschland</p>
-
-  <div data-lang="de">
-    <h1>Engineering <em>Präzision</em><br/>auf Enterprise-Niveau.</h1>
-    <p class="hero-sub">SAP BTP Spezialisten, Enterprise IT-Architekten und Embedded Systems Engineers — verfügbar für projektbasierte Engagements in Deutschland und DACH.</p>
-    <div class="hero-cta">
-      <a href="#contact" class="btn-primary">Gespräch starten</a>
-      <a href="#services" class="btn-outline">Unsere Leistungen</a>
-    </div>
-  </div>
-
-  <div data-lang="en">
-    <h1>Engineering <em>precision</em><br/>at enterprise scale.</h1>
-    <p class="hero-sub">SAP BTP specialists, enterprise IT architects, and embedded systems engineers — available for project-based engagements across Germany and DACH.</p>
-    <div class="hero-cta">
-      <a href="#contact" class="btn-primary">Start a Conversation</a>
-      <a href="#services" class="btn-outline">Our Capabilities</a>
-    </div>
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<!-- SERVICES -->
-<section id="services" class="alt">
-  <p class="section-label reveal"><span data-lang="de">Leistungen</span><span data-lang="en">Capabilities</span></p>
-  <div data-lang="de"><h2 class="section-title reveal">Was wir liefern.</h2><p class="section-body">Von SAP BTP Engineering bis zur IoT-Plattformentwicklung — spezialisierte Engineering-Kapazität ohne Overhead.</p></div>
-  <div data-lang="en"><h2 class="section-title reveal">What we deliver.</h2><p class="section-body">From SAP BTP engineering to IoT platform development — specialist engineering capacity without the overhead.</p></div>
-
-  <div class="services-grid stagger">
-    <a class="service-card" href="/services.html#sap-btp">
-      <div class="service-num">01</div>
-      <div class="service-name">SAP BTP Engineering</div>
-      <div class="service-desc">
-        <span data-lang="de">Side-by-Side-Erweiterungen für SAP S/4HANA. CAP- und RAP-Entwicklung, Fiori/UI5, HANA Cloud, Integration Suite und BTP Cloud Foundry/Kyma-Deployments.</span>
-        <span data-lang="en">Side-by-side extensions for SAP S/4HANA. CAP and RAP development, Fiori/UI5, HANA Cloud, Integration Suite, and BTP Cloud Foundry/Kyma deployments.</span>
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid-lines"></div>
+  <div class="hero-inner">
+    <div>
+      <div class="hero-tag">
+        <span class="hero-tag-dot"></span>
+        <span data-lang="de">Pilotprogramm offen — NRW, Deutschland</span>
+        <span data-lang="en">Pilot programme open — NRW, Germany</span>
       </div>
-      <div class="service-tags"><span class="tag">SAP CAP</span><span class="tag">RAP</span><span class="tag">Fiori</span><span class="tag">HANA Cloud</span></div>
-    </a>
-    <a class="service-card" href="/services.html#it-architecture">
-      <div class="service-num">02</div>
-      <div class="service-name"><span data-lang="de">Enterprise IT-Architektur</span><span data-lang="en">Enterprise IT Architecture</span></div>
-      <div class="service-desc">
-        <span data-lang="de">15+ Jahre Erfahrung in der Entwicklung geschäftskritischer Systeme für British Airways, Aer Lingus, Virgin Australia und SITA. Java 21, Spring Boot 3.x, Microservices.</span>
-        <span data-lang="en">15+ years designing mission-critical systems for British Airways, Aer Lingus, Virgin Australia, and SITA. Java 21, Spring Boot 3.x, microservices, cloud-native.</span>
-      </div>
-      <div class="service-tags"><span class="tag">Java 21</span><span class="tag">Spring Boot</span><span class="tag">Microservices</span><span class="tag">AWS</span></div>
-    </a>
-    <a class="service-card" href="/services.html#embedded">
-      <div class="service-num">03</div>
-      <div class="service-name"><span data-lang="de">Embedded Systems & IoT</span><span data-lang="en">Embedded Systems & IoT</span></div>
-      <div class="service-desc">
-        <span data-lang="de">ESP32/ESP32-S3 Firmware in C/C++ mit ESP-IDF. ADROIT SENSE™ IoT SaaS-Plattform auf DSGVO-konformer deutscher Cloud-Infrastruktur.</span>
-        <span data-lang="en">ESP32/ESP32-S3 firmware in C/C++ with ESP-IDF. ADROIT SENSE™ IoT SaaS platform on GDPR-compliant German cloud infrastructure.</span>
-      </div>
-      <div class="service-tags"><span class="tag">ESP32</span><span class="tag">C/C++</span><span class="tag">Node-RED</span><span class="tag">Hetzner</span></div>
-    </a>
-    <a class="service-card" href="/services.html#pcb">
-      <div class="service-num">04</div>
-      <div class="service-name"><span data-lang="de">PCB-Handel & Komponentenbeschaffung</span><span data-lang="en">PCB Trading & Component Sourcing</span></div>
-      <div class="service-desc">
-        <span data-lang="de">Grenzüberschreitende Komponentenbeschaffung über Samim Electronics Ltd (Malta). Spezialist für eMMC, NOR Flash, LPDDR4 PSRAM für europäische Hersteller.</span>
-        <span data-lang="en">Cross-border component procurement via Samim Electronics Ltd (Malta). Specialist in eMMC, NOR Flash, LPDDR4 PSRAM for European manufacturers.</span>
-      </div>
-      <div class="service-tags"><span class="tag">eMMC</span><span class="tag">NOR Flash</span><span class="tag">EU Supply Chain</span></div>
-    </a>
-    <a class="service-card" href="/case-studies/pcb-vision-qa-automation/">
-      <div class="service-num">05</div>
-      <div class="service-name"><span data-lang="de">Computer Vision QA</span><span data-lang="en">Computer Vision QA</span></div>
-      <div class="service-desc">
-        <span data-lang="de">KI-gestützte PCB-Inspektionssysteme. Automatisierte Fehlererkennung, Lötstellen-Analyse und Qualitätssicherung für Produktionslinien.</span>
-        <span data-lang="en">AI-driven PCB inspection systems. Automated defect detection, solder joint analysis, and production line quality assurance using ML pipelines.</span>
-      </div>
-      <div class="service-tags"><span class="tag">Computer Vision</span><span class="tag">PCB Inspection</span><span class="tag">ML</span></div>
-    </a>
-    <a class="service-card" href="/services.html#digital">
-      <div class="service-num">06</div>
-      <div class="service-name"><span data-lang="de">Digital- & SaaS-Lösungen</span><span data-lang="en">Digital & SaaS Solutions</span></div>
-      <div class="service-desc">
-        <span data-lang="de">QR-basiertes Bestell-SaaS für Gastronomie und Einzelhandel. DOOH-Werbenetzwerk-Design. React.js TypeScript Frontend mit Java Spring Boot Backend.</span>
-        <span data-lang="en">QR-based ordering SaaS for hospitality and retail. DOOH advertising network design. React.js TypeScript frontend with Java Spring Boot backends.</span>
-      </div>
-      <div class="service-tags"><span class="tag">React.js</span><span class="tag">SaaS</span><span class="tag">DOOH</span></div>
-    </a>
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<!-- WHY -->
-<section id="why">
-  <p class="section-label reveal"><span data-lang="de">Warum Adroit</span><span data-lang="en">Why Adroit</span></p>
-  <div data-lang="de"><h2 class="section-title reveal">Für SI-Partnerschaften konzipiert.</h2></div>
-  <div data-lang="en"><h2 class="section-title reveal">Built for SI partnership.</h2></div>
-  <div class="why-grid">
-    <div class="why-points stagger">
-      <div class="why-point">
-        <div class="why-icon">&#9670;</div>
-        <div>
-          <h4><span data-lang="de">Düsseldorf-basiert, NRW-bereit</span><span data-lang="en">Düsseldorf-based, NRW-ready</span></h4>
-          <p><span data-lang="de">Vor-Ort-Verfügbarkeit in ganz NRW innerhalb von 24 Stunden. Gleiche Zeitzone, gleicher Markt — kein Koordinationsaufwand.</span><span data-lang="en">On-site availability across NRW within 24 hours. Same timezone, same market — no coordination overhead.</span></p>
-        </div>
-      </div>
-      <div class="why-point">
-        <div class="why-icon">&#9670;</div>
-        <div>
-          <h4><span data-lang="de">2-Wochen-Mobilisierung</span><span data-lang="en">2-week mobilisation</span></h4>
-          <p><span data-lang="de">Vom unterzeichneten Subcontract bis zum aktiven Workstream in zwei Wochen. Festpreis-B2B-Verträge — Werkvertrag oder Dienstvertrag nach Bedarf.</span><span data-lang="en">From signed subcontract to active workstream in two weeks. Fixed-rate B2B agreements — Werkvertrag or Dienstvertrag as required.</span></p>
-        </div>
-      </div>
-      <div class="why-point">
-        <div class="why-icon">&#9670;</div>
-        <div>
-          <h4><span data-lang="de">Kein Bench-Overhead</span><span data-lang="en">Zero bench overhead</span></h4>
-          <p><span data-lang="de">Sie zahlen nur für aktive Lieferzeit. Keine Retainer, keine Mindestverpflichtungen. Spezialisierte Kapazität, wenn Sie sie brauchen.</span><span data-lang="en">You pay for active delivery time only. No retainers, no minimum commitments. Specialist capacity when you need it.</span></p>
-        </div>
-      </div>
-      <div class="why-point">
-        <div class="why-icon">&#9670;</div>
-        <div>
-          <h4><span data-lang="de">Aviation & Enterprise-Erfahrung</span><span data-lang="en">Aviation & enterprise pedigree</span></h4>
-          <p><span data-lang="de">Delivery-Erfahrung mit British Airways, Aer Lingus, Virgin Australia und SITA — geschäftskritische Systeme, bei denen Fehler keine Option sind.</span><span data-lang="en">Delivery experience with British Airways, Aer Lingus, Virgin Australia, and SITA — mission-critical systems where failure is not an option.</span></p>
-        </div>
-      </div>
-    </div>
-    <div class="why-stat-box reveal-right">
-      <div class="stat">
-        <div class="stat-num">15+</div>
-        <div class="stat-label"><span data-lang="de">Jahre Enterprise IT-Architektur-Erfahrung</span><span data-lang="en">Years enterprise IT architecture experience</span></div>
-      </div>
-      <div class="stat">
-        <div class="stat-num">4</div>
-        <div class="stat-label"><span data-lang="de">Große internationale Aviation-Kunden</span><span data-lang="en">Major international aviation clients delivered</span></div>
-      </div>
-      <div class="stat">
-        <div class="stat-num">6</div>
-        <div class="stat-label"><span data-lang="de">Spezialisierte Engineering-Bereiche</span><span data-lang="en">Specialist engineering verticals</span></div>
-      </div>
-      <div class="stat">
-        <div class="stat-num">GmbH</div>
-        <div class="stat-label"><span data-lang="de">Eingetragen in Deutschland — Amtsgericht Köln</span><span data-lang="en">Registered in Germany — Amtsgericht Köln</span></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<!-- SECTORS -->
-<section id="sectors" class="alt">
-  <p class="section-label reveal"><span data-lang="de">Branchen</span><span data-lang="en">Sectors</span></p>
-  <div data-lang="de"><h2 class="section-title reveal">Branchen, die wir bedienen.</h2><p class="section-body">Umfangreiche Delivery-Erfahrung in regulierten, hochkomplexen Umgebungen, in denen Engineering-Qualität nicht verhandelbar ist.</p></div>
-  <div data-lang="en"><h2 class="section-title reveal">Industries we serve.</h2><p class="section-body">Deep delivery experience across regulated, high-complexity environments where engineering quality is non-negotiable.</p></div>
-  <div class="sectors-list stagger">
-    <div class="sector-item" onclick="toggleSector(this)">
-      <span data-lang="de">Einzelhandel & FMCG</span><span data-lang="en">Retail & FMCG</span>
-      <div class="sector-body">
-        <span data-lang="de">QR-basiertes Bestell-SaaS für Gastronomie und stationären Handel. SAP BTP-Integration für Bestands- und Lieferkettenprozesse. React.js-Frontends mit Java Spring Boot-Backends.</span>
-        <span data-lang="en">QR-based ordering SaaS for hospitality and physical retail. SAP BTP integrations for inventory and supply chain processes. React.js frontends backed by Java Spring Boot.</span>
-      </div>
-    </div>
-    <div class="sector-item" onclick="toggleSector(this)">
-      <span data-lang="de">Aviation & Reise</span><span data-lang="en">Aviation & Travel</span>
-      <div class="sector-body">
-        <span data-lang="de">Über 15 Jahre Delivery-Erfahrung mit British Airways, Aer Lingus, Virgin Australia und SITA. Geschäftskritische Reservierungs-, Check-in- und Betriebssysteme in Java 21 und Spring Boot — Systeme, bei denen Fehler keine Option sind.</span>
-        <span data-lang="en">15+ years delivering mission-critical systems for British Airways, Aer Lingus, Virgin Australia, and SITA. Reservation, check-in, and operations platforms built in Java 21 and Spring Boot — where failure is not an option.</span>
-      </div>
-    </div>
-    <div class="sector-item" onclick="toggleSector(this)">
-      <span data-lang="de">Finanzdienstleistungen</span><span data-lang="en">Financial Services</span>
-      <div class="sector-body">
-        <span data-lang="de">Sichere Enterprise-Architektur für regulierte Umgebungen. Cloud-native Microservices, SAP-Integrationen und DSGVO-konforme Datenpipelines für Compliance-kritische Workflows.</span>
-        <span data-lang="en">Secure enterprise architecture for regulated environments. Cloud-native microservices, SAP integrations, and GDPR-compliant data pipelines for compliance-critical workflows.</span>
-      </div>
-    </div>
-    <div class="sector-item" onclick="toggleSector(this)">
-      <span data-lang="de">Fertigung</span><span data-lang="en">Manufacturing</span>
-      <div class="sector-body">
-        <span data-lang="de">KI-gestützte PCB-Inspektion mit automatisierter Fehlererkennung und Lötstellen-Analyse. ESP32-Embedded-Firmware und ADROIT SENSE™ für Echtzeit-Maschinendaten und vorausschauende Wartung.</span>
-        <span data-lang="en">AI-driven PCB inspection with automated defect detection and solder joint analysis. ESP32 embedded firmware and ADROIT SENSE™ for real-time machine data and predictive maintenance.</span>
-      </div>
-    </div>
-    <div class="sector-item" onclick="toggleSector(this)">
-      <span data-lang="de">Logistik & Supply Chain</span><span data-lang="en">Logistics & Supply Chain</span>
-      <div class="sector-body">
-        <span data-lang="de">Grenzüberschreitende Komponentenbeschaffung über Samim Electronics Ltd (Malta). SAP BTP-Integration für Echtzeit-Lieferkettentransparenz, Bestandsoptimierung und Lieferantenmanagement.</span>
-        <span data-lang="en">Cross-border component procurement via Samim Electronics Ltd (Malta). SAP BTP integrations for real-time supply chain visibility, inventory optimisation, and vendor management.</span>
-      </div>
-    </div>
-    <div class="sector-item" onclick="toggleSector(this)">
-      <span data-lang="de">Maritime & Industrie IoT</span><span data-lang="en">Maritime & Industrial IoT</span>
-      <div class="sector-body">
-        <span data-lang="de">ADROIT SENSE™ IoT SaaS-Plattform auf DSGVO-konformer Hetzner-Infrastruktur. ESP32/ESP32-S3-Firmware für industrielle Sensornetzwerke, maritime Überwachung und Flottentelemetrie in Echtzeit.</span>
-        <span data-lang="en">ADROIT SENSE™ IoT SaaS platform hosted on GDPR-compliant Hetzner infrastructure. ESP32/ESP32-S3 firmware for industrial sensor networks, maritime monitoring, and real-time fleet telemetry.</span>
-      </div>
-    </div>
-    <div class="sector-item" onclick="toggleSector(this)">
-      <span data-lang="de">Healthcare-Technologie</span><span data-lang="en">Healthcare Technology</span>
-      <div class="sector-body">
-        <span data-lang="de">DSGVO-konforme IoT-Überwachungslösungen auf deutscher Cloud-Infrastruktur. Embedded-Systeme für Echtzeit-Datenerfassung und sichere Datenverarbeitung in medizinischen Umgebungen.</span>
-        <span data-lang="en">GDPR-compliant IoT monitoring on German cloud infrastructure. Embedded systems for real-time data acquisition and secure data processing in medical-grade environments.</span>
-      </div>
-    </div>
-    <div class="sector-item" onclick="toggleSector(this)">
-      <span data-lang="de">Digital Out-of-Home Medien</span><span data-lang="en">Digital Out-of-Home Media</span>
-      <div class="sector-body">
-        <span data-lang="de">DOOH-Werbenetzwerk-Design und digitale Beschilderungsinfrastruktur. React.js/TypeScript-Frontends mit Java Spring Boot-Backends für skalierbare, echtzeitfähige Inhaltsverwaltung.</span>
-        <span data-lang="en">DOOH advertising network design and digital signage infrastructure. React.js/TypeScript frontends with Java Spring Boot backends for scalable, real-time content management.</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<!-- CONTACT -->
-<section id="contact">
-  <p class="section-label reveal"><span data-lang="de">Kontakt</span><span data-lang="en">Contact</span></p>
-  <div data-lang="de"><h2 class="section-title reveal">Sprechen wir.</h2></div>
-  <div data-lang="en"><h2 class="section-title reveal">Let's talk.</h2></div>
-  <div class="contact-grid">
-    <div class="contact-info reveal-left">
-      <div class="contact-item">
-        <h5><span data-lang="de">Büro</span><span data-lang="en">Office</span></h5>
-        <p>Adroit Solutions GmbH<br/>Königsallee 27<br/>40212 Düsseldorf<br/><span data-lang="de">Deutschland</span><span data-lang="en">Germany</span></p>
-      </div>
-      <div class="contact-item">
-        <h5>E-Mail</h5>
-        <a href="mailto:info@adroitsolutions.de">info@adroitsolutions.de</a>
-      </div>
-      <div class="contact-item">
-        <h5><span data-lang="de">Telefon</span><span data-lang="en">Phone</span></h5>
-        <a href="tel:+4921123855465">+49 211 238 55 465</a>
-      </div>
-      <div class="contact-item">
-        <h5><span data-lang="de">Verfügbarkeit</span><span data-lang="en">Availability</span></h5>
-        <p><span data-lang="de">Offen für Subcontracting-Anfragen von System Integratoren und Enterprise-Kunden in Deutschland und DACH. Mobilisierung: 2 Wochen ab Vertragsschluss.</span><span data-lang="en">Open to subcontracting enquiries from System Integrators and enterprise clients across Germany and DACH. Mobilisation: 2 weeks from agreement.</span></p>
-      </div>
-    </div>
-    <div class="contact-form reveal-right" id="contactForm">
-      <div class="form-row">
-        <div class="form-field">
-          <label><span data-lang="de">Vorname</span><span data-lang="en">First Name</span> <span class="req">*</span></label>
-          <input type="text" id="idx-firstName" placeholder="Max"/>
-        </div>
-        <div class="form-field">
-          <label><span data-lang="de">Nachname</span><span data-lang="en">Last Name</span></label>
-          <input type="text" id="idx-lastName" placeholder="Mustermann"/>
-        </div>
-      </div>
-      <div class="form-field">
-        <label><span data-lang="de">Unternehmen</span><span data-lang="en">Company</span></label>
-        <input type="text" id="idx-company" placeholder="Accenture GmbH"/>
-      </div>
-      <div class="form-field">
-        <label>E-Mail <span class="req">*</span></label>
-        <input type="email" id="idx-email" placeholder="max@unternehmen.de"/>
-      </div>
-      <div class="form-field">
-        <label><span data-lang="de">Anfragetyp</span><span data-lang="en">Enquiry Type</span></label>
-        <select id="idx-type">
-          <option value=""><span data-lang="de">Bitte wählen...</span><span data-lang="en">Please select...</span></option>
-          <option value="sap">SAP BTP Subcontracting</option>
-          <option value="it"><span data-lang="de">IT-Architektur Beratung</span><span data-lang="en">IT Architecture Consulting</span></option>
-          <option value="iot">IoT / Embedded Systems</option>
-          <option value="pcb">PCB &amp; Component Sourcing</option>
-          <option value="other"><span data-lang="de">Sonstiges</span><span data-lang="en">Other</span></option>
-        </select>
-      </div>
-      <div class="form-field">
-        <label><span data-lang="de">Nachricht</span><span data-lang="en">Message</span> <span class="req">*</span></label>
-        <textarea id="idx-message" placeholder="Kurze Beschreibung Ihres Bedarfs, Zeitplan und Standort..."></textarea>
-      </div>
-      <div class="form-submit">
-        <p class="form-note">
-          <span data-lang="de">Ihre Angaben werden ausschließlich zur Bearbeitung Ihrer Anfrage verwendet (Rechtsgrundlage: Art.&nbsp;6 Abs.&nbsp;1 lit.&nbsp;b DSGVO). Speicherung max. 6&nbsp;Monate. <a href="/datenschutz.html" style="color:var(--gold);text-decoration:underline">Datenschutzerklärung</a></span>
-          <span data-lang="en">Your data is processed solely to handle your enquiry (legal basis: Art.&nbsp;6(1)(b) GDPR). Retained up to 6&nbsp;months. <a href="/datenschutz.html" style="color:var(--gold);text-decoration:underline">Privacy Policy</a></span>
-        </p>
-        <a href="#" class="btn-primary" onclick="submitIndexForm(event)" style="text-align:center;">
-          <span data-lang="de">Anfrage senden</span><span data-lang="en">Send Enquiry</span>
+      <h1>
+        <span data-lang="de">Kühlkettenausfälle<br/>passieren, <em>bevor<br/>Sie sie sehen.</em></span>
+        <span data-lang="en">Cold chain failures<br/>happen <em>before<br/>you see them.</em></span>
+      </h1>
+      <p class="hero-desc">
+        <span data-lang="de">ADROIT SENSE™ überwacht Ihre Kühlräume, Fahrzeuge und Lagereinheiten rund um die Uhr — Anomalien werden erkannt, bevor Verluste entstehen. Echtzeit. Kabellos. In einem Tag einsatzbereit.</span>
+        <span data-lang="en">ADROIT SENSE™ watches your cold rooms, refrigerated vehicles, and storage units 24/7 — detecting anomalies before they become losses. Real-time. Wireless. Deployed in one day.</span>
+      </p>
+      <div class="hero-actions">
+        <a href="mailto:samdani.gulam@adroitsolutions.de?subject=Pilot Application — ADROIT SENSE" class="btn-primary">
+          <span data-lang="de">Kostenlosen Pilot anfragen</span>
+          <span data-lang="en">Apply for Free Pilot</span>
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a href="https://adroit-sense-dashboard.onrender.com" target="_blank" class="btn-outline">
+          <span data-lang="de">Live-Dashboard</span>
+          <span data-lang="en">Live Dashboard</span>
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1.5 1.5h9M10.5 1.5v9M10.5 1.5l-9 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
         </a>
       </div>
+      <div class="hero-stats">
+        <div>
+          <div class="stat-n">60<sup>s</sup></div>
+          <div class="stat-l">Time to first alert</div>
+        </div>
+        <div>
+          <div class="stat-n">99.8<sup>%</sup></div>
+          <div class="stat-l">Platform uptime</div>
+        </div>
+        <div>
+          <div class="stat-n">1<sup>day</sup></div>
+          <div class="stat-l">Deployment time</div>
+        </div>
+      </div>
+    </div>
+    <!-- LIVE TERMINAL -->
+    <div class="hero-visual">
+      <div class="terminal" style="aspect-ratio:unset">
+        <div class="term-header">
+          <div class="term-dots"><span></span><span></span><span></span></div>
+          <div class="term-title">adroit-sense — live telemetry</div>
+          <div class="term-live"><span class="status-dot"></span>LIVE</div>
+        </div>
+        <div class="term-body" id="termBody"></div>
+        <div class="sensor-strip">
+          <div class="sc">
+            <div class="sc-label">Temp / Node A1</div>
+            <div class="sc-val ok" id="sv1">–3.8°C</div>
+            <div class="sc-bar"><div class="sc-fill ok" id="sb1" style="width:28%"></div></div>
+          </div>
+          <div class="sc">
+            <div class="sc-label">State</div>
+            <div class="sc-val" id="sv2" style="font-size:.8rem;padding-top:4px">NORMAL</div>
+            <div class="sc-bar"><div class="sc-fill ok" id="sb2" style="width:95%"></div></div>
+          </div>
+          <div class="sc">
+            <div class="sc-label">Uptime</div>
+            <div class="sc-val ok">99.8%</div>
+            <div class="sc-bar"><div class="sc-fill ok" style="width:99%"></div></div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- LEGAL -->
-<div class="legal-section" id="impressum">
-  <div class="legal-cols">
-    <div class="legal-block">
-      <h3><span data-lang="de">Impressum</span><span data-lang="en">Legal Notice</span></h3>
-      <h4><span data-lang="de">Angaben gemäß § 5 TMG</span><span data-lang="en">Information pursuant to § 5 TMG</span></h4>
-      <address>Adroit Solutions GmbH<br/>Königsallee 27<br/>40212 Düsseldorf<br/>Deutschland</address>
-      <h4><span data-lang="de">Vertreten durch</span><span data-lang="en">Managing Director</span></h4>
-      <p>Ayesha Jabeen (<span data-lang="de">Geschäftsführerin</span><span data-lang="en">Managing Director</span>)</p>
-      <h4><span data-lang="de">Kontakt</span><span data-lang="en">Contact</span></h4>
-      <p>Telefon: <a href="tel:+4921123855465">+49 211 238 55 465</a><br/>E-Mail: <a href="mailto:info@adroitsolutions.de">info@adroitsolutions.de</a></p>
-      <h4><span data-lang="de">Registereintrag</span><span data-lang="en">Company Registration</span></h4>
-      <p>Eingetragen im Handelsregister.<br/>
-      Registergericht: Amtsgericht Köln<br/>
-      Registernummer: HRB 127959<br/>
-      Urkundennummer: UVZ-Nr. 291/2025 H<br/>
-      Notar: Dr. Stefan Heinze, Köln<br/>
-      Gründungsdatum: 15. Mai 2026</p>
-      <h4><span data-lang="de">Umsatzsteuer-ID</span><span data-lang="en">VAT ID</span></h4>
-      <p><span data-lang="de">Gemäß § 27a UStG: Wird nach Zuteilung durch das Finanzamt ergänzt</span><span data-lang="en">Pursuant to § 27a UStG: To be added after assignment by the tax authority</span></p>
-      <h4><span data-lang="de">Verantwortlich für den Inhalt (§ 55 Abs. 2 RStV)</span><span data-lang="en">Responsible for content (§ 55 para. 2 RStV)</span></h4>
-      <p>Ayesha Jabeen, Königsallee 27, 40212 Düsseldorf</p>
-    </div>
-    <div class="legal-block">
-      <h3><span data-lang="de">Datenschutzerklärung</span><span data-lang="en">Privacy Policy</span></h3>
-      <h4><span data-lang="de">1. Verantwortliche Stelle</span><span data-lang="en">1. Controller</span></h4>
-      <p><span data-lang="de">Adroit Solutions GmbH, Königsallee 27, 40212 Düsseldorf ist verantwortliche Stelle für die Verarbeitung personenbezogener Daten auf dieser Website.</span><span data-lang="en">Adroit Solutions GmbH, Königsallee 27, 40212 Düsseldorf is the controller responsible for processing personal data on this website.</span></p>
-      <h4><span data-lang="de">2. Erhebung von Daten</span><span data-lang="en">2. Data Collection</span></h4>
-      <p><span data-lang="de">Diese Website erhebt keine personenbezogenen Daten automatisch. Kontaktanfragen werden ausschließlich per E-Mail verarbeitet und nicht an Dritte weitergegeben.</span><span data-lang="en">This website does not automatically collect personal data. Contact requests are processed exclusively by email and are not passed on to third parties.</span></p>
-      <h4><span data-lang="de">3. Cookies</span><span data-lang="en">3. Cookies</span></h4>
-      <p><span data-lang="de">Diese Website verwendet ausschließlich funktionale Cookies, um Ihre Sprach- und Cookie-Einstellungen zu speichern. Es werden keine Tracking- oder Marketing-Cookies eingesetzt.</span><span data-lang="en">This website uses only functional cookies to remember your language and cookie preferences. No tracking or marketing cookies are used.</span></p>
-      <h4><span data-lang="de">4. Ihre Rechte (DSGVO)</span><span data-lang="en">4. Your Rights (GDPR)</span></h4>
-      <p><span data-lang="de">Sie haben das Recht auf Auskunft, Berichtigung, Löschung und Einschränkung der Verarbeitung gemäß DSGVO. Anfragen:</span><span data-lang="en">You have the right of access, rectification, erasure and restriction of processing under GDPR. Enquiries:</span> <a href="mailto:info@adroitsolutions.de">info@adroitsolutions.de</a></p>
+<div class="divider"></div>
+
+<!-- PROBLEM -->
+<section class="section" id="problem">
+  <div style="max-width:var(--max);margin:0 auto">
+    <div class="two-col">
+      <div class="reveal-left">
+        <div class="s-label">The Problem</div>
+        <h2 class="s-title">One failure costs more<br/>than <em>years of prevention.</em></h2>
+        <p class="s-desc">A single cold chain incident — a compressor failure overnight, a defrost cycle running too long, a power cut nobody noticed — can destroy an entire warehouse bay. HACCP violations follow. Client compensation follows. Every loss is avoidable.</p>
+        <div class="check-list">
+          <div class="check-item">
+            <div class="check-icon"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 5l2 2 4-4" stroke="#00C97A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            Most failures give 30–90 minutes of warning signals before critical product loss occurs
+          </div>
+          <div class="check-item">
+            <div class="check-icon"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 5l2 2 4-4" stroke="#00C97A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            Traditional data loggers detect failures hours after the damage is already done
+          </div>
+          <div class="check-item">
+            <div class="check-icon"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 5l2 2 4-4" stroke="#00C97A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            HACCP compliance documentation is still done manually in most Mittelstand operations
+          </div>
+        </div>
+      </div>
+      <div class="reveal-right">
+        <div class="cost-card">
+          <div class="cost-head">Typical single cold chain incident — cost breakdown</div>
+          <div class="cost-rows">
+            <div class="cost-row"><span class="cost-name">Spoiled stock</span><div class="cost-track"><div class="cost-fill r" data-w="88%"></div></div><span class="cost-amt">€44,000</span></div>
+            <div class="cost-row"><span class="cost-name">HACCP penalty</span><div class="cost-track"><div class="cost-fill a" data-w="54%"></div></div><span class="cost-amt">€27,000</span></div>
+            <div class="cost-row"><span class="cost-name">Compensation</span><div class="cost-track"><div class="cost-fill b" data-w="36%"></div></div><span class="cost-amt">€18,000</span></div>
+            <div class="cost-row"><span class="cost-name">Recovery</span><div class="cost-track"><div class="cost-fill g" data-w="22%"></div></div><span class="cost-amt">€11,000</span></div>
+          </div>
+          <div class="cost-total">
+            <span class="cost-total-label">Total exposure</span>
+            <span class="cost-total-val">€100,000</span>
+          </div>
+          <div class="vs-strip">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" style="flex-shrink:0"><circle cx="10" cy="10" r="9" stroke="#00C97A" stroke-width="1.2"/><path d="M10 6v4l2.5 2.5" stroke="#00C97A" stroke-width="1.5" stroke-linecap="round"/></svg>
+            <p>ADROIT SENSE™ detects the same failure in <strong>under 60 seconds</strong> — before a single unit of product is compromised.</p>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-</div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PRODUCT -->
+<section class="section alt" id="product">
+  <div style="max-width:var(--max);margin:0 auto">
+    <div class="two-col" style="align-items:start">
+      <div>
+        <div class="reveal">
+          <div class="s-label">Flagship Platform</div>
+          <h2 class="s-title">ADROIT<br/><em>SENSE™</em></h2>
+          <p class="s-desc">Edge intelligence for cold chain operations. Wireless sensor nodes, cellular cloud connectivity, real-time anomaly detection, and automated compliance — one integrated platform.</p>
+        </div>
+        <div class="feat-list reveal">
+          <div class="feat-item">
+            <div class="feat-icon">
+              <svg viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M3 15L7 9.5L10 12.5L14 6.5L17 10.5L21 7.5" stroke="#c9a84c" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                <circle cx="21" cy="7.5" r="2" fill="#c9a84c" fill-opacity="0.2" stroke="#c9a84c" stroke-width="1.3"/>
+                <path d="M3 19h18" stroke="#c9a84c" stroke-width="1" stroke-linecap="round" opacity="0.3"/>
+              </svg>
+            </div>
+            <div class="feat-copy">
+              <strong>Real-time anomaly detection</strong>
+              <span>Defrost overrun, fan failure, compressor fault, power-state deviation — detected and alerted in under 60 seconds.</span>
+            </div>
+          </div>
+          <div class="feat-item">
+            <div class="feat-icon">
+              <svg viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M4.5 14C4.5 10.41 7.41 7.5 11 7.5" stroke="#c9a84c" stroke-width="1.6" stroke-linecap="round"/>
+                <path d="M2 17C2 9.82 7.82 4 15 4" stroke="#c9a84c" stroke-width="1.6" stroke-linecap="round" opacity="0.4"/>
+                <circle cx="11" cy="18" r="2.5" fill="#c9a84c" fill-opacity="0.15" stroke="#c9a84c" stroke-width="1.6"/>
+                <path d="M11 15.5V13" stroke="#c9a84c" stroke-width="1.4" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div class="feat-copy">
+              <strong>Zero infrastructure dependency</strong>
+              <span>1NCE IoT SIM connects over 4G LTE automatically. No customer WiFi, no VPN, no IT project required on your side.</span>
+            </div>
+          </div>
+          <div class="feat-item">
+            <div class="feat-icon">
+              <svg viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="4" y="3" width="14" height="16" rx="1.5" stroke="#c9a84c" stroke-width="1.6"/>
+                <path d="M8 8h6M8 11.5h6M8 15h4" stroke="#c9a84c" stroke-width="1.4" stroke-linecap="round"/>
+                <path d="M14 13.5l1.5 1.5L18 12.5" stroke="#00C97A" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div class="feat-copy">
+              <strong>Automated HACCP compliance</strong>
+              <span>Continuous audit logs generated automatically. PDF compliance reports on demand. No manual logging, no clipboard sheets.</span>
+            </div>
+          </div>
+          <div class="feat-item">
+            <div class="feat-icon">
+              <svg viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M6 15a4 4 0 01-.88-7.9A5 5 0 0115.9 5.5H16a3 3 0 010 6H6z" stroke="#c9a84c" stroke-width="1.6" stroke-linecap="round"/>
+                <path d="M11 12.5v5M9 15.5l2 2 2-2" stroke="#c9a84c" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+                <rect x="17" y="13.5" width="4" height="3" rx="1" stroke="#00C97A" stroke-width="1.2" opacity="0.8"/>
+              </svg>
+            </div>
+            <div class="feat-copy">
+              <strong>GDPR-compliant. EU-hosted.</strong>
+              <span>All data processed in AWS eu-central-1 (Frankfurt). No data leaves the European Union. Built and operated in Germany.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- ARCHITECTURE -->
+      <div class="reveal-right" style="position:sticky;top:90px">
+        <div class="arch-card">
+          <div class="arch-head">System architecture — ADROIT SENSE™</div>
+          <div class="arch-layer edge">
+            <div class="arch-layer-hd">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="2" y="4" width="12" height="8" rx="1.5" stroke="currentColor" stroke-width="1.3"/><path d="M5 4V3M11 4V3M2 7h12" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/><circle cx="8" cy="10" r="1" fill="currentColor" opacity="0.5"/></svg>
+              <div><div>Edge Hardware Node</div><div class="arch-layer-sub">IP54 · 4G LTE · Battery backup</div></div>
+            </div>
+            <div class="chips">
+              <span class="chip">ESP32-S3 N16R8</span><span class="chip">SHT40</span><span class="chip">DS18B20</span><span class="chip">BM8563 RTC</span><span class="chip">RS485/Modbus</span><span class="chip">W25Q128</span>
+            </div>
+          </div>
+          <div class="arch-arrow">↓</div>
+          <div class="arch-layer connect">
+            <div class="arch-layer-hd">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 10C3 7.24 5.24 5 8 5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/><path d="M1 12.5C1 5.87 5.87 1 12.5 1" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" opacity="0.4"/><circle cx="8" cy="13" r="1.8" stroke="currentColor" stroke-width="1.3"/></svg>
+              <div><div>Connectivity Layer</div><div class="arch-layer-sub">MQTT/TLS 1.3 · 1NCE SIM · 4G LTE</div></div>
+            </div>
+            <div class="chips">
+              <span class="chip g">MQTT/TLS 1.3</span><span class="chip">1NCE Global SIM</span><span class="chip">SIM7600G-H</span><span class="chip g">End-to-end encrypted</span>
+            </div>
+          </div>
+          <div class="arch-arrow">↓</div>
+          <div class="arch-layer cloud">
+            <div class="arch-layer-hd">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4.5 11a3 3 0 01-.66-5.93A3.75 3.75 0 0111.93 4H12a2.25 2.25 0 010 4.5H4.5z" stroke="currentColor" stroke-width="1.3"/></svg>
+              <div><div>Cloud Platform</div><div class="arch-layer-sub">AWS eu-central-1 (Frankfurt) · GDPR</div></div>
+            </div>
+            <div class="chips">
+              <span class="chip go">AWS IoT Core</span><span class="chip go">TimescaleDB</span><span class="chip">Lambda FSM</span><span class="chip">SNS Alerts</span>
+            </div>
+          </div>
+          <div class="arch-arrow">↓</div>
+          <div class="arch-layer dash">
+            <div class="arch-layer-hd">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="2" y="3" width="12" height="10" rx="1.2" stroke="currentColor" stroke-width="1.3" opacity="0.6"/><path d="M4 10l3-4 2.5 2.5L12 5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" opacity="0.6"/></svg>
+              <div><div>Dashboard & Alerts</div><div class="arch-layer-sub">Grafana · REST API · HACCP PDF Export</div></div>
+            </div>
+            <div class="chips">
+              <span class="chip">Grafana Live</span><span class="chip">SMS / Email</span><span class="chip">PDF Audit Log</span><span class="chip">REST API</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- HOW IT WORKS -->
+<section class="section" id="how-it-works">
+  <div style="max-width:var(--max);margin:0 auto">
+    <div class="reveal">
+      <div class="s-label">How it works</div>
+      <h2 class="s-title">Operational in <em>one day.</em></h2>
+      <p class="s-desc">No IT project. No cabling. No integration work on your side. Our team handles everything from installation to first alert.</p>
+    </div>
+    <div class="steps reveal">
+      <div class="step">
+        <div class="step-bar"></div>
+        <div class="step-num">01 — INSTALL</div>
+        <svg class="step-icon" viewBox="0 0 54 54" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="54" height="54" fill="rgba(201,168,76,0.06)"/>
+          <rect x="16" y="13" width="22" height="28" rx="2" stroke="#c9a84c" stroke-width="1.6"/>
+          <path d="M21 19h12M21 23.5h12M21 28h8" stroke="#c9a84c" stroke-width="1.4" stroke-linecap="round"/>
+          <circle cx="38" cy="38" r="6" fill="rgba(0,201,122,0.1)" stroke="#00C97A" stroke-width="1.4"/>
+          <path d="M35.5 38h5M38 35.5v5" stroke="#00C97A" stroke-width="1.4" stroke-linecap="round"/>
+        </svg>
+        <h3>Mount the sensor node</h3>
+        <p>Magnetic or screw-mount the IP54 node inside your cold room, vehicle, or cabinet. Takes 15 minutes. No electrician. No cabling. No IT involvement.</p>
+      </div>
+      <div class="step">
+        <div class="step-bar"></div>
+        <div class="step-num">02 — CONNECT</div>
+        <svg class="step-icon" viewBox="0 0 54 54" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="54" height="54" fill="rgba(201,168,76,0.06)"/>
+          <path d="M14 30C14 22.27 20.27 16 28 16" stroke="#c9a84c" stroke-width="1.6" stroke-linecap="round"/>
+          <path d="M10 34C10 18.54 18.54 10 34 10" stroke="#c9a84c" stroke-width="1.6" stroke-linecap="round" opacity="0.3"/>
+          <circle cx="28" cy="38" r="4" fill="rgba(201,168,76,0.12)" stroke="#c9a84c" stroke-width="1.6"/>
+          <path d="M28 34v-5" stroke="#c9a84c" stroke-width="1.4" stroke-linecap="round"/>
+          <circle cx="40" cy="16" r="5" fill="rgba(0,201,122,0.1)" stroke="#00C97A" stroke-width="1.4"/>
+          <path d="M38.5 16h3M40 14.5v3" stroke="#00C97A" stroke-width="1.3" stroke-linecap="round"/>
+        </svg>
+        <h3>Connects automatically</h3>
+        <p>The 1NCE IoT SIM powers on and connects to ADROIT SENSE™ cloud over 4G LTE. Data flows in under 60 seconds. Your team does nothing.</p>
+      </div>
+      <div class="step">
+        <div class="step-bar"></div>
+        <div class="step-num">03 — MONITOR</div>
+        <svg class="step-icon" viewBox="0 0 54 54" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="54" height="54" fill="rgba(201,168,76,0.06)"/>
+          <rect x="11" y="15" width="32" height="20" rx="1.5" stroke="#c9a84c" stroke-width="1.6"/>
+          <path d="M15 29l5-6 4 4 5-7 4 4 4-3" stroke="#c9a84c" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M21 39h12M27 35v4" stroke="#c9a84c" stroke-width="1.4" stroke-linecap="round"/>
+          <circle cx="43" cy="13" r="4" fill="rgba(232,64,64,0.12)" stroke="#E84040" stroke-width="1.4"/>
+          <path d="M43 11.5v1.5M43 14.5v.3" stroke="#E84040" stroke-width="1.4" stroke-linecap="round"/>
+        </svg>
+        <h3>Receive live alerts</h3>
+        <p>Anomalies trigger instant SMS, email, or webhook alerts. Your Grafana dashboard is live. HACCP audit logs generate automatically, continuously.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CAPABILITIES -->
+<section class="section alt" id="capabilities">
+  <div style="max-width:var(--max);margin:0 auto">
+    <div class="reveal">
+      <div class="s-label">Capabilities</div>
+      <h2 class="s-title">Seven domains.<br/><em>One focused team.</em></h2>
+      <p class="s-desc">ADROIT SENSE™ is our flagship. Behind it is a multi-domain technology company with 15+ years of enterprise architecture experience across aviation, banking, and industrial IoT.</p>
+    </div>
+    <div class="vert-grid stagger">
+      <div class="vert-card">
+        <div class="vert-num">01</div>
+        <svg class="vert-icon" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="50" height="50" fill="rgba(201,168,76,0.05)"/>
+          <circle cx="25" cy="25" r="7" stroke="#c9a84c" stroke-width="1.6"/>
+          <path d="M25 13C25 13 18 17 18 25s7 12 7 12" stroke="#c9a84c" stroke-width="1.3" stroke-linecap="round" opacity="0.35"/>
+          <path d="M25 13C25 13 32 17 32 25s-7 12-7 12" stroke="#c9a84c" stroke-width="1.3" stroke-linecap="round" opacity="0.35"/>
+          <path d="M13 25h24" stroke="#c9a84c" stroke-width="1.3" stroke-linecap="round" opacity="0.35"/>
+          <circle cx="25" cy="25" r="2.5" fill="#c9a84c"/>
+          <circle cx="13" cy="25" r="2" fill="#c9a84c" fill-opacity="0.4" class="node1"/>
+          <circle cx="37" cy="25" r="2" fill="#c9a84c" fill-opacity="0.4" class="node2"/>
+        </svg>
+        <h3>ADROIT SENSE™ IoT Platform</h3>
+        <p>Proprietary cold chain and industrial monitoring. Edge nodes, AWS cloud, real-time anomaly detection, automated HACCP compliance.</p>
+        <span class="vert-badge">Flagship</span>
+      </div>
+      <div class="vert-card">
+        <div class="vert-num">02</div>
+        <svg class="vert-icon" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="50" height="50" fill="rgba(201,168,76,0.05)"/>
+          <rect x="10" y="19" width="12" height="12" rx="1.5" stroke="#c9a84c" stroke-width="1.5"/>
+          <rect x="28" y="11" width="12" height="12" rx="1.5" stroke="#c9a84c" stroke-width="1.5"/>
+          <rect x="28" y="27" width="12" height="12" rx="1.5" stroke="#c9a84c" stroke-width="1.5"/>
+          <path d="M22 25h6M28 17H22a4 4 0 00-4 4v3M28 33H22a4 4 0 01-4-4v-2" stroke="#c9a84c" stroke-width="1.4" stroke-linecap="round"/>
+        </svg>
+        <h3>IT Architecture Consulting</h3>
+        <p>Enterprise systems design for aviation, banking, and logistics. British Airways, Aer Lingus, SITA, NBAD — 15+ years delivered.</p>
+        <span class="vert-badge">Enterprise</span>
+      </div>
+      <div class="vert-card">
+        <div class="vert-num">03</div>
+        <svg class="vert-icon" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="50" height="50" fill="rgba(201,168,76,0.05)"/>
+          <rect x="14" y="14" width="22" height="22" rx="2" stroke="#c9a84c" stroke-width="1.5"/>
+          <rect x="19" y="19" width="12" height="12" rx="1" stroke="#c9a84c" stroke-width="1.2" opacity="0.4"/>
+          <path d="M14 21h-4M14 25h-4M14 29h-4M36 21h4M36 25h4M36 29h4M21 14v-4M25 14v-4M29 14v-4M21 36v4M25 36v4M29 36v4" stroke="#c9a84c" stroke-width="1.3" stroke-linecap="round"/>
+        </svg>
+        <h3>Embedded Systems Engineering</h3>
+        <p>ESP32-S3, FreeRTOS, MQTT, RS485/Modbus firmware and 4-layer KiCad PCB design for industrial and maritime applications.</p>
+        <span class="vert-badge">Hardware</span>
+      </div>
+      <div class="vert-card">
+        <div class="vert-num">04</div>
+        <svg class="vert-icon" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="50" height="50" fill="rgba(201,168,76,0.05)"/>
+          <rect x="8" y="13" width="34" height="22" rx="1.5" stroke="#c9a84c" stroke-width="1.5"/>
+          <rect x="11" y="16" width="28" height="16" rx="1" fill="rgba(201,168,76,0.07)" stroke="#c9a84c" stroke-width="1" opacity="0.6"/>
+          <path d="M19 38h12M25 35v3" stroke="#c9a84c" stroke-width="1.4" stroke-linecap="round" opacity="0.5"/>
+          <path d="M16 28l4-5 3.5 3.5 4.5-6 4 4.5" stroke="#c9a84c" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <h3>DOOH Advertising Networks</h3>
+        <p>Digital out-of-home media infrastructure and network management. Active advertising network operating in Oberbilk, Düsseldorf.</p>
+        <span class="vert-badge">Media</span>
+      </div>
+      <div class="vert-card">
+        <div class="vert-num">05</div>
+        <svg class="vert-icon" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="50" height="50" fill="rgba(201,168,76,0.05)"/>
+          <circle cx="25" cy="25" r="9" stroke="#c9a84c" stroke-width="1.5"/>
+          <circle cx="25" cy="25" r="3.5" fill="#c9a84c" fill-opacity="0.15" stroke="#c9a84c" stroke-width="1.2"/>
+          <path d="M9 25C9 25 15 14 25 14s16 11 16 11-6 11-16 11S9 25 9 25z" stroke="#c9a84c" stroke-width="1.3" stroke-linecap="round" opacity="0.3"/>
+          <path d="M21 14l-4-4M29 14l4-4M21 36l-4 4M29 36l4 4" stroke="#c9a84c" stroke-width="1.2" stroke-linecap="round" opacity="0.4"/>
+        </svg>
+        <h3>PCB Computer Vision QA</h3>
+        <p>Automated PCB inspection using computer vision and ML for manufacturing quality assurance. Defect detection at industrial scale.</p>
+        <span class="vert-badge">AI/ML</span>
+      </div>
+      <div class="vert-card">
+        <div class="vert-num">06</div>
+        <svg class="vert-icon" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="50" height="50" fill="rgba(201,168,76,0.05)"/>
+          <rect x="10" y="17" width="30" height="20" rx="1.5" stroke="#c9a84c" stroke-width="1.5"/>
+          <path d="M10 24h30" stroke="#c9a84c" stroke-width="1.2" stroke-linecap="round"/>
+          <path d="M17 24v13M25 24v13M33 24v13" stroke="#c9a84c" stroke-width="1" stroke-linecap="round" opacity="0.3"/>
+          <path d="M16 13l3-4M34 13l-3-4" stroke="#c9a84c" stroke-width="1.3" stroke-linecap="round" opacity="0.5"/>
+          <circle cx="19" cy="9" r="1.5" stroke="#c9a84c" stroke-width="1.1" opacity="0.6"/>
+          <circle cx="31" cy="9" r="1.5" stroke="#c9a84c" stroke-width="1.1" opacity="0.6"/>
+        </svg>
+        <h3>PCB Trading & Procurement</h3>
+        <p>Cross-border procurement of eMMC, NOR Flash, and LPDDR4 components. EU supply chain via Samim Electronics Ltd, Malta.</p>
+        <span class="vert-badge">Supply Chain</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ABOUT -->
+<section class="section" id="about">
+  <div style="max-width:var(--max);margin:0 auto">
+    <div class="about-grid">
+      <div class="reveal-left">
+        <div class="s-label">About</div>
+        <h2 class="s-title">Built by architects<br/>who flew the<br/><em>world's airlines.</em></h2>
+        <p class="s-desc">Adroit Solutions GmbH is a Düsseldorf-based deep-tech company founded by enterprise architects with 15+ years across British Airways, Aer Lingus, Virgin Australia, SITA, and NBAD. We apply the reliability standards of mission-critical aviation IT to industrial IoT for German Mittelstand.</p>
+        <div class="about-stats">
+          <div><div class="stat-n">15<sup>+</sup></div><div class="stat-l">Years enterprise IT</div></div>
+          <div><div class="stat-n">7</div><div class="stat-l">Technology domains</div></div>
+          <div><div class="stat-n">EU</div><div class="stat-l">Hosted &amp; GDPR compliant</div></div>
+        </div>
+      </div>
+      <div class="reveal-right">
+        <!-- Animated circuit board visual -->
+        <svg viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:380px;opacity:.85">
+          <rect x="80" y="80" width="240" height="240" stroke="rgba(201,168,76,0.15)" stroke-width="1"/>
+          <path d="M200 80V40M200 360v40M80 200H40M360 200h40" stroke="rgba(201,168,76,0.1)" stroke-width="1"/>
+          <!-- Main chip -->
+          <rect x="140" y="140" width="120" height="120" rx="4" stroke="rgba(201,168,76,0.5)" stroke-width="1.5" fill="rgba(201,168,76,0.03)"/>
+          <rect x="152" y="152" width="96" height="96" rx="2" stroke="rgba(201,168,76,0.2)" stroke-width="1" fill="none"/>
+          <!-- Chip pins top -->
+          <path d="M160 140v-16M175 140v-16M190 140v-16M205 140v-16M220 140v-16M235 140v-16M250 140v-16" stroke="rgba(201,168,76,0.4)" stroke-width="1.2" stroke-linecap="round"/>
+          <!-- Chip pins bottom -->
+          <path d="M160 260v16M175 260v16M190 260v16M205 260v16M220 260v16M235 260v16M250 260v16" stroke="rgba(201,168,76,0.4)" stroke-width="1.2" stroke-linecap="round"/>
+          <!-- Chip pins left -->
+          <path d="M140 160h-16M140 175h-16M140 190h-16M140 205h-16M140 220h-16M140 235h-16M140 250h-16" stroke="rgba(201,168,76,0.4)" stroke-width="1.2" stroke-linecap="round"/>
+          <!-- Chip pins right -->
+          <path d="M260 160h16M260 175h16M260 190h16M260 205h16M260 220h16M260 235h16M260 250h16" stroke="rgba(201,168,76,0.4)" stroke-width="1.2" stroke-linecap="round"/>
+          <!-- Traces -->
+          <path d="M90 120 H120 V150 H140" stroke="rgba(201,168,76,0.25)" stroke-width="1" stroke-dasharray="200" stroke-dashoffset="200" class="trace1"/>
+          <path d="M310 280 H280 V250 H260" stroke="rgba(201,168,76,0.25)" stroke-width="1" stroke-dasharray="200" stroke-dashoffset="200" class="trace2"/>
+          <path d="M90 280 H120 V250 H140" stroke="rgba(201,168,76,0.25)" stroke-width="1" stroke-dasharray="200" stroke-dashoffset="200" class="trace3"/>
+          <!-- Corner nodes -->
+          <circle cx="90" cy="120" r="4" fill="rgba(201,168,76,0.15)" stroke="rgba(201,168,76,0.5)" stroke-width="1" class="node1"/>
+          <circle cx="310" cy="280" r="4" fill="rgba(201,168,76,0.15)" stroke="rgba(201,168,76,0.5)" stroke-width="1" class="node2"/>
+          <circle cx="90" cy="280" r="4" fill="rgba(0,201,122,0.15)" stroke="rgba(0,201,122,0.5)" stroke-width="1" class="node3"/>
+          <circle cx="310" cy="120" r="4" fill="rgba(201,168,76,0.15)" stroke="rgba(201,168,76,0.5)" stroke-width="1" class="node4"/>
+          <!-- Center label -->
+          <text x="200" y="196" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="11" fill="rgba(201,168,76,0.6)" letter-spacing="2">ADROIT</text>
+          <text x="200" y="212" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="8" fill="rgba(201,168,76,0.3)" letter-spacing="3">SENSE™</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PILOT / CTA -->
+<section class="cta-section" id="pilot">
+  <div style="max-width:640px;margin:0 auto" class="reveal">
+    <div class="s-label" style="justify-content:center">Free Pilot Programme</div>
+    <h2>Five NRW partners.<br/><em>Zero cost. Zero risk.</em></h2>
+    <p>We are onboarding our first five pilot partners across North Rhine-Westphalia. Three sensor nodes, full platform access, on-site installation, and 30 days of live monitoring — at no cost, with no commitment.</p>
+    <div class="pilot-spots">
+      <div class="spot-dots">
+        <div class="spot-dot taken"></div>
+        <div class="spot-dot taken"></div>
+        <div class="spot-dot"></div>
+        <div class="spot-dot"></div>
+        <div class="spot-dot"></div>
+      </div>
+      <span><strong>3 spots remaining</strong> of 5 pilot positions</span>
+    </div>
+    <div class="pilot-feats">
+      <div class="pf-item"><div class="pf-check"><svg width="9" height="9" viewBox="0 0 9 9" fill="none"><path d="M1.5 4.5l2 2 4-4" stroke="#c9a84c" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>3 sensor nodes provided — hardware included</div>
+      <div class="pf-item"><div class="pf-check"><svg width="9" height="9" viewBox="0 0 9 9" fill="none"><path d="M1.5 4.5l2 2 4-4" stroke="#c9a84c" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>On-site installation by our team</div>
+      <div class="pf-item"><div class="pf-check"><svg width="9" height="9" viewBox="0 0 9 9" fill="none"><path d="M1.5 4.5l2 2 4-4" stroke="#c9a84c" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>30 days live monitoring with full dashboard access</div>
+      <div class="pf-item"><div class="pf-check"><svg width="9" height="9" viewBox="0 0 9 9" fill="none"><path d="M1.5 4.5l2 2 4-4" stroke="#c9a84c" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>No invoice. No commitment. No contract required.</div>
+    </div>
+    <div class="cta-btns">
+      <a href="mailto:samdani.gulam@adroitsolutions.de?subject=Pilot Application — ADROIT SENSE" class="btn-primary">Apply for Free Pilot <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 6.5h9M8 3l4 3.5L8 10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      <a href="https://adroit-sense-dashboard.onrender.com" target="_blank" class="btn-outline">View Live Dashboard <svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M1 1h9M10 1v9M10 1L1 10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></a>
+    </div>
+    <p style="margin-top:1.5rem;font-size:.75rem;color:rgba(245,244,240,.2);font-family:'JetBrains Mono',monospace;letter-spacing:.04em">samdani.gulam@adroitsolutions.de · HRB 127959 · Düsseldorf</p>
+  </div>
+</section>
+
 <!-- FOOTER -->
 <footer>
-  <div style="display:flex;flex-direction:column;gap:0.2rem;align-items:flex-start;">
-    <img src="adroit-logo.png" alt="Adroit Solutions GmbH" style="height:110px;filter:brightness(0) invert(1);background:none;display:block;"/>
-    <p class="footer-tagline" style="margin:0;padding:0;">Electronics &middot; IoT &middot; Digital Solutions &middot; Düsseldorf, Deutschland</p>
+  <div class="footer-brand">
+    <a class="nav-logo" href="/" style="text-decoration:none">
+      <div class="nav-logo-mark"><svg viewBox="0 0 20 20" fill="none"><path d="M3 17L10 3L17 17" stroke="#c9a84c" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M5.5 12.5H14.5" stroke="#c9a84c" stroke-width="1.8" stroke-linecap="round"/><circle cx="10" cy="3" r="1.5" fill="#c9a84c"/></svg></div>
+      <span class="nav-brand">Adroit Solutions GmbH</span>
+    </a>
+    <p>Deep-tech company building industrial IoT platforms and embedded intelligence for German Mittelstand. Düsseldorf, Germany.</p>
+    <div class="footer-reg" style="margin-top:.8rem">HRB 127959 · Amtsgericht Köln · Königsallee 27, 40212 Düsseldorf</div>
   </div>
-  <div class="footer-legal">
-    <p>&copy; 2026 Adroit Solutions GmbH <span data-lang="de">Alle Rechte vorbehalten.</span><span data-lang="en">All rights reserved.</span></p>
-    <p>
-      <a href="/impressum.html">Impressum</a>
-      &nbsp;&middot;&nbsp;
-      <a href="/datenschutz.html">Datenschutz</a>
-      &nbsp;&middot;&nbsp;
-      <a href="/agb.html">AGB</a>
-    </p>
+  <div class="footer-col">
+    <h4>Platform</h4>
+    <ul>
+      <li><a href="#product">ADROIT SENSE™</a></li>
+      <li><a href="#how-it-works">How it works</a></li>
+      <li><a href="https://adroit-sense-dashboard.onrender.com" target="_blank">Live Dashboard</a></li>
+      <li><a href="#pilot">Free Pilot</a></li>
+    </ul>
+  </div>
+  <div class="footer-col">
+    <h4>Company</h4>
+    <ul>
+      <li><a href="#capabilities">Capabilities</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="/imprint.html">Impressum</a></li>
+      <li><a href="/privacy.html">Datenschutz</a></li>
+    </ul>
+  </div>
+  <div class="footer-col">
+    <h4>Contact</h4>
+    <ul>
+      <li><a href="mailto:samdani.gulam@adroitsolutions.de">Email us</a></li>
+      <li><a href="https://linkedin.com/in/samdani19" target="_blank">LinkedIn</a></li>
+      <li><a href="mailto:samdani.gulam@adroitsolutions.de?subject=Pilot Application">Request Pilot</a></li>
+    </ul>
   </div>
 </footer>
 
 <script>
-function toggleSector(el) {
-  const wasOpen = el.classList.contains('open');
-  document.querySelectorAll('.sector-item.open').forEach(s => s.classList.remove('open'));
-  if (!wasOpen) el.classList.add('open');
-}
-
-// ── LANGUAGE ──
-function setLang(lang) {
-  const isEn = lang === 'en';
-  document.body.classList.toggle('lang-en', isEn);
-  document.getElementById('btn-de').className = 'lang-btn' + (!isEn ? ' active' : '');
-  document.getElementById('btn-en').className = 'lang-btn' + (isEn ? ' active' : '');
-  sessionStorage.setItem('adroit-lang', lang);
-  document.dispatchEvent(new Event('lang-changed'));
-}
-const savedLang = sessionStorage.getItem('adroit-lang') || 'de';
-setLang(savedLang);
-
-// ── SMOOTH NAV SCROLL ──
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener('click', function(e) {
-    e.preventDefault();
-    const target = document.querySelector(this.getAttribute('href'));
-    if (target) {
-      const navHeight = document.querySelector('nav').offsetHeight;
-      const top = target.getBoundingClientRect().top + window.scrollY - navHeight - 20;
-      window.scrollTo({ top, behavior: 'smooth' });
-    }
-  });
+// ── CUSTOM CURSOR
+const cur=document.getElementById('cur'),ring=document.getElementById('curRing');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px'});
+(function animRing(){rx+=(mx-rx)*.1;ry+=(my-ry)*.1;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(animRing)})();
+document.querySelectorAll('a,button,.vert-card,.feat-item,.step').forEach(el=>{
+  el.addEventListener('mouseenter',()=>{cur.classList.add('hover');ring.classList.add('hover')});
+  el.addEventListener('mouseleave',()=>{cur.classList.remove('hover');ring.classList.remove('hover')});
 });
 
-// ── SCROLL PROGRESS BAR ──
-window.addEventListener('scroll', () => {
-  const scrollTop = window.scrollY;
-  const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-  const progress = (scrollTop / docHeight) * 100;
-  document.getElementById('scrollProgress').style.width = progress + '%';
-
-  // Nav shrink on scroll
-  const nav = document.querySelector('nav');
-  if (scrollTop > 50) {
-    nav.classList.add('scrolled');
-  } else {
-    nav.classList.remove('scrolled');
-  }
-}, { passive: true });
-
-// ── INTERSECTION OBSERVER FOR REVEAL ──
-const observerOptions = {
-  threshold: 0.12,
-  rootMargin: '0px 0px -60px 0px'
-};
-
-const revealObserver = new IntersectionObserver((entries) => {
-  entries.forEach((entry, i) => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
-      revealObserver.unobserve(entry.target);
-    }
-  });
-}, observerOptions);
-
-document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .stagger').forEach(el => {
-  revealObserver.observe(el);
+// ── SCROLL PROGRESS
+const sp=document.getElementById('sp');
+window.addEventListener('scroll',()=>{
+  const h=document.documentElement.scrollHeight-window.innerHeight;
+  sp.style.width=(window.scrollY/h*100)+'%';
 });
 
-// ── TIME-BASED MODE ──
-function applyTimeMode() {
-  const hour = new Date().getHours();
-  const isDark = hour >= 19 || hour < 7;
-  const existing = document.getElementById('light-mode-overrides');
-  if (existing) existing.remove();
-  if (!isDark) {
-    const style = document.createElement('style');
-    style.id = 'light-mode-overrides';
-    style.textContent = `
-      html, body { background: #f5f2eb !important; color: #0a0a0a !important; }
-      nav { background: rgba(245,242,235,0.97) !important; border-bottom: 1px solid rgba(201,168,76,0.3) !important; }
-      .menu-btn span { background: rgba(10,10,10,0.75) !important; }
-      .lang-btn:not(.active) { color: rgba(10,10,10,0.6) !important; border-color: rgba(10,10,10,0.25) !important; }
-      .nav-links.open { background: rgba(245,242,235,0.99) !important; border-top-color: rgba(201,168,76,0.3) !important; }
-      .nav-links li { border-bottom-color: rgba(10,10,10,0.07) !important; }
-      .nav-links a { color: rgba(10,10,10,0.65) !important; }
-      .nav-links a:hover { color: #c9a84c !important; }
-      .nav-links a::after { background: #c9a84c !important; }
-      .hero { background: #f5f2eb !important; }
-      .hero h1 { color: #0a0a0a !important; }
-      .hero-sub { color: rgba(10,10,10,0.55) !important; }
-      section { background: #f5f2eb !important; }
-      section.alt { background: #ede9e0 !important; }
-      .section-title { color: #0a0a0a !important; }
-      .section-body { color: rgba(10,10,10,0.6) !important; }
-      .service-card { background: #ede9e0 !important; border-color: rgba(201,168,76,0.2) !important; }
-      .service-card:hover { box-shadow: 0 12px 40px rgba(0,0,0,0.08) !important; }
-      .service-name { color: #0a0a0a !important; }
-      .service-desc { color: rgba(10,10,10,0.55) !important; }
-      .services-grid { border-color: rgba(201,168,76,0.2) !important; }
-      .why-point h4 { color: #0a0a0a !important; }
-      .why-point p { color: rgba(10,10,10,0.55) !important; }
-      .why-icon { border-color: rgba(201,168,76,0.3) !important; }
-      .why-stat-box { border-color: rgba(201,168,76,0.3) !important; }
-      .stat { border-color: rgba(201,168,76,0.2) !important; }
-      .stat-label { color: rgba(10,10,10,0.45) !important; }
-      .sector-item { border-color: rgba(201,168,76,0.2) !important; color: rgba(10,10,10,0.65) !important; }
-      .sector-item:hover, .sector-item.open { color: #0a0a0a !important; border-color: #c9a84c !important; }
-      .sector-body { color: rgba(10,10,10,0.5) !important; border-top-color: rgba(201,168,76,0.25) !important; }
-      .contact-item p, .contact-item a { color: rgba(10,10,10,0.8) !important; }
-      .form-field label { color: rgba(10,10,10,0.45) !important; }
-      .form-field input, .form-field textarea, .form-field select { background: rgba(0,0,0,0.05) !important; color: #0a0a0a !important; border-color: rgba(201,168,76,0.3) !important; }
-      .btn-outline { border-color: rgba(10,10,10,0.3) !important; color: #0a0a0a !important; }
-      .btn-outline:hover { border-color: #c9a84c !important; color: #c9a84c !important; }
-      .lang-btn { border-color: rgba(201,168,76,0.4) !important; color: rgba(10,10,10,0.6) !important; }
-      .lang-btn.active { background: #c9a84c !important; color: #0a0a0a !important; }
-      .divider { background: linear-gradient(90deg, transparent, rgba(201,168,76,0.25), transparent) !important; }
-      .legal-section { background: #ede9e0 !important; }
-      .legal-block p, .legal-block address { color: rgba(10,10,10,0.55) !important; }
-      .legal-block h4 { color: rgba(10,10,10,0.45) !important; }
-      footer { background: #ede9e0 !important; }
-      .footer-tagline { color: rgba(10,10,10,0.4) !important; }
-      .footer-legal { color: rgba(10,10,10,0.35) !important; }
-      .footer-legal a { color: rgba(10,10,10,0.45) !important; }
-      footer img { filter: brightness(0) !important; }
-      nav img { filter: brightness(0) !important; }
-      .scroll-progress { background: linear-gradient(90deg, #c9a84c, #e8c97a) !important; }
-    `;
-    document.head.appendChild(style);
-    document.body.style.background = '#f5f2eb';
-    document.body.style.color = '#0a0a0a';
-    document.documentElement.setAttribute('data-mode', 'light');
-  } else {
-    document.body.style.background = '#0a0a0a';
-    document.body.style.color = '#f5f4f0';
-    document.documentElement.setAttribute('data-mode', 'dark');
-  }
+// ── REVEAL ON SCROLL
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');if(e.target.classList.contains('stagger')){obs.unobserve(e.target)}}});
+},{threshold:.12});
+document.querySelectorAll('.reveal,.reveal-left,.reveal-right,.stagger').forEach(el=>obs.observe(el));
+
+// ── COST BARS ANIMATE
+const costObs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.querySelectorAll('.cost-fill').forEach(f=>{setTimeout(()=>{f.style.width=f.dataset.w},100)});
+      costObs.unobserve(e.target);
+    }
+  });
+},{threshold:.3});
+const cv=document.querySelector('.cost-card');
+if(cv)costObs.observe(cv);
+
+// ── LIVE TERMINAL
+const lines=[
+  {ts:'14:32:07',key:'node_id',val:'A1-KBHDE',cls:'val-info',tag:'PULSE',tc:'tag-pulse'},
+  {ts:'14:32:07',key:'temp_c',val:'-3.84',cls:'val-ok',tag:'OK',tc:'tag-ok'},
+  {ts:'14:32:07',key:'humidity',val:'82.3%',cls:'val-ok',tag:'OK',tc:'tag-ok'},
+  {ts:'14:32:07',key:'state',val:'NORMAL_COOLING',cls:'val-ok',tag:'OK',tc:'tag-ok'},
+  {ts:'14:32:08',key:'uptime_s',val:'86412',cls:'val-info',tag:'',tc:''},
+  {ts:'14:32:12',key:'node_id',val:'B3-KBHDE',cls:'val-info',tag:'PULSE',tc:'tag-pulse'},
+  {ts:'14:32:12',key:'temp_c',val:'-1.12',cls:'val-warn',tag:'WARN',tc:'tag-warn'},
+  {ts:'14:32:12',key:'state',val:'DEFROST_CYCLE',cls:'val-warn',tag:'WATCH',tc:'tag-warn'},
+  {ts:'14:32:13',key:'alert_sent',val:'SMS+EMAIL',cls:'val-warn',tag:'SENT',tc:'tag-warn'},
+  {ts:'14:32:22',key:'node_id',val:'A1-KBHDE',cls:'val-info',tag:'PULSE',tc:'tag-pulse'},
+  {ts:'14:32:22',key:'temp_c',val:'-3.91',cls:'val-ok',tag:'OK',tc:'tag-ok'},
+  {ts:'14:32:22',key:'state',val:'NORMAL_COOLING',cls:'val-ok',tag:'OK',tc:'tag-ok'},
+];
+const tb=document.getElementById('termBody');
+let li=0;
+function addLine(){
+  if(li>=lines.length){li=0;tb.innerHTML=''}
+  const l=lines[li++];
+  const d=document.createElement('div');
+  d.className='term-line';
+  const tag=l.tag?`<span class="term-tag ${l.tc}">${l.tag}</span>`:'';
+  d.innerHTML=`<span class="ts">${l.ts}</span><span class="key">${l.key}:</span><span class="${l.cls}">${l.val}${tag}</span>`;
+  tb.appendChild(d);
+  if(tb.children.length>10)tb.removeChild(tb.firstChild);
+  setTimeout(addLine,600+Math.random()*500);
+}
+addLine();
+
+// ── SENSOR ANIMATION
+const temps=['-3.8','-3.9','-4.1','-3.7','-3.8','-4.0','-1.1','-0.8','-1.3','-3.6'];
+const states=['NORMAL','NORMAL','NORMAL','NORMAL','NORMAL','DEFROST','DEFROST','DEFROST','NORMAL','NORMAL'];
+let si=0;
+setInterval(()=>{
+  si=(si+1)%temps.length;
+  const v1=document.getElementById('sv1'),v2=document.getElementById('sv2'),b2=document.getElementById('sb2');
+  v1.textContent=temps[si]+'°C';
+  const def=states[si]==='DEFROST';
+  v1.className='sc-val '+(def?'warn':'ok');
+  v2.textContent=def?'DEFROST_CYCLE':'NORMAL_COOLING';
+  v2.style.color=def?'var(--amber)':'var(--green)';
+  b2.className='sc-fill '+(def?'warn':'ok');
+  b2.style.width=def?'42%':'95%';
+},3000);
+
+// ── LANG SWITCHER
+function setLang(l){
+  document.body.classList.toggle('lang-en',l==='en');
+  document.querySelectorAll('.lang-btn').forEach(b=>b.classList.toggle('active',b.textContent===l.toUpperCase()));
 }
 
-applyTimeMode();
-setInterval(applyTimeMode, 60 * 60 * 1000);
-
-// Mobile menu toggle
-(function(){
-  var btn = document.getElementById('menuBtn');
-  var nav = document.querySelector('.nav-links');
-  if (!btn || !nav) return;
-  btn.addEventListener('click', function(){
-    var open = nav.classList.toggle('open');
-    btn.classList.toggle('open', open);
-    btn.setAttribute('aria-expanded', open);
-  });
-  nav.querySelectorAll('a').forEach(function(a){
-    a.addEventListener('click', function(){
-      nav.classList.remove('open');
-      btn.classList.remove('open');
-      btn.setAttribute('aria-expanded', 'false');
-    });
-  });
-})();
-function submitIndexForm(e) {
-  e.preventDefault();
-  var isEn = document.body.classList.contains('lang-en');
-  var first = document.getElementById('idx-firstName').value.trim();
-  var last = document.getElementById('idx-lastName').value.trim();
-  var email = document.getElementById('idx-email').value.trim();
-  var company = document.getElementById('idx-company').value.trim();
-  var type = document.getElementById('idx-type').value;
-  var msg = document.getElementById('idx-message').value.trim();
-
-  document.querySelectorAll('#contactForm .form-field').forEach(function(f){ f.classList.remove('error'); });
-  var errEl = document.getElementById('idxFormError');
-  if (errEl) errEl.remove();
-
-  var hasErr = false;
-  if (!first) { document.getElementById('idx-firstName').closest('.form-field').classList.add('error'); hasErr = true; }
-  if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { document.getElementById('idx-email').closest('.form-field').classList.add('error'); hasErr = true; }
-  if (!msg) { document.getElementById('idx-message').closest('.form-field').classList.add('error'); hasErr = true; }
-  if (hasErr) {
-    var p = document.createElement('p');
-    p.id = 'idxFormError';
-    p.style.cssText = 'color:#e04444;font-size:0.85rem;margin:0;';
-    p.textContent = isEn ? 'Please fill in all required fields (*).' : 'Bitte alle Pflichtfelder (*) ausfüllen.';
-    document.querySelector('#contactForm .form-submit').prepend(p);
-    document.querySelector('#contactForm .form-field.error').scrollIntoView({behavior:'smooth', block:'center'});
-    return;
-  }
-
-  var name = (first + ' ' + last).trim();
-  var subject = encodeURIComponent((isEn ? 'Enquiry: ' : 'Anfrage: ') + (type || 'Adroit Solutions') + ' — ' + (company || name));
-  var bodyLines = [
-    'Name: ' + name,
-    (isEn ? 'Company: ' : 'Unternehmen: ') + company,
-    'E-Mail: ' + email,
-    (isEn ? 'Enquiry Type: ' : 'Art der Anfrage: ') + (type || '—'),
-    '',
-    (isEn ? 'Message:' : 'Nachricht:'),
-    msg
-  ];
-  window.location.href = 'mailto:info@adroitsolutions.de?subject=' + subject + '&body=' + encodeURIComponent(bodyLines.join('\n'));
-
-  var form = document.getElementById('contactForm');
-  setTimeout(function(){
-    form.innerHTML = '<div style="text-align:center;padding:3rem 1rem">' +
-      '<svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="#c9a84c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin:0 auto 1.2rem;display:block"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>' +
-      '<h3 style="color:#c9a84c;margin-bottom:0.6rem">' + (isEn ? 'Message sent!' : 'Nachricht gesendet!') + '</h3>' +
-      '<p style="opacity:0.65;max-width:340px;margin:0 auto">' + (isEn ? 'Thank you for your enquiry. We will be in touch within 1–2 business days.' : 'Vielen Dank für Ihre Anfrage. Wir melden uns innerhalb von 1–2 Werktagen.') + '</p>' +
-    '</div>';
-  }, 800);
+// ── MOBILE MENU
+function toggleMenu(){
+  const btn=document.getElementById('menuBtn'),links=document.getElementById('navLinks');
+  btn.classList.toggle('open');
+  links.classList.toggle('open');
 }
+
+// ── NAV SHRINK ON SCROLL
+window.addEventListener('scroll',()=>{
+  document.getElementById('navbar').style.padding=window.scrollY>60?'0.4rem 4rem':'0.75rem 4rem';
+});
 </script>
-<script src="/cookie-consent.js"></script>
 </body>
 </html>
