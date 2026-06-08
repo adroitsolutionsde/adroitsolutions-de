@@ -24,8 +24,6 @@
   "url": "https://adroitsolutions.de/adroit-sense.html",
   "offers": {
     "@type": "Offer",
-    "priceCurrency": "EUR",
-    "priceSpecification": { "@type": "PriceSpecification", "description": "From €490/month. Pilot packages available." },
     "seller": { "@id": "https://adroitsolutions.de/#organization" },
     "availability": "https://schema.org/InStock",
     "areaServed": "DE"
@@ -139,18 +137,12 @@ footer { background: #1c1c1c; border-top: 1px solid var(--border); padding: 3rem
 .compliance-badge { font-family: 'DM Serif Display', serif; font-size: 1.5rem; color: var(--gold); margin-bottom: 0.5rem; }
 .compliance-body { font-size: 0.875rem; color: rgba(245,244,240,0.65); line-height: 1.75; }
 
-/* PRICING */
-.pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 3rem; }
-.pricing-card { border: 1px solid var(--border); padding: 2.5rem; background: #0d0d0d; }
-.pricing-card.featured { border-color: var(--gold); position: relative; }
-.featured-label { position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--gold); color: #0a0a0a; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.25rem 0.75rem; white-space: nowrap; }
-.plan-name { font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(245,244,240,0.4); margin-bottom: 0.75rem; }
-.plan-price { font-family: 'DM Serif Display', serif; font-size: 2.5rem; color: #f5f4f0; margin-bottom: 0.25rem; line-height: 1; }
-.plan-price span { font-family: 'DM Sans', sans-serif; font-size: 1rem; font-weight: 300; color: rgba(245,244,240,0.4); }
-.plan-desc { font-size: 0.875rem; color: rgba(245,244,240,0.5); margin-bottom: 2rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--border); }
-.plan-features { list-style: none; margin-bottom: 2rem; }
-.plan-features li { padding: 0.4rem 0; font-size: 0.875rem; color: rgba(245,244,240,0.7); display: flex; gap: 0.6rem; }
-.plan-features li::before { content: '✓'; color: var(--gold); font-weight: 700; flex-shrink: 0; }
+/* PRICING CTA */
+.pricing-cta-box { border: 1px solid var(--border); padding: 4rem; margin-top: 3rem; display: grid; grid-template-columns: 1fr auto; gap: 3rem; align-items: center; background: #0d0d0d; }
+.pricing-cta-box h3 { font-family: 'DM Serif Display', serif; font-size: clamp(1.5rem, 2.5vw, 2.2rem); color: #f5f4f0; margin-bottom: 0.75rem; }
+.pricing-cta-box p { font-size: 1rem; color: rgba(245,244,240,0.65); max-width: 50ch; line-height: 1.8; }
+.pricing-cta-actions { display: flex; flex-direction: column; gap: 1rem; align-items: flex-end; white-space: nowrap; }
+@media (max-width: 900px) { .pricing-cta-box { grid-template-columns: 1fr; } .pricing-cta-actions { align-items: flex-start; } }
 
 /* CTA BAND */
 .cta-band { background: linear-gradient(135deg, rgba(10,10,10,0.95) 0%, rgba(10,10,10,0.88) 100%), url('https://images.unsplash.com/photo-1518770660439-4636190af475?w=1600&q=70&auto=format&fit=crop') center/cover no-repeat; padding: 6rem 4rem; display: grid; grid-template-columns: 1fr auto; gap: 3rem; align-items: center; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
@@ -421,54 +413,16 @@ html[data-mode="light"] .cta-band p { color: rgba(10,10,10,0.65) !important; }
 <!-- PRICING -->
 <section class="alt">
   <p class="section-label reveal">Pricing</p>
-  <h2 class="section-title reveal">Transparent. No Hidden Costs.</h2>
-  <p class="section-body reveal">Hardware included in Professional and Enterprise plans. All plans include setup, installation, and first-year support.</p>
-  <div class="pricing-grid reveal">
-    <div class="pricing-card">
-      <div class="plan-name">Pilot</div>
-      <div class="plan-price">Custom <span>/ 30 days</span></div>
-      <div class="plan-desc">One cold room. Validate the technology. Zero risk.</div>
-      <ul class="plan-features">
-        <li>Up to 4 sensors</li>
-        <li>1 cold room</li>
-        <li>SMS + email alerts</li>
-        <li>Web dashboard</li>
-        <li>Basic HACCP export</li>
-        <li>Full support included</li>
-      </ul>
-      <a href="/contact.html" class="btn-outline" style="width:100%;text-align:center;">Request Pilot</a>
+  <h2 class="section-title reveal">Tailored to Your Deployment</h2>
+  <p class="section-body reveal">Every deployment is scoped to your facility — number of zones, sensor types, compliance requirements, and integration needs. Pricing is proposal-based after a short discovery call.</p>
+  <div class="pricing-cta-box reveal">
+    <div>
+      <h3>Let's discuss your requirements.</h3>
+      <p>Tell us about your facility — cold rooms, monitored parameters, compliance obligations. We'll come back with a scoped proposal within 48 hours. No commitment required.</p>
     </div>
-    <div class="pricing-card featured">
-      <div class="featured-label">Most Popular</div>
-      <div class="plan-name">Professional</div>
-      <div class="plan-price">€490 <span>/ month</span></div>
-      <div class="plan-desc">Up to 6 monitored zones. Hardware included. Full compliance package.</div>
-      <ul class="plan-features">
-        <li>Up to 24 sensors</li>
-        <li>6 zones / rooms</li>
-        <li>SMS, email, WhatsApp alerts</li>
-        <li>Escalation chains</li>
-        <li>Full HACCP/GDP reports</li>
-        <li>4G failover included</li>
-        <li>OTA firmware updates</li>
-        <li>NIS2 documentation pack</li>
-      </ul>
-      <a href="/contact.html" class="btn-primary" style="width:100%;text-align:center;">Get Started</a>
-    </div>
-    <div class="pricing-card">
-      <div class="plan-name">Enterprise</div>
-      <div class="plan-price">Custom</div>
-      <div class="plan-desc">Multi-site, multi-jurisdiction, ERP integration, custom SLA.</div>
-      <ul class="plan-features">
-        <li>Unlimited sensors</li>
-        <li>Multi-site deployment</li>
-        <li>ERP / SCADA integration</li>
-        <li>Custom alert rules</li>
-        <li>Dedicated support SLA</li>
-        <li>White-label option</li>
-        <li>On-premise deployment option</li>
-      </ul>
-      <a href="/contact.html" class="btn-outline" style="width:100%;text-align:center;">Contact Us</a>
+    <div class="pricing-cta-actions">
+      <a href="/contact.html" class="btn-primary">Request a Proposal →</a>
+      <a href="/contact.html?subject=pilot" class="btn-outline">Start Free 30-Day Pilot</a>
     </div>
   </div>
 </section>
