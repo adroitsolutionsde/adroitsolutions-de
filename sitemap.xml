@@ -56,56 +56,6 @@
     <priority>0.8</priority>
   </url>
 
-  <!-- CASE STUDIES -->
-  <url>
-    <loc>https://adroitsolutions.de/case-studies/</loc>
-    <lastmod>2026-06-08</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.85</priority>
-  </url>
-
-  <url>
-    <loc>https://adroitsolutions.de/case-studies/aviation-it-modernisation/</loc>
-    <lastmod>2026-06-08</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://adroitsolutions.de/case-studies/iot-cold-chain-monitoring/</loc>
-    <lastmod>2026-06-08</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://adroitsolutions.de/case-studies/pcb-vision-qa-automation/</loc>
-    <lastmod>2026-06-08</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <!-- BLOG -->
-  <url>
-    <loc>https://adroitsolutions.de/blog/</loc>
-    <lastmod>2026-06-08</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.75</priority>
-  </url>
-
-  <url>
-    <loc>https://adroitsolutions.de/blog/esp32-cold-chain-mqtt-monitoring/</loc>
-    <lastmod>2026-05-12</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <url>
-    <loc>https://adroitsolutions.de/blog/nis2-iot-compliance-germany-2025/</loc>
-    <lastmod>2026-06-08</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
 
   <!-- ABOUT & CONTACT -->
   <url>
