@@ -1,25 +1,26 @@
 version: 1
 frontend:
   phases:
+    preBuild:
+      commands:
+        - echo "No pre-build steps required"
     build:
       commands:
-        - echo "Static site – no build step required"
+        - echo "Static site - no build step required"
   artifacts:
     baseDirectory: /
     files:
       - '**/*'
-  cache:
-    paths: []
   customHeaders:
-    - pattern: '**/*'
+    - pattern: '/*'
       headers:
         - key: Strict-Transport-Security
           value: 'max-age=31536000; includeSubDomains; preload'
         - key: X-Content-Type-Options
-          value: nosniff
+          value: 'nosniff'
         - key: X-Frame-Options
-          value: DENY
+          value: 'DENY'
         - key: Referrer-Policy
-          value: strict-origin-when-cross-origin
-        - key: Permissions-Policy
-          value: 'camera=(), microphone=(), geolocation=()'
+          value: 'strict-origin-when-cross-origin'
+        - key: X-XSS-Protection
+          value: '1; mode=block'
