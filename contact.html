@@ -493,6 +493,7 @@ html[data-mode="light"] .form-note { color: rgba(10,10,10,0.4) !important; }
         <label for="enquiryType"><span data-lang="de">Art der Anfrage</span><span data-lang="en">Enquiry Type</span></label>
         <select id="enquiryType">
           <option value=""><span data-lang="de">Bitte wählen...</span><span data-lang="en">Please select...</span></option>
+          <option value="pilot"><span data-lang="de">ADROIT SENSE™ Pilotprogramm</span><span data-lang="en">ADROIT SENSE™ Pilot Programme</span></option>
           <option value="sap">SAP BTP Subcontracting</option>
           <option value="it"><span data-lang="de">IT-Architektur Beratung</span><span data-lang="en">IT Architecture Consulting</span></option>
           <option value="iot">IoT / Embedded Systems</option>
@@ -539,6 +540,18 @@ function setLang(lang) {
 }
 const savedLang = sessionStorage.getItem('adroit-lang') || 'de';
 setLang(savedLang);
+// Pre-select enquiry type from URL param or hash
+(function() {
+  var params = new URLSearchParams(window.location.search);
+  var type = params.get('type') || (window.location.hash === '#pilot' ? 'pilot' : null);
+  if (type) {
+    var sel = document.getElementById('enquiryType');
+    if (sel) sel.value = type;
+    if (window.location.hash === '#pilot' || params.get('type') === 'pilot') {
+      setTimeout(function(){ document.getElementById('form').scrollIntoView({behavior:'smooth'}); }, 300);
+    }
+  }
+})();
 window.addEventListener('scroll', () => {
   const prog = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
   document.getElementById('scrollProgress').style.width = prog + '%';
