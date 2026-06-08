@@ -12,42 +12,13 @@ concurrency:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
     steps:
       - uses: actions/checkout@v4
 
-      - name: Configure AWS credentials
-        uses: aws-actions/configure-aws-credentials@v4
-        with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: us-east-1
-
-      - name: Trigger Amplify deployment
+      - name: Notify deployment triggered
         run: |
-          aws amplify start-job \
-            --app-id ${{ secrets.AMPLIFY_APP_ID }} \
-            --branch-name main \
-            --job-type RELEASE
-
-      - name: Wait for deployment to complete
-        run: |
-          echo "Waiting for Amplify deployment..."
-          for i in $(seq 1 30); do
-            STATUS=$(aws amplify list-jobs \
-              --app-id ${{ secrets.AMPLIFY_APP_ID }} \
-              --branch-name main \
-              --max-results 1 \
-              --query 'jobSummaries[0].status' \
-              --output text)
-            echo "Status: $STATUS"
-            if [ "$STATUS" = "SUCCEED" ]; then
-              echo "Deployment succeeded."
-              exit 0
-            elif [ "$STATUS" = "FAILED" ]; then
-              echo "Deployment failed."
-              exit 1
-            fi
-            sleep 20
-          done
-          echo "Timed out waiting for deployment."
-          exit 1
+          echo "Push to main detected."
+          echo "AWS Amplify auto-build is enabled and will deploy automatically."
+          echo "Track progress at: https://us-east-1.console.aws.amazon.com/amplify/apps/d2kpc9u15a8ep1"
