@@ -5,14 +5,14 @@
 
   var de = {
     title: 'Datenschutz & Cookies',
-    text: 'Wir verwenden Cookies, um Ihnen die bestmögliche Nutzererfahrung zu bieten und unsere Website zu verbessern. Mit Klick auf „Akzeptieren" stimmen Sie der Verwendung von Cookies zu.',
+    text: 'Wir speichern Ihre Einwilligung (localStorage) und Ihre Spracheinstellung (sessionStorage) lokal auf Ihrem Gerät – ausschließlich für technisch notwendige Funktionen. Kein Tracking, keine Weitergabe an Dritte. Rechtsgrundlage: § 25 Abs. 2 TTDSG.',
     link: 'Datenschutzerklärung',
     accept: 'Akzeptieren',
     decline: 'Ablehnen'
   };
   var en = {
     title: 'Privacy & Cookies',
-    text: 'We use cookies to provide you with the best possible experience and to improve our website. By clicking "Accept", you consent to the use of cookies.',
+    text: 'We store your consent choice (localStorage) and language preference (sessionStorage) locally on your device — for technically necessary functions only. No tracking, no third-party sharing. Legal basis: § 25(2) TTDSG.',
     link: 'Privacy Policy',
     accept: 'Accept',
     decline: 'Decline'

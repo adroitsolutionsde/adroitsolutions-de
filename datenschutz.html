@@ -319,12 +319,64 @@ body.lang-en [data-lang="en"] { display:inline; }
     </p>
     <hr class="sec-rule"/>
     <div class="alert-box">
-      <strong>✓ <span data-lang="de">Kein Tracking. Nur ein funktionales Cookie.</span><span data-lang="en">No tracking. One functional cookie only.</span></strong>
-      <p data-lang="de">Diese Website verwendet keine Analyse-, Werbe- oder Tracking-Cookies (kein Google Analytics, kein Facebook Pixel, keine Social-Media-Plugins). Es werden keine Nutzerprofile erstellt.</p>
-      <p data-lang="en">This website does not use analytics, advertising, or tracking cookies (no Google Analytics, no Facebook Pixel, no social media plugins). No user profiles are created.</p>
-      <p data-lang="de">Wir setzen <strong>ein funktionales Cookie</strong> (<code>adroit-cookie-consent</code>), um Ihre Cookie-Einwilligung zu speichern. Rechtsgrundlage: Art.&nbsp;6 Abs.&nbsp;1 lit.&nbsp;c DSGVO / § 25 Abs.&nbsp;2 TTDSG (technisch notwendig).</p>
-      <p data-lang="en">We set <strong>one functional cookie</strong> (<code>adroit-cookie-consent</code>) to store your cookie consent choice. Legal basis: Art.&nbsp;6(1)(c) GDPR / § 25(2) TTDSG (technically necessary).</p>
+      <strong>✓ <span data-lang="de">Kein Tracking. Ausschließlich technisch notwendige Speicherung.</span><span data-lang="en">No tracking. Technically necessary storage only.</span></strong>
+      <p data-lang="de">Diese Website verwendet keine Analyse-, Werbe- oder Tracking-Cookies (kein Google Analytics, kein Facebook Pixel, keine Social-Media-Plugins). Es werden keine Nutzerprofile erstellt und keine Daten an Dritte weitergegeben.</p>
+      <p data-lang="en">This website does not use analytics, advertising, or tracking cookies (no Google Analytics, no Facebook Pixel, no social media plugins). No user profiles are created and no data is shared with third parties.</p>
     </div>
+    <p class="legal-prose" data-lang="de">Nachfolgend sind alle Einträge aufgeführt, die diese Website im Speicher Ihres Endgeräts ablegt (§ 25 TTDSG / Art. 5 Abs. 3 ePrivacy-Richtlinie):</p>
+    <p class="legal-prose" data-lang="en">The following table lists all entries this website stores on your device (§ 25 TTDSG / Art. 5(3) ePrivacy Directive):</p>
+    <table class="legal-tbl">
+      <tr>
+        <td><span data-lang="de">Name</span><span data-lang="en">Name</span></td>
+        <td><code>adroit-cookie-consent</code></td>
+      </tr>
+      <tr>
+        <td><span data-lang="de">Speichertyp</span><span data-lang="en">Storage type</span></td>
+        <td>localStorage</td>
+      </tr>
+      <tr>
+        <td><span data-lang="de">Kategorie</span><span data-lang="en">Category</span></td>
+        <td><span data-lang="de">Technisch notwendig</span><span data-lang="en">Technically necessary</span></td>
+      </tr>
+      <tr>
+        <td><span data-lang="de">Zweck</span><span data-lang="en">Purpose</span></td>
+        <td><span data-lang="de">Speichert Ihre Einwilligung oder Ablehnung zum Einsatz von Cookies, damit das Banner nicht bei jedem Seitenaufruf erneut erscheint.</span><span data-lang="en">Stores your consent or decline choice so the cookie banner does not reappear on every page visit.</span></td>
+      </tr>
+      <tr>
+        <td><span data-lang="de">Laufzeit</span><span data-lang="en">Duration</span></td>
+        <td><span data-lang="de">Dauerhaft (bis zur manuellen Löschung im Browser)</span><span data-lang="en">Persistent (until manually cleared in the browser)</span></td>
+      </tr>
+      <tr>
+        <td><span data-lang="de">Rechtsgrundlage</span><span data-lang="en">Legal basis</span></td>
+        <td>§ 25 Abs. 2 Nr. 2 TTDSG — <span data-lang="de">technisch notwendig zur Erbringung des ausdrücklich gewünschten Dienstes</span><span data-lang="en">technically necessary to provide the service explicitly requested</span></td>
+      </tr>
+    </table>
+    <table class="legal-tbl" style="margin-top:1rem">
+      <tr>
+        <td><span data-lang="de">Name</span><span data-lang="en">Name</span></td>
+        <td><code>adroit-lang</code></td>
+      </tr>
+      <tr>
+        <td><span data-lang="de">Speichertyp</span><span data-lang="en">Storage type</span></td>
+        <td>sessionStorage</td>
+      </tr>
+      <tr>
+        <td><span data-lang="de">Kategorie</span><span data-lang="en">Category</span></td>
+        <td><span data-lang="de">Präferenzen (technisch notwendig)</span><span data-lang="en">Preferences (technically necessary)</span></td>
+      </tr>
+      <tr>
+        <td><span data-lang="de">Zweck</span><span data-lang="en">Purpose</span></td>
+        <td><span data-lang="de">Speichert Ihre gewählte Spracheinstellung (Deutsch/Englisch) für die aktuelle Browser-Sitzung.</span><span data-lang="en">Stores your selected language preference (German/English) for the current browser session.</span></td>
+      </tr>
+      <tr>
+        <td><span data-lang="de">Laufzeit</span><span data-lang="en">Duration</span></td>
+        <td><span data-lang="de">Sitzungsdauer (wird beim Schließen des Browser-Tabs automatisch gelöscht)</span><span data-lang="en">Session duration (automatically deleted when the browser tab is closed)</span></td>
+      </tr>
+      <tr>
+        <td><span data-lang="de">Rechtsgrundlage</span><span data-lang="en">Legal basis</span></td>
+        <td>§ 25 Abs. 2 Nr. 2 TTDSG — <span data-lang="de">technisch notwendig zur Darstellung der vom Nutzer gewählten Sprache</span><span data-lang="en">technically necessary to display the language selected by the user</span></td>
+      </tr>
+    </table>
   </div>
 
   <div class="legal-sec" id="s6">
@@ -459,17 +511,16 @@ body.lang-en [data-lang="en"] { display:inline; }
 </footer>
 
 <script>
-function setLang(lang) {
-  const isEn = lang === 'en';
-  document.body.classList.toggle('lang-en', isEn);
-  document.querySelectorAll('[data-lang="de"]').forEach(el => { el.style.display = isEn ? 'none' : ''; });
-  document.querySelectorAll('[data-lang="en"]').forEach(el => { el.style.display = isEn ? '' : 'none'; });
-  document.getElementById('btn-de').classList.toggle('active', !isEn);
-  document.getElementById('btn-en').classList.toggle('active', isEn);
+function applyDataLang(lang) {
+  var isEn = lang === 'en';
+  document.querySelectorAll('[data-lang="de"]').forEach(function(el) { el.style.display = isEn ? 'none' : ''; });
+  document.querySelectorAll('[data-lang="en"]').forEach(function(el) { el.style.display = isEn ? '' : 'none'; });
   document.documentElement.lang = lang;
-  sessionStorage.setItem('lang', lang);
 }
-(function() { setLang(sessionStorage.getItem('lang') || 'de'); })();
+document.addEventListener('lang-changed', function() {
+  applyDataLang(sessionStorage.getItem('adroit-lang') || 'de');
+});
+(function() { applyDataLang(sessionStorage.getItem('adroit-lang') || 'de'); })();
 function applyTimeMode() {
   const hour = new Date().getHours();
   const isDark = hour >= 19 || hour < 7;
