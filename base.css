@@ -37,6 +37,30 @@ html { scroll-behavior: smooth; }
   transition: width 0.1s linear;
 }
 
+/* ── SCROLL BUTTONS ── */
+.scroll-fab {
+  position: fixed; right: 1.25rem; z-index: 300;
+  width: 42px; height: 42px;
+  border-radius: 50%;
+  border: 1px solid rgba(201,168,76,0.35);
+  background: rgba(20,18,14,0.92);
+  color: var(--gold);
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer;
+  opacity: 0; pointer-events: none;
+  transition: opacity 0.3s, transform 0.3s, background 0.2s;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+}
+[data-mode="light"] .scroll-fab {
+  background: rgba(245,242,235,0.95);
+  border-color: rgba(201,168,76,0.4);
+}
+.scroll-fab.visible { opacity: 1; pointer-events: auto; }
+.scroll-fab:hover { background: var(--gold); color: #0a0a0a; transform: scale(1.08); }
+#scrollToTop    { bottom: 5rem; }
+#scrollToBottom { bottom: 1.25rem; }
+
 /* ── NAV ── */
 nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 100;
