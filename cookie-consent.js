@@ -1,7 +1,11 @@
 (function () {
   var STORAGE_KEY = 'adroit-cookie-consent';
 
-  if (localStorage.getItem(STORAGE_KEY)) return;
+  try {
+    if (localStorage.getItem(STORAGE_KEY)) return;
+  } catch (e) {
+    return;
+  }
 
   var de = {
     title: 'Datenschutz & Cookies',
@@ -24,7 +28,7 @@
   }
 
   function dismiss(choice) {
-    localStorage.setItem(STORAGE_KEY, choice);
+    try { localStorage.setItem(STORAGE_KEY, choice); } catch (e) {};
     var banner = document.getElementById('adroit-cookie-banner');
     if (banner) {
       banner.style.transition = 'opacity 0.4s, transform 0.4s';
