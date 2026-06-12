@@ -15,14 +15,37 @@ function setLang(lang) {
 var savedLang = sessionStorage.getItem('adroit-lang') || 'de';
 setLang(savedLang);
 
-/* ── SCROLL PROGRESS + NAV SHRINK ── */
-window.addEventListener('scroll', function () {
-  var prog = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
-  var bar = document.getElementById('scrollProgress');
-  if (bar) bar.style.width = prog + '%';
-  var nav = document.getElementById('mainNav');
-  if (nav) nav.style.padding = window.scrollY > 50 ? '0.4rem 4rem' : '0.75rem 4rem';
-}, { passive: true });
+/* ── SCROLL PROGRESS + NAV SHRINK + SCROLL BUTTONS ── */
+(function () {
+  var upBtn = document.createElement('button');
+  upBtn.id = 'scrollToTop';
+  upBtn.className = 'scroll-fab';
+  upBtn.setAttribute('aria-label', 'Scroll to top');
+  upBtn.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>';
+  upBtn.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+
+  var downBtn = document.createElement('button');
+  downBtn.id = 'scrollToBottom';
+  downBtn.className = 'scroll-fab';
+  downBtn.setAttribute('aria-label', 'Scroll to bottom');
+  downBtn.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>';
+  downBtn.addEventListener('click', function () { window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' }); });
+
+  document.body.appendChild(upBtn);
+  document.body.appendChild(downBtn);
+
+  window.addEventListener('scroll', function () {
+    var scrolled = window.scrollY;
+    var maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+    var prog = (scrolled / maxScroll) * 100;
+    var bar = document.getElementById('scrollProgress');
+    if (bar) bar.style.width = prog + '%';
+    var nav = document.getElementById('mainNav');
+    if (nav) nav.style.padding = scrolled > 50 ? '0.4rem 4rem' : '0.75rem 4rem';
+    upBtn.classList.toggle('visible', scrolled > 300);
+    downBtn.classList.toggle('visible', scrolled < maxScroll - 100);
+  }, { passive: true });
+})();
 
 /* ── SCROLL REVEAL (IntersectionObserver) ── */
 var obs = new IntersectionObserver(function (entries) {
